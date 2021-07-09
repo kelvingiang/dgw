@@ -91,7 +91,7 @@ class Controler_Solutions {
 //====== SAP SEP THEO TRINH TU
     public function sortable_views_column($newcolumn) {
         $newcolumn['setorder'] = 'setorder';
-        // $newcolumn['langguage'] = 'langguage';
+        $newcolumn['langguage'] = 'langguage';
         return $newcolumn;
     }
 
@@ -104,13 +104,13 @@ class Controler_Solutions {
             );
         }
 
-//        if (isset($vars['orderby']) && 'langguage' == $vars['orderby']) {
-//            $vars = array_merge($vars, array(
-//                'meta_key' => '_metabox_langguage', //Custom field key
-//                'orderby' => '_metabox_langguage' //Custom field value (number)
-//                    )
-//            );
-//        }
+        if (isset($vars['orderby']) && 'langguage' == $vars['orderby']) {
+            $vars = array_merge($vars, array(
+                'meta_key' => '_metabox_langguage', //Custom field key
+                'orderby' => '_metabox_langguage' //Custom field value (number)
+                    )
+            );
+        }
 
         return $vars;
     }

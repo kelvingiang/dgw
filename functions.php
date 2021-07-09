@@ -34,7 +34,7 @@ function change_translate_text($translated) {
         $file = dirname(dirname(dirname(__FILE__))) . "/languages/admin_language/data.php";
         // $file = DIR_LANGUAGES . 'admin_language/data.php';
     } else {
-        $file = DIR_LANGUAGES . "{$language}/data.php";
+        $file = dirname(dirname(dirname(__FILE__))) . "/languages/{$language}/data.php";
     }
     include_once $file;
 

@@ -15,7 +15,7 @@ class Metabox_Main {
             'metabox_solution' => TRUE,
             'metabox_active' => FALSE,
             'metabox_product' => FALSE,
-            'metabox_seo' => TRUE,
+            'metabox_seo' => FALSE,
             'metabox_order' => TRUE,
             'metabox_home' => TRUE,
         );
