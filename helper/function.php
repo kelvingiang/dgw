@@ -1,7 +1,7 @@
 <?php
 require_once DIR_HELPER . 'code/function-front.php';
-require_once DIR_HELPER . 'code/function-add-post-tag-field.php';
-require_once DIR_HELPER . 'code/function-add-post-taxonomy-fieild.php';
+require_once DIR_HELPER . 'code/admin-add-post-tag-field.php';
+require_once DIR_HELPER . 'code/admin-add-post-taxonomy-fieild.php';
 
 /* ==============================================================
   CHECK THE ARRAY IS NULL

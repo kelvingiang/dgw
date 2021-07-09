@@ -22,7 +22,7 @@ function uploadFile($name, $File) {
         if ($file_size > 2097152) {
             $errors[] = '上傳檔案容量不可大於 2 MB';
         }
-        $path = WP_CONTENT_DIR . DS . 'themes' . DS . 'mylehoa' . DS . 'images' . DS . 'contact' . DS; /* get function path upload img dc khai bao tai file hepler */
+        $path = DIR_IMAGES; /* get function path upload img dc khai bao tai file hepler */
 
         if (empty($errors) == true) {
 
