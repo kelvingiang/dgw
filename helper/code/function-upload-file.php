@@ -1,0 +1,38 @@
+<?php
+
+function uploadFile($name, $File) {
+
+    if (!empty($File['name'])) {
+
+        $errors = array();
+        // $file_name = $File['file_upload']['name'];
+        $file_size = $File['size'];
+        $file_tmp = $File['tmp_name'];
+        // $file_type = $File['file_upload']['type'];
+
+        $file_trim = ((explode('.', $File['name'])));
+        //  $trim_name = strtolower($file_trim[0]);
+        $trim_type = strtolower($file_trim[1]);
+
+        $cus_name = $name . '.' . $trim_type;
+        $extensions = array("jpeg", "jpg", "png", "bmp");
+        if (in_array($trim_type, $extensions) === false) {
+            $errors[] = "上傳照片檔案是 JPEG, PNG, BMP.";
+        }
+        if ($file_size > 2097152) {
+            $errors[] = '上傳檔案容量不可大於 2 MB';
+        }
+        $path = WP_CONTENT_DIR . DS . 'themes' . DS . 'mylehoa' . DS . 'images' . DS . 'contact' . DS; /* get function path upload img dc khai bao tai file hepler */
+
+        if (empty($errors) == true) {
+
+            if (is_file($path . $name)) {
+                unlink($path . $name);
+            }
+            move_uploaded_file($file_tmp, ( $path . $cus_name));
+            return $cus_name;
+        } else {
+            return $errors;
+        }
+    }
+}

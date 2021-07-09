@@ -1,0 +1,21 @@
+.side-menu{
+    background-color:$color_bg;
+    div{
+        // min-height: 50px;
+        border-bottom: 1px solid #ccc;
+        &:hover{
+            background-color: $color_bg_hover;
+        }
+        a{
+            display: block;
+            padding: 1rem;
+            color: #fff;
+            font-size: 1.1em;
+            font-weight: bold;
+            letter-spacing: 1px;
+            
+        }   
+    }
+}
+
+
