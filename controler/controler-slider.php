@@ -67,7 +67,7 @@ class Controler_Slider {
         if ($columns == 'img') {
             if (has_post_thumbnail()) {
                 echo '<a href="' . get_admin_url() . 'post.php?post=' . $post->ID . '&action=edit">';
-                echo '<img  src="' . get_the_post_thumbnail_url() . '">';
+                echo '<img  class="img-thumb"  src="' . get_the_post_thumbnail_url() . '">';
                 echo '</a>';
             } else {
                 echo '<div class="without-img">' . __("Without Image") . '<div>';

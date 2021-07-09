@@ -119,28 +119,7 @@ class Controler_Solutions {
     public function board_styles() {
         ?>
         <style type="text/css">
-            .column-cb{
-                width: 10%;
-            }
 
-            .column-title{
-                width: 20%;
-            }
-
-            .column-content{
-                width: 60%;
-            }
-
-            .column-setorder{
-                width: 8%;
-            }
-
-            .column-langguage{
-                width: 10%;
-            }
-            .column-category{
-                width: 10%;
-            }
 
         </style>
         <?php
