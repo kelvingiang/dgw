@@ -1,10 +1,13 @@
+a {
+  text-decoration: none; }
+
 .style-error {
   font-size: 2rem;
   color: red;
   font-weight: bold;
-  letter-spacing: .2rem;
+  letter-spacing: 0.2rem;
   padding-left: 1rem;
-  margin-top: .8rem; }
+  margin-top: 0.8rem; }
 
 .style-hr {
   background-color: #f8f8f8;
@@ -13,7 +16,7 @@
 
 .my-link {
   cursor: pointer;
-  opacity: .3; }
+  opacity: 0.3; }
   .my-link:hover {
     opacity: 1; }
 
@@ -38,7 +41,7 @@
   @media (max-width: 600px) {
     .page-title {
       font-size: 2.3rem;
-      margin: 1rem .5rem;
+      margin: 1rem 0.5rem;
       padding: 3.5rem 2rem; } }
 
 .my-btn {
@@ -98,7 +101,7 @@ h3.group-title {
 .panel-item {
   display: block;
   text-align: center;
-  border-right: 1px solid  #ccc;
+  border-right: 1px solid #ccc;
   padding-top: 15px; }
   .panel-item img {
     margin: 0 auto;
@@ -148,7 +151,7 @@ h3.group-title {
       cursor: pointer;
       font-weight: bold;
       font-size: 2rem;
-      opacity: .6; }
+      opacity: 0.6; }
       @media (max-width: 1200px) {
         .header-speac .main-language a {
           font-size: 1.3rem; } }
@@ -251,10 +254,14 @@ h3.group-title {
       @media (max-width: 600px) {
         .cart-list .order-list div div:nth-child(8) {
           width: 25%; } }
-    .cart-list .order-list div div:nth-child(5), .cart-list .order-list div div:nth-child(7), .cart-list .order-list div div:nth-child(9) {
+    .cart-list .order-list div div:nth-child(5),
+    .cart-list .order-list div div:nth-child(7),
+    .cart-list .order-list div div:nth-child(9) {
       width: 7%; }
       @media (max-width: 600px) {
-        .cart-list .order-list div div:nth-child(5), .cart-list .order-list div div:nth-child(7), .cart-list .order-list div div:nth-child(9) {
+        .cart-list .order-list div div:nth-child(5),
+        .cart-list .order-list div div:nth-child(7),
+        .cart-list .order-list div div:nth-child(9) {
           width: 20%; } }
     .cart-list .order-list div div:nth-child(10) {
       width: 15%; }
@@ -282,12 +289,14 @@ h3.group-title {
     @media (max-width: 600px) {
       .cart-list .order-list-item {
         font-size: 1rem; } }
-    .cart-list .order-list-item input[type=text] {
+    .cart-list .order-list-item input[type="text"] {
       width: 30px;
       /*text-align: right;*/ }
     .cart-list .order-list-item:nth-child(odd) {
       background-color: #f6f6f6; }
-    .cart-list .order-list-item div:nth-child(8), .cart-list .order-list-item div:nth-child(9), .cart-list .order-list-item div:nth-child(10) {
+    .cart-list .order-list-item div:nth-child(8),
+    .cart-list .order-list-item div:nth-child(9),
+    .cart-list .order-list-item div:nth-child(10) {
       justify-content: flex-end;
       margin-right: 5px; }
   .cart-list .order-list .form-control {
@@ -313,7 +322,8 @@ h3.group-title {
     width: 300px;
     margin-right: 20px;
     padding-top: 3px; }
-  .info-list div input[type=text], .info-list div textArea {
+  .info-list div input[type="text"],
+  .info-list div textArea {
     font-size: 2rem !important;
     width: 50% !important; }
 .info-list .pay-space label {
@@ -504,9 +514,9 @@ h3.group-title {
     /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d0e4f7', endColorstr='#87bcea',GradientType=0 );
     /* IE6-9 */
-    padding: .7rem 1.5rem;
+    padding: 0.7rem 1.5rem;
     z-index: 100003;
-    border: .1rem solid #fff; }
+    border: 0.1rem solid #fff; }
     @media (max-width: 900px) {
       .menu-main-item {
         padding: 0.5rem 1rem; } }
@@ -515,7 +525,7 @@ h3.group-title {
       padding: 1rem 0.5rem;
       cursor: pointer;
       color: #fff;
-      font-size: 2rem;
+      font-size: 1.2rem;
       z-index: 20;
       transition: all 1s; }
       @media (max-width: 1200px) {
@@ -584,7 +594,7 @@ h3.group-title {
     .menu-main-item:hover .menu-main-sub-1 {
       pointer-events: auto;
       opacity: 1;
-      margin-top: .8rem; }
+      margin-top: 0.8rem; }
   .menu-main .menu-main-sub-1 {
     pointer-events: none;
     opacity: 0;
@@ -600,14 +610,14 @@ h3.group-title {
       height: 50px;
       line-height: 50px;
       background-color: rgba(3, 128, 178, 0.9);
-      border-bottom: 1px  solid #fff;
+      border-bottom: 1px solid #fff;
       cursor: pointer; }
       .menu-main .menu-main-sub-1-item-link {
         position: relative;
         padding: 0rem 2.5rem;
         cursor: pointer;
         color: #fff;
-        font-size: 2rem;
+        font-size: 1.2rem;
         z-index: 20;
         transition: all 1s; }
       .menu-main .menu-main-sub-1-item-bg {
@@ -655,7 +665,7 @@ h3.group-title {
         padding: 2rem 2.5rem;
         cursor: pointer;
         color: #fff;
-        font-size: 2rem;
+        font-size: 1.2rem;
         z-index: 20;
         transition: all 1s; }
       .menu-main .menu-main-sub-2-item-bg {
@@ -694,7 +704,7 @@ h3.group-title {
         padding: 2rem 2.5rem;
         cursor: pointer;
         color: #fff;
-        font-size: 2rem;
+        font-size: 1.2rem;
         z-index: 20;
         transition: all 1s; }
       .menu-main .menu-main-sub-3-item-bg {

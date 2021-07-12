@@ -1,6 +1,6 @@
 <?php
 
-function _add_wp_media($item) {
+function add_wp_media($item) {
     ?>
     <hr>
     <div class="row">
@@ -54,7 +54,7 @@ function _add_wp_media($item) {
             opacity: 0.7;
             cursor: pointer;
             display: none;
-           
+
         }
         .del-item label{
             text-align: center;
@@ -64,7 +64,7 @@ function _add_wp_media($item) {
             color: #fff;
             position: relative;
             top: 50%;
-            
+
         }
     </style>
     <script>

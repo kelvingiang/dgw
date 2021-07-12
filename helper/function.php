@@ -1,5 +1,6 @@
 <?php
 require_once DIR_HELPER . 'code/function-front.php';
+require_once DIR_HELPER . 'code/function-front-menu.php';
 require_once DIR_HELPER . 'code/admin-add-post-tag-field.php';
 require_once DIR_HELPER . 'code/admin-add-post-taxonomy-fieild.php';
 
