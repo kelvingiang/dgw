@@ -1,8 +1,10 @@
 <?php
 
-class Controler_Slider {
+class Controler_Slider
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         add_action('init', array($this, 'register_custom_post'));
         add_action('manage_edit-slider_columns', array($this, 'manage_columns'));
         add_action('manage_slider_posts_custom_column', array($this, 'render_columns'));
@@ -13,7 +15,8 @@ class Controler_Slider {
         add_action('admin_print_styles-edit.php', array($this, 'board_styles'));
     }
 
-    public function register_custom_post() {
+    public function register_custom_post()
+    {
         $labels = array(
             'name' => __('Slider') . '1300 x 430',
             'singular_name' => __('Slider'),
@@ -43,26 +46,29 @@ class Controler_Slider {
             'has_archive' => true,
             'hierarchical' => false,
             'menu_position' => 6,
-            'supports' => array('title', 'thumbnail'),
+            'supports' => array('title', 'thumbnail', 'editor'),
         );
         register_post_type('slider', $args);
     }
 
-//==== QUAN LY COT HIEN THI TRON BANG   
-    public function manage_columns($columns) {
+    //==== QUAN LY COT HIEN THI TRON BANG   
+    public function manage_columns($columns)
+    {
         $date_label = __('Create Date', 'suite');
         unset($columns['date']); // an cot ngay mac dinh
         unset($columns['modified']); // an cot ngay mac dinh
         unset($columns['postdate']); // an cot ngay mac dinh
-//==== THEM COT VA BAN
-        $columns['img'] = __('Image', 'suite');
-        $columns['setorder'] = __('Show Order', 'suite');
+        //==== THEM COT VA BAN
+        $columns['img'] = __('Image');
+        $columns['langguage'] = __('Langguage');
+        $columns['setorder'] = __('Show Order');
         $columns['date'] = $date_label;
         return $columns;
     }
 
-//==== HIEN THI NOI DUNG TRONG COT
-    public function render_columns($columns) {
+    //==== HIEN THI NOI DUNG TRONG COT
+    public function render_columns($columns)
+    {
         global $post;
         if ($columns == 'img') {
             if (has_post_thumbnail()) {
@@ -74,37 +80,57 @@ class Controler_Slider {
             }
         }
 
+        if ($columns == 'langguage') {
+            _e(get_post_meta($post->ID, '_metabox_langguage', true));
+        }
+
         if ($columns == 'setorder') {
             echo get_post_meta($post->ID, '_metabox_order', true);
         }
     }
 
-//====== SAP SEP THEO TRINH TU
-    public function sortable_views_column($newcolumn) {
+    //====== SAP SEP THEO TRINH TU
+    public function sortable_views_column($newcolumn)
+    {
         $newcolumn['setorder'] = 'setorder';
+        $newcolumn['langguage'] = 'langguage';
         return $newcolumn;
     }
 
-    public function sort_views_column($vars) {
+    public function sort_views_column($vars)
+    {
         if (isset($vars['orderby']) && 'setorder' == $vars['orderby']) {
-            $vars = array_merge($vars, array(
-                'meta_key' => '_metabox_order', //Custom field key
-                'orderby' => '_metabox_order' //Custom field value (number)
-                    )
+            $vars = array_merge(
+                $vars,
+                array(
+                    'meta_key' => '_metabox_order', //Custom field key
+                    'orderby' => '_metabox_order' //Custom field value (number)
+                )
+            );
+        }
+
+
+        if (isset($vars['orderby']) && 'langguage' == $vars['orderby']) {
+            $vars = array_merge(
+                $vars,
+                array(
+                    'meta_key' => '_metabox_langguage', //Custom field key
+                    'orderby' => '_metabox_langguage' //Custom field value (number)
+                )
             );
         }
         return $vars;
     }
 
     //==== STYLE CHO COLUMNS    
-    public function board_styles() {
-        ?>
-        <style type="text/css"> 
+    public function board_styles()
+    {
+?>
+        <style type="text/css">
 
 
         </style>
-        <?php
+<?php
 
     }
-
 }

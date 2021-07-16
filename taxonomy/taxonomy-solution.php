@@ -1,10 +1,12 @@
 <?php
 
-class Taxonomy_Solution {
+class Taxonomy_Solution
+{
 
     private $prefix_name = 'option_category_solution_';
 
-    public function __construct() {
+    public function __construct()
+    {
         add_action('init', array($this, 'create_taxonomy'));
 
         add_action('solutions_category_add_form_fields', array($this, 'add_form'));
@@ -18,7 +20,8 @@ class Taxonomy_Solution {
         add_action('delete_solutions_category', array($this, 'delete_option'));
     }
 
-    public function create_taxonomy() {
+    public function create_taxonomy()
+    {
         $labels = array(
             'name' => __('Category'),
             'singular_name' => __('Category'),
@@ -46,12 +49,13 @@ class Taxonomy_Solution {
         ));
     }
 
-    public function add_form() {
-        ?>
+    public function add_form()
+    {
+?>
         <div class="form-field">
-            <input  type="hidden" name="cate_cn" id="cate_cn" value="" />
+            <input type="hidden" name="cate_cn" id="cate_cn" value="" />
             <label for="cate_vn"> <?php _e('Name') ?> ( <?php _e('Vietnamese') ?>)</label>
-            <input  type="text" name="cate_vn" id="cate_vn" value="" />
+            <input type="text" name="cate_vn" id="cate_vn" value="" />
         </div>
         <div class="form-field">
             <label for="cate_en"> <?php _e('Name') ?> ( <?php _e('English') ?>)</label>
@@ -59,10 +63,10 @@ class Taxonomy_Solution {
         </div>
         <div class="form-field">
             <label for="cate_order"><?php _e('Show Order') ?></label>
-            <input  type="text" name="cate_order" id="cate_order" value="" />
+            <input type="text" name="cate_order" id="cate_order" value="0" />
         </div>
         <script>
-            jQuery('#tag-name').focusout(function () {
+            jQuery('#tag-name').focusout(function() {
                 jQuery('#cate_cn').val(jQuery(this).val());
             });
         </script>
@@ -71,37 +75,39 @@ class Taxonomy_Solution {
                 width: 20%;
             }
         </style>
-        <?php
+    <?php
     }
 
-    public function edit_form($term) {
+    public function edit_form($term)
+    {
         // LAY GIA TRI TRONG OPTION TABLE
         $arr_value = get_option($this->prefix_name . $term->term_id);
-        ?>
-        <input  type="hidden" name="cate_cn" id="cate_cn" value="<?php echo $arr_value['cate_solution_cn']; ?>" />
+    ?>
+        <input type="hidden" name="cate_cn" id="cate_cn" value="<?php echo $arr_value['cate_solution_cn']; ?>" />
 
         <tr class="form-field">
-            <th scope="row" valign="top">  <label for="cate_vn"> <?php _e('Name') ?> (<?php _e('Vietnamese') ?> )</label></th>
-            <td><input  type="text" name="cate_vn" id="cate_vn" value="<?php echo $arr_value['cate_solution_vn']; ?>" /></td>
+            <th scope="row" valign="top"> <label for="cate_vn"> <?php _e('Name') ?> (<?php _e('Vietnamese') ?> )</label></th>
+            <td><input type="text" name="cate_vn" id="cate_vn" value="<?php echo $arr_value['cate_solution_vn']; ?>" /></td>
         </tr>
         <tr class="form-field">
-            <th scope="row" valign="top">   <label for="cate_en"><?php _e('Name') ?> ( <?php _e('English') ?> )</label> </th>
-            <td>    <input type="text" name="cate_en" id="cate_en" value="<?php echo $arr_value['cate_solution_en']; ?>" /></td>
+            <th scope="row" valign="top"> <label for="cate_en"><?php _e('Name') ?> ( <?php _e('English') ?> )</label> </th>
+            <td> <input type="text" name="cate_en" id="cate_en" value="<?php echo $arr_value['cate_solution_en']; ?>" /></td>
         </tr>
         <tr class="form-field">
-            <th scope="row" valign="top">   <label for="cate_en">   <?php _e('Show Order') ?></label> </th>
-            <td>    <input type="text" name="cate_order" id="cate_order" value="<?php echo $arr_value['cate_solution_order']; ?>" /></td>
+            <th scope="row" valign="top"> <label for="cate_order"> <?php _e('Show Order') ?></label> </th>
+            <td> <input type="text" name="cate_order" id="cate_order" value="<?php echo $arr_value['cate_solution_order']; ?>" /></td>
         </tr>
 
         <script>
-            jQuery('#name').focusout(function () {
+            jQuery('#name').focusout(function() {
                 jQuery('#cate_cn').val(jQuery(this).val());
             });
         </script>
-        <?php
+<?php
     }
 
-    public function save_option($term_id) {
+    public function save_option($term_id)
+    {
         $arr = array(
             'cate_solution_cn' => $_POST['cate_cn'],
             'cate_solution_vn' => $_POST['cate_vn'],
@@ -113,19 +119,21 @@ class Taxonomy_Solution {
         update_option($option_name, $option_value);
     }
 
-    public function delete_option() {
+    public function delete_option()
+    {
         $param = getParams();
         delete_option($this->prefix_name . $param['tag_ID']);
     }
 
-    public function category_columns() {
+    public function category_columns()
+    {
         $new_columns = array(
             'cb' => '<input type="checkbox" />',
             'name' => __('Name'),
-//            'description' => __('Description'),
+            //            'description' => __('Description'),
             'vietnamese' => __('Vietnamese'),
             'english' => __('English'),
-            'order' => __('Show Order'),
+            'order' => __('Show Orderss'),
             'slug' => __('Slug'),
             'posts' => __('Count')
         );
@@ -133,7 +141,8 @@ class Taxonomy_Solution {
         return $new_columns;
     }
 
-    public function category_columns_manage($out, $column_name, $theme_id) {
+    public function category_columns_manage($out, $column_name, $theme_id)
+    {
         $theme = get_term($theme_id, 'solutions_category');
 
         $strOption = get_option($this->prefix_name . $theme->term_id);
@@ -141,7 +150,7 @@ class Taxonomy_Solution {
 
         switch ($column_name) {
             case 'order':
-                echo isset($strOption['cate_solution_order']) ? $strOption['cate_solution_order'] : '0';
+                echo isset($strOption['cate_solution_order']) ? $strOption['cate_solution_order'] : '';
                 break;
             case 'vietnamese':
                 echo isset($strOption['cate_solution_vn']) ? $strOption['cate_solution_vn'] : '';
@@ -154,5 +163,4 @@ class Taxonomy_Solution {
         }
         return $out;
     }
-
 }

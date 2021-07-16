@@ -1,6 +1,7 @@
 <?php
 
-function ColorCode($id) {
+function ColorCode($id)
+{
     $color;
     switch ($id) {
         case "1":
@@ -25,7 +26,33 @@ function ColorCode($id) {
     return $color;
 }
 
-function get_category_summary($id) {
+/*================================================================
+SEARCH  POST  BY METABOX 
+==================================================================*/
+
+/*
+function custom_search_query($query)
+{
+
+    if (!is_admin() && !empty(getParams('langguage'))) {
+        $arr = array('advertising',); // loai bo cac post khong can search langguage
+        if (!in_array(getParams('post_type'), $arr)) {
+            $query->set('meta_query', array(
+                array(
+                    'key' => '_metabox_langguage',
+                    'value' => getParams('langguage'),
+                    'compare' => 'LIKE'
+                )
+            ));
+            // $query->set('post_type', 'solutions'); // chi ap dung cho post
+        }
+    }
+}
+
+add_filter('pre_get_posts', 'custom_search_query');
+*/
+function get_category_summary($id)
+{
     global $wpdb;
     $table = $wpdb->prefix . 'product_category';
     $sql = "SELECT summary_vn, summary_cn, img FROM  $table WHERE ID = $id ";
@@ -33,7 +60,8 @@ function get_category_summary($id) {
     return $row;
 }
 
-function get_product_category() {
+function get_product_category()
+{
     global $wpdb;
     $table = $wpdb->prefix . 'product_category';
     $sql = "SELECT * FROM  $table WHERE kind = 'p' ORDER BY `orders` DESC  ";
@@ -41,7 +69,8 @@ function get_product_category() {
     return $row;
 }
 
-function get_category_by_id($ID) {
+function get_category_by_id($ID)
+{
     global $wpdb;
     $table = $wpdb->prefix . 'product_category';
     $sql = "SELECT name_cn, name_vn FROM  $table WHERE  ID = $ID  ";
@@ -49,7 +78,8 @@ function get_category_by_id($ID) {
     return $row;
 }
 
-function get_show_name($kind, $val) {
+function get_show_name($kind, $val)
+{
     global $wpdb;
     $table = $wpdb->prefix . 'product_category';
     $sql = "SELECT * FROM  $table WHERE kind = '$kind' AND val = '$val' ";
@@ -57,7 +87,8 @@ function get_show_name($kind, $val) {
     return $row;
 }
 
-function get_product($id) {
+function get_product($id)
+{
     global $wpdb;
     $table = $wpdb->prefix . 'product';
     $sql = "SELECT * FROM  $table WHERE ID = $id";
@@ -65,7 +96,8 @@ function get_product($id) {
     return $row;
 }
 
-function get_products($cate) {
+function get_products($cate)
+{
     global $wpdb;
     $table = $wpdb->prefix . 'product';
     if ($cate == '') {

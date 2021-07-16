@@ -1,8 +1,10 @@
 <?php
 
-class Controler_Case_Studies {
+class Controler_Case_Studies
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         add_action('init', array($this, 'register_custom_post'));
         add_action('manage_edit-casestudies_columns', array($this, 'manage_columns'));
         add_action('manage_casestudies_posts_custom_column', array($this, 'render_columns'));
@@ -11,7 +13,8 @@ class Controler_Case_Studies {
         add_filter('request', array($this, 'sort_views_column'));
     }
 
-    public function register_custom_post() {
+    public function register_custom_post()
+    {
         $labels = array(
             'name' => __('Case Studies'),
             'singular_name' => __('Case Studies'),
@@ -46,13 +49,14 @@ class Controler_Case_Studies {
         register_post_type('casestudies', $args);
     }
 
-//==== QUAN LY COT HIEN THI TRON BANG
-    public function manage_columns($columns) {
+    //==== QUAN LY COT HIEN THI TRON BANG
+    public function manage_columns($columns)
+    {
         $date_label = __('Create Date');
         unset($columns['date']); // an cot ngay mac dinh
         unset($columns['modified']); // an cot ngay mac dinh
         unset($columns['postdate']); // an cot ngay mac dinh
-//==== THEM COT VA BAN
+        //==== THEM COT VA BAN
         $columns['content'] = __('Content');
         // $columns['kind'] = __('Category');
         $columns['langguage'] = __('Langguage');
@@ -61,8 +65,9 @@ class Controler_Case_Studies {
         return $columns;
     }
 
-//==== HIEN THI NOI DUNG TRONG COT
-    public function render_columns($columns) {
+    //==== HIEN THI NOI DUNG TRONG COT
+    public function render_columns($columns)
+    {
         global $post;
         switch ($columns) {
             case 'content':
@@ -77,10 +82,8 @@ class Controler_Case_Studies {
                     }
                 }
                 break;
-            case'langguage':
-                $langguage = get_post_meta($post->ID, '_metabox_langguage', true);
-                echo '<a href=' . custom_redirect($term->slug) . '&' . langguage . '=' . $langguage . '>' . __($langguage) . '</a></br>';
-                break;
+            case 'langguage':
+                _e(get_post_meta($post->ID, '_metabox_langguage', true));
                 break;
 
             case 'setorder':
@@ -89,29 +92,34 @@ class Controler_Case_Studies {
         }
     }
 
-//====== SAP SEP THEO TRINH TU
-    public function sortable_views_column($newcolumn) {
+    //====== SAP SEP THEO TRINH TU
+    public function sortable_views_column($newcolumn)
+    {
         $newcolumn['setorder'] = 'setorder';
         $newcolumn['langguage'] = 'langguage';
         return $newcolumn;
     }
 
-    public function sort_views_column($vars) {
+    public function sort_views_column($vars)
+    {
         if (isset($vars['orderby']) && 'setorder' == $vars['orderby']) {
-            $vars = array_merge($vars, array(
-                'meta_key' => '_metabox_order', //Custom field key
-                'orderby' => '_metabox_order' //Custom field value (number)
-                    )
+            $vars = array_merge(
+                $vars,
+                array(
+                    'meta_key' => '_metabox_order', //Custom field key
+                    'orderby' => '_metabox_order' //Custom field value (number)
+                )
             );
         }
         if (isset($vars['orderby']) && 'langguage' == $vars['orderby']) {
-            $vars = array_merge($vars, array(
-                'meta_key' => '_metabox_langguage', //Custom field key
-                'orderby' => '_metabox_langguage' //Custom field value (number)
-                    )
+            $vars = array_merge(
+                $vars,
+                array(
+                    'meta_key' => '_metabox_langguage', //Custom field key
+                    'orderby' => '_metabox_langguage' //Custom field value (number)
+                )
             );
         }
         return $vars;
     }
-
 }

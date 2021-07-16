@@ -32,38 +32,18 @@ function menu_mobile_list()
 
 function menu_main_list()
 {
+    // THIS ARRAY KEY APPLY LINK OF WEB 
     $arr = array(
-        'home' => array(
-            'name' => 'Home Page',
-            'class' => 'menu-main-item',
-            'sub' => ''
-        ),
         'about' => array(
             'name' => "About",
             'class' => 'menu-main-item',
             'sub' => ''
         ),
-        'event' => array(
-            'name' => "Event",
-            'class' => 'menu-main-item has-sub',
-            'subClass' => 'menu-main-sub-1',
-            'sub' => array(
-                'sub_1' => array(
-                    'name' => 'menu sub 1',
-                    'class' => 'menu-main-sub-1-item',
-                    'sub' => ''
-                ),
-                'sub_2' => array(
-                    'name' => 'menu sub 2',
-                    'class' => 'menu-main-sub-1-item',
-                    'sub' => ''
-                ),
-                'sub_3' => array(
-                    'name' => 'menu sub 3',
-                    'class' => 'menu-main-sub-1-item',
-                    'sub' => ''
-                )
-            )
+        'solution' => array(
+            'name' => "Solutions",
+            'class' => 'menu-main-item ',
+            'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
+            'sub' => getCategories(),
         ),
         'article' => array(
             'name' => "Article",

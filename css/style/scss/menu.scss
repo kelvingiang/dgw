@@ -154,7 +154,7 @@ $MenuTextHoverColor: #0665ad;
         }
         .has-sub {
             &:after {
-                @include HasSub(90deg, 10px);
+                @include HasSub(90deg, 15px);
             }
         }
 
@@ -188,7 +188,7 @@ $MenuTextHoverColor: #0665ad;
         opacity: 0;
         position: absolute;
         margin-top: -30px;
-        margin-left: -13px;
+        margin-left: -28px;
         transition: all 1s;
         padding: 2px;
         white-space: nowrap;
@@ -206,7 +206,7 @@ $MenuTextHoverColor: #0665ad;
             &-bg {
                 @include MenuBGSub;
             }
-            .has-sub-sub {
+            .has-sub {
                 &:after {
                     @include HasSub(0deg, 20px);
                 }
@@ -242,7 +242,7 @@ $MenuTextHoverColor: #0665ad;
             background-color: rgba(0, 157, 219, 0.9);
             border-bottom: 1px solid #fff;
             &-link {
-                @include MenuLink(relative, 1.2rem, 2rem, 2.5rem);
+                @include MenuLink(relative, 1.2rem, 0rem, 2rem);
             }
             &-bg {
                 @include MenuBGSub;
@@ -279,7 +279,7 @@ $MenuTextHoverColor: #0665ad;
             background-color: rgba(98, 199, 239, 0.9);
             border-bottom: 1px solid #fff;
             &-link {
-                @include MenuLink(relative, 1.2rem, 2rem, 2.5rem);
+                @include MenuLink(relative, 1.2rem, 0rem, 2.5rem);
             }
             &-bg {
                 @include MenuBGSub;

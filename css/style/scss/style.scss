@@ -9,6 +9,10 @@ a {
     text-decoration: none;
 }
 
+body:focus-within {
+    scroll-behavior: smooth;
+}
+
 .style-error {
     font-size: 2rem;
     color: red;
@@ -22,6 +26,17 @@ a {
     background-color: #f8f8f8;
     height: 5px;
     margin-top: 20px;
+}
+
+.link-languages {
+    color: rgba(7, 66, 105, 0.5);
+    font-weight: 300;
+    font-size: 0.8rem;
+    cursor: pointer;
+
+    &:hover {
+        color: rgba(7, 66, 105, 1);
+    }
 }
 
 .my-link {
@@ -77,407 +92,115 @@ a {
     }
 }
 
-#product_item {
-    h3 {
-        margin-top: 8px;
-        font-size: 4rem;
-        color: $color_blue;
-        border-bottom: solid $color_blue 1px;
-    }
-
-    .product-info {
-        div {
-            opacity: 1;
-            height: 5rem;
-            padding-top: 1rem;
-            border-bottom: 1px solid #ccc;
-        }
-        h4 {
-            font-size: 2rem;
-            font-weight: bold;
-            float: left;
-            width: 20rem;
-        }
-    }
-
-    .product-info-list {
-        width: 100%;
-        text-align: center;
-        &-title {
-            line-height: 50px;
-            height: 50px;
-            background-color: #02466b;
-
-            div {
-                border-right: 2px #fff solid;
-            }
-            label {
-                color: #fff;
-            }
-        }
-        &-content {
-            border-bottom: 1px #ccc solid;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-    }
-}
-
 h3.group-title {
     color: #517eb9;
     font-size: 1.2em;
     font-family: "Times New Roman", Times, serif;
 }
 
-.panel-item {
-    display: block;
-    text-align: center;
-    border-right: 1px solid #ccc;
-    padding-top: 15px;
-
-    img {
-        margin: 0 auto;
-        border-radius: 3px;
-        width: 200px;
+@keyframes silder-title {
+    0% {
+        top: -100%;
+        opacity: 0;
     }
 
-    label {
-        color: $color_text;
-        font-size: 0.9em;
-    }
-
-    &:hover {
-        opacity: 0.7;
+    100% {
+        top: 0%;
+        opacity: 1;
     }
 }
 
-.header-speac {
-    height: 50px;
-    @include Respond(tab-land) {
-        height: 50px;
+@keyframes silder-content {
+    0% {
+        right: -100%;
+        opacity: 0;
     }
-    @include Respond(phone) {
-        .company-name-space {
+
+    100% {
+        right: 0%;
+        opacity: 1;
+    }
+}
+
+.slider-text {
+    a {
+        color: white;
+        &:hover {
+            color: #ccc;
+        }
+
+        .slider-title {
+            font-size: 2.5rem;
+            text-align: left;
+            position: relative;
+            animation-name: silder-title;
+            animation-duration: 3s;
+        }
+        .slider-content {
+            animation-name: silder-content;
+            animation-duration: 3s;
+            position: relative;
+            text-align: left;
+        }
+    }
+}
+
+@keyframes owl-silder-title {
+    0% {
+        top: 0%;
+        opacity: 0;
+    }
+
+    100% {
+        top: 40%;
+        opacity: 1;
+    }
+}
+@keyframes owl-slider-content {
+    0% {
+        left: 100%;
+        opacity: 0;
+    }
+
+    70% {
+        opacity: 0;
+    }
+    100% {
+        left: 5%;
+        opacity: 1;
+    }
+}
+
+#slider {
+    .item {
+        .owl-slider-title,
+        .owl-slider-content {
             display: none;
         }
     }
-    .logo-img {
-        margin: 1rem;
-        width: 200px;
-        @include Respond(tab-land) {
-            width: 200px;
-        }
-        @include Respond(tab-port) {
-            width: 180px;
-        }
-    }
-    .company-name {
-        font-size: 2.8rem;
-        color: #044faa;
-        text-shadow: 2px 1px 4px #0b3566;
-        font-weight: bold;
-        text-align: center;
-        @include Respond(tab-land) {
-            font-size: 2.2rem;
-        }
-        @include Respond(tab-port) {
-            font-size: 1.5rem;
-        }
-    }
-    .main-language {
-        margin-right: 10px;
-        margin-top: 1rem;
-        text-align: right;
 
+    .active {
         a {
-            color: #666 !important;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 2rem;
-            opacity: 0.6;
-            @include Respond(tab-land) {
-                font-size: 1.3rem;
-            }
-
-            @include Respond(tab-port) {
-                font-size: 1rem;
-            }
-            &:hover {
-                opacity: 1;
-            }
-        }
-    }
-}
-
-.cart-speac {
-    @include Respond(phone) {
-        text-align: right;
-        margin-right: 50px;
-    }
-    text-align: right;
-    margin-right: 80px;
-    .cart-link {
-        @include Respond(phone) {
-            margin-top: -4rem;
-        }
-        color: #1e3b5e;
-        font-size: 3.5rem;
-
-        position: absolute;
-        text-align: right;
-        background-color: transparent;
-        opacity: 0.6;
-        @include Respond(tab-land) {
-            font-size: 3rem;
-        }
-
-        @include Respond(tab-port) {
-            font-size: 2.5rem;
-        }
-        &:hover label {
-            color: #065abf;
-            background-color: #fff;
-            opacity: 1;
-            border: 1px solid #0674f9;
-        }
-    }
-    .cart-link label {
-        background-color: #0674f9;
-        font-size: 2rem;
-        height: 3rem;
-        width: 3rem;
-        text-align: center;
-        padding-top: 2px;
-        border-radius: 50px;
-        color: white;
-        position: relative;
-        top: -15px;
-        left: -25px;
-        font-weight: bold;
-        @include Respond(tab-land) {
-            font-size: 1.5rem;
-            height: 2rem;
-            width: 2rem;
-        }
-
-        @include Respond(tab-port) {
-            font-size: 1.2rem;
-            height: 1.8rem;
-            width: 1.8rem;
-            top: -16px;
-            left: -18px;
-        }
-    }
-}
-
-.cart-list {
-    padding: 1rem 3rem !important;
-
-    .order-list {
-        .hide-mobile {
-            @include Respond(phone) {
-                display: none;
-            }
-        }
-
-        div {
-            display: flex;
-            div {
-                justify-content: center;
-            }
-            div:nth-child(1) {
-                width: 5%;
-                @include Respond(phone) {
-                    width: 10%;
-                }
-            }
-            div:nth-child(2) {
-                width: 5%;
-                @include Respond(phone) {
-                    width: 25%;
-                }
-            }
-            div:nth-child(4) {
-                width: 10%;
-                @include Respond(phone) {
-                    width: 25%;
-                }
-            }
-            div:nth-child(3) {
-                width: 15%;
-                @include Respond(phone) {
-                    width: 30%;
-                }
-            }
-            div:nth-child(6) {
-                width: 18%;
-                @include Respond(phone) {
-                    width: 30%;
-                }
-            }
-
-            div:nth-child(8) {
-                width: 13%;
-                @include Respond(phone) {
-                    width: 25%;
-                }
-            }
-
-            div:nth-child(5),
-            div:nth-child(7),
-            div:nth-child(9) {
-                width: 7%;
-                @include Respond(phone) {
-                    width: 20%;
-                }
-            }
-
-            div:nth-child(10) {
-                width: 15%;
-                @include Respond(phone) {
-                    width: 25%;
-                }
-            }
-        }
-
-        &-title {
-            height: 50px;
-            background-color: #805603;
             color: white;
-            line-height: 50px;
-            font-weight: bold;
-            font-size: 1.6rem;
-            @include Respond(phone) {
-                font-size: 1.2rem;
-            }
-            div {
-                justify-content: center;
-                border-right: 0.1rem #fff solid;
-            }
-        }
-        &-item {
-            align-items: center;
-            font-size: 1.6rem;
-            min-height: 50px;
-            border-bottom: 1px #cdcdcd solid;
-            @include Respond(phone) {
-                font-size: 1rem;
-            }
-
-            input[type="text"] {
-                width: 30px;
-                /*text-align: right;*/
-            }
-            &:nth-child(odd) {
-                background-color: #f6f6f6;
-            }
-            div:nth-child(8),
-            div:nth-child(9),
-            div:nth-child(10) {
-                justify-content: flex-end;
-                margin-right: 5px;
-            }
-        }
-        .form-control {
-            font-size: 3rem;
-        }
-    }
-
-    .order-total {
-        width: 100%;
-        text-align: right;
-        font-weight: bold;
-        height: 60px;
-        padding-top: 10px;
-        background-color: #805603;
-        color: white;
-    }
-}
-
-.info-list {
-    div {
-        padding-bottom: 10px;
-        label {
-            width: 200px;
-            margin-right: 20px;
-            padding-top: 3px;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        label.style-error {
-            width: 300px;
-            margin-right: 20px;
-            padding-top: 3px;
-        }
-        input[type="text"],
-        textArea {
-            font-size: 2rem !important;
-            width: 50% !important;
-        }
-    }
-
-    .pay-space label {
-        margin-right: 50px;
-        @include Respond(phone) {
-            margin-right: 0px;
-        }
-    }
-}
-
-.contact-qrcode {
-    margin: 3rem 0rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    div {
-        width: 35%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        h3 {
-            font-size: 3rem;
-            color: #fab005;
-            @include Respond(tab-port) {
-                font-size: 2rem;
-            }
-        }
-        label {
-            font-size: 2rem;
-            height: 3rem;
-            @include Respond(tab-port) {
-                font-size: 1.2rem;
-            }
         }
 
-        img {
-            width: 60%;
-
-            @include Respond(tab-port) {
-                width: 90%;
-            }
+        .owl-slider-title {
+            display: block;
+            position: absolute;
+            top: 40%;
+            left: 5%;
+            animation-name: owl-silder-title;
+            animation-duration: 1s;
         }
-    }
-}
-
-.product-template {
-    display: flex;
-    flex-direction: row;
-    .product-template-item {
-        text-align: center;
-        padding: 2rem;
-        border-left: 1px solid #ccc;
-        @include Respond(tab-port) {
-            padding: 1rem;
-        }
-        label {
-            font-size: 3rem;
-            color: #0767bf;
-
-            @include Respond(tab-port) {
-                font-size: 1.2rem;
-            }
+        .owl-slider-content {
+            display: block;
+            position: absolute;
+            width: 50%;
+            color: #fff;
+            top: 50%;
+            left: 5%;
+            animation-name: owl-slider-content;
+            animation-duration: 2s;
         }
     }
 }

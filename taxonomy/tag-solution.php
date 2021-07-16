@@ -1,30 +1,30 @@
 <?php
 
-class Tags_Advertising
+class Tags_solution
 {
 
-    private $prefix_name = 'option_Tag_advertising_';
+    private $prefix_name = 'option_Tag_solution_';
 
     public function __construct()
     {
         add_action('init', array($this, 'create'));
 
-        add_action('advertising_tag_add_form_fields', array($this, 'add_form'));
-        add_action('advertising_category_edit_form_fields', array($this, 'edit_form'));
+        add_action('solutions_tag_add_form_fields', array($this, 'add_form'));
+        add_action('solutions_tag_edit_form_fields', array($this, 'edit_form'));
 
-        add_filter("manage_edit-advertising_category_columns", array($this, 'category_columns'), 10, 3);
-        add_filter("manage_advertising_category_custom_column", array($this, 'category_columns_manage'), 10, 3);
+        add_filter("manage_edit-solutions_tag_columns", array($this, 'category_columns'), 10, 3);
+        add_filter("manage_solutions_tag_custom_column", array($this, 'category_columns_manage'), 10, 3);
 
-        add_action('create_advertising_category', array($this, 'save_option'));
-        add_action('edited_advertising_category', array($this, 'save_option'));
-        add_action('delete_advertising_category', array($this, 'delete_option'));
+        add_action('create_solutions_tag', array($this, 'save_option'));
+        add_action('edited_solutions_tag', array($this, 'save_option'));
+        add_action('delete_solutions_tag', array($this, 'delete_option'));
     }
 
     public function create()
     {
         $labels = array(
-            'name' => __('Langguage'),
-            'singular_name' => __('Langguage'),
+            'name' => __('Product'),
+            'singular_name' => __('Product'),
             'search_items' => __('Search Categories'),
             'all_items' => __('Categories'),
             'parent_item' => __('Parent Class'),
@@ -33,18 +33,18 @@ class Tags_Advertising
             'update_item' => __('Update'),
             'add_new_item' => __('Add New'),
             'new_item_name' => __('Add New'),
-            'menu_name' => __('Langguage')
+            'menu_name' => __('Product')
         );
 
-        register_taxonomy('advertising_tags', 'advertising', array(
+        register_taxonomy('solutions_tags', 'solutions', array(
             'hierarchical' => false,
             'labels' => $labels,
             'show_ui' => true,
             'query_var' => true,
             'taxonomy' => 'category',
             'rewrite' => array(
-                'slug' => 'advertising_tags',
-                'hierarchical' => true,
+                'slug' => 'solutions_tags',
+                'hierarchical' => false,
             )
         ));
     }
@@ -56,16 +56,7 @@ class Tags_Advertising
             <label for="cate_order"><?php _e('Show Order') ?></label>
             <input type="text" name="cate_order" id="cate_order" value="" />
         </div>
-        <script>
-            jQuery('#tag-name').focusout(function() {
-                jQuery('#cate_cn').val(jQuery(this).val());
-            });
-        </script>
-        <style>
-            .column-name {
-                width: 20%;
-            }
-        </style>
+
     <?php
     }
 
@@ -77,23 +68,17 @@ class Tags_Advertising
         <input type="hidden" name="cate_cn" id="cate_cn" value="<?php echo $arr_value['cate_advertising_cn']; ?>" />
 
         <tr class="form-field">
-            <th scope="row" valign="top"> <label for="cate_en"> <?php _e('Show Order') ?></label> </th>
+            <th scope="row" valign="top"> <label for="cate_en"> <?php _e('Show Order666') ?></label> </th>
             <td> <input type="text" name="cate_order" id="cate_order" value="<?php echo $arr_value['cate_advertising_order']; ?>" /></td>
         </tr>
-
-        <script>
-            jQuery('#name').focusout(function() {
-                jQuery('#cate_cn').val(jQuery(this).val());
-            });
-        </script>
 <?php
     }
 
     public function save_option($term_id)
     {
         $arr = array(
-            'cate_advertising_cn' => $_POST['cate_cn'],
-            'cate_advertising_order' => $_POST['cate_order'],
+            'cate_solution_cn' => $_POST['cate_cn'],
+            'cate_solution_order' => $_POST['cate_order'],
         );
         $option_name = $this->prefix_name . $term_id;
         $option_value = $arr;
@@ -121,14 +106,14 @@ class Tags_Advertising
 
     public function category_columns_manage($out, $column_name, $theme_id)
     {
-        $theme = get_term($theme_id, 'advertising_category');
+        $theme = get_term($theme_id, 'solution_category');
 
         $strOption = get_option($this->prefix_name . $theme->term_id);
 
 
         switch ($column_name) {
             case 'order':
-                echo isset($strOption['cate_advertising_order']) ? $strOption['cate_advertising_order'] : '0';
+                echo isset($strOption['cate_solution_order']) ? $strOption['cate_solution_order'] : '0';
                 break;
             default:
                 break;
