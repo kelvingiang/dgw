@@ -81,5 +81,4 @@
                 ?>
                  <?php get_template_part('templates/template', 'home_menu'); ?>
             </div>
-
-            <div style="height: 2rem;"></div>
+                  <div style="height: 2rem;"></div>
