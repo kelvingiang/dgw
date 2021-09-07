@@ -58,7 +58,8 @@ class Controler_Case_Studies
         unset($columns['postdate']); // an cot ngay mac dinh
         //==== THEM COT VA BAN
         $columns['content'] = __('Content');
-        // $columns['kind'] = __('Category');
+        $columns['category'] = __('Category');
+        $columns['home'] = __('Top Page');
         $columns['langguage'] = __('Langguage');
         $columns['setorder'] = __('Show Order');
         $columns['date'] = $date_label;
@@ -74,12 +75,17 @@ class Controler_Case_Studies
                 echo mySubContent(get_the_content());
                 break;
             case 'category':
-                $terms = wp_get_post_terms($post->ID, 'active_category');
+                $terms = wp_get_post_terms($post->ID, 'casestudies_category');
 
                 if (count($terms) > 0) {
                     foreach ($terms as $key => $term) {
                         echo '<a href=' . custom_redirect($term->slug) . '&' . $term->taxonomy . '=' . $term->slug . '>' . $term->name . '</a></br>';
                     }
+                }
+                break;
+            case 'home':
+                if ((get_post_meta($post->ID, '_metabox_home', true))) {
+                    echo "<div class='show-home'></div>";
                 }
                 break;
             case 'langguage':
@@ -97,6 +103,7 @@ class Controler_Case_Studies
     {
         $newcolumn['setorder'] = 'setorder';
         $newcolumn['langguage'] = 'langguage';
+        $newcolumn['home'] = 'home';
         return $newcolumn;
     }
 
@@ -117,6 +124,16 @@ class Controler_Case_Studies
                 array(
                     'meta_key' => '_metabox_langguage', //Custom field key
                     'orderby' => '_metabox_langguage' //Custom field value (number)
+                )
+            );
+        }
+
+        if (isset($vars['orderby']) && 'home' == $vars['orderby']) {
+            $vars = array_merge(
+                $vars,
+                array(
+                    'meta_key' => '_metabox_home', //Custom field key
+                    'orderby' => '_metabox_home' //Custom field value (number)
                 )
             );
         }

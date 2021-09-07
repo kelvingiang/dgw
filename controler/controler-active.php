@@ -59,6 +59,7 @@ class Controler_Active
         //==== THEM COT VA BAN
         $columns['content'] = __('Content');
         $columns['category'] = __('Category');
+        $columns['home'] = __('Top Page');
         $columns['langguage'] = __('Langguage');
         $columns['setorder'] = __('Show Order');
         $columns['date'] = $date_label;
@@ -80,6 +81,11 @@ class Controler_Active
                     foreach ($terms as $key => $term) {
                         echo '<a href=' . custom_redirect($term->slug) . '&' . $term->taxonomy . '=' . $term->slug . '>' . $term->name . '</a></br>';
                     }
+                }
+                break;
+            case 'home':
+                if ((get_post_meta($post->ID, '_metabox_home', true))) {
+                    echo "<div class='show-home'></div>";
                 }
                 break;
             case 'langguage':

@@ -1,18 +1,44 @@
 <?php /*  Template Name: About Page */ ?>
 <?php get_header(); ?>
-<div>
-  <h1> this is about page </h1>
-  <a href="#operating">operating</a>
-  <a href="#location">location</a>
-  <div>
-    <?php echo get_post_meta(1, "_info_summary_" . $_SESSION['languages'], true) ?>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
+      <div class="page-title">
+        <h1><?php _e('About') ?> </h1>
+      </div>
+      <div>
+        <?php echo get_post_meta(1, "_info_summary_" . $_SESSION['languages'], true) ?>
+      </div>
+      <hr>
+      <div id='operating'>
+        <h3 class="article-title"><?php _e('Operating') ?></h3>
+        <?php echo get_post_meta(1, "_info_operating_" . $_SESSION['languages'], true) ?>
+      </div>
+      <hr>
+      <div id='location'>
+        <h3 class="article-title"><?php _e('Location') ?></h3>
+        <?php echo get_post_meta(1, "_info_location_" . $_SESSION['languages'], true) ?>
+      </div>
 
-  </div>
-  <div id='operating'>
-    <?php echo get_post_meta(1, "_info_operating_" . $_SESSION['languages'], true) ?>
-  </div>
-  <div id='location'>
-    <?php echo get_post_meta(1, "_info_location_" . $_SESSION['languages'], true) ?>
+      <div id='contact' style="color: #fff; background-color: #FC9106;  ">
+        <h2 style="padding: 1rem 1rem;   font-size: 1.5rem; "><?php _e('Contact Us') ?></h2>
+        <div style="padding-left: 1rem; ">
+          <div style="font-size: 1.2rem;"><?php echo get_post_meta(1, '_info_name_' . $_SESSION['languages'], true) ?></div>
+          <div><label><?php _e('Phone'); ?> :</label><?php echo get_post_meta(1, '_info_phone', true) ?></div>
+          <div><label>E-mail :</label><?php echo get_post_meta(1, '_info_email', true) ?></div>
+          <div><label><?php _e('Address') ?> : </label><?php echo get_post_meta(1, '_info_address_' . $_SESSION['languages'], true) ?></div>
+        </div>
+        <div style="padding: 0.1rem; ">
+          <?php get_template_part('templates/template', 'googlemap')
+          ?>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+      <?php get_template_part('templates/template', 'side_cases'); ?>
+      <?php get_template_part('templates/template', 'side_active'); ?>
+    </div>
   </div>
 </div>
 <?php get_footer(); ?>

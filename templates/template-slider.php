@@ -8,13 +8,13 @@ $args = array(
     'meta_query' => array(
         array(
             'key' => '_metabox_langguage',
-            'value' => $_SESSION['language'],
+            'value' => $_SESSION['languages'],
             'compare' => '='
         )
     )
+
 );
 $wp_query = new WP_Query($args);
-
 ?>
 
 <div class="container-fluid">

@@ -3,7 +3,7 @@
 class Taxonomy_Solution
 {
 
-    private $prefix_name = 'option_category_solution_';
+    private $prefix_name = 'option_solutions_category_';
 
     public function __construct()
     {
@@ -83,19 +83,19 @@ class Taxonomy_Solution
         // LAY GIA TRI TRONG OPTION TABLE
         $arr_value = get_option($this->prefix_name . $term->term_id);
     ?>
-        <input type="hidden" name="cate_cn" id="cate_cn" value="<?php echo $arr_value['cate_solution_cn']; ?>" />
+        <input type="hidden" name="cate_cn" id="cate_cn" value="<?php echo $arr_value['cate_cn']; ?>" />
 
         <tr class="form-field">
             <th scope="row" valign="top"> <label for="cate_vn"> <?php _e('Name') ?> (<?php _e('Vietnamese') ?> )</label></th>
-            <td><input type="text" name="cate_vn" id="cate_vn" value="<?php echo $arr_value['cate_solution_vn']; ?>" /></td>
+            <td><input type="text" name="cate_vn" id="cate_vn" value="<?php echo $arr_value['cate_vn']; ?>" /></td>
         </tr>
         <tr class="form-field">
             <th scope="row" valign="top"> <label for="cate_en"><?php _e('Name') ?> ( <?php _e('English') ?> )</label> </th>
-            <td> <input type="text" name="cate_en" id="cate_en" value="<?php echo $arr_value['cate_solution_en']; ?>" /></td>
+            <td> <input type="text" name="cate_en" id="cate_en" value="<?php echo $arr_value['cate_en']; ?>" /></td>
         </tr>
         <tr class="form-field">
             <th scope="row" valign="top"> <label for="cate_order"> <?php _e('Show Order') ?></label> </th>
-            <td> <input type="text" name="cate_order" id="cate_order" value="<?php echo $arr_value['cate_solution_order']; ?>" /></td>
+            <td> <input type="text" name="cate_order" id="cate_order" value="<?php echo $arr_value['cate_order']; ?>" /></td>
         </tr>
 
         <script>
@@ -109,10 +109,10 @@ class Taxonomy_Solution
     public function save_option($term_id)
     {
         $arr = array(
-            'cate_solution_cn' => $_POST['cate_cn'],
-            'cate_solution_vn' => $_POST['cate_vn'],
-            'cate_solution_en' => $_POST['cate_en'],
-            'cate_solution_order' => $_POST['cate_order'],
+            'cate_cn' => $_POST['cate_cn'],
+            'cate_vn' => $_POST['cate_vn'],
+            'cate_en' => $_POST['cate_en'],
+            'cate_order' => $_POST['cate_order'],
         );
         $option_name = $this->prefix_name . $term_id;
         $option_value = $arr;
@@ -150,13 +150,13 @@ class Taxonomy_Solution
 
         switch ($column_name) {
             case 'order':
-                echo isset($strOption['cate_solution_order']) ? $strOption['cate_solution_order'] : '';
+                echo isset($strOption['cate_order']) ? $strOption['cate_order'] : '';
                 break;
             case 'vietnamese':
-                echo isset($strOption['cate_solution_vn']) ? $strOption['cate_solution_vn'] : '';
+                echo isset($strOption['cate_vn']) ? $strOption['cate_vn'] : '';
                 break;
             case 'english':
-                echo isset($strOption['cate_solution_en']) ? $strOption['cate_solution_en'] : '';
+                echo isset($strOption['cate_en']) ? $strOption['cate_en'] : '';
                 break;
             default:
                 break;

@@ -74,7 +74,7 @@ class Controler_Resources
                 echo mySubContent(get_the_content());
                 break;
             case 'category':
-                $terms = wp_get_post_terms($post->ID, 'resource_category');
+                $terms = wp_get_post_terms($post->ID, 'resources_category');
 
                 if (count($terms) > 0) {
                     foreach ($terms as $key => $term) {

@@ -20,7 +20,7 @@ new Rewrite_Url();
 
 
 if (!isset($_SESSION['languages'])) {
-    $_SESSION['languages'] = 'vn';
+    $_SESSION['languages'] = 'cn';
 }
 
 /* ==============================================================

@@ -1,0 +1,26 @@
+.btn-delete {
+  background-color: #9c6565 !important;
+  color: white !important;
+  border-radius: 0.2rem !important;
+  margin-top: 1.3rem !important;
+  border: 0rem !important; }
+  .btn-delete:hover {
+    background-color: #890707 !important; }
+
+.active_style {
+  width: 20rem;
+  height: 20rem;
+  background-color: green;
+  border-radius: 30rem;
+  margin: 25rem; }
+
+.button-row {
+  text-align: right;
+  width: 90%;
+  margin-top: 2rem; }
+
+.button {
+  letter-spacing: 0.3rem;
+  font-weight: bold; }
+
+/*# sourceMappingURL=style-button.css.map */

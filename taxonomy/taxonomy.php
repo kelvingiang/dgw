@@ -9,26 +9,34 @@ class Taxonomy_Main
     public function __construct()
     {
         $defaultoption = array(
+            'tags_casestudies' => true,
             'tags_advertising' => false,
-            'tags_solution' => true,
+            'tags_solution' => false,
+
+            'taxonomy_casestudies' => true,
             'taxonomy_advertising' => true,
             'taxonomy_industries' => true,
             'taxonomy_solution' => true,
             'taxonomy_resource' => true,
             'taxonomy_active' => true,
+            'taxonomy_services' => true,
         );
 
         $this->_taxonomy_options = get_option($this->_taxonomy_name, $defaultoption);
         $this->taxonomy_advertising();
         $this->taxonomy_industries();
         $this->taxonomy_solution();
-        $this->taxonomy_resource();
+        $this->taxonomy_resources();
         $this->taxonomy_active();
+        $this->taxonomy_casestudies();
+        $this->taxonomy_services();
 
         $this->tags_advertising();
         $this->tags_solution();
+        $this->tags_casestudies();
         // add_action('admin_init', array($this, 'do_output_buffer'));
     }
+
 
     public function tags_solution()
     {
@@ -38,11 +46,36 @@ class Taxonomy_Main
         }
     }
 
+    public function tags_casestudies()
+    {
+        if ($this->_taxonomy_options['tags_casestudies'] == true) {
+            require_once(DIR_TAXONOMY . 'tag-casestudies.php');
+            new Tags_Casestudies();
+        }
+    }
+
     public function tags_advertising()
     {
         if ($this->_taxonomy_options['tags_advertising'] == true) {
             require_once(DIR_TAXONOMY . 'tag-advertising.php');
             new Tags_Advertising();
+        }
+    }
+
+
+    public function taxonomy_services()
+    {
+        if ($this->_taxonomy_options['taxonomy_services'] == true) {
+            require_once(DIR_TAXONOMY . 'taxonomy-services.php');
+            new Taxonomy_Services();
+        }
+    }
+
+    public function taxonomy_casestudies()
+    {
+        if ($this->_taxonomy_options['taxonomy_casestudies'] == true) {
+            require_once(DIR_TAXONOMY . 'taxonomy-casestudies.php');
+            new Taxonomy_Casestudies();
         }
     }
 
@@ -70,11 +103,11 @@ class Taxonomy_Main
         }
     }
 
-    public function taxonomy_resource()
+    public function taxonomy_resources()
     {
         if ($this->_taxonomy_options['taxonomy_resource'] == true) {
             require_once(DIR_TAXONOMY . 'taxonomy-resource.php');
-            new Taxonomy_Resource();
+            new Taxonomy_Resources();
         }
     }
 

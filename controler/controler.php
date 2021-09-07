@@ -1,14 +1,16 @@
 <?php
 
-class Controler_Main {
+class Controler_Main
+{
 
     private $_controler_name = 'main_controler_options';
     private $_controler_options = array();
 
-    public function __construct() {
+    public function __construct()
+    {
 
         $defaultoption = array(
-            'controler_advertising' => true,
+            'controler_advertising' => false,
             'controler_case_study' => true,
             'controler_downloads' => true,
             'controler_resources' => true,
@@ -17,7 +19,7 @@ class Controler_Main {
             'controler_solutions' => true,
             'controler_services' => true,
             'controler_information' => true,
-            'controler_member' => true,
+            'controler_member' => false,
             'controler_slider' => true,
         );
 
@@ -39,77 +41,88 @@ class Controler_Main {
         add_action('admin_init', array($this, 'do_output_buffer'));
     }
 
-    public function page_information() {
+    public function page_information()
+    {
         if ($this->_controler_options['controler_information']) {
-            require_once (DIR_CONTROLER . 'controler-information.php');
+            require_once(DIR_CONTROLER . 'controler-information.php');
             new Controler_Company_Information();
         }
     }
 
-    public function page_member() {
+    public function page_member()
+    {
         if ($this->_controler_options['controler_member'] == true) {
             require_once(DIR_CONTROLER . 'controler-member.php');
             new Controler_Member();
         }
     }
 
-    public function post_advertising() {
+    public function post_advertising()
+    {
         if ($this->_controler_options['controler_advertising'] == true) {
             require_once(DIR_CONTROLER . 'controler-advertising.php');
             new Controler_Advertising();
         }
     }
 
-    public function post_cases_studues() {
+    public function post_cases_studues()
+    {
         if ($this->_controler_options['controler_case_study'] == true) {
             require_once(DIR_CONTROLER . 'controler-case-studies.php');
             new Controler_Case_Studies();
         }
     }
 
-    public function post_downloads() {
+    public function post_downloads()
+    {
         if ($this->_controler_options['controler_downloads'] == true) {
             require_once(DIR_CONTROLER . 'controler-downloads.php');
             new Controler_Downloads();
         }
     }
 
-    public function post_resources() {
+    public function post_resources()
+    {
         if ($this->_controler_options['controler_resources'] == true) {
             require_once(DIR_CONTROLER . 'controler-resources.php');
             new Controler_Resources();
         }
     }
 
-    public function post_active() {
+    public function post_active()
+    {
         if ($this->_controler_options['controler_active'] == true) {
             require_once(DIR_CONTROLER . 'controler-active.php');
             new Controler_Active();
         }
     }
 
-    public function post_industries() {
+    public function post_industries()
+    {
         if ($this->_controler_options['controler_industries'] == true) {
             require_once(DIR_CONTROLER . 'controler-industries.php');
             new Controler_Industries();
         }
     }
 
-    public function post_solutions() {
+    public function post_solutions()
+    {
         if ($this->_controler_options['controler_solutions'] == true) {
             require_once(DIR_CONTROLER . 'controler-solutions.php');
             new Controler_Solutions();
         }
     }
 
-    public function post_services() {
+    public function post_services()
+    {
         if ($this->_controler_options['controler_services'] == true) {
             require_once(DIR_CONTROLER . 'controler-services.php');
             new Controler_Services();
         }
     }
 
-    public function post_slider() {
+    public function post_slider()
+    {
         if ($this->_controler_options['controler_slider'] == true) {
             require_once(DIR_CONTROLER . 'controler-slider.php');
             new Controler_Slider();
@@ -117,8 +130,8 @@ class Controler_Main {
     }
 
     //=== FUNCTION NAY GIAI QUYET CHUYEN TRANG BI LOI 
-    public function do_output_buffer() {
+    public function do_output_buffer()
+    {
         ob_start();
     }
-
 }

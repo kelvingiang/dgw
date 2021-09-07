@@ -143,7 +143,7 @@ jQuery(document).ready(function () {
       }
     });
     // scroll body to 0px on click
-    jQuery("#back-top img").click(function () {
+    jQuery("#back-top").click(function () {
       jQuery("body,html").stop(false, false).animate(
         {
           scrollTop: 0,

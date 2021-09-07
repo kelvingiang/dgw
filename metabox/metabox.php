@@ -1,16 +1,18 @@
 <?php
 
-class Metabox_Main {
+class Metabox_Main
+{
 
     private $_controler_name = 'main_controler_options';
     private $_controler_options = array();
 
-    public function __construct() {
+    public function __construct()
+    {
         $defaultoption = array(
             'metabox_web' => TRUE,
             'metabox_download' => TRUE,
             'metabox_langguage' => TRUE,
-            'metabox_industries' => FALSE,
+            'metabox_industries' => TRUE,
             'metabox_service' => FALSE,
             'metabox_solution' => TRUE,
             'metabox_active' => FALSE,
@@ -35,86 +37,97 @@ class Metabox_Main {
         add_action('admin_init', array($this, 'do_output_buffer'));
     }
 
-    public function metabox_web() {
+    public function metabox_web()
+    {
         if ($this->_controler_options['metabox_web']) {
-            require_once (DIR_METABOX . 'metabox-web.php');
+            require_once(DIR_METABOX . 'metabox-web.php');
             new Metabox_Web_FreeBook();
         }
     }
 
-    public function metabox_langguage() {
+    public function metabox_langguage()
+    {
         if ($this->_controler_options['metabox_langguage']) {
-            require_once (DIR_METABOX . 'metabox-langguage.php');
+            require_once(DIR_METABOX . 'metabox-langguage.php');
             new Metabox_Langguage();
         }
     }
 
-    public function metabox_download() {
+    public function metabox_download()
+    {
         if ($this->_controler_options['metabox_download']) {
-            require_once (DIR_METABOX . 'metabox-downloads.php');
+            require_once(DIR_METABOX . 'metabox-downloads.php');
             new Metabox_Download();
         }
     }
 
-    public function metabox_industries() {
+    public function metabox_industries()
+    {
         if ($this->_controler_options['metabox_industries']) {
-            require_once (DIR_METABOX . 'metabox-industries.php');
+            require_once(DIR_METABOX . 'metabox-industries.php');
             new Metabox_Industries();
         }
     }
 
-    public function metabox_service() {
+    public function metabox_service()
+    {
         if ($this->_controler_options['metabox_service']) {
-            require_once (DIR_METABOX . 'metabox-service.php');
+            require_once(DIR_METABOX . 'metabox-service.php');
             new Metabox_Service();
         }
     }
 
-    public function metabox_solution() {
+    public function metabox_solution()
+    {
         if ($this->_controler_options['metabox_solution']) {
-            require_once (DIR_METABOX . 'metabox-solution.php');
+            require_once(DIR_METABOX . 'metabox-solution.php');
             new Metabox_Solution();
         }
     }
 
-    public function metabox_active() {
+    public function metabox_active()
+    {
         if ($this->_controler_options['metabox_active'] == true) {
-            require_once (DIR_METABOX . 'metabox-active.php');
+            require_once(DIR_METABOX . 'metabox-active.php');
             new Metabox_Active();
         }
     }
 
-    public function metabox_product() {
+    public function metabox_product()
+    {
         if ($this->_controler_options['metabox_product'] == true) {
             require_once(DIR_METABOX . 'metabox-product.php');
             new Metabox_Product();
         }
     }
 
-    public function metabox_home() {
+    public function metabox_home()
+    {
         if ($this->_controler_options['metabox_home'] == true) {
             require_once(DIR_METABOX . 'metabox-home.php');
             new Metabox_Home();
         }
     }
 
-    public function metabox_seo() {
+    public function metabox_seo()
+    {
         if ($this->_controler_options['metabox_seo'] == true) {
-            require_once (DIR_METABOX . 'metabox-seo.php');
+            require_once(DIR_METABOX . 'metabox-seo.php');
             new Metabox_Seo();
         }
     }
 
-    public function metabox_order() {
+    public function metabox_order()
+    {
         if ($this->_controler_options['metabox_order'] == true) {
-            require_once (DIR_METABOX . 'metabox-order.php');
+            require_once(DIR_METABOX . 'metabox-order.php');
             new Metabox_Order();
         }
     }
 
     //=== FUNCTION NAY GIAI QUYET CHUYEN TRANG BI LOI 
-    public function do_output_buffer() {
+    public function do_output_buffer()
+    {
         ob_start();
     }
-
 }

@@ -11,10 +11,13 @@
   width: 8%; }
 
 .column-langguage {
-  width: 10%; }
+  width: 8%; }
 
 .column-category {
-  width: 10%; }
+  width: 8%; }
+
+.column-home {
+  width: 8%; }
 
 .without-img {
   width: 300px;

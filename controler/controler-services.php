@@ -58,6 +58,7 @@ class Controler_Services
         unset($columns['postdate']); // an cot ngay mac dinh
         //==== THEM COT VA BAN
         $columns['content'] = __('Content');
+        $columns['home'] = __('Top Page');
         $columns['langguage'] = __('Langguage');
         $columns['setorder'] = __('Show Order');
         $columns['date'] = $date_label;
@@ -72,6 +73,11 @@ class Controler_Services
         switch ($columns) {
             case 'content':
                 echo mySubContent(get_the_content());
+                break;
+            case 'home':
+                if ((get_post_meta($post->ID, '_metabox_home', true))) {
+                    echo "<div class='show-home'></div>";
+                }
                 break;
             case 'langguage':
                 _e(get_post_meta($post->ID, '_metabox_langguage', true));

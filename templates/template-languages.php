@@ -1,4 +1,4 @@
-<div style="text-align: right; padding: 1rem;">
+<div style="text-align: right; padding: 1rem; margin-right:1rem;">
     <a class="link-languages" data-type="cn" onclick="changeLanguages(this)">
         中 文
     </a> |

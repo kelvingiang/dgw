@@ -1,0 +1,108 @@
+@keyframes example {
+    from {
+        scale: 0.8;
+        opacity: 0.1;
+    }
+    to {
+        scale: 1;
+        opacity: 1;
+    }
+}
+
+.data-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 2rem;
+    .item {
+        transition-duration: 0.8s;
+        animation-name: example;
+        animation-duration: 1s;
+
+        border: rgba(172, 172, 172, 0.196) solid 0.1rem;
+        border-radius: 0.4rem;
+
+        width: 31%;
+        position: relative;
+        margin: 1rem 0.5rem;
+
+        text-align: center;
+        @include Respond(lg) {
+            width: 31%;
+        }
+        @include Respond(md) {
+            width: 40%;
+        }
+        @include Respond(sm) {
+            width: 100%;
+        }
+
+        &-img {
+            width: 90%;
+            margin: 0.5rem 0rem 3rem;
+            border-radius: 0.2rem;
+        }
+        &-title {
+            width: 100%;
+            position: absolute;
+            bottom: 0.5rem;
+            display: flex;
+            justify-content: center;
+            a {
+                font-size: 0.9rem;
+                font-weight: bold;
+                color: $color_blue_link;
+                display: block;
+                @include Respond(lg) {
+                    font-size: 0.9rem;
+                }
+                @include Respond(md) {
+                    font-size: 0.8rem;
+                }
+                @include Respond(sm) {
+                    font-size: 0.7rem;
+                }
+                &:hover {
+                    color: $color_blue_link_hover;
+                }
+            }
+        }
+        &:hover {
+            transform: scale(1.05, 1.05);
+
+            box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+        }
+    }
+}
+
+.group-list {
+    .item {
+        background-color: rgba(149, 186, 200, 0.3);
+        display: flex;
+        flex-direction: row;
+        transition-duration: 1s;
+        padding: 1rem;
+        .group-list-item-title {
+            margin: 0rem 0 1rem;
+        }
+        a {
+            color: rgb(199, 99, 63);
+            &:hover {
+                color: rgba(255, 127, 80, 1);
+            }
+        }
+        img {
+            width: 90%;
+            border-radius: 0.3rem;
+        }
+        h3 {
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+    }
+    .item:nth-child(odd) {
+        background-color: rgba(149, 186, 200, 0.5);
+    }
+    .item:hover {
+        background-color: rgba(149, 186, 200, 0.7);
+    }
+}

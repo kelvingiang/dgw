@@ -1,10 +1,12 @@
 <?php
 
-class Taxonomy_Active {
+class Taxonomy_Active
+{
 
-    private $prefix_name = 'option_category_active_';
+    private $prefix_name = 'option_active_category_';
 
-    public function __construct() {
+    public function __construct()
+    {
         add_action('init', array($this, 'create_taxonomy'));
 
         add_action('active_category_add_form_fields', array($this, 'add_form'));
@@ -18,7 +20,8 @@ class Taxonomy_Active {
         add_action('delete_active_category', array($this, 'delete_option'));
     }
 
-    public function create_taxonomy() {
+    public function create_taxonomy()
+    {
         $labels = array(
             'name' => __('Category'),
             'singular_name' => __('Category'),
@@ -46,12 +49,13 @@ class Taxonomy_Active {
         ));
     }
 
-    public function add_form() {
-        ?>
+    public function add_form()
+    {
+?>
         <div class="form-field">
-            <input  type="hidden" name="cate_cn" id="cate_cn" value="" />
+            <input type="hidden" name="cate_cn" id="cate_cn" value="" />
             <label for="cate_vn"> <?php _e('Name') ?> ( <?php _e('Vietnamese') ?>)</label>
-            <input  type="text" name="cate_vn" id="cate_vn" value="" />
+            <input type="text" name="cate_vn" id="cate_vn" value="" />
         </div>
         <div class="form-field">
             <label for="cate_en"> <?php _e('Name') ?> ( <?php _e('English') ?>)</label>
@@ -59,10 +63,10 @@ class Taxonomy_Active {
         </div>
         <div class="form-field">
             <label for="cate_order"><?php _e('Show Order') ?></label>
-            <input  type="text" name="cate_order" id="cate_order" value="" />
+            <input type="text" name="cate_order" id="cate_order" value="" />
         </div>
         <script>
-            jQuery('#tag-name').focusout(function () {
+            jQuery('#tag-name').focusout(function() {
                 jQuery('#cate_cn').val(jQuery(this).val());
             });
         </script>
@@ -71,58 +75,62 @@ class Taxonomy_Active {
                 width: 20%;
             }
         </style>
-        <?php
+    <?php
     }
 
-    public function edit_form($term) {
+    public function edit_form($term)
+    {
         // LAY GIA TRI TRONG OPTION TABLE
         $arr_value = get_option($this->prefix_name . $term->term_id);
-        ?>
-        <input  type="hidden" name="cate_cn" id="cate_cn" value="<?php echo $arr_value['cate_active_cn']; ?>" />
+    ?>
+        <input type="hidden" name="cate_cn" id="cate_cn" value="<?php echo $arr_value['cate_active_cn']; ?>" />
 
         <tr class="form-field">
-            <th scope="row" valign="top">  <label for="cate_vn"> <?php _e('Name') ?> (<?php _e('Vietnamese') ?> )</label></th>
-            <td><input  type="text" name="cate_vn" id="cate_vn" value="<?php echo $arr_value['cate_active_vn']; ?>" /></td>
+            <th scope="row" valign="top"> <label for="cate_vn"> <?php _e('Name') ?> (<?php _e('Vietnamese') ?> )</label></th>
+            <td><input type="text" name="cate_vn" id="cate_vn" value="<?php echo $arr_value['cate_vn']; ?>" /></td>
         </tr>
         <tr class="form-field">
-            <th scope="row" valign="top">   <label for="cate_en"><?php _e('Name') ?> ( <?php _e('English') ?> )</label> </th>
-            <td>    <input type="text" name="cate_en" id="cate_en" value="<?php echo $arr_value['cate_active_en']; ?>" /></td>
+            <th scope="row" valign="top"> <label for="cate_en"><?php _e('Name') ?> ( <?php _e('English') ?> )</label> </th>
+            <td> <input type="text" name="cate_en" id="cate_en" value="<?php echo $arr_value['cate_en']; ?>" /></td>
         </tr>
         <tr class="form-field">
-            <th scope="row" valign="top">   <label for="cate_en">   <?php _e('Show Order') ?></label> </th>
-            <td>    <input type="text" name="cate_order" id="cate_order" value="<?php echo $arr_value['cate_active_order']; ?>" /></td>
+            <th scope="row" valign="top"> <label for="cate_en"> <?php _e('Show Order') ?></label> </th>
+            <td> <input type="text" name="cate_order" id="cate_order" value="<?php echo $arr_value['cate_order']; ?>" /></td>
         </tr>
 
         <script>
-            jQuery('#name').focusout(function () {
+            jQuery('#name').focusout(function() {
                 jQuery('#cate_cn').val(jQuery(this).val());
             });
         </script>
-        <?php
+<?php
     }
 
-    public function save_option($term_id) {
+    public function save_option($term_id)
+    {
         $arr = array(
-            'cate_active_cn' => $_POST['cate_cn'],
-            'cate_active_vn' => $_POST['cate_vn'],
-            'cate_active_en' => $_POST['cate_en'],
-            'cate_active_order' => $_POST['cate_order'],
+            'cate_cn' => $_POST['cate_cn'],
+            'cate_vn' => $_POST['cate_vn'],
+            'cate_en' => $_POST['cate_en'],
+            'cate_order' => $_POST['cate_order'],
         );
         $option_name = $this->prefix_name . $term_id;
         $option_value = $arr;
         update_option($option_name, $option_value);
     }
 
-    public function delete_option() {
+    public function delete_option()
+    {
         $param = getParams();
         delete_option($this->prefix_name . $param['tag_ID']);
     }
 
-    public function category_columns() {
+    public function category_columns()
+    {
         $new_columns = array(
             'cb' => '<input type="checkbox" />',
             'name' => __('Name'),
-//            'description' => __('Description'),
+            //            'description' => __('Description'),
             'vietnamese' => __('Vietnamese'),
             'english' => __('English'),
             'order' => __('Show Order'),
@@ -133,24 +141,24 @@ class Taxonomy_Active {
         return $new_columns;
     }
 
-    public function category_columns_manage($out, $column_name, $theme_id) {
+    public function category_columns_manage($out, $column_name, $theme_id)
+    {
         $theme = get_term($theme_id, 'active_category');
 
         $strOption = get_option($this->prefix_name . $theme->term_id);
         switch ($column_name) {
             case 'order':
-                echo isset($strOption['cate_active_order']) ? $strOption['cate_active_order'] : '0';
+                echo isset($strOption['cate_order']) ? $strOption['cate_order'] : '0';
                 break;
             case 'vietnamese':
-                echo isset($strOption['cate_active_vn']) ? $strOption['cate_active_vn'] : '';
+                echo isset($strOption['cate_vn']) ? $strOption['cate_vn'] : '';
                 break;
             case 'english':
-                echo isset($strOption['cate_active_en']) ? $strOption['cate_active_en'] : '';
+                echo isset($strOption['cate_en']) ? $strOption['cate_en'] : '';
                 break;
             default:
                 break;
         }
         return $out;
     }
-
 }

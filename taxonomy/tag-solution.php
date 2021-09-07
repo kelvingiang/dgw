@@ -3,7 +3,7 @@
 class Tags_solution
 {
 
-    private $prefix_name = 'option_Tag_solution_';
+    private $prefix_name = 'option_solutions_tag_';
 
     public function __construct()
     {
@@ -113,7 +113,7 @@ class Tags_solution
 
         switch ($column_name) {
             case 'order':
-                echo isset($strOption['cate_solution_order']) ? $strOption['cate_solution_order'] : '0';
+                echo isset($strOption['cate_order']) ? $strOption['cate_order'] : '0';
                 break;
             default:
                 break;

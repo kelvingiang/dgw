@@ -1,20 +1,11 @@
 <?php
-
-function menu_ppppp()
+function menu_home_list()
 {
-    $sub_item = array();
-    foreach (get_product_category() as $val) {
-        $sub_item['products/cate/' . $val['ID']] = array('vn' => $val['name_vn'], 'cn' => $val['name_cn'], 'sub' => '');
-    }
-
     $arr = array(
-        '' => array('vn' => 'Trang Chủ', 'cn' => '首 頁', 'sub' => ''),
-        'about' => array('vn' => 'Giới Thiệu Công Ty', 'cn' => '公 司 簡 介', 'sub' => ''),
-        'products' => array(
-            'vn' => 'Sản Phẩm', 'cn' => '產 品', 'class' => 'menu-main-sub-1',
-            'sub' => $sub_item
-        ),
-        'contact' => array('vn' => 'Liên Hệ', 'cn' => '聯 繫 公 司', 'sub' => ''),
+        "industry" => "Industries",
+        "solution" => "Solutions",
+        "service" => "Service",
+        "actives" => "Active",
     );
     return $arr;
 }
@@ -22,41 +13,88 @@ function menu_ppppp()
 function menu_mobile_list()
 {
     $arr = array(
-        '' => array('vn' => 'Trang Chủ', 'cn' => '首 頁', 'sub' => ''),
-        'about' => array('vn' => 'Giởi Thiệu Công Ty', 'cn' => '公 司 簡 介', 'sub' => ''),
-        'products' => array('vn' => 'Sản Phẩm', 'cn' => '產 品', 'sub' => ''),
-        'contact' => array('vn' => 'Liên Hệ', 'cn' => '聯 繫 公 司', 'sub' => ''),
+        "about" => "About",
+        "cases" => "Cases Tudies",
+        "industry" => "Industries",
+        "solution" => "Solutions",
+        "service" => "Service",
+        "resource" => "Resources",
+        "actives" => "Active",
+        "download" => "Download"
     );
     return $arr;
 }
 
 function menu_main_list()
 {
+    $homeArr = array(
+
+        'operating' =>  array(
+            'ID' => '#operating',
+            'name' => 'Operating',
+            'class' => 'menu-main-sub-1-item',
+            'order' => '01',
+            'local' => 'true',
+            'sub' => '',
+        ),
+
+        'location' => array(
+            'ID' => '#location',
+            'name' => 'Location',
+            'class' => 'menu-main-sub-1-item',
+            'order' => '02',
+            'local' => 'true',
+            'sub' => '',
+        ),
+
+        'contact' => array(
+            'ID' => '#contact',
+            'name' => 'Contact Us',
+            'class' => 'menu-main-sub-1-item',
+            'order' => '03',
+            'local' => 'true',
+            'sub' => '',
+        )
+
+    );
     // THIS ARRAY KEY APPLY LINK OF WEB 
     $arr = array(
         'about' => array(
             'name' => "About",
-            'class' => 'menu-main-item',
-            'sub' => ''
+            'class' => 'menu-main-item', // neu co sub menu phai them sub Class
+            'subClass' => 'menu-main-sub-1',
+            'sub' => $homeArr,
+        ),
+        'cases' => array(
+            'name' => "Cases Tudies",
+            'class' => 'menu-main-item ',
+            'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
+            'sub' => getCategories('casestudies_category'),
+        ),
+        'industry' => array(
+            'name' => "Industries",
+            'class' => 'menu-main-item ',
+            'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
+            'sub' => getCategories('industries_category'),
         ),
         'solution' => array(
             'name' => "Solutions",
             'class' => 'menu-main-item ',
             'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
-            'sub' => getCategories(),
+            'sub' => getCategories('solutions_category'),
         ),
-        'article' => array(
-            'name' => "Article",
+        'service' => array(
+            'name' => "Service",
             'class' => 'menu-main-item',
             'sub' => ''
         ),
-        'schedule' => array(
-            'name' => "Schedule",
+        'resource' => array(
+            'name' => "Resources",
             'class' => 'menu-main-item',
             'sub' => ''
         ),
-        'contact' => array(
-            'name' => "Contact",
+        'actives' => array(
+            'name' => "Active",
             'class' => 'menu-main-item',
             'sub' => ''
         ),

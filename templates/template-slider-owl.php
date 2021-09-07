@@ -26,7 +26,7 @@ $wp_query = new WP_Query($args);
 
                 <div class="item">
                     <img src="<?php echo $url[0] ?>" alt="<?php echo the_title(); ?>">
-                    <a href='#'>
+                    <a href='<?php echo get_the_permalink() ?>'>
                         <div class="owl-slider-title">
                             <h2><?php the_title(); ?></h2>
                         </div>
@@ -37,9 +37,17 @@ $wp_query = new WP_Query($args);
                 </div>
         <?php
             endwhile;
-        endif; ?>
+        endif;
+        wp_reset_postdata();
+        wp_reset_query();
+        ?>
     </div>
 </div>
+<style>
+    #slider {
+        border-bottom: 2px solid rgba(208, 228, 247, 0.5);
+    }
+</style>
 <script>
     jQuery(document).ready(function() {
         jQuery('#slider .owl-carousel').owlCarousel({
