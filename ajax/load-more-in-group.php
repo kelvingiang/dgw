@@ -16,6 +16,14 @@ $args = array(
     'order' => 'DESC',
     'meta_key' => '_metabox_order',
     // get cac bai trong category
+    'tax_query' => array(
+        array(
+            'taxonomy' => $taxonomy,   // taxonomy name
+            'field' => 'term_id',  // term_id, slug or name
+            'terms' => $cate, // term id, term slug or term name
+        )
+    ),
+
     'meta_query'    => array(
         array(
             'key'       => '_metabox_langguage',

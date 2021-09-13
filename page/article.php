@@ -1,23 +1,28 @@
 <?php /*  Template Name: Article Page */ ?>
 <?php get_header(); ?>
+<div>
+    <?php pageImg($post->ID); ?>
+</div>
+<div style="height: 3rem;"></div>
 <div class="container-fluid">
     <div class="row">
         <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
             <div class="page-title">
-                <h1><?php _e('News') ?> </h1>
+                <h1><?php // _e('News') 
+                    ?> </h1>
             </div>
 
             <div class='data-list'>
                 <?php
                 global $wp;
-
-                $wp_query = getPostCategory(article, 2);
+                
+                $wp_query = getPostCategory('article', get_option('first_load'));
 
                 if ($wp_query->have_posts()) {
                     $stt = 1;
                     while ($wp_query->have_posts()) {
                         $wp_query->the_post();
-                        ?>
+                ?>
                         <div class="item" data-id="<?php echo $stt ?>">
                             <?php if (has_post_thumbnail()) { ?>
                                 <img class="item-img" src="<?php the_post_thumbnail_url() ?>" srcset="<?php the_post_thumbnail_url() ?>" />
@@ -30,7 +35,7 @@
                                 </a>
                             </div>
                         </div>
-                        <?php
+                <?php
                         $stt++;
                     }
                 }
@@ -44,23 +49,18 @@
         </div>
 
         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
-            <?php
-            $menu_category = 'casestudies_category';
-            $menu_page = 'cases';
-            menuSide($menu_category, $menu_page);
-            ?>
-      
+            <?php get_template_part('templates/template', 'side_active');  ?>
         </div>
     </div>
 </div>
 
 <script>
-    jQuery(document).ready(function () {
-        jQuery('#load-more').click(function () {
+    jQuery(document).ready(function() {
+        jQuery('#load-more').click(function() {
 
             var lastID = jQuery(".data-list > div:last-child").attr("data-id");
             var post = 'post';
-            var count = '3';
+            var count = <?php echo get_option('more_load') ?>;
             var cate = 'article';
 
             jQuery.ajax({
@@ -73,7 +73,7 @@
                     count: count,
                 },
                 dataType: 'json',
-                success: function (data) { // set ket qua tra ve  data tra ve co thanh phan status va message
+                success: function(data) { // set ket qua tra ve  data tra ve co thanh phan status va message
                     if (data.status === 'done') {
                         jQuery(".data-list").append(data.html);
                         var $target = jQuery('html,body');
@@ -84,7 +84,7 @@
                         jQuery("#load-more").hide();
                     }
                 },
-                error: function (xhr) {
+                error: function(xhr) {
                     console.log(xhr.reponseText);
                     //console.log(data.status);
                 }

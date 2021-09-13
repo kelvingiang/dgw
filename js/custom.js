@@ -2,7 +2,7 @@ function handle(delta) {
   var time = 1000;
   var distance = 300;
 
-  $("html, body")
+  jQuery("html, body")
     .stop()
     .animate(
       {
@@ -53,8 +53,7 @@ jQuery(document).ready(function () {
 
   jQuery(".email").focusout(function (e) {
     var email = document.getElementById("txt_email");
-    var filter =
-      /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     if (!filter.test(email.value)) {
       jQuery("#error-email").text("請輸入正確 E-mail 地址 ! ");
       email.focus;
@@ -80,7 +79,7 @@ jQuery(document).ready(function () {
     return true;
   }
 
-  //   / gioi han ly tu nhap vao   THE SCRIPT THAT CHECKS IF THE KEY PRESSED IS A NUMERIC OR DECIMAL VALUE.
+  // gioi han ly tu nhap vao   THE SCRIPT THAT CHECKS IF THE KEY PRESSED IS A NUMERIC OR DECIMAL VALUE.
   jQuery(".type-phone").keypress(function (event) {
     return isPhone(event, this);
   });

@@ -1,19 +1,33 @@
 <?php /*  Template Name: Services Page */ ?>
 <?php get_header(); ?>
+
+<div>
+  <?php pageImg($post->ID); ?>
+</div>
+
+<div class="menu-sub">
+  <?php
+  $menu_category = 'services_category';
+  $menu_page = 'service';
+  menuSub($menu_category, $menu_page);
+  ?>
+</div>
+
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
+    <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
       <div class="page-title">
-        <h1><?php _e('Service') ?> </h1>
+        <h1><?php //_e('Service') 
+            ?> </h1>
       </div>
 
       <div class='data-list'>
         <?php
         global $wp;
         $param = $wp->query_vars;
-
+         $postCount = -1;
         if (empty($param['tag']) && empty($param['cate'])) {
-          getCustomsPost('services', -1);
+          getCustomsPost('services', $postCount);
         } else {
           // neu TAG ton tai thi lay value la TAG con khong thi lay CATE
           if (empty($param['tag'])) {
@@ -22,7 +36,6 @@
             $cate = $param['tag'];
           }
           $postType = 'services';
-          $postCount = -1;
           $tax = 'services_category';
           $wp_query = getCustomsPostByCate($postType, $cate, $postCount, $tax);
 
@@ -58,14 +71,8 @@
       </div>
       -->
     </div>
-    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
-      <?php
-      $menu_category = 'services_category';
-      $memu_page = 'service';
-      menuSide($menu_category, $memu_page);
-      ?>
-      <?php get_template_part('templates/template', 'side_cases'); ?>
-
+    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+      <?php get_template_part('templates/template', 'side_active');  ?>
     </div>
   </div>
 </div>

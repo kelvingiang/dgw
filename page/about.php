@@ -1,10 +1,15 @@
 <?php /*  Template Name: About Page */ ?>
 <?php get_header(); ?>
+<div>
+  <?php pageImg($post->ID); ?>
+</div>
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
       <div class="page-title">
-        <h1><?php _e('About') ?> </h1>
+        <h1><?php // _e('About') 
+            ?> </h1>
       </div>
       <div>
         <?php echo get_post_meta(1, "_info_summary_" . $_SESSION['languages'], true) ?>

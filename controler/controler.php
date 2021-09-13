@@ -10,6 +10,7 @@ class Controler_Main
     {
 
         $defaultoption = array(
+            'controler_setting' => true,
             'controler_advertising' => false,
             'controler_case_study' => true,
             'controler_downloads' => true,
@@ -24,7 +25,9 @@ class Controler_Main
         );
 
         $this->_controler_options = get_option($this->_controler_name, $defaultoption);
+        
         $this->page_information();
+        $this->page_setting();
         $this->page_member();
 
         $this->post_slider();
@@ -39,6 +42,14 @@ class Controler_Main
 
 
         add_action('admin_init', array($this, 'do_output_buffer'));
+    }
+
+    public function page_setting()
+    {
+        if ($this->_controler_options['controler_setting']) {
+            require_once(DIR_CONTROLER . 'controler-setting.php');
+            new Controler_Web_Setting();
+        }
     }
 
     public function page_information()

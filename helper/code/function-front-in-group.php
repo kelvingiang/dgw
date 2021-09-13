@@ -4,11 +4,7 @@ function inGroup($postName, $tax, $postMun)
     global $post;
     $postID = $post->ID; //get/put your post ID here
     $getCat = get_the_terms($postID, $tax); //as it's returning an array
-    /*
-    echo "<br>";
-    print_r($getCat);
-    echo "</br>";
-*/
+
     if ($getCat[0]->parent == 0) {
         $cat = $getCat[0]->term_id;
     } else {
@@ -80,7 +76,7 @@ function inGroup($postName, $tax, $postMun)
 
                 var lastID = jQuery(".group-list > div:last-child").attr("data-id");
                 var cate = '<?php echo $postName ?>';
-                var count = 5;
+                var count = '<?php echo get_option('more_load') ?>';
                 var slug = '<?php echo $param['name'] ?>';
                 // var count = jQuery("#member-list > div").length;
                 jQuery.ajax({

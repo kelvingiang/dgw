@@ -24,8 +24,8 @@
         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
             <?php
             $menu_category = 'resources_category';
-            $memu_page = 'resource';
-            menuSide($menu_category, $memu_page);
+            $menu_page = 'resource';
+            menuSide($menu_category, $menu_page);
             ?>
         </div>
     </div>
@@ -34,8 +34,8 @@
         $GroupPostType = "resources";
         $groupCategory = "resources_category";
         // -1 se khong show phan load more
-        $postMun = -1;
-        inGroup($GroupPostType, $groupCategory, $postMun); ?>
+        $postCount = -1;
+        inGroup($GroupPostType, $groupCategory, $postCount); ?>
     </div>
 </div>
 <?php get_footer(); ?>

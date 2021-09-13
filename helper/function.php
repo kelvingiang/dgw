@@ -1,7 +1,8 @@
 <?php
 require_once DIR_HELPER . 'code/function-front-in-group.php';
 require_once DIR_HELPER . 'code/function-front-custom-post.php';
-require_once DIR_HELPER . 'code/function-front-side-menu.php';
+require_once DIR_HELPER . 'code/function-front-menu-side.php';
+require_once DIR_HELPER . 'code/function-front-menu-sub.php';
 require_once DIR_HELPER . 'code/function-front.php';
 require_once DIR_HELPER . 'code/function-front-category.php';
 require_once DIR_HELPER . 'code/function-front-menu.php';

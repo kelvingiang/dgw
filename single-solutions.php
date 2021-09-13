@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
+        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                     <div class="single-space">
                         <h2 class="single-space-title">
@@ -40,12 +40,14 @@
                     </div>
 
         </div>
-        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
-            <?php
-            $menu_category = 'solutions_category';
-            $menu_page = 'solution';
-            menuSide($menu_category, $menu_page);
-            ?>
+        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 computer-side">
+            <div style="margin-top: 3rem;">
+                <?php
+                $menu_category = 'solutions_category';
+                $menu_page = 'solution';
+                menuSide($menu_category, $menu_page);
+                ?>
+            </div>
         </div>
         <div>
             <?php
@@ -54,6 +56,11 @@
             // -1 se khong show phan load more
             $postCount = -1;
             inGroup($GroupPostType, $groupCategory, $postCount); ?>
+        </div>
+        <div class="mobile-side">
+            <?php
+            menuSide($menu_category, $menu_page);
+            ?>
         </div>
     </div>
 </div>

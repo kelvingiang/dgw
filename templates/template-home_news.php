@@ -22,7 +22,7 @@
             <ul class="content-list">
                 <?php
                 // LAY CUSTOMPOST
-                $wp_query = getcCustomPostAtSide('active', 5);
+                $wp_query = getCustomPostAtSide('active', 5);
                 if ($wp_query->have_posts()) {
                     while ($wp_query->have_posts()) {
                         $wp_query->the_post();
@@ -44,7 +44,7 @@
             <ul class="content-list">
                 <?php
                 // LAY CATAGORY CUA POST
-                $wp_query = getPostCategory(news, 5);
+                $wp_query = getPostCategory('news', 5);
                 if ($wp_query->have_posts()) {
                     while ($wp_query->have_posts()) {
                         $wp_query->the_post();
@@ -66,7 +66,7 @@
             <ul class="content-list">
                 <?php
                 // LAY CATAGORY CUA POST
-                $wp_query = getPostCategory(article, 5);
+                $wp_query = getPostCategory('article', 5);
                 if ($wp_query->have_posts()) {
                     while ($wp_query->have_posts()) {
                         $wp_query->the_post();
@@ -89,7 +89,7 @@
             <ul class="content-list">
                 <?php
                 // LAY CUSTOMPOST
-                $wp_query = getcCustomPostAtSide('casestudies', 5);
+                $wp_query = getCustomPostAtSide('casestudies', 5);
                 if ($wp_query->have_posts()) {
                     while ($wp_query->have_posts()) {
                         $wp_query->the_post();
@@ -112,7 +112,7 @@
             <ul class="content-list">
                 <?php
                 // LAY CUSTOMPOST
-                $wp_query = getcCustomPostAtSide('resources', 5);
+                $wp_query = getCustomPostAtSide('resources', 5);
                 if ($wp_query->have_posts()) {
                     while ($wp_query->have_posts()) {
                         $wp_query->the_post();
@@ -134,7 +134,6 @@
 </div>
 <script>
     jQuery(document).ready(function() {});
-
 
     function ChangSelect(titleSelect, contentSelect) {
         jQuery(titleSelect).parents().siblings('.news-home-content').children().removeClass('content-select');

@@ -1,9 +1,9 @@
 <div class="side-list">
-    <div class="side-list-title">
-        <h2><?php _e('Cases Tudies') ?></h2>
-    </div>
+    <!-- <div class="side-list-title"> -->
+        <!-- <h2><?php // _e('Cases Tudies') ?></h2> -->
+    <!-- </div> -->
     <?php
-    $wp_query = getcCustomPostAtSide('casestudies', 5);
+    $wp_query = getCustomPostAtSide('casestudies', 10);
     if ($wp_query->have_posts()) {
         while ($wp_query->have_posts()) {
             $wp_query->the_post();
@@ -13,13 +13,13 @@
                     <div class="side-list-item-title">
                         <?php the_title(); ?>
                     </div>
-                    <div class="side-list-item-img">
-                        <?php if (has_post_thumbnail()) { ?>
-                            <img src="<?php the_post_thumbnail_url() ?>" srcset="<?php the_post_thumbnail_url() ?>" />
-                        <?php } else { ?>
-                            <img src="<?php echo PART_IMAGES . 'no-image.jpg' ?>" srcset="<?php echo PART_IMAGES . 'no-image.jpg' ?>" />
-                        <?php } ?>
-                    </div>
+                    <!-- <div class="side-list-item-img"> -->
+                        <!-- <?php // if (has_post_thumbnail()) { ?> -->
+                            <!-- <img src="<?php //the_post_thumbnail_url() ?>" srcset="<?php //the_post_thumbnail_url() ?>" /> -->
+                        <!-- <?php //} else { ?> -->
+                            <!-- <img src="<?php // echo PART_IMAGES . 'no-image.jpg' ?>" srcset="<?php // echo PART_IMAGES . 'no-image.jpg' ?>" /> -->
+                        <!-- <?php // } ?> -->
+                    <!-- </div> -->
                 </div>
             </a>
     <?php

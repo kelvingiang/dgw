@@ -1,0 +1,26 @@
+.menu-sub {
+  display: flex;
+  flex-direction: row;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  margin-bottom: 1rem;
+  &-item {
+    cursor: pointer;
+    margin: 0.2rem 0.2rem;
+    transition: all 0.1s;
+    a {
+      padding: 0rem 1rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      display: block;
+    }
+    .menu-sub-child {
+      display: none;
+    }
+    &:hover {
+      .menu-sub-child {
+        display: block;
+      }
+    }
+  }
+}

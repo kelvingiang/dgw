@@ -68,11 +68,11 @@ function getCustomsPost($postType, $postCount)
     }
 }
 
-function getCustomsPostByCate($psotType, $cate, $postCount, $taxonomy)
+function getCustomsPostByCate($postType, $cate, $postCount, $taxonomy)
 {
 
     $arr = array(
-        'post_type' => $psotType,
+        'post_type' => $postType,
         'posts_per_page' => $postCount,
         'orderby' => 'meta_value_num',
         'order' => 'DESC',
@@ -173,7 +173,7 @@ function getCustomPostAtHome($postType, $postCount)
 
 
 
-function getcCustomPostAtSide($postType, $postCount)
+function getCustomPostAtSideCate($postType, $postCount, $taxonomy, $cate)
 {
     $arr = array(
         'post_type' => $postType,
@@ -182,6 +182,13 @@ function getcCustomPostAtSide($postType, $postCount)
         'order' => 'DESC',
         'meta_key' => '_metabox_order',
         // get cac bai trong category
+        'tax_query' => array(
+            array(
+                'taxonomy' => $taxonomy,   // taxonomy name
+                'field' => 'term_id',  // term_id, slug or name
+                'terms' => $cate, // term id, term slug or term name
+            )
+        ),
 
         'meta_query'    => array(
             array(
@@ -196,6 +203,27 @@ function getcCustomPostAtSide($postType, $postCount)
     return $wp_query;
 }
 
+function getCustomPostAtSide($postType, $postCount)
+{
+    $arr = array(
+        'post_type' => $postType,
+        'posts_per_page' => $postCount,
+        'orderby' => 'meta_value_num',
+        'order' => 'DESC',
+        'meta_key' => '_metabox_order',
+ 
+        'meta_query'    => array(
+            array(
+                'key'       => '_metabox_langguage',
+                'value'     =>  $_SESSION['languages'],
+                'compare'   => '=',
+            ),
+        ),
+    );
+
+    $wp_query = new WP_Query($arr);
+    return $wp_query;
+}
 
 function getPostCategory($cate, $postCount)
 {

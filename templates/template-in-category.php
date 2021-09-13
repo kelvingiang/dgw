@@ -8,7 +8,7 @@
         global $wp;
         $param = $wp->query_vars;
         $postType = 'casestudies';
-        $postCount = 3;
+        $postCount = get_option('first_load');
         $tax = 'casestudies_category';
         $wp_query = getCustomsPostByCate($postType, $getProductCat[0]->parent, $postCount, $tax);
 
@@ -52,7 +52,7 @@
             jQuery('#load-more').click(function() {
                 var lastID = jQuery(".group-list > div:last-child").attr("data-id");
                 var cate = 'casestudies';
-                var count = 2
+                var count = '<?php get_option('more_load') ?>';
                 var slug = '<?php echo $param['name'] ?>';
                 // var count = jQuery("#member-list > div").length;
                 jQuery.ajax({

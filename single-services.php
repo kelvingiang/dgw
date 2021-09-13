@@ -24,8 +24,8 @@
         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
             <?php
             $menu_category = 'industries_category';
-            $memu_page = 'industry';
-            menuSide($menu_category, $memu_page);
+            $menu_page = 'industry';
+            menuSide($menu_category, $menu_page);
             ?>
                     <?php
         $GroupPostType = "resources";

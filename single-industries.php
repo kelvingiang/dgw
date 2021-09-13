@@ -1,7 +1,14 @@
 <?php get_header(); ?>
+<div class="menu-sub">
+  <?php
+  $menu_category = 'industries_category';
+  $menu_page = 'industry';
+  menuSub($menu_category, $menu_page);
+  ?>
+</div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                     <div class="single-space">
                         <h2 class="single-space-title">
@@ -35,20 +42,29 @@
             endif;
             ?>
         </div>
-        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
-            <?php
-            $menu_category = 'industries_category';
-            $memu_page = 'industry';
-            menuSide($menu_category, $memu_page);
-            ?>
-        </div>
+        <!-- <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 computer-side"> -->
+            <!-- <div style="margin-top: 3rem;"> -->
+                <?php
+                // $menu_category = 'industries_category';
+                // $menu_page = 'industry';
+                // menuSide($menu_category, $menu_page);
+                ?>
+            <!-- </div> -->
+        <!-- </div> -->
     </div>
     <div>
         <?php
         $GroupPostType = "industries";
         $groupCategory = "industries_category";
-        $postMun = 3;
-        inGroup($GroupPostType, $groupCategory, $postMun); ?>
+        $postCount = get_option('more_load');
+        inGroup($GroupPostType, $groupCategory, $postCount); ?>
+    </div>
+    <div class="mobile-side">
+        <?php
+        //$menu_category = 'industries_category';
+        //$menu_page = 'industry';
+        menuSide($menu_category, $menu_page);
+        ?>
     </div>
 </div>
 <?php get_footer(); ?>

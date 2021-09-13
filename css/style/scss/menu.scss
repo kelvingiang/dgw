@@ -1,5 +1,6 @@
-$MenuTextColor: #fff;
+$MenuTextColor: rgb(52, 114, 133);
 $MenuTextHoverColor: #0665ad;
+$bgHoverColor: rgba(231, 231, 231, 0.9);
 
 @mixin MenuBG {
   @include MenuBGHoverColor;
@@ -62,27 +63,18 @@ $MenuTextHoverColor: #0665ad;
   background: rgb(208, 228, 247); /* Old browsers */
   background: -moz-linear-gradient(
     top,
-    rgba(208, 228, 247, 1) 0%,
-    rgba(115, 177, 231, 1) 24%,
-    rgba(10, 119, 213, 1) 50%,
-    rgba(83, 159, 225, 1) 79%,
-    rgba(135, 188, 234, 1) 100%
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
   ); /* FF3.6-15 */
   background: -webkit-linear-gradient(
     top,
-    rgba(208, 228, 247, 1) 0%,
-    rgba(115, 177, 231, 1) 24%,
-    rgba(10, 119, 213, 1) 50%,
-    rgba(83, 159, 225, 1) 79%,
-    rgba(135, 188, 234, 1) 100%
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
   ); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(
     to bottom,
-    rgba(208, 228, 247, 1) 0%,
-    rgba(115, 177, 231, 1) 24%,
-    rgba(10, 119, 213, 1) 50%,
-    rgba(83, 159, 225, 1) 79%,
-    rgba(135, 188, 234, 1) 100%
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
   ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d0e4f7', endColorstr='#87bcea',GradientType=0 ); /* IE6-9 */
 }
@@ -92,27 +84,18 @@ $MenuTextHoverColor: #0665ad;
   background: rgb(208, 228, 247); /* Old browsers */
   background: -moz-linear-gradient(
     top,
-    rgba(208, 228, 247, 1) 0%,
-    rgba(195, 214, 229, 1) 24%,
-    rgba(255, 255, 255, 1) 50%,
-    rgba(195, 211, 224, 1) 79%,
-    rgba(201, 218, 232, 1) 100%
+    $bgHoverColor 0%,
+    $bgHoverColor 100%
   ); /* FF3.6-15 */
   background: -webkit-linear-gradient(
     top,
-    rgba(208, 228, 247, 1) 0%,
-    rgba(195, 214, 229, 1) 24%,
-    rgba(255, 255, 255, 1) 50%,
-    rgba(195, 211, 224, 1) 79%,
-    rgba(201, 218, 232, 1) 100%
+    $bgHoverColor 0%,
+    $bgHoverColor 100%
   ); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(
     to bottom,
-    rgba(208, 228, 247, 1) 0%,
-    rgba(195, 214, 229, 1) 24%,
-    rgba(255, 255, 255, 1) 50%,
-    rgba(195, 211, 224, 1) 79%,
-    rgba(201, 218, 232, 1) 100%
+    $bgHoverColor 0%,
+    $bgHoverColor 100%
   ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d0e4f7', endColorstr='#c9dae8',GradientType=0 ); /* IE6-9 */
 }
@@ -124,7 +107,6 @@ $MenuTextHoverColor: #0665ad;
   display: flex;
   justify-content: right;
 
-
   @include Respond(phone) {
     display: none;
   }
@@ -132,7 +114,7 @@ $MenuTextHoverColor: #0665ad;
     position: relative;
     float: left;
     @include MenuBGColor;
-    padding: 0.7rem 1.5rem;
+    padding: 0.7rem 1rem;
     z-index: 100003;
     border: 0.1rem solid #fff;
 
@@ -192,7 +174,7 @@ $MenuTextHoverColor: #0665ad;
     opacity: 0;
     position: absolute;
     margin-top: -30px;
-    margin-left: -28px;
+    margin-left: -18px;
     transition: all 1s;
     padding: 2px;
     white-space: nowrap;
@@ -201,11 +183,11 @@ $MenuTextHoverColor: #0665ad;
       position: relative;
       height: 50px;
       line-height: 50px;
-      background-color: rgba(3, 128, 178, 0.9);
+      background-color: $bgHoverColor;
       border-bottom: 1px solid #fff;
       cursor: pointer;
       &-link {
-        @include MenuLink(relative, 1rem, 0rem, 2.5rem);
+        @include MenuLink(relative, 1rem, 0rem, 1.5rem);
 
         @include Respond(lg) {
           @include MenuLink(relative, 1rem, 0rem, 2.5rem);
@@ -250,7 +232,7 @@ $MenuTextHoverColor: #0665ad;
     transition: all 1s;
     &-item {
       position: relative;
-      background-color: rgba(0, 157, 219, 0.9);
+      background-color: $bgHoverColor;
       border-bottom: 1px solid #fff;
       &-link {
         @include MenuLink(relative, 1rem, 0rem, 2rem);
@@ -325,7 +307,7 @@ $MenuTextHoverColor: #0665ad;
     color: rgba(255, 94, 0, 0.76);
     cursor: pointer;
     font-size: 1.5rem;
- 
+
     @include Respond(sm) {
       font-size: 1.2rem;
     }

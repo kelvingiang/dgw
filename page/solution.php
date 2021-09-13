@@ -1,18 +1,34 @@
 <?php /*  Template Name: Solutions Page */ ?>
 <?php get_header(); ?>
+
+<div>
+  <?php pageImg($post->ID); ?>
+</div>
+
+<div class="menu-sub">
+  <?php
+  $menu_category = 'solutions_category';
+  $menu_page = 'solution';
+  menuSub($menu_category, $menu_page);
+  ?>
+</div>
+
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
       <div class="page-title">
-        <h1><?php _e('Solutions') ?> </h1>
+        <h1><?php // _e('Solutions') 
+            ?> </h1>
       </div>
 
       <div class='data-list'>
         <?php
         global $wp;
         $param = $wp->query_vars;
+        $postCount = get_option('first_load');
+
         if (empty($param['tag']) && empty($param['cate'])) {
-          getCustomsPost('solutions', 3);
+          getCustomsPost('solutions', $postCount);
         } else {
           // neu TAG ton tai thi lay value la TAG con khong thi lay CATE
           if (empty($param['tag'])) {
@@ -21,7 +37,6 @@
             $cate = $param['tag'];
           }
           $postType = 'solutions';
-          $postCount = 3;
           $tax = 'solutions_category';
           $wp_query = getCustomsPostByCate($postType, $cate, $postCount, $tax);
 
@@ -55,15 +70,6 @@
         <i style=" font-size: 35px; color: #999; height: 50px" class="fa fa-angle-double-down" aria-hidden="true"></i>
       </div>
     </div>
-
-    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
-      <?php
-      $menu_category = 'solutions_category';
-      $menu_page = 'solution';
-      menuSide($menu_category, $menu_page);
-      ?>
-      <?php get_template_part('templates/template', 'side_active'); ?>
-    </div>
   </div>
 </div>
 <script>
@@ -73,7 +79,7 @@
       var lastID = jQuery(".data-list > div:last-child").attr("data-id");
       var post = 'solutions';
       var cateID = '<?php echo $cate ?>';
-      var count = '3';
+      var count =  '<?php echo get_option('more_load') ?>';
       var cate = 'solutions_category';
 
       jQuery.ajax({
