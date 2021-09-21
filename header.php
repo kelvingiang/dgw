@@ -71,6 +71,6 @@
                 </div>
             </div>
         </header>
-
         <div class="my-content">
+            <h2>Giang Gia Minh</h2>
      
