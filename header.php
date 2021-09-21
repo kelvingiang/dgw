@@ -44,7 +44,7 @@
                                     echo "onload='initialize()'";
                                 } ?>>
     <div id="wrapper" class="hfeed">
-        <header id="header" >
+        <header id="header">
             <div id="navbar" style="border-bottom: rgb(235, 235, 235) solid 1px;">
                 <div class="row">
                     <div class=" col-xl-3 col-lg-3 col-md-3 col-sm-4 col-4">
@@ -72,5 +72,4 @@
             </div>
         </header>
         <div class="my-content">
-            <h2>Giang Gia Minh</h2>
-     
+            <h2>Giang Gia Minh 123</h2>
