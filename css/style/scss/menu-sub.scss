@@ -10,9 +10,21 @@
     transition: all 0.1s;
     a {
       padding: 0rem 1rem;
-      font-size: 1.1rem;
       font-weight: bold;
       display: block;
+      font-size: 1rem;
+      @include Respond(xl) {
+        font-size: 1rem;
+      }
+      @include Respond(lg) {
+        font-size: 0.9rem;
+      }
+      @include Respond(md) {
+        font-size: 0.8rem;
+      }
+      @include Respond(sm) {
+        font-size: 0.7rem;
+      }
     }
     .menu-sub-child {
       display: none;

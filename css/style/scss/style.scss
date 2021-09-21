@@ -226,6 +226,14 @@ hr.style-two {
   }
 }
 
+.sidebar-space{
+  @include Respond(lg) {
+    margin-top: 0;
+  }
+  @include Respond(md) {
+    margin-top: 2rem;
+  }
+}
 /**** back to top****************************************************/
 
 #back-top-wrapper {

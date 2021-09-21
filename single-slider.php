@@ -75,7 +75,9 @@
             </div>
         </div>
         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
-            <?php get_template_part('templates/template', 'side_cases'); ?>
+            <div style="margin-top: 3rem;">
+                <?php get_template_part('templates/template', 'side_cases'); ?>
+            </div>
         </div>
     </div>
 
