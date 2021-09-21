@@ -17,17 +17,17 @@
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
                     <h3><?php _e('Contact Us') ?> </h3>
                     <ul class='footer-list'>
-                        <li><?php echo get_post_meta(1, '_info_name_' . $_SESSION['languages'], true) ?></li>
-                        <li><?php echo get_post_meta(1, '_info_phone', true) ?></li>
-                        <li><?php echo get_post_meta(1, '_info_email', true) ?></li>
+                        <li> <strong> Phone :</strong> <?php echo get_post_meta(1, '_info_phone', true) ?></li>
+                        <li><strong> Fax :</strong> <?php echo get_post_meta(1, '_info_fax', true) ?></li>
+                        <li><strong>Email :</strong> <?php echo get_post_meta(1, '_info_email', true) ?></li>
 
                     </ul>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
                     <h3><?php _e('link') ?> </h3>
                     <ul class='footer-list'>
-                        <li> web: </li>
-                        <li> FB :</li>
+                        <li><strong> web :</strong> </li>
+                        <li><strong> FB :</strong> </li>
 
                     </ul>
                 </div>

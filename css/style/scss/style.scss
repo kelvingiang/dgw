@@ -211,7 +211,8 @@ hr.style-two {
     margin-top: 1rem;
     color: rgb(16, 29, 70);
   }
-  .footer-list {
+  ul.footer-list {
+    list-style: none;
     margin-top: 2rem;
     color: rgb(196, 196, 196);
   }

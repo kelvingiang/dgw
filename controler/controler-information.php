@@ -56,6 +56,7 @@ class Controler_Company_Information {
 
         if (isPost()) {
             update_post_meta(1, '_info_phone', $_POST['txt-phone']);
+            update_post_meta(1, '_info_fax', $_POST['txt-fax']);
             update_post_meta(1, '_info_email', $_POST['txt-email']);
 
             update_post_meta(1, '_info_name_cn', $_POST['txt-name-cn']);

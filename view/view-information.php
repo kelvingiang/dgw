@@ -2,7 +2,7 @@
 <form name="f-info" id="f-info" method="post">
 
 
-    <div class="row-two-column">
+    <div class=" row-three-column">
         <div class="col">
             <div class="cell-title">
                 <label><?php _e('Phone') ?></label>
@@ -13,6 +13,18 @@
                        name="txt-phone"
                        class="my-input"
                        value="<?php echo get_post_meta('1', '_info_phone', true) ?>"/>
+            </div>
+        </div>
+        <div class="col">
+            <div class="cell-title">
+                <label><?php _e('Fax') ?></label>
+            </div>
+            <div class="cell-text">
+                <input type="text" 
+                       id="txt-fax"
+                       name="txt-fax"
+                       class="my-input"
+                       value="<?php echo get_post_meta('1', '_info_fax', true) ?>"/>
             </div>
         </div>
         <div class="col">
