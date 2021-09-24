@@ -23,6 +23,11 @@ if (!isset($_SESSION['languages'])) {
     $_SESSION['languages'] = 'cn';
 }
 
+// echo"<pre>";
+// print_r('');
+// echo"</pre>";
+
+
 /* ==============================================================
   THAY DOI FILE DATA NGON NGU THEO SESSION LANGGUAGE
   =============================================================== */

@@ -174,12 +174,14 @@ hr.style-two {
       align-self: flex-end;
       color: #c4c4c4; }
 
-@media (max-width: 1024px) {
-  .sidebar-space {
-    margin-top: 0; } }
-@media (max-width: 820px) {
-  .sidebar-space {
-    margin-top: 2rem; } }
+.margin-top {
+  padding-top: 1rem; }
+
+.sidebar-space {
+  margin-top: 2rem; }
+  @media (max-width: 820px) {
+    .sidebar-space {
+      margin-top: 3rem; } }
 
 /**** back to top****************************************************/
 #back-top-wrapper {
@@ -1189,7 +1191,8 @@ hr.style-two {
   flex-direction: row;
   flex-flow: row wrap;
   justify-content: flex-start;
-  margin-bottom: 1rem; }
+  margin-bottom: 1rem;
+  padding-top: 3rem; }
   .menu-sub-item {
     cursor: pointer;
     margin: 0.2rem 0.2rem;

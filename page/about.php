@@ -5,7 +5,7 @@
 </div>
 
 <div class="container-fluid">
-  <div class="row">
+  <div class="row margin-top" >
     <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
       <div class="page-title">
         <h1><?php // _e('About') 

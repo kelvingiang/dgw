@@ -119,11 +119,7 @@ body:focus-within {
 }
 
 .page-title {
-  background-image: linear-gradient(
-    0deg,
-    rgba(255, 255, 255, 0.3) 50%,
-    rgba(156, 156, 156, 0.568) 95%
-  );
+  background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.3) 50%, rgba(156, 156, 156, 0.568) 95%);
   border-radius: 0.3rem;
   h1 {
     font-size: 1.5rem;
@@ -194,12 +190,7 @@ h3.group-title {
 hr.style-two {
   border: 0;
   height: 1px;
-  background-image: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0.75),
-    rgba(0, 0, 0, 0)
-  );
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
 
 #footer {
@@ -225,13 +216,14 @@ hr.style-two {
     }
   }
 }
+.margin-top {
+  padding-top: 1rem;
+}
 
-.sidebar-space{
-  @include Respond(lg) {
-    margin-top: 0;
-  }
+.sidebar-space {
+  margin-top: 2rem;
   @include Respond(md) {
-    margin-top: 2rem;
+    margin-top: 3rem;
   }
 }
 /**** back to top****************************************************/
@@ -296,5 +288,4 @@ hr.style-two {
   @include Respond(sm) {
     display: block;
   }
-
 }
