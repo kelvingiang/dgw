@@ -107,7 +107,7 @@ class Controler_Industries
                 $vars,
                 array(
                     'meta_key' => '_metabox_order', //Custom field key
-                    'orderby' => '_metabox_order' //Custom field value (number)
+                    'orderby' => 'meta_value_num' //Custom field value (number)
                 )
             );
         }
@@ -117,7 +117,7 @@ class Controler_Industries
                 $vars,
                 array(
                     'meta_key' => '_metabox_langguage', //Custom field key
-                    'orderby' => '_metabox_langguage' //Custom field value (number)
+                    'orderby' => 'meta_value' //Custom field value (number)
                 )
             );
         }

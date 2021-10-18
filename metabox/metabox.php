@@ -14,7 +14,7 @@ class Metabox_Main
             'metabox_langguage' => TRUE,
             'metabox_industries' => TRUE,
             'metabox_service' => FALSE,
-            'metabox_solution' => TRUE,
+            'metabox_solution' => FALSE,
             'metabox_active' => FALSE,
             'metabox_product' => FALSE,
             'metabox_seo' => FALSE,

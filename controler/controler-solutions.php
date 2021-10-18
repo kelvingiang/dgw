@@ -46,7 +46,7 @@ class Controler_Solutions
             'has_archive' => true,
             'hierarchical' => false,
             'menu_position' => 4,
-            'supports' => array('title', 'thumbnail'),
+            'supports' => array('title', 'thumbnail', 'editor'),
         );
         register_post_type('solutions', $args);
     }
@@ -73,7 +73,8 @@ class Controler_Solutions
         global $post;
         switch ($columns) {
             case 'content':
-                echo mySubContent(get_post_meta($post->ID, '_solution_value', true));
+               // echo mySubContent(get_post_meta($post->ID, '_solution_value', true));
+                the_content();
                 break;
             case 'category':
                 $terms = wp_get_post_terms($post->ID, 'solutions_category');
@@ -107,7 +108,7 @@ class Controler_Solutions
                 $vars,
                 array(
                     'meta_key' => '_metabox_order', //Custom field key
-                    'orderby' => '_metabox_order' //Custom field value (number)
+                    'orderby' => 'meta_value_num' //Custom field value (number)
                 )
             );
         }
@@ -117,7 +118,7 @@ class Controler_Solutions
                 $vars,
                 array(
                     'meta_key' => '_metabox_langguage', //Custom field key
-                    'orderby' => '_metabox_langguage' //Custom field value (number)
+                    'orderby' => 'meta_value' //Custom field value (number)
                 )
             );
         }

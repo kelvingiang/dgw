@@ -20,12 +20,13 @@ $param = $wp->query_vars;
   <div class="row">
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
       <div class="page-title">
-        <h1><?php // _e('Industries') ?> </h1>
+        <h1><?php // _e('Industries') 
+            ?> </h1>
       </div>
 
       <div class='data-list'>
         <?php
-         $postCount = get_option('first_load');
+        $postCount = get_option('first_load');
 
         if (empty($param['tag']) && empty($param['cate'])) {
           getCustomsPost('industries', $postCount);
@@ -46,16 +47,16 @@ $param = $wp->query_vars;
               $wp_query->the_post();
         ?>
               <div class="item" data-id="<?php echo $stt ?>">
-                <?php if (has_post_thumbnail()) { ?>
-                  <img class="item-img" src="<?php the_post_thumbnail_url() ?>" srcset="<?php the_post_thumbnail_url() ?>" />
-                <?php } else { ?>
-                  <img class="item-img" src="<?php echo PART_IMAGES . 'no-image.jpg' ?>" srcset="<?php echo PART_IMAGES . 'no-image.jpg' ?>" />
-                <?php } ?>
-                <div class="item-title">
-                  <a href="<?php echo get_the_permalink() ?>">
+                <a href="<?php echo get_the_permalink() ?>">
+                  <?php if (has_post_thumbnail()) { ?>
+                    <img class="item-img" src="<?php the_post_thumbnail_url() ?>" srcset="<?php the_post_thumbnail_url() ?>" />
+                  <?php } else { ?>
+                    <img class="item-img" src="<?php echo PART_IMAGES . 'no-image.jpg' ?>" srcset="<?php echo PART_IMAGES . 'no-image.jpg' ?>" />
+                  <?php } ?>
+                  <div class="item-title">
                     <?php the_title() ?>
-                  </a>
-                </div>
+                  </div>
+                </a>
               </div>
         <?php
               $stt++;

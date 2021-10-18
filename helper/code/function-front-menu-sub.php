@@ -24,7 +24,7 @@ function menuSub($cate, $page)
         if (!empty($sub)) {
             echo "<div class='menu-sub-child'>";
             foreach ($sub as $skey => $sval) {
-                echo "<div >";
+                echo "<div>";
                 echo "<a class='my-link' id='" . $sval['ID'] . "' href='" . home_url($val['page'] . '/cate/' .  $val['ID'] . '/tag/' . $sval['ID']) . "'>" . $sval['name'] . "</a>";
                 echo "</div>";
             }

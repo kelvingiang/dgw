@@ -225,7 +225,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  background-color: rgb(224, 222, 222);
+  background-color: rgba(224, 222, 222, 0.8);
   .industry-home-item {
     width: calc(25% - 1rem);
     text-align: center;
@@ -236,7 +236,7 @@
     padding-bottom: 8px;
     padding-top: 8px;
     border-radius: 0.3rem;
-    transition: all 0.5s linear;
+    transition: all 1s linear;
     font-size: 1.2rem;
     @include Respond(lg) {
       height: 120px;
@@ -262,7 +262,7 @@
       margin-top: auto;
     }
     &:hover {
-      background-color: #fff;
+      background-color: rgba(224, 222, 222, 0.9);
       img {
         opacity: 1;
       }

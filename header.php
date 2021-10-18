@@ -72,4 +72,7 @@
             </div>
         </header>
         <div class="my-content">
-           
+            <?php
+            // kiem tra window su dung ngon ngu gi 
+            //$lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2); 
+            ?>

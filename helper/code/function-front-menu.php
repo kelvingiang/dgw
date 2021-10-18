@@ -20,7 +20,7 @@ function menu_mobile_list()
         "service" => "Service",
         "resource" => "Resources",
         "actives" => "Active",
-        "download" => "Download"
+        "contact" => "Contact Digiwin"
     );
     return $arr;
 }
@@ -62,14 +62,16 @@ function menu_main_list()
         'about' => array(
             'name' => "About",
             'class' => 'menu-main-item', // neu co sub menu phai them sub Class
-            'subClass' => 'menu-main-sub-1',
-            'sub' => $homeArr,
+           // 'subClass' => 'menu-main-sub-1',
+            'sub' => '',
+            //'sub' => $homeArr,
         ),
         'cases' => array(
             'name' => "Cases Tudies",
             'class' => 'menu-main-item ',
-            'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
-            'sub' => getCategories('casestudies_category'),
+            //'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
+            'sub' => '',
+            //'sub' => getCategories('casestudies_category'),
         ),
         'industry' => array(
             'name' => "Industries",
@@ -86,20 +88,23 @@ function menu_main_list()
         'service' => array(
             'name' => "Service",
             'class' => 'menu-main-item',
-            'sub' => ''
+            'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
+            'sub' => getCategories('services_category'),
         ),
         'resource' => array(
             'name' => "Resources",
             'class' => 'menu-main-item',
-            'sub' => ''
+            'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
+            'sub' => getCategories('resources_category'),
         ),
         'actives' => array(
             'name' => "Active",
             'class' => 'menu-main-item',
-            'sub' => ''
+            'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
+            'sub' => getCategories('active_category'),
         ),
-        'download' => array(
-            'name' => "Download",
+        'contact' => array(
+            'name' => "Contact Digiwin",
             'class' => 'menu-main-item',
             'sub' => ''
         ),

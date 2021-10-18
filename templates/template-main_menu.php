@@ -1,13 +1,23 @@
 <div>
     <nav class="menu-main">
         <div class='menu-main-item'>
-            <a href='<?php echo home_url(); ?>' class='menu-main-item-link'><i class="fas fa-home"></i></a>
+            <a href='<?php echo home_url(); ?>' class='menu-main-item-link'>
+            <i class="fas fa-home"></i></a>
             <div class='menu-main-item-bg'></div>
         </div>
         <!-- MAIN MENU  -->
         <?php foreach (menu_main_list() as $key_main => $val_main) {  ?>
             <div class=' <?php echo $val_main['class'] ?>'>
-                <a href='<?php echo home_url($key_main); ?>' class='menu-main-item-link <?php echo $val_main['sub'] != '' ? 'has-sub' : '' ?> '> <?php _e($val_main['name']);  ?></a>
+                <?php if (!empty($val_main['sub'])) { ?>
+                    <a href='' class='menu-main-item-link <?php echo $val_main['sub'] != '' ? 'has-sub' : '' ?> '>
+                        <?php _e($val_main['name']);  ?>
+                    </a>
+                <?php } else { ?>
+                    <a href='<?php echo home_url($key_main); ?>' class='menu-main-item-link <?php echo $val_main['sub'] != '' ? 'has-sub' : '' ?> '>
+                        <?php _e($val_main['name']);  ?>
+                    </a>
+                <?php } ?>
+
                 <div class='menu-main-item-bg'></div>
 
                 <!--=========== PHAN MENU SUB =============== -->

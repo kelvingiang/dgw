@@ -56,14 +56,14 @@ if ($wp_query->have_posts()) {
     $stt = $lastID + 1;
     while ($wp_query->have_posts()) : $wp_query->the_post();
         $html .= "<div class='item' data-id='" . $stt . "'>";
+        $html .= "<a href='" . get_the_permalink() . "'>";
         if (has_post_thumbnail()) {
             $html .= "<img class='item-img' src='" . get_the_post_thumbnail_url() . "' srcset='" . get_the_post_thumbnail_url() . "'/>";
         } else {
             $html .= "<img class='item-img' src='" . PART_IMAGES . 'no-image.jpg' . "'/>";
         }
-        $html .= "<div class='item-title'>";
-        $html .= "<a href='" . get_the_permalink() . "'>" . get_the_title() . "</a>";
-        $html .= "</div>";
+        $html .= "<div class='item-title'>" . get_the_title() . "</div>";
+        $html .=  "</a>";
         $html .= "</div>";
         $stt += 1;
     endwhile;

@@ -1,5 +1,5 @@
 $color_gray: #999;
-$color_text_title: #fc6e02;
+$color_text_title: #0E4D9D;
 $color_bg: #f2a204;
 $color_bg_hover: #ffbf00;
 $color_box: #e0eaf5;
@@ -143,12 +143,13 @@ body:focus-within {
 
 .my-content {
   margin-top: 5rem;
+  min-height: 500px;
 }
 
 h3.article-title {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   font-weight: bold;
-  color: $color_orange;
+  color: $color_text_title;
 }
 
 .my-btn {
@@ -194,13 +195,15 @@ hr.style-two {
 }
 
 #footer {
-  background-color: rgb(129, 153, 168);
+  background-color: rgb(37,59,80);
+  display: flex;
+
   h3 {
     font-size: 1rem;
     font-weight: bold;
     text-align: center;
     margin-top: 1rem;
-    color: rgb(16, 29, 70);
+    color: rgb(250, 250, 250);
   }
   ul.footer-list {
     list-style: none;
@@ -265,17 +268,18 @@ hr.style-two {
     display: block;
   }
   @include Respond(md) {
-    display: none;
+    display: block;
   }
   @include Respond(sm) {
+    display: none;
+  }
+  @include Respond(xs) {
     display: none;
   }
 }
 
 .mobile-side {
-  @include Respond(xxl) {
-    display: none;
-  }
+  margin-top: 2rem;
   @include Respond(xl) {
     display: none;
   }
@@ -283,9 +287,12 @@ hr.style-two {
     display: none;
   }
   @include Respond(md) {
-    display: block;
+    display: none;
   }
   @include Respond(sm) {
+    display: block;
+  }
+  @include Respond(xs) {
     display: block;
   }
 }

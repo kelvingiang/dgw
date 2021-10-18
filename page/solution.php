@@ -46,16 +46,16 @@
               $wp_query->the_post();
         ?>
               <div class="item" data-id="<?php echo $stt ?>">
-                <?php if (has_post_thumbnail()) { ?>
-                  <img class="item-img" src="<?php the_post_thumbnail_url() ?>" srcset="<?php the_post_thumbnail_url() ?>" />
-                <?php } else { ?>
-                  <img class="item-img" src="<?php echo PART_IMAGES . 'no-image.jpg' ?>" srcset="<?php echo PART_IMAGES . 'no-image.jpg' ?>" />
-                <?php } ?>
-                <div class="item-title">
-                  <a href="<?php echo get_the_permalink() ?>">
+                <a href="<?php echo get_the_permalink() ?>">
+                  <?php if (has_post_thumbnail()) { ?>
+                    <img class="item-img" src="<?php the_post_thumbnail_url() ?>" srcset="<?php the_post_thumbnail_url() ?>" />
+                  <?php } else { ?>
+                    <img class="item-img" src="<?php echo PART_IMAGES . 'no-image.jpg' ?>" srcset="<?php echo PART_IMAGES . 'no-image.jpg' ?>" />
+                  <?php } ?>
+                  <div class="item-title">
                     <?php the_title() ?>
-                  </a>
-                </div>
+                  </div>
+                </a>
               </div>
         <?php
               $stt++;
@@ -79,7 +79,7 @@
       var lastID = jQuery(".data-list > div:last-child").attr("data-id");
       var post = 'solutions';
       var cateID = '<?php echo $cate ?>';
-      var count =  '<?php echo get_option('more_load') ?>';
+      var count = '<?php echo get_option('more_load') ?>';
       var cate = 'solutions_category';
 
       jQuery.ajax({

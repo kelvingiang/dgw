@@ -13,7 +13,7 @@ class Controler_Main
             'controler_setting' => true,
             'controler_advertising' => false,
             'controler_case_study' => true,
-            'controler_downloads' => true,
+            'controler_downloads' => false,
             'controler_resources' => true,
             'controler_active' => true,
             'controler_industries' => true,

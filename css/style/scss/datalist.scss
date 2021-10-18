@@ -24,6 +24,7 @@
     width: 31%;
     position: relative;
     margin: 1rem 0.5rem;
+    padding: 0.5rem;
 
     text-align: center;
     @include Respond(lg) {
@@ -37,39 +38,44 @@
     }
 
     &-img {
-      width: 90%;
-      margin: 0.5rem 0rem 3rem;
+      width: 100%;
+      margin: 0rem 0rem 3rem;
       border-radius: 0.2rem;
     }
     &-title {
-      width: 100%;
+      width: 97%;
       position: absolute;
       bottom: 0.5rem;
+      padding-top: 4rem;
       display: flex;
       justify-content: center;
-      a {
-        font-size: 0.9rem;
-        font-weight: bold;
-        color: $color_blue_link;
-        display: block;
-        @include Respond(lg) {
-          font-size: 0.9rem;
-        }
-        @include Respond(md) {
-          font-size: 0.8rem;
-        }
-        @include Respond(sm) {
-          font-size: 0.7rem;
-        }
-        &:hover {
-          color: $color_blue_link_hover;
-        }
-      }
+      background-color: transparent;
+      z-index: -1;
+    
     }
     &:hover {
-      transform: scale(1.05, 1.05);
+      transform: scale(1.02, 1.02);
 
-      box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+      box-shadow: rgba(0, 0, 0, 0.56) 0px 2px 30px 1px;
+    }
+
+    a {
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: $color_blue_link;
+      display: block;
+      @include Respond(lg) {
+        font-size: 0.9rem;
+      }
+      @include Respond(md) {
+        font-size: 0.8rem;
+      }
+      @include Respond(sm) {
+        font-size: 0.7rem;
+      }
+      &:hover {
+        color: $color_blue_link_hover;
+      }
     }
   }
 }

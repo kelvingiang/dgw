@@ -25,10 +25,10 @@
         <?php echo get_post_meta(1, "_info_location_" . $_SESSION['languages'], true) ?>
       </div>
 
-      <div id='contact' style="color: #fff; background-color: #FC9106;  ">
-        <h2 style="padding: 1rem 1rem;   font-size: 1.5rem; "><?php _e('Contact Us') ?></h2>
+      <div id='contact' style="color: #fff; background-color: #253B50;  ">
+        <!-- <h2 style="padding: 1rem 1rem;   font-size: 1.1rem; "><?php // _e('Contact Us') ?></h2> -->
         <div style="padding-left: 1rem; ">
-          <div style="font-size: 1.2rem;"><?php echo get_post_meta(1, '_info_name_' . $_SESSION['languages'], true) ?></div>
+          <div style="font-size: 1rem;"><?php echo get_post_meta(1, '_info_name_' . $_SESSION['languages'], true) ?></div>
           <div><label><?php _e('Phone'); ?> :</label><?php echo get_post_meta(1, '_info_phone', true) ?></div>
           <div><label>E-mail :</label><?php echo get_post_meta(1, '_info_email', true) ?></div>
           <div><label><?php _e('Address') ?> : </label><?php echo get_post_meta(1, '_info_address_' . $_SESSION['languages'], true) ?></div>
@@ -43,7 +43,7 @@
     <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
       <div class="sidebar-space">
         <?php get_template_part('templates/template', 'side_cases'); ?>
-        <?php get_template_part('templates/template', 'side_active'); ?>
+        <?php //get_template_part('templates/template', 'side_active'); ?>
       </div>
     </div>
   </div>

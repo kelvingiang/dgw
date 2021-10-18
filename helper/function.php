@@ -186,19 +186,19 @@ function seo() {
 
         if (empty($cate) && empty($sp)) {
             add_filter('wp_title', 'custom_title');
-            echo '<title> Beautiful-Luggage ' . $suite['strPageName'] . $care . '</title>';
+            echo '<title> Digiwin' . $suite['strPageName']  .'</title>';
             echo '<meta name="description" content="' . $suite['strDescriptionSeo'] . '" />';
             echo '<meta name="keywords" content="' . $suite['strPageName'] . ', ' . $suite['txtTitleSeo'] . '" />';
         } elseif (!empty($cate)) {
             $cateArr = get_category_by_id($cate);
             add_filter('wp_title', 'custom_title');
-            echo '<title>' . $cateArr['name_vn'] . ' Beautiful-Luggage </title>';
+            echo '<title>' . $cateArr['name_vn'] . ' Digiwin</title>';
             echo '<meta name="description" content="beautiful, luggage,' . $suite['strDescriptionSeo'] . ' - ' . $cateArr['name_vn'] . '" />';
             echo '<meta name="keywords" content="beautiful, luggage,' . $suite['strPageName'] . ', ' . $suite['txtTitleSeo'] . ', ' . $cateArr['name_vn'] . '" />';
         } elseif (!empty($sp)) {
             $proArr = get_product($sp);
             add_filter('wp_title', 'custom_title');
-            echo '<title> ' . $proArr['seo_title'] . ' Beautiful-Luggage </title>';
+            echo '<title> ' . $proArr['seo_title'] . ' Digiwin</title>';
             echo '<meta name="description" content="' . $proArr['seo_description'] . '" />';
             echo '<meta name="keywords" content="' . 'Beautiful, ' . $proArr['seo_key'] . '" />';
         }

@@ -98,12 +98,15 @@ class Controler_Services
 
     public function sort_views_column($vars)
     {
-        if (isset($vars['orderby']) && 'setorder' == $vars['orderby']) {
+        // echo $vars['orderby'];
+        // die();
+        if (isset($vars['orderby']) && '_metabox_order' == $vars['orderby']) {
+         
             $vars = array_merge(
                 $vars,
                 array(
                     'meta_key' => '_metabox_order', //Custom field key
-                    'orderby' => '_metabox_order' //Custom field value (number)
+                    'orderby' => 'meta_value_num' //Custom field value (number)
                 )
             );
         }

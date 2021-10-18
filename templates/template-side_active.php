@@ -57,7 +57,7 @@
         <?php
         $tax = 'active_category';
         $tax_id = 6;
-        $wp_query = getCustomPostAtSideCate('active', -1, $tax, $tax_id);
+        $wp_query = getCustomPostAtSideCate('active', 5, $tax, $tax_id);
         while ($wp_query->have_posts()) {
             $wp_query->the_post();
         ?>

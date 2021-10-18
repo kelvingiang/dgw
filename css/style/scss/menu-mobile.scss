@@ -1,9 +1,49 @@
+$menu_mobile_color: rgba(8, 74, 150, 0.76);
+
 .menu-mobile {
-    font-size: 5rem;
-    .menu-mobile-ui {
-        .menu-mobile-item {
-            font-size: 1rem;
-            color: aqua;
-        }
+  @include Respond(md) {
+    display: block;
+  }
+  display: none;
+  margin-left: 2rem;
+  position: relative;
+  .menu-mobile-icon {
+    color:$menu_mobile_color;
+    cursor: pointer;
+    font-size: 1.5rem;
+
+    @include Respond(sm) {
+      font-size: 1.2rem;
     }
+    &:hover {
+      color: $menu_mobile_color;
+    }
+  }
+  .menu-mobile-ui {
+    display: none;
+    position: absolute;
+    background-color: azure;
+    border-radius: 0.5rem;
+    width: 150px;
+    .menu-mobile-item {
+      transition-duration: 1s;
+      border-bottom: 1px dotted #999;
+      display: flex;
+      &:hover {
+        background-color: $menu_mobile_color;
+        a {
+          color: #fff;
+        }
+      }
+      a {
+        font-weight: bold;
+        font-size: 1rem;
+        display: block;
+        color: $menu_mobile_color;
+        padding: 0.5rem 1rem;
+        width: 100%;
+        transition-duration: 1s;
+      }
+    }
+  }
 }

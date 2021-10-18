@@ -1,4 +1,4 @@
-<h2 class="h2-home-title"><?php  _e('Enterprise model success case')?></h2>
+<h2 class="h2-home-title"><?php _e('Enterprise model success case') ?></h2>
 <div id="casestudies-slider">
     <div class="owl-carousel owl-theme">
         <?php
@@ -8,8 +8,8 @@
             while ($wp_query->have_posts()) {
                 $wp_query->the_post();
         ?>
-                <div class="multi-item">
-                    <a href='<?php echo get_the_permalink() ?>'>
+                <a href='<?php echo get_the_permalink() ?>'>
+                    <div class="multi-item">
                         <div class="slider-multi-title">
                             <h2><?php the_title(); ?></h2>
                         </div>
@@ -20,11 +20,8 @@
                                 <img class="llimg" src="<?php echo PART_IMAGES . 'no-image.jpg' ?>" srcset="<?php echo PART_IMAGES . 'no-image.jpg' ?>" />
                             <?php } ?>
                         </div>
-                    </a>
-                    <div class="slider-multi-content">
-                        <?php// the_content(); ?>
                     </div>
-                </div>
+                </a>
         <?php
             }
         }

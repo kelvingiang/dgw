@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
+        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                     <div class="single-space">
                         <h2 class="single-space-title">
@@ -15,18 +15,15 @@
 
                         </div>
                     </div>
-
             <?php
                 endwhile;
             endif;
             ?>
         </div>
-        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12" style="margin-top: 3rem;">
-            <?php
-            $menu_category = 'active_category';
-            $menu_page = 'actives';
-            menuSide($menu_category, $menu_page);
-            ?>
+        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 computer-side">
+            <div style="margin-top: 3rem;">
+                <?php get_template_part('templates/template', 'side_cases'); ?>
+            </div>
         </div>
     </div>
     <div>
@@ -36,6 +33,12 @@
         // -1 se khong show phan load more
         $postCount = -1;
         inGroup($GroupPostType, $groupCategory, $postCount); ?>
+    </div>
+    <div class="mobile-side">
+        <?php get_template_part('templates/template', 'side_active'); ?>
+        <?php get_template_part('templates/template', 'side_cases');  ?>
+        <?php //menuSide($menu_category, $menu_page); 
+        ?>
     </div>
 </div>
 <?php get_footer(); ?>

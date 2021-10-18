@@ -63,7 +63,7 @@
         <?php
         //$menu_category = 'industries_category';
         //$menu_page = 'industry';
-        menuSide($menu_category, $menu_page);
+      //  menuSide($menu_category, $menu_page);
         ?>
     </div>
 </div>
