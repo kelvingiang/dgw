@@ -21,7 +21,7 @@ class Controler_Web_Setting
         $menu_slug = 'setting_page'; // TEN slug TEN DUY NHAT KO DC TRUNG VOI TRANG KHAC GAN TREN THANH DIA CHI OF MENU
         // THAM SO THU 5 GOI DEN HAM HIEN THI GIAO DIEN TRONG MENU
         $icon = PART_ICON . 'icon-setting.png';  // THAM SO THU 6 LA LINK DEN ICON DAI DIEN
-        $position = 3; // VI TRI HIEN THI TRONG MENU
+        $position = 2; // VI TRI HIEN THI TRONG MENU
 
         add_menu_page($page_title, $menu_title, $capability, $menu_slug, array($this, 'dispatchActive'), $icon, $position);
     }
