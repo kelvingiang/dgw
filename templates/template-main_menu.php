@@ -9,9 +9,9 @@
         <?php foreach (menu_main_list() as $key_main => $val_main) {  ?>
             <div class=' <?php echo $val_main['class'] ?>'>
                 <?php if (!empty($val_main['sub'])) { ?>
-                    <a href='' class='menu-main-item-link <?php echo $val_main['sub'] != '' ? 'has-sub' : '' ?> '>
+                    <label class='menu-main-item-link <?php echo $val_main['sub'] != '' ? 'has-sub' : '' ?> '>
                         <?php _e($val_main['name']);  ?>
-                    </a>
+                    </label>
                 <?php } else { ?>
                     <a href='<?php echo home_url($key_main); ?>' class='menu-main-item-link <?php echo $val_main['sub'] != '' ? 'has-sub' : '' ?> '>
                         <?php _e($val_main['name']);  ?>

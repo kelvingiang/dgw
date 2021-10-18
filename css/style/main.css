@@ -794,6 +794,8 @@ hr.style-two {
     padding: 0.7rem 1rem;
     z-index: 100003;
     border: 0.1rem solid #fff; }
+    .menu-main-item label {
+      padding: 0rem; }
     @media (max-width: 1199.98px) {
       .menu-main-item {
         padding: 0.5rem 0.6rem; } }

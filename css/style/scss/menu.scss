@@ -119,6 +119,10 @@ $bgHoverColor: rgba(231, 231, 231, 0.9);
     z-index: 100003;
     border: 0.1rem solid #fff;
 
+    label{
+      padding: 0rem;
+    }
+
     @include Respond(lg) {
       padding: 0.5rem 0.6rem;
     }
