@@ -41,7 +41,7 @@
     </div>
 
     <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
-      <div class="sidebar-space">
+      <div class="">
         <?php get_template_part('templates/template', 'side_cases'); ?>
         <?php //get_template_part('templates/template', 'side_active'); ?>
       </div>

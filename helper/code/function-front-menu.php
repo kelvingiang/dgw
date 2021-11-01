@@ -57,6 +57,8 @@ function menu_main_list()
         )
 
     );
+
+    $contact = 'contact-'.$_SESSION['languages'];
     // THIS ARRAY KEY APPLY LINK OF WEB 
     $arr = array(
         'about' => array(
@@ -103,7 +105,7 @@ function menu_main_list()
             'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
             'sub' => getCategories('active_category'),
         ),
-        'contact' => array(
+        "$contact" => array(
             'name' => "Contact Digiwin",
             'class' => 'menu-main-item',
             'sub' => ''

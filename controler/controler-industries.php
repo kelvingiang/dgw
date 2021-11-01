@@ -57,8 +57,9 @@ class Controler_Industries
         unset($columns['modified']); // an cot ngay mac dinh
         unset($columns['postdate']); // an cot ngay mac dinh
         //==== THEM COT VA BAN
-        $columns['content'] = __('Content');
+        // $columns['content'] = __('Content');
         $columns['category'] = __('Category');
+        $columns['author'] = __('Author');
         $columns['langguage'] = __('Langguage');
         $columns['setorder'] = __('Show Order');
 
@@ -72,9 +73,9 @@ class Controler_Industries
         global $post;
 
         switch ($columns) {
-            case 'content':
-                echo mySubContent(get_the_content());
-                break;
+            // case 'content':
+                // echo mySubContent(get_the_content());
+                // break;
             case 'category':
                 $terms = wp_get_post_terms($post->ID, 'industries_category');
                 if (count($terms) > 0) {

@@ -14,7 +14,7 @@ class Metabox_Home
         $id = 'admin-metabox-home';
         $title = __('Show In Home Page');
         $callback = array($this, 'display');
-        add_meta_box($id, $title, $callback, array('solutions', 'casestudies', 'active', 'services'));
+        add_meta_box($id, $title, $callback, array('post', 'resources', 'solutions', 'casestudies', 'active', 'services'));
     }
 
     public function display($post)

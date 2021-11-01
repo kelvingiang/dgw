@@ -55,14 +55,16 @@ class Controler_Slider
     public function manage_columns($columns)
     {
         $date_label = __('Create Date', 'suite');
-        unset($columns['date']); // an cot ngay mac dinh
-        unset($columns['modified']); // an cot ngay mac dinh
-        unset($columns['postdate']); // an cot ngay mac dinh
+       // unset($columns['date']); // an cot ngay mac dinh
+       // unset($columns['modified']); // an cot ngay mac dinh
+        unset($columns['home']); // an cot ngay mac dinh
+        unset($columns['category']); // an cot ngay mac dinh
         //==== THEM COT VA BAN
-        $columns['img'] = __('Image');
-        $columns['langguage'] = __('Langguage');
-        $columns['setorder'] = __('Show Order');
-        $columns['date'] = $date_label;
+        // $columns['img'] = __('Image');
+        // $columns['author'] = __('Author');
+        // $columns['langguage'] = __('Langguage');
+        // $columns['setorder'] = __('Show Order');
+        // $columns['date'] = $date_label;
         return $columns;
     }
 
@@ -70,23 +72,7 @@ class Controler_Slider
     public function render_columns($columns)
     {
         global $post;
-        if ($columns == 'img') {
-            if (has_post_thumbnail()) {
-                echo '<a href="' . get_admin_url() . 'post.php?post=' . $post->ID . '&action=edit">';
-                echo '<img  class="img-thumb"  src="' . get_the_post_thumbnail_url() . '">';
-                echo '</a>';
-            } else {
-                echo '<div class="without-img">' . __("Without Image") . '<div>';
-            }
-        }
-
-        if ($columns == 'langguage') {
-            _e(get_post_meta($post->ID, '_metabox_langguage', true));
-        }
-
-        if ($columns == 'setorder') {
-            echo get_post_meta($post->ID, '_metabox_order', true);
-        }
+       
     }
 
     //====== SAP SEP THEO TRINH TU

@@ -11,6 +11,10 @@ a {
   text-decoration: none;
 }
 
+p, a, i, label, h1, h2, h3, h4, h5, h6  {
+  font-family:  Arial, "Times New Roman", Helvetica, "sans-serifTimes", serif;
+}
+
 body:focus-within {
   scroll-behavior: smooth;
 }
@@ -30,7 +34,7 @@ body:focus-within {
 
 .company-name {
   font-size: 1.5rem;
-  color: rgb(255, 0, 0);
+  color: rgb(48, 47, 47);
   font-weight: bold;
   margin-top: 1rem;
   @include Respond(lg) {
@@ -52,6 +56,13 @@ body:focus-within {
     width: 100%;
     display: flex;
     justify-content: flex-end;
+  }
+}
+
+#wrapper{
+  margin-top: 0rem;
+  .entry-title{
+   color: transparent;
   }
 }
 
@@ -93,6 +104,17 @@ body:focus-within {
   @include Respond(sm) {
     font-size: 0.5rem;
   }
+}
+
+
+
+#page-404{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 500px;
 }
 
 .my-link {
@@ -209,6 +231,14 @@ hr.style-two {
     list-style: none;
     margin-top: 2rem;
     color: rgb(196, 196, 196);
+    li{
+      margin-top: 1rem;
+      a{
+        font-weight: bold;
+        padding-left: .5rem;
+        padding-right: .5rem;
+      }
+    }
   }
   .copy-right {
     display: flex;

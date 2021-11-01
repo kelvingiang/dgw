@@ -55,15 +55,16 @@ class Controler_Solutions
     public function manage_columns($columns)
     {
         $date_label = __('Create Date', 'suite');
-        unset($columns['date']); // an cot ngay mac dinh
-        unset($columns['modified']); // an cot ngay mac dinh
-        unset($columns['postdate']); // an cot ngay mac dinh
+      //  unset($columns['date']); // an cot ngay mac dinh
+       // unset($columns['modified']); // an cot ngay mac dinh
+       // unset($columns['postdate']); // an cot ngay mac dinh
         //==== THEM COT VA BAN
-        $columns['content'] = __('Content');
-        $columns['category'] = __('Category');
-        $columns['langguage'] = __('Langguage');
-        $columns['setorder'] = __('Show Order');
-        $columns['date'] = $date_label;
+       // $columns['content'] = __('Content');
+        // $columns['category'] = __('Category');
+        // $columns['author'] = __('Author');
+        // $columns['langguage'] = __('Langguage');
+        // $columns['setorder'] = __('Show Order');
+        // $columns['date'] = $date_label;
         return $columns;
     }
 
@@ -72,25 +73,25 @@ class Controler_Solutions
     {
         global $post;
         switch ($columns) {
-            case 'content':
+           // case 'content':
                // echo mySubContent(get_post_meta($post->ID, '_solution_value', true));
-                the_content();
-                break;
-            case 'category':
-                $terms = wp_get_post_terms($post->ID, 'solutions_category');
-                if (count($terms) > 0) {
-                    foreach ($terms as $key => $term) {
-                        echo '<a href=' . custom_redirect($term->slug) . '&' . $term->taxonomy . '=' . $term->slug . '>' . $term->name . '</a></br>';
-                    }
-                }
-                break;
-            case 'langguage':
-                _e(get_post_meta($post->ID, '_metabox_langguage', true));
-                break;
-            case 'setorder':
-                echo get_post_meta($post->ID, '_metabox_order', true);
-                break;
-        }
+             //   the_content();
+               // break;
+        //     case 'category':
+        //         $terms = wp_get_post_terms($post->ID, 'solutions_category');
+        //         if (count($terms) > 0) {
+        //             foreach ($terms as $key => $term) {
+        //                 echo '<a href=' . custom_redirect($term->slug) . '&' . $term->taxonomy . '=' . $term->slug . '>' . $term->name . '</a></br>';
+        //             }
+        //         }
+        //         break;
+        //     case 'langguage':
+        //         _e(get_post_meta($post->ID, '_metabox_langguage', true));
+        //         break;
+        //     case 'setorder':
+        //         echo get_post_meta($post->ID, '_metabox_order', true);
+        //         break;
+         }
     }
 
     //====== SAP SEP THEO TRINH TU

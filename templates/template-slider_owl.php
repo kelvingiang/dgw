@@ -26,7 +26,7 @@ $wp_query = new WP_Query($args);
 
                 <div class="item">
                     <img src="<?php echo $url[0] ?>" alt="<?php echo the_title(); ?>">
-                    <a href='<?php echo get_the_permalink() ?>'>
+                    <a>
                         <div class="owl-slider-title">
                             <h2><?php the_title(); ?></h2>
                         </div>
@@ -56,7 +56,7 @@ $wp_query = new WP_Query($args);
             nav: false,
             autoplay: true,
             auotplayTimeout: 30000,
-  dots: false,
+            dots: false,
             autoplayHoverPause: true,
             items: 1,
 

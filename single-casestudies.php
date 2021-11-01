@@ -16,9 +16,9 @@
                         <h2 class="single-space-title">
                             <?php the_title() ?>
                         </h2>
-                        <?php if (has_post_thumbnail()) : ?>
-                            <img class="single-space-img" src="<?php the_post_thumbnail_url() ?>" srcset="<?php the_post_thumbnail_url() ?>" />
-                        <?php endif; ?>
+                        <?php //if (has_post_thumbnail()) : ?>
+                            <!-- <img class="single-space-img" src="<?php //the_post_thumbnail_url() ?>" srcset="<?php //the_post_thumbnail_url() ?>" /> -->
+                        <?php //endif; ?>
                         <div class="single-space-content">
                             <?php the_content(); ?>
 
@@ -46,10 +46,10 @@
 
     <div>
         <?php
-        $GroupPostType = "casestudies";
-        $groupCategory = "casestudies_category";
-        $postCount = get_option('more_load'); // load cac post cung nhom , ko ap dung cho phan loadmore
-        inGroup($GroupPostType, $groupCategory, $postCount); ?>
+       // $GroupPostType = "casestudies";
+       // $groupCategory = "casestudies_category";
+       // $postCount = get_option('more_load'); // load cac post cung nhom , ko ap dung cho phan loadmore
+       // inGroup($GroupPostType, $groupCategory, $postCount); ?>
     </div>
 
     <div class="mobile-side">

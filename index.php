@@ -13,6 +13,7 @@
 
 <?php
 get_template_part('templates/template', 'home_business');
+
 get_template_part('templates/template', 'home_industry');
 get_template_part('templates/template', 'home_cases');
 get_template_part('templates/template', 'home_news');

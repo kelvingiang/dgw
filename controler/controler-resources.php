@@ -53,15 +53,16 @@ class Controler_Resources
     public function manage_columns($columns)
     {
         $date_label = __('Create Date');
-        unset($columns['date']); // an cot ngay mac dinh
+       // unset($columns['date']); // an cot ngay mac dinh
         unset($columns['modified']); // an cot ngay mac dinh
         unset($columns['postdate']); // an cot ngay mac dinh
         //==== THEM COT VA BAN
-        $columns['content'] = __('Content');
-        $columns['category'] = __('Category');
-        $columns['langguage'] = __('Langguage');
-        $columns['setorder'] = __('Show Order');
-        $columns['date'] = $date_label;
+        // $columns['content'] = __('Content');
+        // $columns['category'] = __('Category');
+        // $columns['author'] = __('Author');
+        // $columns['langguage'] = __('Langguage');
+        // $columns['setorder'] = __('Show Order');
+        // $columns['date'] = $date_label;
         return $columns;
     }
 
@@ -70,9 +71,9 @@ class Controler_Resources
     {
         global $post;
         switch ($columns) {
-            case 'content':
-                echo mySubContent(get_the_content());
-                break;
+                // case 'content':
+                // echo mySubContent(get_the_content());
+                // break;
             case 'category':
                 $terms = wp_get_post_terms($post->ID, 'resources_category');
 
@@ -82,13 +83,7 @@ class Controler_Resources
                     }
                 }
                 break;
-            case 'langguage':
-                _e(get_post_meta($post->ID, '_metabox_langguage', true));
-                break;
-
-            case 'setorder':
-                echo get_post_meta($post->ID, '_metabox_order', true);
-                break;
+        
         }
     }
 

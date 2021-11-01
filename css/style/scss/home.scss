@@ -202,7 +202,7 @@
     .business-item-img {
       img {
         transition: border 0.5s linear;
-        width: 70%;
+        width: 63%;
         opacity: 0.7;
       }
     }
@@ -229,7 +229,7 @@
   .industry-home-item {
     width: calc(25% - 1rem);
     text-align: center;
-    height: 150px;
+    //height: 100px;
     display: flex;
     flex-direction: column;
     margin: 0.5rem;
@@ -239,15 +239,15 @@
     transition: all 1s linear;
     font-size: 1.2rem;
     @include Respond(lg) {
-      height: 120px;
+     // height: 120px;
       font-size: 1rem;
     }
     @include Respond(md) {
-      height: 100px;
+     // height: 100px;
       font-size: 0.9rem;
     }
     @include Respond(sm) {
-      height: 80px;
+      //height: 80px;
       font-size: 0.7rem;
     }
     .industry-item-img {

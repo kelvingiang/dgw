@@ -1,15 +1,9 @@
 <?php get_header(); ?>
-<main id="content">
-<article id="post-0" class="post not-found">
-<header class="header">
-<h1 class="entry-title"><?php esc_html_e( 'Not Found', 'blankslate' ); ?></h1>
-</header>
-<div class="entry-content">
-<p><?php esc_html_e( 'Nothing found for the requested page. Try a search instead?', 'blankslate' ); ?></p>
-<?php get_search_form(); ?>
-</div>
-</article>
 
-</main>
-<?php get_sidebar(); ?>
+<div id="page-404">
+    <h1> 404 Page</h1>
+    <img src="<?php echo PART_IMAGES . 'no-images.png' ?>" />
+</div>
+
+
 <?php get_footer(); ?>

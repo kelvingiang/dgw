@@ -1,11 +1,8 @@
 .column-cb {
-  width: 30%; }
+  width: 2% !important; }
 
 .column-title {
-  width: 20%; }
-
-.column-content {
-  width: 60%; }
+  width: 30%; }
 
 .column-setorder {
   width: 8%; }

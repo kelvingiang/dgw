@@ -44,7 +44,7 @@
             <ul class="content-list">
                 <?php
                 // LAY CATAGORY CUA POST
-                $wp_query = getPostCategory('news', 5);
+                $wp_query = getCustomPostCateAtHome('resources', 'news',  5);
                 if ($wp_query->have_posts()) {
                     while ($wp_query->have_posts()) {
                         $wp_query->the_post();
@@ -60,13 +60,14 @@
                 wp_reset_query();
                 ?>
             </ul>
-            <a class="content-more my-link" href="<?php echo home_url('news') ?>"><i class="fas fa-chevron-circle-right"></i> <?php _e('Read More') ?></a>
+                <!-- 69 is category ID -->
+            <a class="content-more my-link" href="<?php echo home_url('resource/cate/69/tag/') ?>"><i class="fas fa-chevron-circle-right"></i> <?php _e('Read More') ?></a>
         </div>
         <div class="content-article">
             <ul class="content-list">
                 <?php
-                // LAY CATAGORY CUA POST
-                $wp_query = getPostCategory('article', 5);
+                // LAY CATEGORY CUA POST
+                $wp_query = getCustomPostCateAtHome('resources', 'article',  5);
                 if ($wp_query->have_posts()) {
                     while ($wp_query->have_posts()) {
                         $wp_query->the_post();
@@ -82,7 +83,8 @@
                 wp_reset_query();
                 ?>
             </ul>
-            <a class="content-more my-link" href="<?php echo home_url('article') ?>"><i class="fas fa-chevron-circle-right"></i> <?php _e('Read More') ?></a>
+                <!-- 70 is category ID -->
+            <a class="content-more my-link" href="<?php echo home_url('resource/cate/105/tag/') ?>"><i class="fas fa-chevron-circle-right"></i> <?php _e('Read More') ?></a>
 
         </div>
         <div class="content-cases">
@@ -95,7 +97,7 @@
                         $wp_query->the_post();
                 ?>
                         <li class="row">
-                           <span class="col-3"><label> <?php echo get_the_date('Y-m-d', get_the_ID()) ?></label></span> 
+                            <span class="col-3"><label> <?php echo get_the_date('Y-m-d', get_the_ID()) ?></label></span>
                             <span class="col-9"><a class="my-link" href="<?php echo get_the_permalink() ?>"><?php the_title(); ?></a></span>
                         </li>
                 <?php
@@ -111,15 +113,15 @@
         <div class="content-download">
             <ul class="content-list">
                 <?php
-                // LAY CUSTOMPOST
-                $wp_query = getCustomPostAtSide('resources', 5);
+                // LAY CUSTOMPOST category
+                $wp_query = getCustomPostCateAtHome('resources', 'download',  5);
                 if ($wp_query->have_posts()) {
                     while ($wp_query->have_posts()) {
                         $wp_query->the_post();
                 ?>
                         <li class="row">
-                         <span class="col-3">   <label> <?php echo get_the_date('Y-m-d', get_the_ID()) ?></label></span>
-                         <span class="col-9">   <a class="my-link" href="<?php echo get_the_permalink() ?>"><?php the_title(); ?></a></span>
+                            <span class="col-3"> <label> <?php echo get_the_date('Y-m-d', get_the_ID()) ?></label></span>
+                            <span class="col-9"> <a class="my-link" href="<?php echo get_the_permalink() ?>"><?php the_title(); ?></a></span>
                         </li>
                 <?php
                     }
@@ -128,7 +130,10 @@
                 wp_reset_query();
                 ?>
             </ul>
-            <a class="content-more my-link" href="<?php echo home_url('resource') ?>"><i class="fas fa-chevron-circle-right"></i> <?php _e('Read More') ?></a>
+            <!-- 104 is category ID -->
+            <a class="content-more my-link" href="<?php echo home_url('resource/cate/104/tag/') ?>">
+                <i class="fas fa-chevron-circle-right"></i> <?php _e('Read More') ?>
+            </a>
         </div>
     </div>
 </div>

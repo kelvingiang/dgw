@@ -8,9 +8,9 @@
                         <h2 class="single-space-title">
                             <?php the_title() ?>
                         </h2>
-                        <?php if (has_post_thumbnail()) : ?>
-                            <img class="single-space-img" src="<?php the_post_thumbnail_url() ?>" srcset="<?php the_post_thumbnail_url() ?>" />
-                        <?php endif; ?>
+                        <?php //if (has_post_thumbnail()) : ?>
+                            <!-- <img class="single-space-img" src="<?php //the_post_thumbnail_url() ?>" srcset="<?php //the_post_thumbnail_url() ?>" /> -->
+                        <?php //endif; ?>
                         <div class="single-space-content">
                             <?php the_content(); ?>
 

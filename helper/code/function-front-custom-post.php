@@ -159,6 +159,42 @@ function getCustomPostAtHome($postType, $postCount)
     return $wp_query;
 }
 
+function getCustomPostCateAtHome($postType, $cateSlug, $postCount)
+{
+    $arr = array(
+        'post_type' => $postType,
+        'resources_category' => $cateSlug,
+        'posts_per_page' => $postCount,
+        'orderby' => 'meta_value_num',
+        'order' => 'DESC',
+        'meta_key' => '_metabox_order',
+        // get cac bai trong category
+
+        'meta_query'    => array(
+            array(
+                'key'       => '_metabox_langguage',
+                'value'     =>  $_SESSION['languages'],
+                'compare'   => '=',
+            ),
+
+            // array(
+            //     'key'       => '_metabox_home',
+            //     'value'     =>  true,
+            //     'compare'   => '=',
+            // ),
+
+        ),
+    );
+
+    $wp_query = new WP_Query($arr);
+    // echo "<pre>";
+    // print_r($wp_query);
+    // echo "</pre>";
+    return $wp_query;
+}
+
+
+
 
 
 function getCustomPostAtSideCate($postType, $postCount, $taxonomy, $cate)

@@ -53,15 +53,17 @@ class Controler_Services
     public function manage_columns($columns)
     {
         $date_label = __('Create Date');
-        unset($columns['date']); // an cot ngay mac dinh
+       // unset($columns['date']); // an cot ngay mac dinh
         unset($columns['modified']); // an cot ngay mac dinh
         unset($columns['postdate']); // an cot ngay mac dinh
         //==== THEM COT VA BAN
-        $columns['content'] = __('Content');
-        $columns['home'] = __('Top Page');
-        $columns['langguage'] = __('Langguage');
-        $columns['setorder'] = __('Show Order');
-        $columns['date'] = $date_label;
+        //$columns['content'] = __('Content');
+        $columns['category'] = __('Category');
+      // $columns['author'] = __('Author');
+       // $columns['home'] = __('Top Page');
+       // $columns['langguage'] = __('Langguage');
+      //  $columns['setorder'] = __('Show Order');
+      //  $columns['date'] = $date_label;
         return $columns;
     }
 
@@ -71,20 +73,18 @@ class Controler_Services
         global $post;
 
         switch ($columns) {
-            case 'content':
-                echo mySubContent(get_the_content());
-                break;
-            case 'home':
-                if ((get_post_meta($post->ID, '_metabox_home', true))) {
-                    echo "<div class='show-home'></div>";
+                //  case 'content':
+                // echo mySubContent(get_the_content());
+                // break;
+            case 'category':
+                $terms = wp_get_post_terms($post->ID, 'services_category');
+                if (count($terms) > 0) {
+                    foreach ($terms as $key => $term) {
+                        echo '<a href=' . custom_redirect($term->slug) . '&' . $term->taxonomy . '=' . $term->slug . '>' . $term->name . '</a></br>';
+                    }
                 }
                 break;
-            case 'langguage':
-                _e(get_post_meta($post->ID, '_metabox_langguage', true));
-                break;
-            case 'setorder':
-                echo get_post_meta($post->ID, '_metabox_order', true);
-                break;
+       
         }
     }
 
@@ -101,7 +101,7 @@ class Controler_Services
         // echo $vars['orderby'];
         // die();
         if (isset($vars['orderby']) && '_metabox_order' == $vars['orderby']) {
-         
+
             $vars = array_merge(
                 $vars,
                 array(

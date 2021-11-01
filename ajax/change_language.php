@@ -5,7 +5,7 @@ require('../../../../wp-load.php');
 $response = array('status' => 'error');
 
 if (isset($_POST)) {
-    $_SESSION['language'] = $_POST['type'];
+    $_SESSION['languages'] = $_POST['type'];
     $response = array('status' => 'ok');
 }
 

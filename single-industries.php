@@ -18,9 +18,9 @@
                             <a href="#challenge" style=" margin-right:2rem"> <?php _e('Industries Challenge') ?></a>
                             <a href="#solution"><?php _e('Industries Solution') ?></a>
                         </div>
-                        <?php if (has_post_thumbnail()) : ?>
-                            <img class="single-space-img" src="<?php the_post_thumbnail_url() ?>" srcset="<?php the_post_thumbnail_url() ?>" />
-                        <?php endif; ?>
+                        <?php //if (has_post_thumbnail()) : ?>
+                            <!-- <img class="single-space-img" src="<?php // the_post_thumbnail_url() ?>" srcset="<?php //the_post_thumbnail_url() ?>" /> -->
+                        <?php // endif; ?>
                         <div class="single-space-content">
                             <?php the_content(); ?>
 
@@ -54,10 +54,10 @@
     </div>
     <div>
         <?php
-        $GroupPostType = "industries";
-        $groupCategory = "industries_category";
-        $postCount = get_option('more_load');
-        inGroup($GroupPostType, $groupCategory, $postCount); ?>
+       // $GroupPostType = "industries";
+       // $groupCategory = "industries_category";
+       // $postCount = get_option('more_load');
+      //  inGroup($GroupPostType, $groupCategory, $postCount); ?>
     </div>
     <div class="mobile-side">
         <?php

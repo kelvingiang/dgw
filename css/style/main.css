@@ -1,6 +1,9 @@
 a {
   text-decoration: none; }
 
+p, a, i, label, h1, h2, h3, h4, h5, h6 {
+  font-family: Arial, "Times New Roman", Helvetica, "sans-serifTimes", serif; }
+
 body:focus-within {
   scroll-behavior: smooth; }
 
@@ -18,7 +21,7 @@ body:focus-within {
 
 .company-name {
   font-size: 1.5rem;
-  color: red;
+  color: #302f2f;
   font-weight: bold;
   margin-top: 1rem; }
   @media (max-width: 1199.98px) {
@@ -39,6 +42,11 @@ body:focus-within {
     width: 100%;
     display: flex;
     justify-content: flex-end; }
+
+#wrapper {
+  margin-top: 0rem; }
+  #wrapper .entry-title {
+    color: transparent; }
 
 .page-img {
   width: 100%;
@@ -74,6 +82,13 @@ body:focus-within {
   @media (max-width: 767.98px) {
     .link-languages {
       font-size: 0.5rem; } }
+
+#page-404 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 500px; }
 
 .my-link {
   cursor: pointer;
@@ -169,6 +184,12 @@ hr.style-two {
     list-style: none;
     margin-top: 2rem;
     color: #c4c4c4; }
+    #footer ul.footer-list li {
+      margin-top: 1rem; }
+      #footer ul.footer-list li a {
+        font-weight: bold;
+        padding-left: .5rem;
+        padding-right: .5rem; }
   #footer .copy-right {
     display: flex;
     justify-content: flex-start; }
@@ -249,16 +270,15 @@ hr.style-two {
   margin: 2rem 1rem; }
   .single-space-title {
     font-size: 1.6rem;
-    letter-spacing: 0.5rem;
     font-weight: bold;
-    margin: 2rem 0rem;
-    padding: 1rem 1.5rem;
+    margin: 0rem;
+    padding: 1rem 0rem;
     color: #0E4D9D; }
   .single-space-img {
     width: 90%;
     margin-left: 5%; }
   .single-space-content {
-    margin-top: 2rem; }
+    margin-top: 0rem; }
     .single-space-content img {
       border-radius: 0.5rem;
       border: 1px solid #666;
@@ -273,6 +293,9 @@ hr.style-two {
       font-size: 1.5rem; }
     .single-space-content p {
       clear: both; }
+    .single-space-content iframe {
+      width: 100%;
+      height: 500px; }
   .single-space .article-title {
     font-size: 1.1rem;
     color: #0E4D9D;
@@ -509,7 +532,7 @@ hr.style-two {
         font-size: 0.7rem; } }
     #business-home .business-item .business-item-img img {
       transition: border 0.5s linear;
-      width: 70%;
+      width: 63%;
       opacity: 0.7; }
     #business-home .business-item .business-item-content {
       font-weight: bold;
@@ -529,7 +552,6 @@ hr.style-two {
   #industry-home .industry-home-item {
     width: calc(25% - 1rem);
     text-align: center;
-    height: 150px;
     display: flex;
     flex-direction: column;
     margin: 0.5rem;
@@ -540,15 +562,12 @@ hr.style-two {
     font-size: 1.2rem; }
     @media (max-width: 1199.98px) {
       #industry-home .industry-home-item {
-        height: 120px;
         font-size: 1rem; } }
     @media (max-width: 991.98px) {
       #industry-home .industry-home-item {
-        height: 100px;
         font-size: 0.9rem; } }
     @media (max-width: 767.98px) {
       #industry-home .industry-home-item {
-        height: 80px;
         font-size: 0.7rem; } }
     #industry-home .industry-home-item .industry-item-img img {
       transition: border 0.5s linear;
@@ -1355,20 +1374,9 @@ hr.style-two {
   100% {
     left: 5%;
     opacity: 1; } }
-#slider .item {
-  max-height: 430px; }
-  @media (max-width: 1199.98px) {
-    #slider .item {
-      max-height: 450px; } }
-  @media (max-width: 991.98px) {
-    #slider .item {
-      max-height: 350px; } }
-  @media (max-width: 767.98px) {
-    #slider .item {
-      max-height: 250px; } }
-  #slider .item .owl-slider-title,
-  #slider .item .owl-slider-content {
-    display: none; }
+#slider .item .owl-slider-title,
+#slider .item .owl-slider-content {
+  display: none; }
 #slider .active a {
   color: white;
   font-size: 1rem; }

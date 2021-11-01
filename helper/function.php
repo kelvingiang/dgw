@@ -14,9 +14,10 @@ require_once DIR_HELPER . 'code/admin-add-filter.php';
   CHECK THE ARRAY IS NULL
   =============================================================== */
 
-function MenuMain($arr, $class = "menu-main-item", $item_link = 'menu-main-item-link', $item_bg = 'menu-main-item-bg', $hassub = 'has-sub') {
+function MenuMain($arr, $class = "menu-main-item", $item_link = 'menu-main-item-link', $item_bg = 'menu-main-item-bg', $hassub = 'has-sub')
+{
     foreach ($arr as $key => $val) {
-        ?>
+?>
         <div class="<?php echo $class ?>">
             <a href="<?php echo home_url($key) ?>" class="<?php echo $item_link ?> <?php echo is_array($val['sub']) ? $hassub : '' ?>">
                 <?php echo $val[$_SESSION['language']] ?>
@@ -30,47 +31,55 @@ function MenuMain($arr, $class = "menu-main-item", $item_link = 'menu-main-item-
                 </div>
             <?php } ?>
         </div>
-        <?php
+    <?php
     }
 }
 
-function MenuMobile($arr, $item_link = 'menu-mobile-item-link') {
+function MenuMobile($arr, $item_link = 'menu-mobile-item-link')
+{
     foreach ($arr as $key => $val) {
-        ?>
+    ?>
 
         <a href="<?php echo home_url($key) ?>" style="  " class="<?php echo $item_link ?>">
             <?php echo $val[$_SESSION['language']] ?>
         </a>
 
-        <?php
+<?php
     }
 }
 
 //====== SAP LAI ARRAY THEO THU TU GIAM DAN AP DUNG CATEGORY =================
-function cmp($a, $b) {
+function cmp($a, $b)
+{
     return strcmp($b['order'], $a['order']);
 }
 
-function getIndustryImage($id) {
+function getIndustryImage($id)
+{
     $img = "";
     switch ($id) {
-        case ('27'):
-        case('26'):
-        case('77'):
-            $img = PART_IMAGES.'industry/industry-1.jpg';
+
+        case ('77'):
+            $img = PART_IMAGES . 'industry/nhua.png';
+            break;
+        case ('78'):
+            $img = PART_IMAGES . 'industry/giaothong.png';
+            break;
+        case ('26'):
+            $img = PART_IMAGES . 'industry/chetao.png';
             break;
         case ('62'):
-        case('78'):
-             $img = PART_IMAGES.'industry/industry-2.png';
+            $img = PART_IMAGES . 'industry/kimloai.png';
             break;
-        default :
-            $img = PART_IMAGES.'industry/no-image.jpg';
+        default:
+            $img = PART_IMAGES . 'industry/no-image.png';
     };
     return $img;
 }
 
 //==== GET PARAM TREN URL============================================
-function getParams($name = null) {
+function getParams($name = null)
+{
     if ($name == null || empty($name)) {
         return $_REQUEST; // TRA VE GIA TRI REQUEST
     } else {
@@ -81,30 +90,35 @@ function getParams($name = null) {
     }
 }
 
-function custom_redirect($location) {
+function custom_redirect($location)
+{
     global $post_type;
     $location = admin_url('edit.php?post_type=' . $post_type);
     return $location;
 }
 
 //============= KIEM DU LIEU CHUYEN QUA BANG PHUONG POST HAY GET======================
-function isPost() {
+function isPost()
+{
     $flag = ($_SERVER['REQUEST_METHOD'] == 'POST') ? TRUE : FALSE;
     return $flag;
 }
 
 //==== FUNCTION SHOW SUB CONTENT============================================
-function mySubContent($data) {
+function mySubContent($data)
+{
     $str = explode('<!--more-->', $data);
     return $str[0] . '....';
 }
 
-function getImage($name = '') {
+function getImage($name = '')
+{
     return PART_IMAGES . $name;
 }
 
 //===============FUNCTION =================
-function createRandom($length) {
+function createRandom($length)
+{
     //$characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     $characters = "0123456789";
     $charsLength = strlen($characters) - 1;
@@ -116,7 +130,8 @@ function createRandom($length) {
     return $string;
 }
 
-function toBack($num) {
+function toBack($num)
+{
     $paged = max(1, $arrParams['paged']);
     $url = 'admin.php?page=' . $_REQUEST['page'] . '&paged=' . $paged . '&msg=' . $num;
     wp_redirect($url);
@@ -126,7 +141,8 @@ function toBack($num) {
 if (!is_admin()) {
 
     // custom admin login logo
-    function custom_login_logo() {
+    function custom_login_logo()
+    {
         echo '<style type="text/css">
 	h1 a { background-image: url(' . PART_IMAGES . 'logo.png' . ') !important; }
 	</style>';
@@ -139,7 +155,8 @@ if (!is_admin()) {
 }
 
 // ====================FUNCTION SEO=========================================================== 
-function seo() {
+function seo()
+{
     //  global $suite;
     global $suite;
     $suite = array(
@@ -151,7 +168,8 @@ function seo() {
     if (is_home() == true) {
 
         // THE DOI GIA TRI CUA TITLE WP_HEAD
-        function custom_title() {
+        function custom_title()
+        {
             global $suite;
             return $suite['txtTitleSeo'];
         }
@@ -186,7 +204,7 @@ function seo() {
 
         if (empty($cate) && empty($sp)) {
             add_filter('wp_title', 'custom_title');
-            echo '<title> Digiwin' . $suite['strPageName']  .'</title>';
+            echo '<title> Digiwin' . $suite['strPageName']  . '</title>';
             echo '<meta name="description" content="' . $suite['strDescriptionSeo'] . '" />';
             echo '<meta name="keywords" content="' . $suite['strPageName'] . ', ' . $suite['txtTitleSeo'] . '" />';
         } elseif (!empty($cate)) {
@@ -219,7 +237,8 @@ function seo() {
         }
 
         // THE DOI GIA TRI CUA TITLE WP_HEAD
-        function custom_title() {
+        function custom_title()
+        {
             global $strTitle;
             return $strTitle;
         }
@@ -233,7 +252,8 @@ function seo() {
     echo '<meta http-equiv="REFRESH" content="1800" />';
 }
 
-function uploadFileDownLoad($File, $name) {
+function uploadFileDownLoad($File, $name)
+{
 
     if (!empty($File['file_upload']['name'])) {
         $errors = array();

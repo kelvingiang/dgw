@@ -14,7 +14,7 @@
  </div>
 
 <div class="side-tab-content">
-    <div class="side-list content-tab-5 content-select">
+    <div class="side-list content-tab-5">
         <?php
         $tax = 'active_category';
         $tax_id = 5;
@@ -25,7 +25,7 @@
             <a href='<?php echo get_the_permalink(); ?>'>
                 <div class="side-list-item">
                     <div class="side-list-item-title">
-                        <?php the_title(); ?>
+                        <?php the_title(); ?>aaaa
                     </div>
                     <!-- <div class="side-list-item-img">
                         <?php //if (has_post_thumbnail()) { 
@@ -53,7 +53,7 @@
 
     <!-- // ===========================================================  -->
 
-    <div class="side-list content-tab-6">
+    <div class="side-list content-tab-6 content-select">
         <?php
         $tax = 'active_category';
         $tax_id = 6;

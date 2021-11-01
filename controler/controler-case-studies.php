@@ -53,16 +53,17 @@ class Controler_Case_Studies
     public function manage_columns($columns)
     {
         $date_label = __('Create Date');
-        unset($columns['date']); // an cot ngay mac dinh
+        //unset($columns['date']); // an cot ngay mac dinh
         unset($columns['modified']); // an cot ngay mac dinh
         unset($columns['postdate']); // an cot ngay mac dinh
         //==== THEM COT VA BAN
-        $columns['content'] = __('Content');
-        $columns['category'] = __('Category');
-        $columns['home'] = __('Top Page');
-        $columns['langguage'] = __('Langguage');
-        $columns['setorder'] = __('Show Order');
-        $columns['date'] = $date_label;
+        // $columns['content'] = __('Content');
+        // $columns['category'] = __('Category');
+        // $columns['author'] = __('Author');
+        // $columns['home'] = __('Top Page');
+        // $columns['langguage'] = __('Langguage');
+        // $columns['setorder'] = __('Show Order');
+        // $columns['date'] = $date_label;
         return $columns;
     }
 
@@ -71,9 +72,9 @@ class Controler_Case_Studies
     {
         global $post;
         switch ($columns) {
-            case 'content':
-                echo mySubContent(get_the_content());
-                break;
+            // case 'content':
+                // echo mySubContent(get_the_content());
+                // break;
             case 'category':
                 $terms = wp_get_post_terms($post->ID, 'casestudies_category');
 
@@ -83,18 +84,7 @@ class Controler_Case_Studies
                     }
                 }
                 break;
-            case 'home':
-                if ((get_post_meta($post->ID, '_metabox_home', true))) {
-                    echo "<div class='show-home'></div>";
-                }
-                break;
-            case 'langguage':
-                _e(get_post_meta($post->ID, '_metabox_langguage', true));
-                break;
-
-            case 'setorder':
-                echo get_post_meta($post->ID, '_metabox_order', true);
-                break;
+           
         }
     }
 
