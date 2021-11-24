@@ -36,21 +36,22 @@ function getCustomsPost($postType, $postCount)
             $wp_query->the_post();
             $tags = wp_get_post_terms(get_the_ID(), 'casestudies_tags');
 ?>
-            <div class="item" data-id="<?php echo $stt ?>">
-                <a href="<?php echo get_the_permalink() ?>">
+<div class="item" data-id="<?php echo $stt ?>">
+    <a href="<?php echo get_the_permalink() ?>">
 
-                    <?php if (has_post_thumbnail()) { ?>
-                        <img class="item-img" src="<?php the_post_thumbnail_url() ?>" srcset="<?php the_post_thumbnail_url() ?>" />
-                    <?php } else { ?>
-                        <img class="item-img" src="<?php echo PART_IMAGES . 'no-image.jpg' ?>" srcset="<?php echo PART_IMAGES . 'no-image.jpg' ?>" />
-                    <?php } ?>
+        <?php if (has_post_thumbnail()) { ?>
+        <img class="item-img" src="<?php the_post_thumbnail_url() ?>" srcset="<?php the_post_thumbnail_url() ?>" />
+        <?php } else { ?>
+        <img class="item-img" src="<?php echo PART_IMAGES . 'no-image.jpg' ?>"
+            srcset="<?php echo PART_IMAGES . 'no-image.jpg' ?>" />
+        <?php } ?>
 
-                    <div class="item-title">
-                        <?php the_title() ?>
-                    </div>
-                </a>
-            </div>
-    <?php
+        <div class="item-title">
+            <?php the_title() ?>
+        </div>
+    </a>
+</div>
+<?php
             $stt++;
         }
     }
@@ -113,19 +114,19 @@ function getCustomsPostCate($param)
         }
     }
     ?>
-    <nav class="menu-cate-list">
-        <?php foreach ($arr as $key => $val) { ?>
-            <div class="<?php echo $param['tag'] == $key ? 'menu-cate-list-active' : '' ?>">
-                <?php if ($param['tag'] == $key) { ?>
-                    <label><?php echo $val['name']; ?></label>
-                <?php } else { ?>
-                    <a href="<?php echo home_url($param['pagename']) . '/cate/' .  $param['cate'] . '/tag/' . $val['ID'] ?>">
-                        <?php echo $val['name']; ?>
-                    </a>
-                <?php } ?>
-            </div>
+<nav class="menu-cate-list">
+    <?php foreach ($arr as $key => $val) { ?>
+    <div class="<?php echo $param['tag'] == $key ? 'menu-cate-list-active' : '' ?>">
+        <?php if ($param['tag'] == $key) { ?>
+        <label><?php echo $val['name']; ?></label>
+        <?php } else { ?>
+        <a href="<?php echo home_url($param['pagename']) . '/cate/' .  $param['cate'] . '/tag/' . $val['ID'] ?>">
+            <?php echo $val['name']; ?>
+        </a>
         <?php } ?>
-    </nav>
+    </div>
+    <?php } ?>
+</nav>
 <?php
 }
 
@@ -267,11 +268,11 @@ function getPostCategory($cate, $postCount)
                 'compare'   => '=',
             ),
 
-            //            array(
-            //                'key'       => '_metabox_home',
-            //                'value'     =>  true,
-            //                'compare'   => '=',
-            //            ),
+            // array(
+            //     'key'       => '_metabox_home',
+            //     'value'     =>  true,
+            //     'compare'   => '=',
+            // ),
 
         ),
     );

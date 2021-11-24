@@ -27,10 +27,11 @@
                     while ($wp_query->have_posts()) {
                         $wp_query->the_post();
                 ?>
-                        <li class="row">
-                            <span class="col-3"><label> <?php echo get_the_date('Y-m-d', get_the_ID()) ?></label></span>
-                            <span class="col-9"><a class="my-link" href="<?php echo get_the_permalink() ?>"><?php the_title(); ?></a></span>
-                        </li>
+                <li class="row">
+                    <span class="col-3"><label> <?php echo get_the_date('Y-m-d', get_the_ID()) ?></label></span>
+                    <span class="col-9"><a class="my-link"
+                            href="<?php echo get_the_permalink() ?>"><?php the_title(); ?></a></span>
+                </li>
                 <?php
                     }
                 }
@@ -38,7 +39,8 @@
                 wp_reset_query();
                 ?>
             </ul>
-            <a class="content-more my-link" href="<?php echo home_url('actives') ?>"><i class="fas fa-chevron-circle-right"></i> <?php _e('Read More') ?></a>
+            <a class="content-more my-link" href="<?php echo home_url('activities') ?>"><i
+                    class="fas fa-chevron-circle-right"></i> <?php _e('Read More') ?></a>
         </div>
         <div class="content-news">
             <ul class="content-list">
@@ -49,10 +51,11 @@
                     while ($wp_query->have_posts()) {
                         $wp_query->the_post();
                 ?>
-                        <li class="row">
-                            <span class="col-3"><label> <?php echo get_the_date('Y-m-d', get_the_ID()) ?></label></span>
-                            <span class="col-9"><a class="my-link" href="<?php echo get_the_permalink() ?>"><?php the_title(); ?></a></span>
-                        </li>
+                <li class="row">
+                    <span class="col-3"><label> <?php echo get_the_date('Y-m-d', get_the_ID()) ?></label></span>
+                    <span class="col-9"><a class="my-link"
+                            href="<?php echo get_the_permalink() ?>"><?php the_title(); ?></a></span>
+                </li>
                 <?php
                     }
                 }
@@ -60,8 +63,9 @@
                 wp_reset_query();
                 ?>
             </ul>
-                <!-- 69 is category ID -->
-            <a class="content-more my-link" href="<?php echo home_url('resource/cate/69/tag/') ?>"><i class="fas fa-chevron-circle-right"></i> <?php _e('Read More') ?></a>
+            <!-- 69 is category ID -->
+            <a class="content-more my-link" href="<?php echo home_url('resource/cate/69/tag/') ?>"><i
+                    class="fas fa-chevron-circle-right"></i> <?php _e('Read More') ?></a>
         </div>
         <div class="content-article">
             <ul class="content-list">
@@ -72,10 +76,11 @@
                     while ($wp_query->have_posts()) {
                         $wp_query->the_post();
                 ?>
-                        <li class="row">
-                            <span class="col-3"> <label> <?php echo get_the_date('Y-m-d', get_the_ID()) ?></label></span>
-                            <span class="col-9"> <a class="my-link" href="<?php echo get_the_permalink() ?>"><?php the_title(); ?></a></span>
-                        </li>
+                <li class="row">
+                    <span class="col-3"> <label> <?php echo get_the_date('Y-m-d', get_the_ID()) ?></label></span>
+                    <span class="col-9"> <a class="my-link"
+                            href="<?php echo get_the_permalink() ?>"><?php the_title(); ?></a></span>
+                </li>
                 <?php
                     }
                 }
@@ -83,8 +88,9 @@
                 wp_reset_query();
                 ?>
             </ul>
-                <!-- 70 is category ID -->
-            <a class="content-more my-link" href="<?php echo home_url('resource/cate/105/tag/') ?>"><i class="fas fa-chevron-circle-right"></i> <?php _e('Read More') ?></a>
+            <!-- 70 is category ID -->
+            <a class="content-more my-link" href="<?php echo home_url('resource/cate/105/tag/') ?>"><i
+                    class="fas fa-chevron-circle-right"></i> <?php _e('Read More') ?></a>
 
         </div>
         <div class="content-cases">
@@ -96,10 +102,11 @@
                     while ($wp_query->have_posts()) {
                         $wp_query->the_post();
                 ?>
-                        <li class="row">
-                            <span class="col-3"><label> <?php echo get_the_date('Y-m-d', get_the_ID()) ?></label></span>
-                            <span class="col-9"><a class="my-link" href="<?php echo get_the_permalink() ?>"><?php the_title(); ?></a></span>
-                        </li>
+                <li class="row">
+                    <span class="col-3"><label> <?php echo get_the_date('Y-m-d', get_the_ID()) ?></label></span>
+                    <span class="col-9"><a class="my-link"
+                            href="<?php echo get_the_permalink() ?>"><?php the_title(); ?></a></span>
+                </li>
                 <?php
                     }
                 }
@@ -107,7 +114,8 @@
                 wp_reset_query();
                 ?>
             </ul>
-            <a class="content-more my-link" href="<?php echo home_url('cases') ?>"><i class="fas fa-chevron-circle-right"></i> <?php _e('Read More') ?></a>
+            <a class="content-more my-link" href="<?php echo home_url('cases') ?>"><i
+                    class="fas fa-chevron-circle-right"></i> <?php _e('Read More') ?></a>
 
         </div>
         <div class="content-download">
@@ -119,10 +127,11 @@
                     while ($wp_query->have_posts()) {
                         $wp_query->the_post();
                 ?>
-                        <li class="row">
-                            <span class="col-3"> <label> <?php echo get_the_date('Y-m-d', get_the_ID()) ?></label></span>
-                            <span class="col-9"> <a class="my-link" href="<?php echo get_the_permalink() ?>"><?php the_title(); ?></a></span>
-                        </li>
+                <li class="row">
+                    <span class="col-3"> <label> <?php echo get_the_date('Y-m-d', get_the_ID()) ?></label></span>
+                    <span class="col-9"> <a class="my-link"
+                            href="<?php echo get_the_permalink() ?>"><?php the_title(); ?></a></span>
+                </li>
                 <?php
                     }
                 }
@@ -138,16 +147,16 @@
     </div>
 </div>
 <script>
-    jQuery(document).ready(function() {});
+jQuery(document).ready(function() {});
 
-    function ChangSelect(titleSelect, contentSelect) {
-        jQuery(titleSelect).parents().siblings('.news-home-content').children().removeClass('content-select');
+function ChangSelect(titleSelect, contentSelect) {
+    jQuery(titleSelect).parents().siblings('.news-home-content').children().removeClass('content-select');
 
-        jQuery(titleSelect).siblings().removeClass('title-select');
+    jQuery(titleSelect).siblings().removeClass('title-select');
 
-        jQuery(titleSelect).addClass('title-select');
+    jQuery(titleSelect).addClass('title-select');
 
-        jQuery(titleSelect).parents().siblings('.news-home-content').children(contentSelect).addClass('content-select');
+    jQuery(titleSelect).parents().siblings('.news-home-content').children(contentSelect).addClass('content-select');
 
-    }
+}
 </script>

@@ -1,4 +1,7 @@
 <?php
+$contact = 'contact-' . $_SESSION['languages'];
+$about   =  'about-' . $_SESSION['languages'];
+
 function menu_home_list()
 {
     $arr = array(
@@ -13,14 +16,14 @@ function menu_home_list()
 function menu_mobile_list()
 {
     $arr = array(
-        "about" => "About",
+        $GLOBALS['about'] => "About",
         "cases" => "Cases Tudies",
         "industry" => "Industries",
         "solution" => "Solutions",
         "service" => "Service",
         "resource" => "Resources",
-        "actives" => "Active",
-        "contact" => "Contact Digiwin"
+        "activities" => "Active",
+        $GLOBALS['contact'] => "Contact Digiwin"
     );
     return $arr;
 }
@@ -58,13 +61,12 @@ function menu_main_list()
 
     );
 
-    $contact = 'contact-'.$_SESSION['languages'];
     // THIS ARRAY KEY APPLY LINK OF WEB 
     $arr = array(
-        'about' => array(
+        $GLOBALS['about'] => array(
             'name' => "About",
             'class' => 'menu-main-item', // neu co sub menu phai them sub Class
-           // 'subClass' => 'menu-main-sub-1',
+            // 'subClass' => 'menu-main-sub-1',
             'sub' => '',
             //'sub' => $homeArr,
         ),
@@ -99,13 +101,13 @@ function menu_main_list()
             'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
             'sub' => getCategories('resources_category'),
         ),
-        'actives' => array(
+        'activities' => array(
             'name' => "Active",
             'class' => 'menu-main-item',
             'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
             'sub' => getCategories('active_category'),
         ),
-        "$contact" => array(
+        $GLOBALS['contact'] => array(
             'name' => "Contact Digiwin",
             'class' => 'menu-main-item',
             'sub' => ''
