@@ -56,9 +56,10 @@ class Controler_Industries
         unset($columns['date']); // an cot ngay mac dinh
         unset($columns['modified']); // an cot ngay mac dinh
         unset($columns['postdate']); // an cot ngay mac dinh
+        unset($columns['category']); // an cot ngay mac dinh
         //==== THEM COT VA BAN
         // $columns['content'] = __('Content');
-        $columns['category'] = __('Category');
+        // $columns['category'] = __('Category');
         $columns['author'] = __('Author');
         $columns['langguage'] = __('Langguage');
         $columns['setorder'] = __('Show Order');
@@ -73,20 +74,20 @@ class Controler_Industries
         global $post;
 
         switch ($columns) {
-            // case 'content':
+                // case 'content':
                 // echo mySubContent(get_the_content());
                 // break;
-            case 'category':
-                $terms = wp_get_post_terms($post->ID, 'industries_category');
-                if (count($terms) > 0) {
-                    foreach ($terms as $key => $term) {
-                        echo '<a href=' . custom_redirect($term->slug) . '&' . $term->taxonomy . '=' . $term->slug . '>' . $term->name . '</a></br>';
-                    }
-                }
-                break;
-            case 'langguage':
-                _e(get_post_meta($post->ID, '_metabox_langguage', true));
-                break;
+                // case 'category':
+                //     $terms = wp_get_post_terms($post->ID, 'industries_category');
+                //     if (count($terms) > 0) {
+                //         foreach ($terms as $key => $term) {
+                //             echo '<a href=' . custom_redirect($term->slug) . '&' . $term->taxonomy . '=' . $term->slug . '>' . $term->name . '</a></br>';
+                //         }
+                //     }
+                //     break;
+                // case 'langguage':
+                //     _e(get_post_meta($post->ID, '_metabox_langguage', true));
+                //     break;
             case 'setorder':
                 echo get_post_meta($post->ID, '_metabox_order', true);
                 break;

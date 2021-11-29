@@ -86,7 +86,32 @@ function getCustomsPostByCate($postType, $cate, $postCount, $taxonomy)
 
     $wp_query = new WP_Query($arr);
 
-    return $wp_query;
+    //return $wp_query;
+    if ($wp_query->have_posts()) {
+        $stt = 1;
+        while ($wp_query->have_posts()) {
+            $wp_query->the_post();
+            $tags = wp_get_post_terms(get_the_ID(), 'casestudies_tags');
+        ?>
+<div class="item" data-id="<?php echo $stt ?>">
+    <a href="<?php echo get_the_permalink() ?>">
+
+        <?php if (has_post_thumbnail()) { ?>
+        <img class="item-img" src="<?php the_post_thumbnail_url() ?>" srcset="<?php the_post_thumbnail_url() ?>" />
+        <?php } else { ?>
+        <img class="item-img" src="<?php echo PART_IMAGES . 'no-image.jpg' ?>"
+            srcset="<?php echo PART_IMAGES . 'no-image.jpg' ?>" />
+        <?php } ?>
+
+        <div class="item-title">
+            <?php the_title() ?>
+        </div>
+    </a>
+</div>
+<?php
+            $stt++;
+        }
+    }
 }
 
 function getCustomsPostCate($param)

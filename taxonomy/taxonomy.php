@@ -15,7 +15,7 @@ class Taxonomy_Main
 
             'taxonomy_casestudies' => true,
             'taxonomy_advertising' => true,
-            'taxonomy_industries' => true,
+            'taxonomy_industries' => false,
             'taxonomy_solution' => true,
             'taxonomy_resource' => true,
             'taxonomy_active' => true,

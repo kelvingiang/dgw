@@ -12,7 +12,7 @@ class Metabox_Main
             'metabox_web' => TRUE,
             'metabox_download' => TRUE,
             'metabox_langguage' => TRUE,
-            'metabox_industries' => TRUE,
+            'metabox_industries' => FALSE,
             'metabox_service' => FALSE,
             'metabox_solution' => FALSE,
             'metabox_active' => FALSE,

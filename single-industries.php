@@ -1,9 +1,9 @@
 <?php get_header(); ?>
 <div class="menu-sub">
     <?php
-    $menu_category = 'industries_category';
-    $menu_page = 'industry';
-    menuSub($menu_category, $menu_page);
+    // $menu_category = 'industries_category';
+    // $menu_page = 'industry';
+    // menuSub($menu_category, $menu_page);
     ?>
 </div>
 <div class="container-fluid">
@@ -14,15 +14,17 @@
                 <h2 class="single-space-title">
                     <?php the_title() ?>
                 </h2>
-                <div style="margin-bottom: 0.5rem;">
-                    <a href="#challenge" style=" margin-right:2rem"> <?php _e('Industries Challenge') ?></a>
-                    <a href="#solution"><?php _e('Industries Solution') ?></a>
-                </div>
+                <!-- <div style="margin-bottom: 0.5rem;">
+                    <a href="#challenge" style=" margin-right:2rem"> <?php //_e('Industries Challenge') 
+                                                                        ?></a>
+                    <a href="#solution"><?php // _e('Industries Solution') 
+                                        ?></a>
+                </div> -->
                 <?php //if (has_post_thumbnail()) : 
                         ?>
                 <!-- <img class="single-space-img" src="<?php // the_post_thumbnail_url() 
                                                                 ?>" srcset="<?php //the_post_thumbnail_url() 
-                                                                                                                ?>" /> -->
+                                                                            ?>" /> -->
                 <?php // endif; 
                         ?>
                 <div class="single-space-content">
@@ -30,15 +32,19 @@
 
                 </div>
                 <hr>
-                <div id="challenge">
-                    <h3 class="article-title"><?php _e('Industries Challenge') ?></h3>
-                    <?php echo get_post_meta(get_the_ID(), '_industry_challenge', true) ?>
+                <!-- <div id="challenge">
+                    <h3 class="article-title"><?php //_e('Industries Challenge') 
+                                                ?></h3>
+                    <?php //echo get_post_meta(get_the_ID(), '_industry_challenge', true) 
+                    ?>
                 </div>
                 <hr>
                 <div id="solution">
-                    <h3 class="article-title"><?php _e('Industries Solution') ?></h3>
-                    <?php echo get_post_meta(get_the_ID(), '_industry_solution', true) ?>
-                </div>
+                    <h3 class="article-title"><?php //_e('Industries Solution') 
+                                                ?></h3>
+                    <?php //echo get_post_meta(get_the_ID(), '_industry_solution', true) 
+                    ?>
+                </div> -->
             </div>
 
             <?php

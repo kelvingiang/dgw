@@ -81,7 +81,8 @@ function menu_main_list()
             'name' => "Industries",
             'class' => 'menu-main-item ',
             'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
-            'sub' => getCategories('industries_category'),
+            // 'sub' => 'getCategories('industries_category')',
+            'sub' => '',
         ),
         'solution' => array(
             'name' => "Solutions",

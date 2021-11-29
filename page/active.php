@@ -39,33 +39,9 @@
                     $postType = 'active';
                     $tax = 'active_category';
                     $wp_query = getCustomsPostByCate($postType, $cate, $postCount, $tax);
-
-                    if ($wp_query->have_posts()) {
-                        $stt = 1;
-                        while ($wp_query->have_posts()) {
-                            $wp_query->the_post();
-                ?>
-                <div class="item" data-id="<?php echo $stt ?>">
-                    <a href="<?php echo get_the_permalink() ?>">
-                        <?php if (has_post_thumbnail()) { ?>
-                        <img class="item-img" src="<?php the_post_thumbnail_url() ?>"
-                            srcset="<?php the_post_thumbnail_url() ?>" />
-                        <?php } else { ?>
-                        <img class="item-img" src="<?php echo PART_IMAGES . 'no-image.jpg' ?>"
-                            srcset="<?php echo PART_IMAGES . 'no-image.jpg' ?>" />
-                        <?php } ?>
-                        <div class="item-title">
-                            <?php the_title() ?>
-                        </div>
-                    </a>
-                </div>
-                <?php
-                            $stt++;
-                        }
-                    }
-                    wp_reset_postdata();
-                    wp_reset_query();
                 }
+                wp_reset_postdata();
+                wp_reset_query();
                 ?>
             </div>
 
