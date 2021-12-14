@@ -8,7 +8,7 @@ $cate_ID = $cate[0]->term_id;
 ?>
 <div class="container-fluid">
     <div class="row">
-        <?php if ($cate_ID !== 54) { ?>
+        <?php if ($cate_ID == 53) { ?>
         <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
             <?php } else { ?>
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -28,7 +28,7 @@ $cate_ID = $cate[0]->term_id;
                 </div>
             </div>
 
-            <?php if ($cate_ID !== 54) { ?>
+            <?php if ($cate_ID == 53) { ?>
             <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 computer-side">
                 <div style="margin-top: 3rem;">
                     <?php get_template_part('templates/template', 'side_active'); ?>

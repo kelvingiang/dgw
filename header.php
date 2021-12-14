@@ -96,6 +96,7 @@ window.onscroll = function() {
                                 <img class="company-logo" src="<?php echo PART_IMAGES . 'logo.png' ?>"
                                     style="margin: .5rem; " />
                             </a>
+
                         </div>
                     </div>
                     <div class="col-xl-5 col-lg-5 col-md-5 col-sm-8 col-8">

@@ -1,4 +1,5 @@
 <?php
+
 function getCategories($cate)
 {
     $arr = array();

@@ -18,20 +18,21 @@ function MenuMain($arr, $class = "menu-main-item", $item_link = 'menu-main-item-
 {
     foreach ($arr as $key => $val) {
 ?>
-        <div class="<?php echo $class ?>">
-            <a href="<?php echo home_url($key) ?>" class="<?php echo $item_link ?> <?php echo is_array($val['sub']) ? $hassub : '' ?>">
-                <?php echo $val[$_SESSION['language']] ?>
-            </a>
-            <div class="<?php echo $item_bg ?>"></div>
+<div class="<?php echo $class ?>">
+    <a href="<?php echo home_url($key) ?>"
+        class="<?php echo $item_link ?> <?php echo is_array($val['sub']) ? $hassub : '' ?>">
+        <?php echo $val[$_SESSION['languages']] ?>
+    </a>
+    <div class="<?php echo $item_bg ?>"></div>
 
-            <?php if (is_array($val['sub'])) { ?>
-                <div class="<?php echo $val['class'] ?>">
-                    <!--/====== AP DUNG DEQUY CHO MENU NHIEU CAPV ================================================-->
-                    <?php MenuMain($val['sub'], $val['class'] . '-item', $val['class'] . '-item-link', $val['class'] . '-item-bg', 'has-sub-sub'); ?>
-                </div>
-            <?php } ?>
-        </div>
-    <?php
+    <?php if (is_array($val['sub'])) { ?>
+    <div class="<?php echo $val['class'] ?>">
+        <!--/====== AP DUNG DEQUY CHO MENU NHIEU CAPV ================================================-->
+        <?php MenuMain($val['sub'], $val['class'] . '-item', $val['class'] . '-item-link', $val['class'] . '-item-bg', 'has-sub-sub'); ?>
+    </div>
+    <?php } ?>
+</div>
+<?php
     }
 }
 
@@ -40,9 +41,9 @@ function MenuMobile($arr, $item_link = 'menu-mobile-item-link')
     foreach ($arr as $key => $val) {
     ?>
 
-        <a href="<?php echo home_url($key) ?>" style="  " class="<?php echo $item_link ?>">
-            <?php echo $val[$_SESSION['language']] ?>
-        </a>
+<a href="<?php echo home_url($key) ?>" style="  " class="<?php echo $item_link ?>">
+    <?php echo $val[$_SESSION['languages']] ?>
+</a>
 
 <?php
     }
@@ -59,17 +60,23 @@ function getIndustryImage($id)
     $img = "";
     switch ($id) {
 
-        case ('77'):
+        case ('4043'):
+        case ('135'):
+            // case ('369'):
             $img = PART_IMAGES . 'industry/nhua.png';
             break;
-        case ('78'):
+        case ('3201'):
+        case ('206'):
+            //case ('368'):
             $img = PART_IMAGES . 'industry/giaothong.png';
+            break;
+        case ('3204'):
+        case ('299'):
+            // case ('205'):
+            $img = PART_IMAGES . 'industry/kimloai.png';
             break;
         case ('26'):
             $img = PART_IMAGES . 'industry/chetao.png';
-            break;
-        case ('62'):
-            $img = PART_IMAGES . 'industry/kimloai.png';
             break;
         default:
             $img = PART_IMAGES . 'industry/no-image.png';

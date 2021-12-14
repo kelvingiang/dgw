@@ -57,6 +57,7 @@ class Controler_Industries
         unset($columns['modified']); // an cot ngay mac dinh
         unset($columns['postdate']); // an cot ngay mac dinh
         unset($columns['category']); // an cot ngay mac dinh
+        unset($columns['home']); // an cot ngay mac dinh
         //==== THEM COT VA BAN
         // $columns['content'] = __('Content');
         // $columns['category'] = __('Category');
@@ -88,9 +89,9 @@ class Controler_Industries
                 // case 'langguage':
                 //     _e(get_post_meta($post->ID, '_metabox_langguage', true));
                 //     break;
-            case 'setorder':
-                echo get_post_meta($post->ID, '_metabox_order', true);
-                break;
+                // case 'setorder':
+                // echo get_post_meta($post->ID, '_metabox_order', true);
+                //  break;
         }
     }
 
