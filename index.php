@@ -1,4 +1,6 @@
 <?php get_header(); ?>
+<?php //get_template_part('templates/template', 'header'); 
+?>
 <div>
     <?php
 
@@ -19,5 +21,5 @@ get_template_part('templates/template', 'home_news');
 //get_template_part('templates/template', 'home_active');
 //get_template_part('templates/template', 'home_service');
 //get_template_part('templates/template', 'home_map');
-
+//get_template_part('templates/template', 'footer');
 get_footer();

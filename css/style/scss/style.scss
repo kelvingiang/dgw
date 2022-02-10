@@ -28,6 +28,13 @@ body:focus-within {
   scroll-behavior: smooth;
 }
 
+// header.header {
+//   h1.entry-title {
+//     color: transparent;
+//     display: none;
+//   }
+// }
+
 .company-logo {
   width: 150px;
   @include Respond(lg) {
@@ -148,11 +155,7 @@ body:focus-within {
 }
 
 .page-title {
-  background-image: linear-gradient(
-    0deg,
-    rgba(255, 255, 255, 0.3) 50%,
-    rgba(156, 156, 156, 0.568) 95%
-  );
+  background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.3) 50%, rgba(156, 156, 156, 0.568) 95%);
   border-radius: 0.3rem;
   h1 {
     font-size: 1.5rem;
@@ -175,7 +178,8 @@ body:focus-within {
 }
 
 .my-content {
-  margin-top: 5rem;
+  margin-top: 8rem;
+
   min-height: 500px;
 }
 
@@ -224,12 +228,7 @@ h3.group-title {
 hr.style-two {
   border: 0;
   height: 1px;
-  background-image: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0.75),
-    rgba(0, 0, 0, 0)
-  );
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
 
 #footer {

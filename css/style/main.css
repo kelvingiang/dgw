@@ -136,7 +136,7 @@ body:focus-within {
       font-size: 2.3rem; } }
 
 .my-content {
-  margin-top: 5rem;
+  margin-top: 8rem;
   min-height: 500px; }
 
 h3.article-title {
@@ -1219,8 +1219,7 @@ hr.style-two {
   flex-direction: row;
   flex-flow: row wrap;
   justify-content: flex-start;
-  margin-bottom: 1rem;
-  padding-top: 3rem; }
+  margin-bottom: 1rem; }
   .menu-sub-item {
     cursor: pointer;
     margin: 0.2rem 0.2rem;
