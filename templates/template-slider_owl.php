@@ -25,11 +25,9 @@ $wp_query = new WP_Query($args);
         ?>
 
                 <div class="item">
-                    <img src="<?php echo $url[0] ?>" alt="<?php echo the_title(); ?>">
-                    <a>
-                        <div class="owl-slider-title">
-                            <h2><?php the_title(); ?></h2>
-                        </div>
+                    <a href="<?php echo get_post_meta($post->ID, '_metabox_link', true); ?>">
+                        <img src="<?php echo $url[0] ?>" alt="<?php echo the_title(); ?>">
+                        <!-- <div class="owl-slider-title">  <h2>tittle</h2> </div> -->
                         <div class="owl-slider-content">
                             <?php the_content(); ?>
                         </div>

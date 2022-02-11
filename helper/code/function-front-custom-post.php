@@ -10,8 +10,8 @@ function getCustomsPost($postType, $postCount)
         'orderby' => 'meta_value_num',
         'order' => 'DESC',
         'meta_key' => '_metabox_order',
-        // get cac bai trong category
 
+        // get cac bai trong category
         'meta_query'    => array(
             array(
                 'key'       => '_metabox_langguage',
@@ -34,24 +34,23 @@ function getCustomsPost($postType, $postCount)
         $stt = 1;
         while ($wp_query->have_posts()) {
             $wp_query->the_post();
-            $tags = wp_get_post_terms(get_the_ID(), 'casestudies_tags');
+            // $tags = wp_get_post_terms(get_the_ID(), 'casestudies_tags');
 ?>
-<div class="item" data-id="<?php echo $stt ?>">
-    <a href="<?php echo get_the_permalink() ?>">
+            <div class="item" data-id="<?php echo $stt ?>">
+                <a href="<?php echo get_the_permalink() ?>">
 
-        <?php if (has_post_thumbnail()) { ?>
-        <img class="item-img" src="<?php the_post_thumbnail_url() ?>" srcset="<?php the_post_thumbnail_url() ?>" />
-        <?php } else { ?>
-        <img class="item-img" src="<?php echo PART_IMAGES . 'no-image.jpg' ?>"
-            srcset="<?php echo PART_IMAGES . 'no-image.jpg' ?>" />
-        <?php } ?>
+                    <?php if (has_post_thumbnail()) { ?>
+                        <img class="item-img" src="<?php the_post_thumbnail_url() ?>" srcset="<?php the_post_thumbnail_url() ?>" />
+                    <?php } else { ?>
+                        <img class="item-img" src="<?php echo PART_IMAGES . 'no-image.jpg' ?>" srcset="<?php echo PART_IMAGES . 'no-image.jpg' ?>" />
+                    <?php } ?>
 
-        <div class="item-title">
-            <?php the_title() ?>
-        </div>
-    </a>
-</div>
-<?php
+                    <div class="item-title">
+                        <?php the_title() ?>
+                    </div>
+                </a>
+            </div>
+        <?php
             $stt++;
         }
     }
@@ -59,7 +58,6 @@ function getCustomsPost($postType, $postCount)
 
 function getCustomsPostByCate($postType, $cate, $postCount, $taxonomy)
 {
-
     $arr = array(
         'post_type' => $postType,
         'posts_per_page' => $postCount,
@@ -91,24 +89,23 @@ function getCustomsPostByCate($postType, $cate, $postCount, $taxonomy)
         $stt = 1;
         while ($wp_query->have_posts()) {
             $wp_query->the_post();
-            $tags = wp_get_post_terms(get_the_ID(), 'casestudies_tags');
+            // $tags = wp_get_post_terms(get_the_ID(), 'casestudies_tags');
         ?>
-<div class="item" data-id="<?php echo $stt ?>">
-    <a href="<?php echo get_the_permalink() ?>">
+            <div class="item" data-id="<?php echo $stt ?>">
+                <a href="<?php echo get_the_permalink() ?>">
 
-        <?php if (has_post_thumbnail()) { ?>
-        <img class="item-img" src="<?php the_post_thumbnail_url() ?>" srcset="<?php the_post_thumbnail_url() ?>" />
-        <?php } else { ?>
-        <img class="item-img" src="<?php echo PART_IMAGES . 'no-image.jpg' ?>"
-            srcset="<?php echo PART_IMAGES . 'no-image.jpg' ?>" />
-        <?php } ?>
+                    <?php if (has_post_thumbnail()) { ?>
+                        <img class="item-img" src="<?php the_post_thumbnail_url() ?>" srcset="<?php the_post_thumbnail_url() ?>" />
+                    <?php } else { ?>
+                        <img class="item-img" src="<?php echo PART_IMAGES . 'no-image.jpg' ?>" srcset="<?php echo PART_IMAGES . 'no-image.jpg' ?>" />
+                    <?php } ?>
 
-        <div class="item-title">
-            <?php the_title() ?>
-        </div>
-    </a>
-</div>
-<?php
+                    <div class="item-title">
+                        <?php the_title() ?>
+                    </div>
+                </a>
+            </div>
+    <?php
             $stt++;
         }
     }
@@ -139,19 +136,19 @@ function getCustomsPostCate($param)
         }
     }
     ?>
-<nav class="menu-cate-list">
-    <?php foreach ($arr as $key => $val) { ?>
-    <div class="<?php echo $param['tag'] == $key ? 'menu-cate-list-active' : '' ?>">
-        <?php if ($param['tag'] == $key) { ?>
-        <label><?php echo $val['name']; ?></label>
-        <?php } else { ?>
-        <a href="<?php echo home_url($param['pagename']) . '/cate/' .  $param['cate'] . '/tag/' . $val['ID'] ?>">
-            <?php echo $val['name']; ?>
-        </a>
+    <nav class="menu-cate-list">
+        <?php foreach ($arr as $key => $val) { ?>
+            <div class="<?php echo $param['tag'] == $key ? 'menu-cate-list-active' : '' ?>">
+                <?php if ($param['tag'] == $key) { ?>
+                    <label><?php echo $val['name']; ?></label>
+                <?php } else { ?>
+                    <a href="<?php echo home_url($param['pagename']) . '/cate/' .  $param['cate'] . '/tag/' . $val['ID'] ?>">
+                        <?php echo $val['name']; ?>
+                    </a>
+                <?php } ?>
+            </div>
         <?php } ?>
-    </div>
-    <?php } ?>
-</nav>
+    </nav>
 <?php
 }
 
@@ -163,8 +160,8 @@ function getCustomPostAtHome($postType, $postCount)
         'orderby' => 'meta_value_num',
         'order' => 'DESC',
         'meta_key' => '_metabox_order',
-        // get cac bai trong category
 
+        // get cac bai trong category
         'meta_query'    => array(
             array(
                 'key'       => '_metabox_langguage',
@@ -194,8 +191,8 @@ function getCustomPostCateAtHome($postType, $cateSlug, $postCount)
         'orderby' => 'meta_value_num',
         'order' => 'DESC',
         'meta_key' => '_metabox_order',
-        // get cac bai trong category
 
+        // get cac bai trong category
         'meta_query'    => array(
             array(
                 'key'       => '_metabox_langguage',
@@ -213,14 +210,8 @@ function getCustomPostCateAtHome($postType, $cateSlug, $postCount)
     );
 
     $wp_query = new WP_Query($arr);
-    // echo "<pre>";
-    // print_r($wp_query);
-    // echo "</pre>";
     return $wp_query;
 }
-
-
-
 
 
 function getCustomPostAtSideCate($postType, $postCount, $taxonomy, $cate)
@@ -231,6 +222,7 @@ function getCustomPostAtSideCate($postType, $postCount, $taxonomy, $cate)
         'orderby' => 'meta_value_num',
         'order' => 'DESC',
         'meta_key' => '_metabox_order',
+
         // get cac bai trong category
         'tax_query' => array(
             array(
@@ -275,6 +267,9 @@ function getCustomPostAtSide($postType, $postCount)
     return $wp_query;
 }
 
+
+
+
 function getPostCategory($cate, $postCount)
 {
     $arr = array(
@@ -292,12 +287,36 @@ function getPostCategory($cate, $postCount)
                 'value'     =>  $_SESSION['languages'],
                 'compare'   => '=',
             ),
+        ),
+    );
 
-            // array(
-            //     'key'       => '_metabox_home',
-            //     'value'     =>  true,
-            //     'compare'   => '=',
-            // ),
+    $wp_query = new WP_Query($arr);
+    return $wp_query;
+}
+
+function getPostCategoryAtHome($cate, $postCount)
+{
+    $arr = array(
+        'post_type' => 'post',
+        'category_name' => $cate,
+        'posts_per_page' => $postCount,
+        'orderby' => 'meta_value_num',
+        'order' => 'DESC',
+        'meta_key' => '_metabox_order',
+        // get cac bai trong category
+
+        'meta_query'    => array(
+            array(
+                'key'       => '_metabox_langguage',
+                'value'     =>  $_SESSION['languages'],
+                'compare'   => '=',
+            ),
+
+            array(
+                'key'       => '_metabox_home',
+                'value'     =>  true,
+                'compare'   => '=',
+            ),
 
         ),
     );

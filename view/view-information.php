@@ -1,18 +1,12 @@
 <?php ?>
 <form name="f-info" id="f-info" method="post">
-
-
     <div class=" row-three-column">
         <div class="col">
             <div class="cell-title">
                 <label><?php _e('Phone') ?></label>
             </div>
             <div class="cell-text">
-                <input type="text" 
-                       id="txt-phone"
-                       name="txt-phone"
-                       class="my-input"
-                       value="<?php echo get_post_meta('1', '_info_phone', true) ?>"/>
+                <input type="text" id="txt-phone" name="txt-phone" class="my-input" value="<?php echo get_post_meta('1', '_info_phone', true) ?>" />
             </div>
         </div>
         <div class="col">
@@ -20,11 +14,7 @@
                 <label><?php _e('Fax') ?></label>
             </div>
             <div class="cell-text">
-                <input type="text" 
-                       id="txt-fax"
-                       name="txt-fax"
-                       class="my-input"
-                       value="<?php echo get_post_meta('1', '_info_fax', true) ?>"/>
+                <input type="text" id="txt-fax" name="txt-fax" class="my-input" value="<?php echo get_post_meta('1', '_info_fax', true) ?>" />
             </div>
         </div>
         <div class="col">
@@ -32,12 +22,7 @@
                 <label><?php _e('E-mail') ?></label>
             </div>
             <div class="cell-text">
-                <input type="text" 
-                       id="txt-email"
-                       name="txt-email"
-                       class="my-input"
-                       value="<?php echo get_post_meta('1', '_info_email', true) ?>"
-                       />
+                <input type="text" id="txt-email" name="txt-email" class="my-input" value="<?php echo get_post_meta('1', '_info_email', true) ?>" />
             </div>
         </div>
 
@@ -56,11 +41,7 @@
                         <label><?php _e('Company Name') ?> (<?php _e('Chinese') ?>)</label>
                     </div>
                     <div class="cell-text">
-                        <input type="text"
-                               id="txt-name-cn"
-                               name="txt-name-cn"
-                               class="my-input"
-                               value="<?php echo get_post_meta('1', '_info_name_cn', true) ?>"/>
+                        <input type="text" id="txt-name-cn" name="txt-name-cn" class="my-input" value="<?php echo get_post_meta('1', '_info_name_cn', true) ?>" />
                     </div>
                 </div>
             </div>
@@ -69,12 +50,7 @@
                     <label><?php _e('Address') ?> (<?php _e('Chinese') ?>)</label>
                 </div>
                 <div class="cell-text">
-                    <input type="text"
-                           id="txt-address-cn"
-                           name="txt-address-cn"
-                           class="my-input"
-                           value="<?php echo get_post_meta('1', '_info_address_cn', true) ?>"
-                           />
+                    <input type="text" id="txt-address-cn" name="txt-address-cn" class="my-input" value="<?php echo get_post_meta('1', '_info_address_cn', true) ?>" />
                 </div>
             </div>
             <div class="row-one-column">
@@ -112,12 +88,7 @@
                         <label><?php _e('Company Name') ?> (<?php _e('Vietnamese') ?>)</label>
                     </div>
                     <div class="cell-text">
-                        <input type="text"
-                               id="txt-name-vn"
-                               name="txt-name-vn"
-                               class="my-input"
-                               value="<?php echo get_post_meta('1', '_info_name_vn', true) ?>"
-                               />
+                        <input type="text" id="txt-name-vn" name="txt-name-vn" class="my-input" value="<?php echo get_post_meta('1', '_info_name_vn', true) ?>" />
                     </div>
                 </div>
             </div>
@@ -126,12 +97,7 @@
                     <label><?php _e('Address') ?>(<?php _e('Vietnamese') ?>)</label>
                 </div>
                 <div class="cell-text">
-                    <input type="text"
-                           id="txt-address-vn"
-                           name="txt-address-vn"
-                           class="my-input"
-                           value="<?php echo get_post_meta('1', '_info_address_vn', true) ?>"
-                           />
+                    <input type="text" id="txt-address-vn" name="txt-address-vn" class="my-input" value="<?php echo get_post_meta('1', '_info_address_vn', true) ?>" />
                 </div>
             </div>
             <div class="row-one-column">
@@ -169,12 +135,7 @@
                         <label><?php _e('Company Name') ?> (<?php _e('English') ?>)</label>
                     </div>
                     <div class="cell-text">
-                        <input type="text"
-                               id="txt-name-en"
-                               name="txt-name-en"
-                               class="my-input"
-                               value="<?php echo get_post_meta('1', '_info_name_en', true) ?>"
-                               />
+                        <input type="text" id="txt-name-en" name="txt-name-en" class="my-input" value="<?php echo get_post_meta('1', '_info_name_en', true) ?>" />
                     </div>
                 </div>
             </div>
@@ -183,12 +144,7 @@
                     <?php _e('Address') ?>(<?php _e('English') ?>)
                 </div>
                 <div class="cell-text">
-                    <input type="text"
-                           id="txt-address-en"
-                           name="txt-address-en"
-                           class="my-input"
-                           value="<?php echo get_post_meta('1', '_info_address_en', true) ?>"
-                           />
+                    <input type="text" id="txt-address-en" name="txt-address-en" class="my-input" value="<?php echo get_post_meta('1', '_info_address_en', true) ?>" />
                 </div>
             </div>
             <div class="row-one-column">
@@ -221,13 +177,12 @@
         </div>
     </div>
     <div class="button-row">
-        <input type="submit" name="btn-submit" id="btn-submit" class="button button-primary button-large" value="<?php echo _e('Submit') ?>"/>
+        <input type="submit" name="btn-submit" id="btn-submit" class="button button-primary button-large" value="<?php echo _e('Submit') ?>" />
     </div>
 </form>
 
 <script>
-    jQuery(function () {
+    jQuery(function() {
         jQuery("#tabs").tabs();
     });
 </script>
-

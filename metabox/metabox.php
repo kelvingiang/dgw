@@ -16,10 +16,10 @@ class Metabox_Main
             'metabox_service' => FALSE,
             'metabox_solution' => FALSE,
             'metabox_active' => FALSE,
-            'metabox_product' => FALSE,
             'metabox_seo' => FALSE,
             'metabox_order' => TRUE,
             'metabox_home' => TRUE,
+            'metabox_link' => TRUE,
         );
 
         $this->_controler_options = get_option($this->_controler_name, $defaultoption);
@@ -30,11 +30,19 @@ class Metabox_Main
         $this->metabox_service();
         $this->metabox_solution();
         $this->metabox_active();
-        $this->metabox_product();
         $this->metabox_home();
         $this->metabox_order();
         $this->metabox_seo();
+        $this->metabox_link();
         add_action('admin_init', array($this, 'do_output_buffer'));
+    }
+
+    public function metabox_link()
+    {
+        if ($this->_controler_options['metabox_link']) {
+            require_once(DIR_METABOX . 'metabox-link.php');
+            new Metabox_Link();
+        }
     }
 
     public function metabox_web()
@@ -93,13 +101,6 @@ class Metabox_Main
         }
     }
 
-    public function metabox_product()
-    {
-        if ($this->_controler_options['metabox_product'] == true) {
-            require_once(DIR_METABOX . 'metabox-product.php');
-            new Metabox_Product();
-        }
-    }
 
     public function metabox_home()
     {

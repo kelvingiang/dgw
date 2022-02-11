@@ -1426,12 +1426,12 @@ hr.style-two {
 #slider .active .owl-slider-content {
   display: block;
   position: absolute;
-  width: 50%;
+  width: 90%;
   color: #fff;
   top: 40%;
   left: 5%;
   animation-name: owl-slider-content;
-  animation-duration: 2s; }
+  animation-duration: 1s; }
 
 #casestudies-slider {
   position: relative;

@@ -11,7 +11,7 @@
     <?php
         $stt = $stt + 1;
     } ?>
- </div>
+</div>
 
 <div class="side-tab-content">
     <div class="side-list content-tab-5">
@@ -35,8 +35,8 @@
                                                     ?>" />
                         <?php //} else { 
                         ?>
-                            <img src="<? php // echo PART_IMAGES . 'no-image.jpg' 
-                                        ?>" srcset="<? php // echo PART_IMAGES . 'no-image.jpg' 
+                            <img src="<?php // echo PART_IMAGES . 'no-image.jpg' 
+                                        ?>" srcset="<?php // echo PART_IMAGES . 'no-image.jpg' 
                                                     ?>" />
                         <?php // } 
                         ?>
@@ -74,8 +74,8 @@
                                                     ?>" />
                         <?php //} else { 
                         ?>
-                            <img src="<? php // echo PART_IMAGES . 'no-image.jpg' 
-                                        ?>" srcset="<? php // echo PART_IMAGES . 'no-image.jpg' 
+                            <img src="<?php // echo PART_IMAGES . 'no-image.jpg' 
+                                        ?>" srcset="<?php // echo PART_IMAGES . 'no-image.jpg' 
                                                     ?>" />
                         <?php // } 
                         ?>

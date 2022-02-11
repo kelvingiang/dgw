@@ -24,6 +24,7 @@ function inGroup($postName, $tax, $postMun)
             $stt = 1;
             while ($wp_query->have_posts()) {
                 $wp_query->the_post();
+
                 // kiem tra slug trung voi slug url khong hien thi
                 if ($post->post_name == $param['name']) {
                     continue;

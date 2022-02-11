@@ -1,7 +1,8 @@
 <?php
 
-function add_wp_media($item) {
-    ?>
+function add_wp_media($item)
+{
+?>
     <hr>
     <div class="row">
         <div id="wp-txt_note-media-buttons" class="wp-media-buttons">
@@ -9,7 +10,7 @@ function add_wp_media($item) {
                 <span class="wp-media-buttons-icon"></span> <?php _e('Add Product Images') ?>
             </button>
         </div>
-        <div><input type="hidden"  id="hidden_img" name="hidden_img" value="<?php echo $item ?>" /></div>
+        <div><input type="hidden" id="hidden_img" name="hidden_img" value="<?php echo $item ?>" /></div>
     </div>
     <div class="clear"></div>
     <div id="show-img" class="meta-row">
@@ -21,30 +22,33 @@ function add_wp_media($item) {
             foreach ($carouselImgArge as $val) {
                 $imgpost = get_post($val);
                 echo "<div class='item-img'>"
-                . "<img src = '$imgpost->guid' class='alignnone size-medium wp-image-$val' data-toggle='hinh' />"
-                . "<div class='del-item'><label>刪除</label></div>"
-                . "</div>";
+                    . "<img src = '$imgpost->guid' class='alignnone size-medium wp-image-$val' data-toggle='hinh' />"
+                    . "<div class='del-item'><label>刪除</label></div>"
+                    . "</div>";
             }
         }
         ?>
     </div>
     <!-- <div class="row">
-    <?php // wp_editor('', 'txt_img', array('wpautop' => TRUE, )); ?>
+    <?php // wp_editor('', 'txt_img', array('wpautop' => TRUE, )); 
+    ?>
           </div>-->
     <div class="clear"></div>
     <hr>
     <style>
-        #show-img .item-img{
+        #show-img .item-img {
             width: 15%;
             margin: 5px;
             float: left;
             position: relative;
         }
-        #show-img .item-img img{
+
+        #show-img .item-img img {
             width: 100%;
-            border: 1px #ccc solid
+            border: 1px #ccc solid;
         }
-        .del-item{
+
+        .del-item {
             width: 100%;
             height: 99%;
             background-color: #333;
@@ -56,7 +60,8 @@ function add_wp_media($item) {
             display: none;
 
         }
-        .del-item label{
+
+        .del-item label {
             text-align: center;
             display: block;
             font-size: 20px;
@@ -68,17 +73,17 @@ function add_wp_media($item) {
         }
     </style>
     <script>
-        jQuery(document).ready(function () {
-            jQuery(document).on('mouseenter', '.item-img', function () {
+        jQuery(document).ready(function() {
+            jQuery(document).on('mouseenter', '.item-img', function() {
                 jQuery(this).children('.del-item').css('display', 'block');
             });
-            jQuery(document).on('mouseleave', '.item-img', function () {
+            jQuery(document).on('mouseleave', '.item-img', function() {
                 jQuery(this).children('.del-item').css('display', 'none');
             });
 
             // KHI MOI LOAD QUET 1  img TRONG #show-img LAY GIA TRI id CAC HINH DUA VAO #hidden_img 
             var str = '';
-            jQuery("#show-img").children('.item-img').each(function () {
+            jQuery("#show-img").children('.item-img').each(function() {
                 var strClass = jQuery(this).children('img').attr('class');
                 var arge = strClass.split(" ");
                 var postID = arge[2].split("-");
@@ -92,19 +97,19 @@ function add_wp_media($item) {
                 default_send_to_editor: window.send_to_editor
             };
             // click moi cua so chua hinh cua wordpress
-            jQuery('#insert-media-button_my').click(function () {
+            jQuery('#insert-media-button_my').click(function() {
                 $state_manager.active_item = jQuery(this).attr('data-unqiue-id');
                 // open the window and do whatever else you need
             });
             // sao khi chon hinh gia tri tra ve la html trong do the <img
-            window.send_to_editor = function (html) {
+            window.send_to_editor = function(html) {
                 if ($state_manager.active_item === 'null') {
                     //call the default
                     $state_manager.default_send_to_editor(html);
                 } else {
 
                     jQuery("#show-img").append(html);
-                    jQuery('#show-img').children('img').each(function () {
+                    jQuery('#show-img').children('img').each(function() {
 
                         var src = jQuery(this).attr('src');
                         var imgclass = jQuery(this).attr('class');
@@ -113,7 +118,7 @@ function add_wp_media($item) {
                     });
 
                     var str = '';
-                    jQuery("#show-img").children('.item-img').each(function () {
+                    jQuery("#show-img").children('.item-img').each(function() {
                         // jQuery(this).attr("data-toggle", "tooltip");
                         //                            jQuery(this).attr("data-original-title", "Click Remove it");
                         //                            jQuery(this).attr("title", "Click Remove it");
@@ -132,12 +137,12 @@ function add_wp_media($item) {
             };
 
             // click vao hinh remove hin    h do 
-            jQuery(document).on('click', '.del-item', function () {
+            jQuery(document).on('click', '.del-item', function() {
                 jQuery(this).parent().remove();
                 jQuery("#hidden_img").val(" ");
                 // remove hinh xong set la gia tri cho #hidden-img
                 str = '';
-                jQuery("#show-img").children('.item-img').each(function () {
+                jQuery("#show-img").children('.item-img').each(function() {
                     var strClass = jQuery(this).children('img').attr('class');
                     var arge = strClass.split(" ");
                     var postID = arge[2].split("-");
@@ -147,5 +152,5 @@ function add_wp_media($item) {
             });
         });
     </script>
-    <?php
+<?php
 }
