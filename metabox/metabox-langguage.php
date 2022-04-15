@@ -14,7 +14,7 @@ class Metabox_Langguage
         $id = 'admin-metabox-langguage';
         $title = __('Langguage');
         $callback = array($this, 'display');
-        add_meta_box($id, $title, $callback, array('post', 'solutions', 'services', 'industries', 'active', 'casestudies', 'resources', 'downloads', 'advertising', 'slider'));
+        add_meta_box($id, $title, $callback, array('post', 'joinus', 'solutions', 'services', 'industries', 'active', 'casestudies', 'resources', 'downloads', 'advertising', 'slider'));
     }
 
     public function display($post)

@@ -22,10 +22,12 @@ class Controler_Main
             'controler_information' => true,
             'controler_member' => false,
             'controler_slider' => true,
+            'controler_join_us' => true,
+
         );
 
         $this->_controler_options = get_option($this->_controler_name, $defaultoption);
-        
+
         $this->page_information();
         $this->page_setting();
         $this->page_member();
@@ -39,6 +41,8 @@ class Controler_Main
         $this->post_downloads();
         $this->post_cases_studues();
         $this->post_advertising();
+        $this->post_join_us();
+
 
 
         add_action('admin_init', array($this, 'do_output_buffer'));
@@ -67,6 +71,16 @@ class Controler_Main
             new Controler_Member();
         }
     }
+
+
+    public function post_join_us()
+    {
+        if ($this->_controler_options['controler_join_us'] == true) {
+            require_once(DIR_CONTROLER . 'controler-join-us.php');
+            new Controler_Join_Us();
+        }
+    }
+
 
     public function post_advertising()
     {

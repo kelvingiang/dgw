@@ -65,12 +65,12 @@ function getIndustryImage($id)
             // case ('369'):
             $img = PART_IMAGES . 'industry/nhua.png';
             break;
-        case ('3201'):
+        case ('3204'):
         case ('206'):
             //case ('368'):
             $img = PART_IMAGES . 'industry/giaothong.png';
             break;
-        case ('3204'):
+        case ('3201'):
         case ('299'):
             // case ('205'):
             $img = PART_IMAGES . 'industry/kimloai.png';

@@ -2,7 +2,7 @@
     <nav class="menu-main">
         <div class='menu-main-item'>
             <a href='<?php echo home_url(); ?>' class='menu-main-item-link'>
-            <i class="fas fa-home"></i>sssssss</a>
+                <i class="fas fa-home"></i></a>
             <div class='menu-main-item-bg'></div>
         </div>
         <!-- MAIN MENU  -->

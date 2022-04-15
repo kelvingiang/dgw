@@ -23,6 +23,7 @@ function menu_mobile_list()
         "service" => "Service",
         "resource" => "Resources",
         "activities" => "Active",
+        "join-digiwin" => "Join Digiwin",
         $GLOBALS['contact'] => "Contact Digiwin"
     );
     return $arr;
@@ -107,6 +108,12 @@ function menu_main_list()
             'class' => 'menu-main-item',
             'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
             'sub' => getCategories('active_category'),
+        ),
+        'join-digiwin' => array(
+            'name' => "Join Digiwin",
+            'class' => 'menu-main-item',
+            'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
+            'sub' => getCategories('joinus_category'),
         ),
         $GLOBALS['contact'] => array(
             'name' => "Contact Digiwin",

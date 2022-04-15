@@ -1,23 +1,23 @@
 <?php
 
-class Taxonomy_Casestudies
+class Taxonomy_Join_Us
 {
 
-    private $prefix_name = 'option_casestudies_category_';
+    private $prefix_name = 'option_joinus_category_';
 
     public function __construct()
     {
         add_action('init', array($this, 'create_taxonomy'));
 
-        add_action('casestudies_category_add_form_fields', array($this, 'add_form'));
-        add_action('casestudies_category_edit_form_fields', array($this, 'edit_form'));
+        add_action('joinus_category_add_form_fields', array($this, 'add_form'));
+        add_action('joinus_category_edit_form_fields', array($this, 'edit_form'));
 
-        add_filter("manage_edit-casestudies_category_columns", array($this, 'category_columns'), 10, 3);
-        add_filter("manage_casestudies_category_custom_column", array($this, 'category_columns_manage'), 10, 3);
+        add_filter("manage_edit-joinus_category_columns", array($this, 'category_columns'), 10, 3);
+        add_filter("manage_joinus_category_custom_column", array($this, 'category_columns_manage'), 10, 3);
 
-        add_action('create_casestudies_category', array($this, 'save_option'));
-        add_action('edited_casestudies_category', array($this, 'save_option'));
-        add_action('delete_casestudies_category', array($this, 'delete_option'));
+        add_action('create_joinus_category', array($this, 'save_option'));
+        add_action('edited_joinus_category', array($this, 'save_option'));
+        add_action('delete_joinus_category', array($this, 'delete_option'));
     }
 
     public function create_taxonomy()
@@ -36,14 +36,14 @@ class Taxonomy_Casestudies
             'menu_name' => __('Category')
         );
 
-        register_taxonomy('casestudies_category', 'casestudies', array(
+        register_taxonomy('joinus_category', 'joinus', array(
             'hierarchical' => true,
             'labels' => $labels,
             'show_ui' => true,
             'query_var' => true,
             'taxonomy' => 'category',
             'rewrite' => array(
-                'slug' => 'casestudies_category',
+                'slug' => 'joinus_category',
                 'hierarchical' => true,
             )
         ));
@@ -143,7 +143,7 @@ class Taxonomy_Casestudies
 
     public function category_columns_manage($out, $column_name, $theme_id)
     {
-        $theme = get_term($theme_id, 'casestudies_category');
+        $theme = get_term($theme_id, 'joinus_category');
 
         $strOption = get_option($this->prefix_name . $theme->term_id);
 

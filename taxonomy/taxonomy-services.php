@@ -133,7 +133,7 @@ class Taxonomy_Services
             //            'description' => __('Description'),
             'vietnamese' => __('Vietnamese'),
             'english' => __('English'),
-            'order' => __('Show Orderss'),
+            'order' => __('Show Order'),
             'slug' => __('Slug'),
             'posts' => __('Count')
         );

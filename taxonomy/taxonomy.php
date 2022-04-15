@@ -20,6 +20,7 @@ class Taxonomy_Main
             'taxonomy_resource' => true,
             'taxonomy_active' => true,
             'taxonomy_services' => true,
+            'taxonomy_joinus' => true,
         );
 
         $this->_taxonomy_options = get_option($this->_taxonomy_name, $defaultoption);
@@ -30,6 +31,7 @@ class Taxonomy_Main
         $this->taxonomy_active();
         $this->taxonomy_casestudies();
         $this->taxonomy_services();
+        $this->taxonomy_joinus();
 
         $this->tags_advertising();
         $this->tags_solution();
@@ -59,6 +61,14 @@ class Taxonomy_Main
         if ($this->_taxonomy_options['tags_advertising'] == true) {
             require_once(DIR_TAXONOMY . 'tag-advertising.php');
             new Tags_Advertising();
+        }
+    }
+
+    public function taxonomy_joinus()
+    {
+        if ($this->_taxonomy_options['taxonomy_joinus'] == true) {
+            require_once(DIR_TAXONOMY . 'taxonomy-joinus.php');
+            new taxonomy_Join_Us();
         }
     }
 
