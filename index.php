@@ -14,6 +14,7 @@
 <div style="height: 2rem;"></div>
 
 <?php
+
 get_template_part('templates/template', 'home_business');
 get_template_part('templates/template', 'home_industry');
 get_template_part('templates/template', 'home_cases');

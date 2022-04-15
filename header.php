@@ -118,7 +118,6 @@
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-
     <?php
     $paged = get_query_var('pagename', 1);
 
@@ -140,10 +139,5 @@
     }
 
 
+    get_template_part('templates/template', 'home_zalo');
     ?>
-
-    <!-- PHAN CHAT ZALO TRANG WEB -->
-    <div class="zalo-chat-widget" data-oaid="2873315813915643766" data-welcome-message="<?php _e('So Happy can support You!') ?>" data-autopopup="0" data-width="" data-height="">
-    </div>
-
-    <script src="https://sp.zalo.me/plugins/sdk.js"></script>
