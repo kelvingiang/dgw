@@ -341,3 +341,9 @@ hr.style-two {
     display: block;
   }
 }
+
+.index-space {
+  > div {
+    margin-bottom: 2rem;
+  }
+}

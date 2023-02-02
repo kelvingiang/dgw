@@ -28,18 +28,12 @@
                         <?php the_title(); ?>aaaa
                     </div>
                     <!-- <div class="side-list-item-img">
-                        <?php //if (has_post_thumbnail()) { 
-                        ?>
-                            <img src="<?php //the_post_thumbnail_url() 
-                                        ?>" srcset="<?php //the_post_thumbnail_url() 
-                                                    ?>" />
-                        <?php //} else { 
-                        ?>
-                            <img src="<?php // echo PART_IMAGES . 'no-image.jpg' 
-                                        ?>" srcset="<?php // echo PART_IMAGES . 'no-image.jpg' 
-                                                    ?>" />
-                        <?php // } 
-                        ?>
+                         //if (has_post_thumbnail()) { 
+                        
+                        <img src=" //the_post_thumbnail_url() " srcset=" //the_post_thumbnail_url()" />
+                        //} else { 
+                            <img src="// echo PART_IMAGES . 'no-image.jpg'" srcset="// echo PART_IMAGES . 'no-image.jpg'" />
+                        // } 
                     </div> -->
                 </div>
             </a>
@@ -67,18 +61,16 @@
                         <?php the_title(); ?>
                     </div>
                     <!-- <div class="side-list-item-img">
-                        <?php //if (has_post_thumbnail()) { 
-                        ?>
-                            <img src="<?php //the_post_thumbnail_url() 
-                                        ?>" srcset="<?php //the_post_thumbnail_url() 
+                         // code php
+                          //if (has_post_thumbnail()) {                  
+                        
+                            <img src="//the_post_thumbnail_url()" srcset=" //the_post_thumbnail_url() 
                                                     ?>" />
-                        <?php //} else { 
-                        ?>
-                            <img src="<?php // echo PART_IMAGES . 'no-image.jpg' 
-                                        ?>" srcset="<?php // echo PART_IMAGES . 'no-image.jpg' 
-                                                    ?>" />
-                        <?php // } 
-                        ?>
+                         //} else { 
+                        
+                            <img src=" //echo PART_IMAGES . 'no-image.jpg' 
+                                        ?>" srcset="//echo PART_IMAGES . 'no-image.jpg' ?>" />
+                         // } 
                     </div> -->
                 </div>
             </a>

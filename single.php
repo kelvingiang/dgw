@@ -1,6 +1,6 @@
 <?php get_header(); ?>
-<div class="container-fluid row">
-    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+    <div style="background-color: red;">
 
         <main id="content">
             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
@@ -67,7 +67,7 @@
             </div>
         </div>
     </div> -->
-</div>
+
 <?php //get_sidebar(); 
 ?>
 <?php get_footer(); ?>

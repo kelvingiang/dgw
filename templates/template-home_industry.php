@@ -22,17 +22,17 @@
 
     foreach ($posts as $val) {
     ?>
-    <div class="industry-home-item">
+        <div class="industry-home-item">
 
-        <a href="<?php echo get_permalink($val->ID); ?>" class="my-link">
-            <div class="industry-item-img ">
-                <!-- icon cua cac chu de duoc dinh tai getIndustryImage   -->
-                <img src="<?php echo getIndustryImage($val->ID) ?>" />
-            </div>
-            <div class="industry-item-content">
-                <?php echo $val->post_title; ?>
-            </div>
-        </a>
-    </div>
+            <a href="<?php echo get_permalink($val->ID); ?>" class="my-link">
+                <div class="industry-item-img ">
+                    <!-- icon cua cac chu de duoc dinh tai getIndustryImage   -->
+                    <img src="<?php echo getIndustryImage($val->ID) ?>" />
+                </div>
+                <div class="industry-item-content">
+                    <?php echo $val->post_title; ?>
+                </div>
+            </a>
+        </div>
     <?php } ?>
 </div>

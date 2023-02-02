@@ -73,6 +73,24 @@
     <!-- End Meta Pixel Code -->
 
 
+    <!--JB Tracker-- add on 16-05-2022 -->
+    <script type="text/javascript">
+        var _paq = _paq || [];
+        (function() {
+            if (window.apScriptInserted) return;
+            _paq.push(['clientToken', 'AD8aXFw%2b2zfW2tNs3tPOqvxfOMtJDgu%2fOLH8vhUDe77SwKJsTW2SVtBFfaE2hbtr']);
+            var d = document,
+                g = d.createElement('script'),
+                s = d.getElementsByTagName('script')[0];
+            g.type = 'text/javascript';
+            g.async = true;
+            g.defer = true;
+            g.src = 'https://prod.benchmarkemail.com/tracker.bundle.js';
+            s.parentNode.insertBefore(g, s);
+            window.apScriptInserted = true;
+        })();
+    </script>
+    <!--/JB Tracker-->
     <?php wp_head(); ?>
 </head>
 <style>

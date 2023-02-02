@@ -1,7 +1,7 @@
 <h2 class="h2-home-title"><?php _e('Corporate management focus') ?></h2>
 <div id="business-home">
     <?php
-    $wp_query = getPostCategoryAtHome('business', 3);
+    $wp_query = getCustomPostAtHome('resources', 3);
     if ($wp_query->have_posts()) {
         while ($wp_query->have_posts()) {
             $wp_query->the_post();
