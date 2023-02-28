@@ -23,6 +23,9 @@ class Controler_Main
             'controler_member' => false,
             'controler_slider' => true,
             'controler_join_us' => true,
+            'controler_vote' => true,
+            'controler_vote_shareholder' => true,
+            'controler_vote_setting' => true,
 
         );
 
@@ -31,6 +34,9 @@ class Controler_Main
         $this->page_information();
         $this->page_setting();
         $this->page_member();
+        $this->page_vote();
+        $this->page_vote_shareholder();
+        $this->page_vote_setting();
 
         $this->post_slider();
         $this->post_solutions();
@@ -72,6 +78,30 @@ class Controler_Main
         }
     }
 
+
+    public function page_vote()
+    {
+        if ($this->_controler_options['controler_vote'] == true) {
+            require_once(DIR_CONTROLER . 'controler-vote.php');
+            new Controler_Vote();
+        }
+    }
+
+    public function page_vote_setting()
+    {
+        if ($this->_controler_options['controler_vote_setting'] == true) {
+            require_once(DIR_CONTROLER . 'controler-vote-setting.php');
+            new Controler_vote_setting();
+        }
+    }
+
+
+    public function page_vote_shareholder(){
+        if ($this->_controler_options['controler_vote_shareholder'] == true) {
+            require_once(DIR_CONTROLER . 'controler-vote-shareholder.php');
+            new Controler_vote_shareholder();
+        }
+    }
 
     public function post_join_us()
     {

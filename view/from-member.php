@@ -116,7 +116,8 @@ if ($params['id'] !== ' ') {
 
 <script>
     jQuery(document).ready(function() {
-
+        
+        formatNumber
 
     });
 </script>
