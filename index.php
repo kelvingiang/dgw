@@ -8,7 +8,7 @@
             get_template_part('templates/template', 'slider_owl');
         }
         ?>
-        <?php get_template_part('templates/template', 'home_menu'); ?>
+        <?php  get_template_part('templates/template', 'home_menu'); ?>
     </div>
 
 

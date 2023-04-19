@@ -1152,8 +1152,7 @@ hr.style-two {
       color: white;
       font-size: 1.5rem;
       font-weight: bold;
-      padding: 1.5rem;
-      letter-spacing: 5px; }
+      padding: 1.5rem; }
       @media (max-width: 1199.98px) {
         .menu-home .menu-home-item a {
           font-size: 1.2rem; } }
@@ -1166,6 +1165,10 @@ hr.style-two {
           padding: 1rem; } }
     .menu-home .menu-home-item:hover {
       background-color: #0e4d9d; }
+  .menu-home .lang-vn {
+    letter-spacing: 0px; }
+  .menu-home .lang-cn {
+    letter-spacing: 5px; }
 
 .menu-mobile {
   display: none;

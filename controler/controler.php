@@ -23,9 +23,10 @@ class Controler_Main
             'controler_member' => false,
             'controler_slider' => true,
             'controler_join_us' => true,
-            'controler_vote' => true,
-            'controler_vote_shareholder' => true,
-            'controler_vote_setting' => true,
+            // phan bo phieu co dong
+            'controler_vote' => false,
+            'controler_vote_shareholder' => false,
+            'controler_vote_setting' => false,
 
         );
 

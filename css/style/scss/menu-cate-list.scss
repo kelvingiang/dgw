@@ -80,7 +80,6 @@ $side_menu_link_hover: rgb(255, 255, 255);
         }
         @include Respond(sm) {
           font-size: 0.7rem;
-          
         }
       }
       &:hover {
@@ -143,7 +142,7 @@ $side_menu_link_hover: rgb(255, 255, 255);
       font-size: 1.5rem;
       font-weight: bold;
       padding: 1.5rem;
-      letter-spacing: 5px;
+
       @include Respond(lg) {
         font-size: 1.2rem;
       }
@@ -156,7 +155,14 @@ $side_menu_link_hover: rgb(255, 255, 255);
       }
     }
     &:hover {
-      background-color: rgb(14,77,157);
+      background-color: rgb(14, 77, 157);
     }
+  }
+
+  .lang-vn {
+    letter-spacing: 0px;
+  }
+  .lang-cn {
+    letter-spacing: 5px;
   }
 }
