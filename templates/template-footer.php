@@ -43,8 +43,7 @@
 
                     </li>
                     <li>
-                        <a href="https://dsc-consulting.biz/" target="_blank"> Digiwinsoft Malaysia </a>
-
+                        <a href="https://digiwin.com.my" target="_blank"> Digiwinsoft Malaysia </a>
                     </li>
 
                 </ul>

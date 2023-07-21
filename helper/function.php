@@ -274,8 +274,8 @@ function uploadFileDownLoad($File, $name)
 
         $cus_name = $file_name;
 
-        if ($file_size > 100097152) {
-            $errors[] = '上傳檔案容量不可大於 100 MB';
+        if ($file_size > 10097152) {
+            $errors[] = '上傳檔案容量不可大於 10 MB';
         }
         $path = DIR_FILE; /* get function path upload img dc khai bao tai file hepler */
 
