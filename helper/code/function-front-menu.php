@@ -8,7 +8,7 @@ function menu_home_list()
         "industry" => "Industries",
         "solution" => "Solutions",
         "service" => "Service",
-        "actives" => "Active",
+        "activities" => "Active",
     );
     return $arr;
 }

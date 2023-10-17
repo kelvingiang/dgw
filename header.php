@@ -5,6 +5,7 @@
     <meta charset="<?php bloginfo('charset'); ?>" />
     <meta name="viewport" content="width=device-width" />
     <meta name="facebook-domain-verification" content="91lenwxb0nqyrpfos1s5gl8kttei4l" />
+    <meta name="google-site-verification" content="8Cqw_SSKDqlxTUmeaXPfqLLvUEKhzxeq33PG33Ln6O4" /> <!-- theo doi thống kê từ khóa  -->
     <!-- supppot slider  -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
@@ -44,6 +45,8 @@
 
         gtag('config', 'G-N9624FG5S0');
     </script>
+
+    
 
 
 

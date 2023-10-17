@@ -174,7 +174,7 @@
 </style>
 <script>
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        document.getElementById("linkzalo").href = "https://zalo.me/0914702138";
+        document.getElementById("linkzalo").href = "https://zalo.me/0888356326";
     }
 </script>
 <!--Code nút Zalo từ LucidGen.com, anh em tracking Google Tag Manager bằng Click ID chứa fcta-zalo-tracking nhé-->
