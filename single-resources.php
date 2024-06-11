@@ -45,8 +45,13 @@ $cate_ID = $cate[0]->term_id;
                         $menu_page = 'resource';
                         menuSide($menu_category, $menu_page);
                         ?>
+                        <div>
+                            <?php get_template_part('templates/template', 'tam'); ?>
+                        </div>
                     </div>
+
                 <?php  } ?>
+
             </div>
             <div>
                 <?php
@@ -57,5 +62,7 @@ $cate_ID = $cate[0]->term_id;
                 //  inGroup($GroupPostType, $groupCategory, $postCount); 
                 ?>
             </div>
+
     </div>
+
     <?php get_footer();

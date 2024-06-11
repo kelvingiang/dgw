@@ -81,7 +81,14 @@
         wp_reset_query();
         ?>
     </div>
+
+
 </div>
+
+<div>
+    <?php get_template_part('templates/template', 'tam'); ?>
+</div>
+
 
 <script>
     function ChangSelect(titleSelect, contentSelect) {

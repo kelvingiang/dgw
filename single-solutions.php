@@ -51,6 +51,7 @@ $cate_ID = $cate[0]->term_id;
                 <?php //menuSide($menu_category, $menu_page); 
                     ?>
             </div>
+            
         </div>
     </div>
     <?php get_footer(); ?>

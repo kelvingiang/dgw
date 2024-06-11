@@ -45,6 +45,9 @@
                     <li>
                         <a href="https://digiwin.com.my" target="_blank"> Digiwinsoft Malaysia </a>
                     </li>
+                    <li>
+                        <a href="https://digiwin.co.th" target="_blank"> Digiwinsoft Thailand</a>
+                    </li>
 
                 </ul>
             </div>
