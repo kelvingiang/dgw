@@ -1,0 +1,22 @@
+#article-side-list {
+    width: 100%;
+    .article-side-list-item {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        width: 100%;
+        .article-side-list-item-img {
+            overflow: hidden;
+            border-radius: 3px;
+            &:hover {
+                img {
+                    transform: scale(1.1);
+                }
+            }
+            img {
+                transition: all 2s;
+                border-radius: 3px;
+                width: 100%;
+            }
+        }
+    }
+}

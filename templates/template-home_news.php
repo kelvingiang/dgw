@@ -29,8 +29,8 @@
                         $wp_query->the_post();
                 ?>
                         <li class="row">
-                            <span class="col-3"><label> <?php echo get_the_date('Y-m-d', get_the_ID()) ?></label></span>
                             <span class="col-9"><a class="my-link" href="<?php echo get_the_permalink() ?>"><?php the_title(); ?></a></span>
+                            <span class="col-3"><label> <?php echo get_the_date('Y-m-d', get_the_ID()) ?></label></span>
                         </li>
                 <?php
                     }
@@ -52,8 +52,8 @@
                         $wp_query->the_post();
                 ?>
                         <li class="row">
-                            <span class="col-3"><label> <?php echo get_the_date('Y-m-d', get_the_ID()) ?></label></span>
                             <span class="col-9"><a class="my-link" href="<?php echo get_the_permalink() ?>"><?php the_title(); ?></a></span>
+                            <span class="col-3"><label> <?php echo get_the_date('Y-m-d', get_the_ID()) ?></label></span>
                         </li>
                 <?php
                     }
@@ -76,8 +76,8 @@
                         $wp_query->the_post();
                 ?>
                         <li class="row">
-                            <span class="col-3"> <label> <?php echo get_the_date('Y-m-d', get_the_ID()) ?></label></span>
                             <span class="col-9"> <a class="my-link" href="<?php echo get_the_permalink() ?>"><?php the_title(); ?></a></span>
+                            <span class="col-3"> <label> <?php echo get_the_date('Y-m-d', get_the_ID()) ?></label></span>
                         </li>
                 <?php
                     }
@@ -101,8 +101,8 @@
                         $wp_query->the_post();
                 ?>
                         <li class="row">
-                            <span class="col-3"><label> <?php echo get_the_date('Y-m-d', get_the_ID()) ?></label></span>
                             <span class="col-9"><a class="my-link" href="<?php echo get_the_permalink() ?>"><?php the_title(); ?></a></span>
+                            <span class="col-3"><label> <?php echo get_the_date('Y-m-d', get_the_ID()) ?></label></span>
                         </li>
                 <?php
                     }
@@ -125,8 +125,8 @@
                         $wp_query->the_post();
                 ?>
                         <li class="row">
-                            <span class="col-3"> <label> <?php echo get_the_date('Y-m-d', get_the_ID()) ?></label></span>
                             <span class="col-9"> <a class="my-link" href="<?php echo get_the_permalink() ?>"><?php the_title(); ?></a></span>
+                            <span class="col-3"> <label> <?php echo get_the_date('Y-m-d', get_the_ID()) ?></label></span>
                         </li>
                 <?php
                     }

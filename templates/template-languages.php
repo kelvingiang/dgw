@@ -1,13 +1,12 @@
-<div style="text-align: right; padding: 1rem; margin-right:1rem;">
+<div class="languages-box">
     <a class="link-languages" data-type="cn" onclick="changeLanguages(this)">
         中 文
     </a> |
     <a class="link-languages" data-type="vn" onclick="changeLanguages(this)">
         Tiếng Việt
     </a>
-
 </div>
-&#160;&#160;
+
 <script>
 function changeLanguages(el) {
     var type = jQuery(el).attr('data-type');
@@ -24,9 +23,9 @@ function changeLanguages(el) {
             if (res.status === 'ok') {
                 //window.location = location.href;
                 //location.reload();
-                window.location = 'http://localhost/digiwin';
+                // window.location = 'http://localhost/digiwin';
 
-                // window.location = 'https://digiwin.com.vn/';
+                window.location = 'https://digiwin.com.vn/';
             }
         }
     });

@@ -46,7 +46,7 @@ function getCustomsPost($postType, $postCount)
                     <?php } ?>
 
                     <div class="item-title">
-                        <?php the_title() ?>
+                        <?php  the_title() ?>
                     </div>
                 </a>
             </div>
@@ -258,6 +258,34 @@ function getCustomPostAtSide($postType, $postCount)
             array(
                 'key'       => '_metabox_langguage',
                 'value'     =>  $_SESSION['languages'],
+                'compare'   => '=',
+            ),
+        ),
+    );
+
+    $wp_query = new WP_Query($arr);
+    return $wp_query;
+}
+
+function getCustomPostShowSidebar($postType)
+{
+    $arr = array(
+        'post_type' => $postType,
+        // 'posts_per_page' => $postCount,
+        // 'orderby' => 'meta_value_num',
+        // 'order' => 'DESC',
+        // 'meta_key' => '_metabox_order',
+
+        'meta_query'    => array(
+            array(
+                'key'       => '_metabox_langguage',
+                'value'     =>  $_SESSION['languages'],
+                'compare'   => '=',
+            ),
+
+            array(
+                'key'       => '_metabox_sidebar',
+                'value'     =>  '1',
                 'compare'   => '=',
             ),
         ),

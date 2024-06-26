@@ -15,7 +15,7 @@ function menuSub($cate, $page)
     foreach ($data as $val) {
         $sub = getAllCategories($cate, $val['ID'], $page);
         echo  '<div class="menu-sub-item">';
-        echo  '<a class="my-link" href="' . home_url($val['page'] . '/cate/' .  $val['ID'] . '/tag/') . '">';
+        echo  '<a href="' . home_url($val['page'] . '/cate/' .  $val['ID'] . '/tag/') . '">';
         echo  $val['name'];
         if (!empty($sub)) {
             echo "<i style=' margin-left: 0.3rem' class='fas fa-angle-down'></i>";

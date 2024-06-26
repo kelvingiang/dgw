@@ -33,6 +33,7 @@ $cate_ID = $cate[0]->term_id;
                 <div style="margin-top: 3rem;">
                     <?php get_template_part('templates/template', 'side_active'); ?>
                     <?php get_template_part('templates/template', 'side_cases');  ?>
+                    <?php get_template_part('templates/template', 'side_articles');  ?>
                 </div>
             </div>
             <?php } ?>
@@ -48,6 +49,7 @@ $cate_ID = $cate[0]->term_id;
             <div class="mobile-side">
                 <?php get_template_part('templates/template', 'side_active'); ?>
                 <?php get_template_part('templates/template', 'side_cases');  ?>
+                <?php get_template_part('templates/template', 'side_articles');  ?>
                 <?php //menuSide($menu_category, $menu_page); 
                     ?>
             </div>

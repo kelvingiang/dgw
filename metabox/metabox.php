@@ -20,6 +20,7 @@ class Metabox_Main
             'metabox_order' => TRUE,
             'metabox_home' => TRUE,
             'metabox_link' => TRUE,
+            'metabox_sidebar' => TRUE,
         );
 
         $this->_controler_options = get_option($this->_controler_name, $defaultoption);
@@ -34,6 +35,7 @@ class Metabox_Main
         $this->metabox_order();
         $this->metabox_seo();
         $this->metabox_link();
+        $this->metabox_sidebar();
         add_action('admin_init', array($this, 'do_output_buffer'));
     }
 
@@ -123,6 +125,15 @@ class Metabox_Main
         if ($this->_controler_options['metabox_order'] == true) {
             require_once(DIR_METABOX . 'metabox-order.php');
             new Metabox_Order();
+        }
+    }
+
+
+    public function metabox_sidebar()
+    {
+        if ($this->_controler_options['metabox_sidebar'] == true) {
+            require_once(DIR_METABOX . 'metabox-sidebar.php');
+            new Metabox_SideBar();
         }
     }
 

@@ -41,6 +41,7 @@ $wp_query = new WP_Query($args);
         ?>
     </div>
 </div>
+
 <style>
     #slider {
         border-bottom: 2px solid rgba(208, 228, 247, 0.5);

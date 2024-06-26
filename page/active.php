@@ -53,6 +53,7 @@
         </div>
         <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
             <?php get_template_part('templates/template', 'side_cases');  ?>
+            <?php get_template_part('templates/template', 'side_articles');  ?>
         </div>
     </div>
 </div>

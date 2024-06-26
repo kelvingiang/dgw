@@ -5,7 +5,7 @@ $cate =  wp_get_post_terms($post->ID, 'resources_category');
 $cate_ID = $cate[0]->term_id;
 
 ?>
-<div class="container-fluid">
+<div class="container-fluid" style="margin-top: 60px;">
     <div class="row">
         <!--  IF CATEGORY IS NEWS OR CATE_ID IS 69 WILL SHOW TWO COLUMN -->
         <?php if ($cate_ID == '69') { ?>
@@ -46,7 +46,7 @@ $cate_ID = $cate[0]->term_id;
                         menuSide($menu_category, $menu_page);
                         ?>
                         <div>
-                            <?php get_template_part('templates/template', 'tam'); ?>
+                            <?php get_template_part('templates/template', 'side_articles'); ?>
                         </div>
                     </div>
 

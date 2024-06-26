@@ -2,7 +2,7 @@
 <?php //get_template_part('templates/template', 'header'); 
 ?>
 <div class="index-space">
-    <div>
+    <div style="position: relative;">
         <?php
         if (!is_single()) {
             get_template_part('templates/template', 'slider_owl');
@@ -17,7 +17,10 @@
     </div>
 
     <div>
-        <?php get_template_part('templates/template', 'home_industry'); ?>
+        <?php  get_template_part('templates/template', 'home_industry'); ?>
+    </div>
+    <div>
+        <?php //get_template_part('templates/template', 'home_cases-logo'); ?>
     </div>
     <div>
         <?php get_template_part('templates/template', 'home_cases'); ?>
