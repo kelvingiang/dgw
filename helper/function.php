@@ -273,7 +273,7 @@ function uploadFileDownLoad($File, $name)
         //$trim_type = strtolower($file_trim[1]);
 
         $cus_name = $file_name;
-
+ 
         if ($file_size > 10097152) {
             $errors[] = '上傳檔案容量不可大於 10 MB';
         }

@@ -403,24 +403,31 @@
 .case-logo {
     display: flex;
     flex-direction: row;
+    justify-content: left;
     flex-wrap: wrap;
-    padding: 1rem;
     &-item {
-        width: 150px;
-        height: 150px;
-        // background-color: #f30606;
+        width: 12.5%;
         display: flex;
         text-align: center;
         justify-content: center;
         align-items: center;
-        margin: 0.5rem;
+        padding: 0.5rem;
+        @include Respond(lg) {
+            width: 20%;
+        }
+        @include Respond(md) {
+            width: 25%;
+        }
+        @include Respond(sm) {
+            width: 33.33%;
+        }
         &:hover {
             img {
-                width: 90%;
+                transform: scale(1.1);
             }
         }
         img {
-            transition: all 0.5s;
+            transition: all 0.3s;
             width: 80%;
         }
     }

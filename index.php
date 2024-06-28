@@ -17,16 +17,17 @@
     </div>
 
     <div>
-        <?php  get_template_part('templates/template', 'home_industry'); ?>
+        <?php get_template_part('templates/template', 'home_industry'); ?>
     </div>
-    <div>
-        <?php //get_template_part('templates/template', 'home_cases-logo'); ?>
-    </div>
+
     <div>
         <?php get_template_part('templates/template', 'home_cases'); ?>
     </div>
     <div>
         <?php get_template_part('templates/template', 'home_news'); ?>
+    </div>
+    <div>
+        <?php get_template_part('templates/template', 'home_cases-logo'); ?>
     </div>
 </div>
 

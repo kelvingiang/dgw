@@ -16,6 +16,14 @@
 .column-home {
   width: 8%; }
 
+.column-img {
+  width: 300px; }
+  .column-img img {
+    width: 50px !important; }
+
+.column-link {
+  width: 35%; }
+
 .without-img {
   width: 300px;
   background-color: #e7e3e3;

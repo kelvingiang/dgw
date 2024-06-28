@@ -1,26 +1,21 @@
-<h2 class="h2-home-title"><?php _e('Enterprise model success case') ?></h2>
+<!-- <h2 class="h2-home-title"><?php //_e('Enterprise model success case') ?>22</h2> -->
 <div class="case-logo">
     <?php
-    $wp_query = getCustomPostAtHome('casestudies', -1);
-
-    if ($wp_query->have_posts()) {
-        while ($wp_query->have_posts()) {
-            $wp_query->the_post();
+    require_once(DIR_MODEL . 'model-logo-function.php');
+    $model = new Model_Logo_Function();
+    $data = $model->getAll(0);
+    if (count($data) > 0) {
+        foreach ($data as $key => $value) {
+            // echo '<pre>'; print_r($value); echo '</pre>';
     ?>
             <div class="case-logo-item">
-                <a href='<?php echo get_the_permalink() ?>'>
-                    <?php if (has_post_thumbnail()) { ?>
-                        <img src="<?php the_post_thumbnail_url() ?>" srcset="<?php the_post_thumbnail_url() ?>" />
-                    <?php } else { ?>
-                        <img src="<?php echo PART_IMAGES . 'no-image.jpg' ?>" srcset="<?php echo PART_IMAGES . 'no-image.jpg' ?>" />
-                    <?php } ?>
+                <a href='<?php echo $value['link'] ?>'>
+                    <img src="<?php echo  PART_IMAGES .'logo/' . $value['img'] ?>"  />
                 </a>
             </div>
     <?php
         }
     }
-    wp_reset_postdata();
-    wp_reset_query();
     ?>
 </div>
 <script>

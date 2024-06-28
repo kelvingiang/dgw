@@ -23,6 +23,7 @@ class Controler_Main
             'controler_member' => false,
             'controler_slider' => true,
             'controler_join_us' => true,
+            'controler_logo' => true,
             // phan bo phieu co dong
             'controler_vote' => false,
             'controler_vote_shareholder' => false,
@@ -38,6 +39,7 @@ class Controler_Main
         $this->page_vote();
         $this->page_vote_shareholder();
         $this->page_vote_setting();
+        $this->page_logo();
 
         $this->post_slider();
         $this->post_solutions();
@@ -49,11 +51,21 @@ class Controler_Main
         $this->post_cases_studues();
         $this->post_advertising();
         $this->post_join_us();
+        
 
 
 
         add_action('admin_init', array($this, 'do_output_buffer'));
     }
+
+    public function page_logo()
+    {
+        if ($this->_controler_options['controler_logo']) {
+            require_once(DIR_CONTROLER . 'controler-logo.php');
+            new Controller_logo();
+        }
+    }
+
 
     public function page_setting()
     {
