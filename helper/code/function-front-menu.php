@@ -18,12 +18,13 @@ function menu_mobile_list()
     $arr = array(
         $GLOBALS['about'] => "About",
         "cases" => "Cases Tudies",
-        "industry" => "Industries",
+        // "industry" => "Industries",
         "solution" => "Solutions",
-        "service" => "Service",
+        // "service" => "Service",
         "resource" => "Resources",
         "activities" => "Active",
-        "join-digiwin" => "Join Digiwin",
+        "join-digiwin/cate/97/tag/" => "Join Digiwin",
+        "join-digiwin/cate/98/tag/" => "Distribution",
         $GLOBALS['contact'] => "Contact Digiwin"
     );
     return $arr;
@@ -78,25 +79,25 @@ function menu_main_list()
             'sub' => '',
             //'sub' => getCategories('casestudies_category'),
         ),
-        'industry' => array(
-            'name' => "Industries",
-            'class' => 'menu-main-item ',
-            'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
-            // 'sub' => 'getCategories('industries_category')',
-            'sub' => '',
-        ),
+        // 'industry' => array(
+        //     'name' => "Industries",
+        //     'class' => 'menu-main-item ',
+        //     'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
+        //     // 'sub' => 'getCategories('industries_category')',
+        //     'sub' => '',
+        // ),
         'solution' => array(
             'name' => "Solutions",
             'class' => 'menu-main-item ',
             'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
             'sub' => getCategories('solutions_category'),
         ),
-        'service' => array(
-            'name' => "Service",
-            'class' => 'menu-main-item',
-            'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
-            'sub' => getCategories('services_category'),
-        ),
+        // 'service' => array(
+        //     'name' => "Service",
+        //     'class' => 'menu-main-item',
+        //     'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
+        //     'sub' => getCategories('services_category'),
+        // ),
         'resource' => array(
             'name' => "Resources",
             'class' => 'menu-main-item',
@@ -109,12 +110,27 @@ function menu_main_list()
             'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
             'sub' => getCategories('active_category'),
         ),
-        'join-digiwin' => array(
+        // 'join-digiwin' => array(
+        //     'name' => "Join Digiwin",
+        //     'class' => 'menu-main-item',
+        //     'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
+        //     'sub' => getCategories('joinus_category'),
+        // ),
+        'join-digiwin/cate/97/tag/' => array(
             'name' => "Join Digiwin",
-            'class' => 'menu-main-item',
-            'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
-            'sub' => getCategories('joinus_category'),
+            'class' => 'menu-main-item ',
+            //'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
+            'sub' => '',
+            //'sub' => getCategories('casestudies_category'),
         ),
+        'join-digiwin/cate/98/tag/' => array(
+            'name' => "Distribution",
+            'class' => 'menu-main-item ',
+            //'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
+            'sub' => '',
+            //'sub' => getCategories('casestudies_category'),
+        ),
+
         $GLOBALS['contact'] => array(
             'name' => "Contact Digiwin",
             'class' => 'menu-main-item',

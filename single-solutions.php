@@ -7,7 +7,7 @@ $cate_ID = $cate[0]->term_id;
 
 ?>
 <div class="container-fluid">
-    <div class="row">
+    <div class="row" style="margin-top: 5rem;">
         <?php if ($cate_ID == 53) { ?>
         <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
             <?php } else { ?>
@@ -15,9 +15,9 @@ $cate_ID = $cate[0]->term_id;
                 <?php  } ?>
                 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                 <div class="single-space">
-                    <h2 class="single-space-title">
-                        <?php the_title() ?>
-                    </h2>
+                    <!-- <h2 class="single-space-title">
+                        <?php //the_title() ?>
+                    </h2> -->
                     <div class="single-space-content">
                         <?php the_content(); ?>
                     </div>

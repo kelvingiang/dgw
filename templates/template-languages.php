@@ -1,9 +1,9 @@
 <div class="languages-box">
     <a class="link-languages" data-type="cn" onclick="changeLanguages(this)">
-        中 文
+        中
     </a> |
     <a class="link-languages" data-type="vn" onclick="changeLanguages(this)">
-        Tiếng Việt
+        VN
     </a>
 </div>
 

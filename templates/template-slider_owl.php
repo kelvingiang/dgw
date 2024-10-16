@@ -54,8 +54,9 @@ $wp_query = new WP_Query($args);
             margin: 10,
             nav: false,
             autoplay: true,
-            auotplayTimeout: 30000,
-            dots: false,
+            autoplayTimeout: 3000,  // 3秒间隔切换幻灯片
+            autoplaySpeed: 500,  
+            dots: true,
             autoplayHoverPause: true,
             items: 1,
 

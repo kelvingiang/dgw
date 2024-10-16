@@ -1,9 +1,5 @@
 </div>
-<div id="back-top-wrapper">
-    <a id="back-top">
-        <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
-    </a>
-</div>
+
 <?php if (!is_page('about')) { ?>
 <footer id="footer">
     <div class="container-fluid">

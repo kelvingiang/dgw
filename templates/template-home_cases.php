@@ -54,7 +54,7 @@ jQuery(document).ready(function() {
         margin: 10,
         nav: false,
         autoplay: true,
-        auotplayTimeout: 50000,
+        autoplayTimeout: 30000,
         dots: false,
         autoplayHoverPause: true,
         items: count,

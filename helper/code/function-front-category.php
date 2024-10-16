@@ -15,10 +15,6 @@ function getCategories($cate)
     if ($categories) {
         foreach ($categories as $key => $value) {
             $option = get_option("option_" . $cate . "_" . $value->term_id . "");
-            /*  echo "option_" . $cate . "_" . $value->term_id . "";
-            echo "<pre>";
-            print_r($option);
-            echo "</pre>";*/
             $arr[$value->term_id] = array(
                 'ID' => $value->term_id,
                 'name' => $option['cate_' . $_SESSION['languages']],

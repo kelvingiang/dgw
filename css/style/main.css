@@ -15,6 +15,13 @@ h6 {
   font-family: Arial, "Times New Roman", Helvetica, "sans-serifTimes", serif;
 }
 
+body {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
 body:focus-within {
   scroll-behavior: smooth;
 }
@@ -232,21 +239,8 @@ hr.style-two {
 }
 
 /**** back to top****************************************************/
-#back-top-wrapper {
-  width: 100%;
-  z-index: 10000;
-  position: absolute;
-  overflow: hidden;
-}
 #back-top-wrapper #back-top {
-  position: fixed;
-  bottom: 180px;
-  right: 2%;
-  margin-left: 580px;
-  display: none;
-  color: rgba(63, 62, 62, 0.5);
-  font-size: 2rem;
-  opacity: 0.4;
+  display: block;
   cursor: pointer;
 }
 #back-top-wrapper #back-top:hover {
@@ -1881,6 +1875,17 @@ hr.style-two {
   animation-name: owl-slider-content;
   animation-duration: 1s;
 }
+#slider .owl-dots {
+  position: absolute;
+  bottom: 200px;
+  right: 20%;
+  background-color: rgba(247, 246, 246, 0.473);
+  border-radius: 50px;
+  padding: 0.3rem 1rem 0.1rem;
+}
+#slider .active span {
+  background-color: #333;
+}
 
 #casestudies-slider {
   position: relative;
@@ -2337,6 +2342,194 @@ hr.style-two {
   transition: all 2s;
   border-radius: 3px;
   width: 100%;
+}
+
+.side-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 50px;
+  height: 200px;
+  background-color: #e2e2e285;
+  border-radius: 5px 0 0 5px;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  position: fixed;
+  right: 0;
+  top: 150px;
+  z-index: 10000010;
+}
+.side-right-close {
+  cursor: pointer;
+  color: rgba(99, 10, 10, 0.7);
+  position: relative;
+}
+.side-right-close svg {
+  font-size: 2rem;
+  position: absolute;
+  left: -20px;
+  top: -15px;
+}
+.side-right-close:hover {
+  color: rgba(6, 29, 44, 0.9);
+}
+.side-right-content {
+  width: 50px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+.side-right-content > div {
+  width: 100%;
+  height: 50px;
+  border-radius: 5px 0 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: rgba(99, 10, 10, 0.7);
+  cursor: pointer;
+}
+.side-right-content > div:hover {
+  background-color: #ffffff;
+  color: rgba(6, 29, 44, 0.9);
+}
+.side-right-content > div .hotline {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: -200px;
+  top: 0;
+  width: 130px;
+  z-index: 10000000;
+}
+.side-right-content > div .hotline div {
+  border-radius: 0;
+  background-color: #f1f1f1;
+  border-bottom: 1px solid #ccc;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.5rem;
+  color: #525252;
+}
+.side-right-content > div .zalo-code {
+  z-index: 10000000;
+  width: 130px;
+  position: absolute;
+  right: -200px;
+  bottom: -50px;
+  display: flex;
+  justify-content: right;
+}
+.side-right-content > div .zalo-code img {
+  border-radius: 2px;
+  width: 100px;
+}
+
+.close-side {
+  position: fixed;
+  right: 0;
+  z-index: 500;
+  animation-name: close;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
+}
+.close-side .side-right-close svg {
+  animation-name: tu0den180;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
+}
+
+.open-side {
+  position: fixed;
+  right: 0;
+  z-index: 500;
+  animation-name: open;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
+}
+.open-side .side-right-close svg {
+  animation-name: tu180ve0;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
+}
+
+.show {
+  animation-name: show;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
+}
+
+.hidden {
+  animation-name: hidden;
+  animation-fill-mode: forwards;
+  animation-duration: 0.5s;
+}
+
+@keyframes show {
+  0% {
+    right: -200;
+    opacity: 0;
+  }
+  100% {
+    right: 50px;
+    opacity: 1;
+  }
+}
+@keyframes hidden {
+  0% {
+    right: 50px;
+    opacity: 1;
+  }
+  100% {
+    right: -200px;
+    opacity: 0;
+  }
+}
+@keyframes close {
+  0% {
+    right: 0;
+  }
+  100% {
+    right: -50px;
+  }
+}
+@keyframes open {
+  0% {
+    right: -50px;
+  }
+  100% {
+    right: 0;
+  }
+}
+@keyframes tu0den180 {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+  }
+}
+@keyframes tu180ve0 {
+  from {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

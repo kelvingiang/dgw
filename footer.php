@@ -14,6 +14,9 @@ switch ($footer) {
     case 'contact-vn':
         get_template_part('templates/template', 'footer');
 }
+
+get_template_part('templates/template', 'home-side-right');
+
 wp_footer(); ?>
 
 <script type="text/javascript">
@@ -50,12 +53,36 @@ wp_footer(); ?>
         //   }
         prevScrollPos = currentScrollPos;
     }
+
+        // 禁止右鍵選單，這樣用戶無法透過右鍵選取「複製」功能
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
+
+  //禁止快捷鍵，如 Ctrl+C 來複製內容。
+  document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && (e.key === 'c' || e.key === 'a' || e.key === 'x')) {
+      e.preventDefault();
+    }
+  });
+
+  //禁止用戶拖拽文本或圖片來進行複製。
+  document.addEventListener('dragstart', function(e) {
+    e.preventDefault();
+  });
+
+  //禁止 F12（開發者工具），避免部分用戶檢視網站代碼。
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'F12') {
+      e.preventDefault();
+    }
+  });
 </script>
 
 <!-- add zalo chat trực tiếp trên web 19/06/2024  -->
-<div class="zalo-chat-widget" data-oaid="2873315813915643766" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="300" data-height="500"></div>
 
-<script src="https://sp.zalo.me/plugins/sdk.js"></script>
+
+
 </body>
 
 
