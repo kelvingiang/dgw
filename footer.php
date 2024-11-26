@@ -72,11 +72,11 @@ wp_footer(); ?>
   });
 
   //禁止 F12（開發者工具），避免部分用戶檢視網站代碼。
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'F12') {
-      e.preventDefault();
-    }
-  });
+//   document.addEventListener('keydown', function(e) {
+//     if (e.key === 'F12') {
+//       e.preventDefault();
+//     }
+//   });
 </script>
 
 <!-- add zalo chat trực tiếp trên web 19/06/2024  -->

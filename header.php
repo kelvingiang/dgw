@@ -46,7 +46,14 @@
         gtag('config', 'G-N9624FG5S0');
     </script>
 
-    
+    <script id="_bownow_ts">
+        var _bownow_ts = document.createElement('script');
+        _bownow_ts.charset = 'utf-8';
+        _bownow_ts.src = 'https://contents.bownow.jp/js/UTC_373f6c2fd8a84cc0e8f9/trace.js';
+        document.getElementsByTagName('head')[0].appendChild(_bownow_ts);
+    </script>
+
+
 
 
 
@@ -192,5 +199,5 @@
     }
 
 
-   // get_template_part('templates/template', 'home_zalo');
+    // get_template_part('templates/template', 'home_zalo');
     ?>
