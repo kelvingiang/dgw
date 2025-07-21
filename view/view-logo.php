@@ -2,7 +2,8 @@
 require_once(DIR_MODEL . 'model-logo.php');
 $dataList = new Model_Logo(); 
 $dataList->prepare_items();
-$lbl = '';
+$lbl = null;
+$msg = null;
 $page = getParams('page');
 $linkAdd = admin_url('admin.php?page=' . $page . '&action=add');  // TAO LINH CHO ADD NEW
 $lblAdd = __('Add Item');

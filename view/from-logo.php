@@ -3,6 +3,8 @@ require_once(DIR_MODEL . 'model-logo-function.php');
 if (!empty(getParams('id'))) {
     $model = new Model_Logo_Function();
     $data = $model->getItem(getParams('id'));
+    $company =  $data['company'] ?? null;
+    $link =  $data['link'] ?? null;
 }
 ?>
 <form name="f1" id="f1" method="post" enctype="multipart/form-data">
@@ -16,7 +18,7 @@ if (!empty(getParams('id'))) {
                     <label> 公司名稱 </label>
                 </div>
                 <div class="cell-text">
-                    <input type="text" name="txt-company" id="txt-company" class="my-input" value="<?php echo $data['company'] ?>" required />
+                    <input type="text" name="txt-company" id="txt-company" class="my-input" value="<?php echo $company ?>" required />
                 </div>
             </div>
 
@@ -25,7 +27,7 @@ if (!empty(getParams('id'))) {
                     <label> 文件連接 </label>
                 </div>
                 <div class="cell-text">
-                    <input type="text" name="txt-link" id="txt-link" class="my-input" value="<?php echo $data['link'] ?>" />
+                    <input type="text" name="txt-link" id="txt-link" class="my-input" value="<?php echo $link ?>" />
                 </div>
             </div>
         </div>
