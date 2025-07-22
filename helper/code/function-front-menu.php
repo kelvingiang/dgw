@@ -32,36 +32,36 @@ function menu_mobile_list()
 
 function menu_main_list()
 {
-    $homeArr = array(
+    // $homeArr = array(
 
-        'operating' =>  array(
-            'ID' => '#operating',
-            'name' => 'Operating',
-            'class' => 'menu-main-sub-1-item',
-            'order' => '01',
-            'local' => 'true',
-            'sub' => '',
-        ),
+    //     'operating' =>  array(
+    //         'ID' => '#operating',
+    //         'name' => 'Operating',
+    //         'class' => 'menu-main-sub-1-item',
+    //         'order' => '01',
+    //         'local' => 'true',
+    //         'sub' => array(),
+    //     ),
 
-        'location' => array(
-            'ID' => '#location',
-            'name' => 'Location',
-            'class' => 'menu-main-sub-1-item',
-            'order' => '02',
-            'local' => 'true',
-            'sub' => '',
-        ),
+    //     'location' => array(
+    //         'ID' => '#location',
+    //         'name' => 'Location',
+    //         'class' => 'menu-main-sub-1-item',
+    //         'order' => '02',
+    //         'local' => 'true',
+    //         'sub' => array(),
+    //     ),
 
-        'contact' => array(
-            'ID' => '#contact',
-            'name' => 'Contact Us',
-            'class' => 'menu-main-sub-1-item',
-            'order' => '03',
-            'local' => 'true',
-            'sub' => '',
-        )
+    //     'contact' => array(
+    //         'ID' => '#contact',
+    //         'name' => 'Contact Us',
+    //         'class' => 'menu-main-sub-1-item',
+    //         'order' => '03',
+    //         'local' => 'true',
+    //         'sub' => array(),
+    //     )
 
-    );
+    // );
 
     // THIS ARRAY KEY APPLY LINK OF WEB 
     $arr = array(
@@ -69,14 +69,14 @@ function menu_main_list()
             'name' => "About",
             'class' => 'menu-main-item', // neu co sub menu phai them sub Class
             // 'subClass' => 'menu-main-sub-1',
-            'sub' => '',
+            // 'sub' => array(),
             //'sub' => $homeArr,
         ),
         'cases' => array(
             'name' => "Cases Tudies",
             'class' => 'menu-main-item ',
             //'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
-            'sub' => '',
+            // 'sub' => array(),
             //'sub' => getCategories('casestudies_category'),
         ),
         // 'industry' => array(
@@ -84,7 +84,7 @@ function menu_main_list()
         //     'class' => 'menu-main-item ',
         //     'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
         //     // 'sub' => 'getCategories('industries_category')',
-        //     'sub' => '',
+        //     'sub' => array(),
         // ),
         'solution' => array(
             'name' => "Solutions",
@@ -120,21 +120,21 @@ function menu_main_list()
             'name' => "Join Digiwin",
             'class' => 'menu-main-item ',
             //'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
-            'sub' => '',
+            // 'sub' => array(),
             //'sub' => getCategories('casestudies_category'),
         ),
         'join-digiwin/cate/98/tag/' => array(
             'name' => "Distribution",
             'class' => 'menu-main-item ',
             //'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
-            'sub' => '',
+            // 'sub' => array(),
             //'sub' => getCategories('casestudies_category'),
         ),
 
         $GLOBALS['contact'] => array(
             'name' => "Contact Digiwin",
             'class' => 'menu-main-item',
-            'sub' => ''
+            // 'sub' => array()
         ),
     );
     return $arr;

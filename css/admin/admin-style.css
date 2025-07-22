@@ -131,7 +131,7 @@
   border: 0rem !important;
 }
 .btn-delete:hover {
-  background-color: #111111 !important;
+  background-color: #890707 !important;
 }
 
 .active_style {
@@ -146,11 +146,6 @@
   text-align: right;
   width: 90%;
   margin-top: 2rem;
-}
-
-.button {
-  letter-spacing: 0.3rem;
-  font-weight: bold;
 }
 
 .agree {

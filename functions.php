@@ -1,7 +1,7 @@
 <?php
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 
-if (!isset($_SESSION)) {
+if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
@@ -27,10 +27,6 @@ new Rewrite_Url();
 if (!isset($_SESSION['languages'])) {
     $_SESSION['languages'] = 'vn';
 }
-
-// echo"<pre>";
-// print_r('');
-// echo"</pre>";
 
 
 /* ==============================================================
