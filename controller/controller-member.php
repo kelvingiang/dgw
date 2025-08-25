@@ -2,7 +2,7 @@
 
 require_once (DIR_MODEL . 'model-member-function.php');
 
-class Controler_Member {
+class Controller_Member {
 
     private $model;
 

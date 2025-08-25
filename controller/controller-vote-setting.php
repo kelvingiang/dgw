@@ -1,6 +1,6 @@
 <?php
 
-class Controler_vote_shareholder
+class Controller_vote_setting
 {
     private $action;
     private $model;
@@ -17,11 +17,11 @@ class Controler_vote_shareholder
     public function Create()
     {
         $parent_slug = 'vote_page';
-        $page_title = __('股東名單');
-        $menu_title = __('股東名單');
+        $page_title = __('股票設定');
+        $menu_title = __('股票設定');
         $capability = 'manage_categories';
-        $menu_slug = 'shareholder_list';
-        $position = 18;
+        $menu_slug = 'vote_setting';
+        $position = 17;
         //$icon = PART_ICON . '/staff-icon.png';  // THAM SO THU 6 LA LINK DEN ICON DAI DIEN
         add_submenu_page($parent_slug, $page_title, $menu_title, $capability, $menu_slug, array($this, 'dispatchActive'), $position);
     }
@@ -30,17 +30,7 @@ class Controler_vote_shareholder
     {
 
         switch ($this->action) {
-            case 'add':
-            case 'edit':
-                $this->form();
-                break;
-            case 'trash':
-            case 'restore':
-                $this->trash();
-                break;
-            case 'delete':
-                $this->delete();
-                break;    
+          
             default:
                 $this->displayPage();
                 break;
@@ -67,29 +57,12 @@ class Controler_vote_shareholder
             $url = $this->createUrl();
             wp_redirect($url);
         }
-        require_once(DIR_VIEW . 'view-vote-shareholder.php');
-    }
 
-    function form()
-    {
-        if (isPost()) {
-            $this->model->Save($_POST, $this->action);
-            toBack(1);
+          if (isPost()) {
+            update_option( '_stack_total', str_replace(',','',$_POST['txt_stock_total']));
         }
-
-        require_once(DIR_VIEW . 'from-vote-shareholder.php');
+        require_once(DIR_VIEW . 'view-vote-setting.php');
     }
 
-    public function trash()
-    {
-        $arrParam = getParams();
-        $this->model->toTrash($arrParam, $this->action);
-        toBack(1);
-    }
 
-    public function delete(){
-        $arrParam = getParams();
-        $this->model->toDelete($arrParam);
-        toBack(1);
-    }
 }

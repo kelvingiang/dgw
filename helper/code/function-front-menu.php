@@ -2,6 +2,7 @@
 $contact = 'contact-' . $_SESSION['languages'];
 $about   =  'about-' . $_SESSION['languages'];
 
+
 function menu_home_list()
 {
     $arr = array(
@@ -32,37 +33,6 @@ function menu_mobile_list()
 
 function menu_main_list()
 {
-    // $homeArr = array(
-
-    //     'operating' =>  array(
-    //         'ID' => '#operating',
-    //         'name' => 'Operating',
-    //         'class' => 'menu-main-sub-1-item',
-    //         'order' => '01',
-    //         'local' => 'true',
-    //         'sub' => array(),
-    //     ),
-
-    //     'location' => array(
-    //         'ID' => '#location',
-    //         'name' => 'Location',
-    //         'class' => 'menu-main-sub-1-item',
-    //         'order' => '02',
-    //         'local' => 'true',
-    //         'sub' => array(),
-    //     ),
-
-    //     'contact' => array(
-    //         'ID' => '#contact',
-    //         'name' => 'Contact Us',
-    //         'class' => 'menu-main-sub-1-item',
-    //         'order' => '03',
-    //         'local' => 'true',
-    //         'sub' => array(),
-    //     )
-
-    // );
-
     // THIS ARRAY KEY APPLY LINK OF WEB 
     $arr = array(
         $GLOBALS['about'] => array(

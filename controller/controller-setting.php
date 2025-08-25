@@ -1,6 +1,6 @@
 <?php
 
-class Controler_Web_Setting
+class Controller_Web_Setting
 {
 
     private $model;

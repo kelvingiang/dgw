@@ -2,7 +2,7 @@
 
 define('TIME_OUT_CLEAR', 1 * 60 * 30);
 
-define('DIR_CONTROLER', THEME_URL . DS . 'controler' . DS);
+define('DIR_CONTROLLER', THEME_URL . DS . 'controller' . DS);
 define('DIR_MODEL', THEME_URL . DS . 'model' . DS);
 define('DIR_VIEW', THEME_URL . DS . 'view' . DS);
 define('DIR_CLASS', THEME_URL . DS . 'class' . DS);

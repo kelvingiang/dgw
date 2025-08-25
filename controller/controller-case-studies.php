@@ -1,25 +1,23 @@
 <?php
 
-class Controler_Slider
+class Controller_Case_Studies
 {
 
     public function __construct()
     {
         add_action('init', array($this, 'register_custom_post'));
-        add_action('manage_edit-slider_columns', array($this, 'manage_columns'));
-        add_action('manage_slider_posts_custom_column', array($this, 'render_columns'));
+        add_action('manage_edit-casestudies_columns', array($this, 'manage_columns'));
+        add_action('manage_casestudies_posts_custom_column', array($this, 'render_columns'));
 
-        add_filter('manage_edit-slider_sortable_columns', array($this, 'sortable_views_column'));
+        add_filter('manage_edit-casestudies_sortable_columns', array($this, 'sortable_views_column'));
         add_filter('request', array($this, 'sort_views_column'));
-
-        add_action('admin_print_styles-edit.php', array($this, 'board_styles'));
     }
 
     public function register_custom_post()
     {
         $labels = array(
-            'name' => __('Slider') . '1300 x 430',
-            'singular_name' => __('Slider'),
+            'name' => __('Case Studies'),
+            'singular_name' => __('Case Studies'),
             'add_new' => __('Add New'),
             'add_new_item' => __('Add Item'),
             'edit_item' => __('Edit'),
@@ -30,7 +28,7 @@ class Controler_Slider
             'not_found' => __('No slides found.'),
             'not_found_in_trash' => __('No found in Trash.'),
             'parent_item_colon' => '',
-            'menu_name' => __('Slider')
+            'menu_name' => __('Case Studies')
         );
         $args = array(
             'labels' => $labels,
@@ -45,23 +43,24 @@ class Controler_Slider
             'capability_type' => 'post',
             'has_archive' => true,
             'hierarchical' => false,
-            'menu_position' => 6,
-            'supports' => array('title', 'thumbnail', 'editor'),
+            'menu_position' => 8,
+            'supports' => array('editor', 'thumbnail', 'title'),
         );
-        register_post_type('slider', $args);
+        register_post_type('casestudies', $args);
     }
 
-    //==== QUAN LY COT HIEN THI TRON BANG   
+    //==== QUAN LY COT HIEN THI TRON BANG
     public function manage_columns($columns)
     {
-        $date_label = __('Create Date', 'suite');
-       // unset($columns['date']); // an cot ngay mac dinh
-       // unset($columns['modified']); // an cot ngay mac dinh
-        unset($columns['home']); // an cot ngay mac dinh
-        unset($columns['category']); // an cot ngay mac dinh
+        $date_label = __('Create Date');
+        //unset($columns['date']); // an cot ngay mac dinh
+        unset($columns['modified']); // an cot ngay mac dinh
+        unset($columns['postdate']); // an cot ngay mac dinh
         //==== THEM COT VA BAN
-        // $columns['img'] = __('Image');
+        // $columns['content'] = __('Content');
+        // $columns['category'] = __('Category');
         // $columns['author'] = __('Author');
+        // $columns['home'] = __('Top Page');
         // $columns['langguage'] = __('Langguage');
         // $columns['setorder'] = __('Show Order');
         // $columns['date'] = $date_label;
@@ -72,7 +71,21 @@ class Controler_Slider
     public function render_columns($columns)
     {
         global $post;
-       
+        switch ($columns) {
+            // case 'content':
+                // echo mySubContent(get_the_content());
+                // break;
+            case 'category':
+                $terms = wp_get_post_terms($post->ID, 'casestudies_category');
+
+                if (count($terms) > 0) {
+                    foreach ($terms as $key => $term) {
+                        echo '<a href=' . custom_redirect($term->slug) . '&' . $term->taxonomy . '=' . $term->slug . '>' . $term->name . '</a></br>';
+                    }
+                }
+                break;
+           
+        }
     }
 
     //====== SAP SEP THEO TRINH TU
@@ -80,6 +93,7 @@ class Controler_Slider
     {
         $newcolumn['setorder'] = 'setorder';
         $newcolumn['langguage'] = 'langguage';
+        $newcolumn['home'] = 'home';
         return $newcolumn;
     }
 
@@ -94,8 +108,6 @@ class Controler_Slider
                 )
             );
         }
-
-
         if (isset($vars['orderby']) && 'langguage' == $vars['orderby']) {
             $vars = array_merge(
                 $vars,
@@ -105,18 +117,16 @@ class Controler_Slider
                 )
             );
         }
+
+        if (isset($vars['orderby']) && 'home' == $vars['orderby']) {
+            $vars = array_merge(
+                $vars,
+                array(
+                    'meta_key' => '_metabox_home', //Custom field key
+                    'orderby' => '_metabox_home' //Custom field value (number)
+                )
+            );
+        }
         return $vars;
-    }
-
-    //==== STYLE CHO COLUMNS    
-    public function board_styles()
-    {
-?>
-        <style type="text/css">
-
-
-        </style>
-<?php
-
     }
 }

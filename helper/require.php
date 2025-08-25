@@ -1,7 +1,7 @@
 <?php
 
-require_once (DIR_CONTROLER . 'controler.php');
-new Controler_Main();
+require_once (DIR_CONTROLLER . 'controller.php');
+new Controller_Main();
 
 require_once (DIR_METABOX . 'metabox.php');
 new Metabox_Main();

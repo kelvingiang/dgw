@@ -1,25 +1,23 @@
 <?php
 
-class Controler_Join_Us
+class Controller_Industries
 {
 
     public function __construct()
     {
         add_action('init', array($this, 'register_custom_post'));
-        add_action('manage_edit-joinus_columns', array($this, 'manage_columns'));
-        add_action('manage_joinus_posts_custom_column', array($this, 'render_columns'));
+        add_action('manage_edit-industries_columns', array($this, 'manage_columns'));
+        add_action('manage_industries_posts_custom_column', array($this, 'render_columns'));
 
-        add_filter('manage_edit-joinus_sortable_columns', array($this, 'sortable_views_column'));
+        add_filter('manage_edit-industries_sortable_columns', array($this, 'sortable_views_column'));
         add_filter('request', array($this, 'sort_views_column'));
-
-        add_action('admin_print_styles-edit.php', array($this, 'board_styles'));
     }
 
     public function register_custom_post()
     {
         $labels = array(
-            'name' => __('Join Digiwin'),
-            'singular_name' => __('Join Digiwin'),
+            'name' => __('Industries'),
+            'singular_name' => __('Industries'),
             'add_new' => __('Add New'),
             'add_new_item' => __('Add Item'),
             'edit_item' => __('Edit'),
@@ -30,7 +28,7 @@ class Controler_Join_Us
             'not_found' => __('No slides found.'),
             'not_found_in_trash' => __('No found in Trash.'),
             'parent_item_colon' => '',
-            'menu_name' => __('Join Digiwin')
+            'menu_name' => __('Industries')
         );
         $args = array(
             'labels' => $labels,
@@ -45,26 +43,29 @@ class Controler_Join_Us
             'capability_type' => 'post',
             'has_archive' => true,
             'hierarchical' => false,
-            'menu_position' => 4,
-            'supports' => array('title', 'thumbnail', 'editor'),
+            'menu_position' => 5,
+            'supports' => array('thumbnail', 'editor', 'title'),
         );
-        register_post_type('joinus', $args);
+        register_post_type('industries', $args);
     }
 
     //==== QUAN LY COT HIEN THI TRON BANG   
     public function manage_columns($columns)
     {
         $date_label = __('Create Date', 'suite');
+        unset($columns['date']); // an cot ngay mac dinh
+        unset($columns['modified']); // an cot ngay mac dinh
+        unset($columns['postdate']); // an cot ngay mac dinh
+        unset($columns['category']); // an cot ngay mac dinh
         unset($columns['home']); // an cot ngay mac dinh
-        //unset($columns['category']); // an cot ngay mac dinh
-        // unset($columns['postdate']); // an cot ngay mac dinh
         //==== THEM COT VA BAN
         // $columns['content'] = __('Content');
-        //  $columns['category'] = __('Category');
-        // $columns['author'] = __('Author');
-        // $columns['langguage'] = __('Langguage');
-        // $columns['setorder'] = __('Show Order');
-        //$columns['date'] = $date_label;
+        // $columns['category'] = __('Category');
+        $columns['author'] = __('Author');
+        $columns['langguage'] = __('Langguage');
+        $columns['setorder'] = __('Show Order');
+
+        $columns['date'] = $date_label;
         return $columns;
     }
 
@@ -72,16 +73,25 @@ class Controler_Join_Us
     public function render_columns($columns)
     {
         global $post;
-        switch ($columns) {
 
-            case 'category':
-                $terms = wp_get_post_terms($post->ID, 'joinus_category');
-                if (count($terms) > 0) {
-                    foreach ($terms as $key => $term) {
-                        echo '<a href=' . custom_redirect($term->slug) . '&' . $term->taxonomy . '=' . $term->slug . '>' . $term->name . '</a></br>';
-                    }
-                }
-                break;
+        switch ($columns) {
+                // case 'content':
+                // echo mySubContent(get_the_content());
+                // break;
+                // case 'category':
+                //     $terms = wp_get_post_terms($post->ID, 'industries_category');
+                //     if (count($terms) > 0) {
+                //         foreach ($terms as $key => $term) {
+                //             echo '<a href=' . custom_redirect($term->slug) . '&' . $term->taxonomy . '=' . $term->slug . '>' . $term->name . '</a></br>';
+                //         }
+                //     }
+                //     break;
+                // case 'langguage':
+                //     _e(get_post_meta($post->ID, '_metabox_langguage', true));
+                //     break;
+                // case 'setorder':
+                // echo get_post_meta($post->ID, '_metabox_order', true);
+                //  break;
         }
     }
 
@@ -114,19 +124,6 @@ class Controler_Join_Us
                 )
             );
         }
-
         return $vars;
-    }
-
-    //==== STYLE CHO COLUMNS    
-    public function board_styles()
-    {
-?>
-        <style type="text/css">
-
-
-        </style>
-<?php
-
     }
 }

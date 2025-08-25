@@ -1,6 +1,6 @@
 <?php
 
-class Controler_Company_Information {
+class Controller_Company_Information {
 
     private $model;
 

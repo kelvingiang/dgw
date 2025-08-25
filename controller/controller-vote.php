@@ -1,6 +1,6 @@
 <?php
 
-class Controler_Vote
+class Controller_Vote
 {
 
     private $action;

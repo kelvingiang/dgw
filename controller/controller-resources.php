@@ -1,6 +1,6 @@
 <?php
 
-class Controler_Resources
+class Controller_Resources
 {
 
     public function __construct()

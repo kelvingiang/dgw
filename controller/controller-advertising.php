@@ -1,6 +1,6 @@
 <?php
 
-class Controler_Advertising {
+class Controller_Advertising {
 
     public function __construct() {
         add_action('init', array($this, 'register_custom_post'));

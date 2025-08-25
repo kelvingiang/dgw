@@ -1,23 +1,25 @@
 <?php
 
-class Controler_Case_Studies
+class Controller_Solutions
 {
 
     public function __construct()
     {
         add_action('init', array($this, 'register_custom_post'));
-        add_action('manage_edit-casestudies_columns', array($this, 'manage_columns'));
-        add_action('manage_casestudies_posts_custom_column', array($this, 'render_columns'));
+        add_action('manage_edit-solutions_columns', array($this, 'manage_columns'));
+        add_action('manage_solutions_posts_custom_column', array($this, 'render_columns'));
 
-        add_filter('manage_edit-casestudies_sortable_columns', array($this, 'sortable_views_column'));
+        add_filter('manage_edit-solutions_sortable_columns', array($this, 'sortable_views_column'));
         add_filter('request', array($this, 'sort_views_column'));
+
+        add_action('admin_print_styles-edit.php', array($this, 'board_styles'));
     }
 
     public function register_custom_post()
     {
         $labels = array(
-            'name' => __('Case Studies'),
-            'singular_name' => __('Case Studies'),
+            'name' => __('Solutions'),
+            'singular_name' => __('Solutions'),
             'add_new' => __('Add New'),
             'add_new_item' => __('Add Item'),
             'edit_item' => __('Edit'),
@@ -28,7 +30,7 @@ class Controler_Case_Studies
             'not_found' => __('No slides found.'),
             'not_found_in_trash' => __('No found in Trash.'),
             'parent_item_colon' => '',
-            'menu_name' => __('Case Studies')
+            'menu_name' => __('Solutions')
         );
         $args = array(
             'labels' => $labels,
@@ -43,24 +45,23 @@ class Controler_Case_Studies
             'capability_type' => 'post',
             'has_archive' => true,
             'hierarchical' => false,
-            'menu_position' => 8,
-            'supports' => array('editor', 'thumbnail', 'title'),
+            'menu_position' => 4,
+            'supports' => array('title', 'thumbnail', 'editor'),
         );
-        register_post_type('casestudies', $args);
+        register_post_type('solutions', $args);
     }
 
-    //==== QUAN LY COT HIEN THI TRON BANG
+    //==== QUAN LY COT HIEN THI TRON BANG   
     public function manage_columns($columns)
     {
-        $date_label = __('Create Date');
-        //unset($columns['date']); // an cot ngay mac dinh
-        unset($columns['modified']); // an cot ngay mac dinh
-        unset($columns['postdate']); // an cot ngay mac dinh
+        $date_label = __('Create Date', 'suite');
+      //  unset($columns['date']); // an cot ngay mac dinh
+       // unset($columns['modified']); // an cot ngay mac dinh
+       // unset($columns['postdate']); // an cot ngay mac dinh
         //==== THEM COT VA BAN
-        // $columns['content'] = __('Content');
+       // $columns['content'] = __('Content');
         // $columns['category'] = __('Category');
         // $columns['author'] = __('Author');
-        // $columns['home'] = __('Top Page');
         // $columns['langguage'] = __('Langguage');
         // $columns['setorder'] = __('Show Order');
         // $columns['date'] = $date_label;
@@ -72,20 +73,25 @@ class Controler_Case_Studies
     {
         global $post;
         switch ($columns) {
-            // case 'content':
-                // echo mySubContent(get_the_content());
-                // break;
-            case 'category':
-                $terms = wp_get_post_terms($post->ID, 'casestudies_category');
-
-                if (count($terms) > 0) {
-                    foreach ($terms as $key => $term) {
-                        echo '<a href=' . custom_redirect($term->slug) . '&' . $term->taxonomy . '=' . $term->slug . '>' . $term->name . '</a></br>';
-                    }
-                }
-                break;
-           
-        }
+           // case 'content':
+               // echo mySubContent(get_post_meta($post->ID, '_solution_value', true));
+             //   the_content();
+               // break;
+        //     case 'category':
+        //         $terms = wp_get_post_terms($post->ID, 'solutions_category');
+        //         if (count($terms) > 0) {
+        //             foreach ($terms as $key => $term) {
+        //                 echo '<a href=' . custom_redirect($term->slug) . '&' . $term->taxonomy . '=' . $term->slug . '>' . $term->name . '</a></br>';
+        //             }
+        //         }
+        //         break;
+        //     case 'langguage':
+        //         _e(get_post_meta($post->ID, '_metabox_langguage', true));
+        //         break;
+        //     case 'setorder':
+        //         echo get_post_meta($post->ID, '_metabox_order', true);
+        //         break;
+         }
     }
 
     //====== SAP SEP THEO TRINH TU
@@ -93,7 +99,6 @@ class Controler_Case_Studies
     {
         $newcolumn['setorder'] = 'setorder';
         $newcolumn['langguage'] = 'langguage';
-        $newcolumn['home'] = 'home';
         return $newcolumn;
     }
 
@@ -104,29 +109,33 @@ class Controler_Case_Studies
                 $vars,
                 array(
                     'meta_key' => '_metabox_order', //Custom field key
-                    'orderby' => '_metabox_order' //Custom field value (number)
+                    'orderby' => 'meta_value_num' //Custom field value (number)
                 )
             );
         }
+
         if (isset($vars['orderby']) && 'langguage' == $vars['orderby']) {
             $vars = array_merge(
                 $vars,
                 array(
                     'meta_key' => '_metabox_langguage', //Custom field key
-                    'orderby' => '_metabox_langguage' //Custom field value (number)
+                    'orderby' => 'meta_value' //Custom field value (number)
                 )
             );
         }
 
-        if (isset($vars['orderby']) && 'home' == $vars['orderby']) {
-            $vars = array_merge(
-                $vars,
-                array(
-                    'meta_key' => '_metabox_home', //Custom field key
-                    'orderby' => '_metabox_home' //Custom field value (number)
-                )
-            );
-        }
         return $vars;
+    }
+
+    //==== STYLE CHO COLUMNS    
+    public function board_styles()
+    {
+?>
+        <style type="text/css">
+
+
+        </style>
+<?php
+
     }
 }
