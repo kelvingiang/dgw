@@ -24,6 +24,7 @@ class Controller_Main
             'controller_slider' => true,
             'controller_join_us' => true,
             'controller_logo' => true,
+            'controller_popup' => true,
             // phan bo phieu co dong
             'controller_vote' => false,
             'controller_vote_shareholder' => false,
@@ -33,6 +34,7 @@ class Controller_Main
 
         $this->_controller_options = get_option($this->_controller_name, $defaultOption);
 
+        $this->page_popup();
         $this->page_information();
         $this->page_setting();
         $this->page_member();
@@ -51,11 +53,19 @@ class Controller_Main
         $this->post_cases_studues();
         $this->post_advertising();
         $this->post_join_us();
-        
+
 
 
 
         add_action('admin_init', array($this, 'do_output_buffer'));
+    }
+
+    public function page_popup()
+    {
+        if ($this->_controller_options['controller_popup']) {
+            require_once(DIR_CONTROLLER . 'controller-popup.php');
+            new Controller_Popup();
+        }
     }
 
     public function page_logo()
@@ -73,7 +83,7 @@ class Controller_Main
             require_once(DIR_CONTROLLER . 'controller-setting.php');
             new Controller_Web_Setting();
         }
-   }
+    }
 
     public function page_information()
     {
@@ -81,7 +91,7 @@ class Controller_Main
             require_once(DIR_CONTROLLER . 'controller-information.php');
             new Controller_Company_Information();
         }
-   }
+    }
 
     public function page_member()
     {
@@ -89,7 +99,7 @@ class Controller_Main
             require_once(DIR_CONTROLLER . 'controller-member.php');
             new Controller_Member();
         }
-   }
+    }
 
 
     public function page_vote()
@@ -109,7 +119,8 @@ class Controller_Main
     }
 
 
-    public function page_vote_shareholder(){
+    public function page_vote_shareholder()
+    {
         if ($this->_controller_options['controller_vote_shareholder'] == true) {
             require_once(DIR_CONTROLLER . 'controller-vote-shareholder.php');
             new Controller_vote_shareholder();

@@ -29,11 +29,19 @@
     width: 300px;
     img {
         width: 50px !important;
+        margin: 2px;
     }
 }
 
 .column-link {
     width: 35%;
+}
+
+.column-status {
+    width: 70px;
+}
+.column-create_date {
+    width: 80px;
 }
 
 ///===========================================================================
@@ -65,4 +73,11 @@
     height: 1rem;
     border-radius: 1rem;
     cursor: pointer;
+}
+.activeStyle {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #ce3d04;
+    margin-top: 10px;
 }

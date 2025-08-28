@@ -33,7 +33,7 @@ class Model_Logo_Function
 
     public function Save($arrData, $option)
     {
-          global $current_user;
+        global $current_user;
         $data = array(
             'company' => $arrData['txt-company'],
             'img' => $arrData['txt-img'],
@@ -79,6 +79,22 @@ class Model_Logo_Function
             $sql = "UPDATE $this->table SET trash = $trash  WHERE ID IN ($ids)";
             $wpdb->query($sql);
         }
+    }
+
+    // THAY DOI TRANG THAI 
+    public function toActive($arrData = array(), $options = array())
+    {
+        global $wpdb;
+        $status = ($options == 'status') ? 1 : 0;
+        echo $status;
+        echo '<pre>';
+        print_r($arrData);
+        echo '</pre>';
+        die();
+        // KIEM TRA PHAN UPFDATE CÓ PHAN DANG CHUOI HAY KHONG
+        $data = array('status' => $status);
+        $where = array('ID' => absint($arrData['id']));
+        $wpdb->update($this->table, $data, $where);
     }
 
     // XOA DATA

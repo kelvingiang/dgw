@@ -1,26 +1,16 @@
 <?php
-require_once(DIR_MODEL . 'model-member.php');
-$dataList = new Model_Member(); 
+require_once(DIR_MODEL . 'model-popup.php');
+$dataList = new Model_Pop_up(); 
 $dataList->prepare_items();
-$lbl = '';
+$lbl = null;
+$msg = null;
 $page = getParams('page');
 $linkAdd = admin_url('admin.php?page=' . $page . '&action=add');  // TAO LINH CHO ADD NEW
 $lblAdd = __('Add Item');
 if (getParams('msg') == 1) {
-    $msg = '<div class="updated notice notice-success is-dismissible"><p>' . __('Data Adjustment succeeded') . '</p></div>';
+    $msg .= '<div class="updated notice notice-success is-dismissible"><p>' . __('Data Adjustment succeeded') . '</p></div>';
 }
 ?>
-<style>
-    .column-serial {
-        width: 8rem;
-    } 
-    .column-series, .column-price{
-        width: 10rem;
-    }
-    .column-date{
-        width: 5rem;
-    }
-</style>
 
 <div class="wrap">
     <h2 style="font-weight: bold">
@@ -34,3 +24,8 @@ if (getParams('msg') == 1) {
         <?php $dataList->display(); ?>
     </form>
 </div>
+<script>
+    function clickChangeStatus(event) {
+        location.replace("<?php echo  'admin.php?page=' . $page . '&action=status&id=' ?>" + event);
+    }
+</script>
