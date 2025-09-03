@@ -220,7 +220,6 @@ class Model_Pop_up extends WP_List_Table
     {
         echo "<div>";
         echo '<img src="' . PART_IMAGES . 'pop-up/' . $item['img_cn'] . '" alt="logo image cn" />';
-        echo '<img src="' . PART_IMAGES . 'pop-up/' . $item['img_vn'] . '" alt="logo image vn" />';
         echo "</div>";
     }
 

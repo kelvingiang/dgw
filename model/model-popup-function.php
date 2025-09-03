@@ -31,6 +31,14 @@ class Model_Popup_Function
         return $row;
     }
 
+    public function getActive()
+    {
+        global $wpdb;
+        $sql = "SELECT * FROM $this->table WHERE status = 1";
+        $row = $wpdb->get_row($sql, ARRAY_A);
+        return $row;
+    }
+
     public function Save($arrData, $option)
     {
 
@@ -46,9 +54,19 @@ class Model_Popup_Function
             $data = array_merge($data, $img1);
         }
 
+        if (!empty($arrData['file-img-vertical-cn'])) {
+            $img1['img_mobile_cn'] = $arrData['file-img-vertical-cn'];
+            $data = array_merge($data, $img1);
+        }
+
         if (!empty($arrData['file-img-vn'])) {
             $img2['img_vn'] = $arrData['file-img-vn'];
             $data = array_merge($data, $img2);
+        }
+
+        if (!empty($arrData['file-img-vertical-vn'])) {
+            $img1['img_mobile_vn'] = $arrData['file-img-vertical-vn'];
+            $data = array_merge($data, $img1);
         }
 
         if (empty($arrData['hid-id'])) {

@@ -19,13 +19,8 @@ function changeLanguages(el) {
             type: type
         },
         success: function(res) {
-            // alert(res.status);
             if (res.status === 'ok') {
-                //window.location = location.href;
-                //location.reload();
-                // window.location = 'http://localhost/digiwin';
-
-                window.location = 'https://digiwin.com.vn/';
+                window.location = '<?php echo home_url(); ?>';
             }
         }
     });

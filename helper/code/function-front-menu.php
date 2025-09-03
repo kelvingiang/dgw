@@ -1,6 +1,12 @@
 <?php
-$contact = 'contact-' . $_SESSION['languages'];
-$about   =  'about-' . $_SESSION['languages'];
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+
+$lang = isset($_SESSION['languages']) ? $_SESSION['languages'] : 'vn'; // 預設值 en
+$contact = 'contact-' . $lang;
+$about   =  'about-' . $lang;
 
 
 function menu_home_list()

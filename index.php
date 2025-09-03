@@ -1,6 +1,5 @@
 <?php get_header(); ?>
-<?php //get_template_part('templates/template', 'header'); 
-?>
+<?php get_template_part('templates/template', 'home_popup'); ?>
 <div class="index-space">
     <div style="position: relative;">
         <?php

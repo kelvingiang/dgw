@@ -9,6 +9,8 @@ if (!empty(getParams('id'))) {
     $link_cn =  $data['link_cn'] ?? null;
     $img_vn =  $data['img_vn'] ?? null;
     $img_cn =  $data['img_cn'] ?? null;
+    $img_mobile_cn =  $data['img_mobile_cn'] ?? null;
+    $img_mobile_vn =  $data['img_mobile_vn'] ?? null;
 }
 ?>
 <?php if (!empty(getParams('e'))) :
@@ -30,7 +32,7 @@ endif
 
 <form name="f1" id="f1" method="post" enctype="multipart/form-data">
     <input type="hidden" name="hid-id" id="hid-id" value="<?php echo $id ?>" />
-    <div >
+    <div>
 
         <div class="row-one-column">
             <div class="col">
@@ -63,31 +65,74 @@ endif
             </div>
         </div>
 
-        <div class="row-two-column">
+        <div class="row-four-column">
             <div class="col">
                 <div class="cell-title">
-                    <label>中文圖片(CN)</label>
+                    <label>中文橫圖(CN)</label>
                 </div>
                 <div class="cell-text">
-                    <input type="file" name="file-img-cn" id="file-img-cn"
-                        accept="image/*" class="my-input" />
+                    <input type="file"
+                        name="file-img-cn"
+                        id="file-img-cn"
+                        data-target="#show-img-cn"
+                        accept="image/*"
+                        class="my-input" />
                 </div>
             </div>
 
             <div class="col">
                 <div class="cell-title">
-                    <label>越文圖片(VN)</label>
+                    <label>中文豎圖(CN)</label>
                 </div>
                 <div class="cell-text">
-                    <input type="file" name="file-img-vn" id="file-img-vn" accept="image/*" class="my-input" />
+                    <input type="file"
+                        name="file-img-vertical-cn"
+                        id="file-img-vertical-cn"
+                        data-target="#show-img-vertical-cn"
+                        accept=" image/*"
+                        class="my-input" />
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="cell-title">
+                    <label>越文橫圖(VN)</label>
+                </div>
+                <div class="cell-text">
+                    <input type="file"
+                        name="file-img-vn"
+                        id="file-img-vn"
+                        data-target="#show-img-vn"
+                        accept="image/*"
+                        class="my-input" />
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="cell-title">
+                    <label>越文豎圖(VN)</label>
+                </div>
+                <div class="cell-text">
+                    <input type="file"
+                        name="file-img-vertical-vn"
+                        id="file-img-vertical-vn"
+                        data-target="#show-img-vertical-vn"
+                        accept=" image/*"
+                        class="my-input" />
                 </div>
             </div>
         </div>
 
-        <div class="row-two-column" style="height: 410px;">
+        <div class="row-four-column" style="height: 200px;">
             <div class="col show-img">
                 <div id="show-img-cn"
                     style=" background-image: url('<?php echo PART_IMAGES . 'pop-up/' . $img_cn ?>');">
+                </div>
+            </div>
+
+            <div class="col show-img">
+                <div id="show-img-vertical-cn"
+                    style=" background-image: url('<?php echo PART_IMAGES . 'pop-up/' . $img_mobile_cn ?>');">
                 </div>
             </div>
 
@@ -96,8 +141,13 @@ endif
                     style=" background-image: url('<?php echo PART_IMAGES . 'pop-up/' . $img_vn ?>');">
                 </div>
             </div>
-        </div>
 
+            <div class="col show-img">
+                <div id="show-img-vertical-vn"
+                    style=" background-image: url('<?php echo PART_IMAGES . 'pop-up/' . $img_mobile_vn ?>');">
+                </div>
+            </div>
+        </div>
 
         <div class="button-row" style="margin-top: 2rem;">
             <button type="submit" name="btn-save" id="btn-save" class="button button-primary button-large"> 發佈</button>
@@ -117,41 +167,29 @@ endif
         background-repeat: no-repeat;
         background-size: contain;
     }
+
+    #show-img-vertical-cn,
+    #show-img-vertical-vn {
+        width: 90%;
+        height: 200px;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
 </style>
 <script type="text/javascript">
     // show hinh anh truoc khi up len
-    jQuery(function() {
-        jQuery("#file-img-cn").on("change", function() {
-            var files = !!this.files ? this.files : [];
-            if (!files.length || !window.FileReader)
-                return; // no file selected, or no FileReader support
+    jQuery("input[type='file']").on("change", function() {
+        var files = this.files || [];
+        if (!files.length || !window.FileReader) return;
 
-            if (/^image/.test(files[0].type)) { // only image file
-                var reader = new FileReader(); // instance of the FileReader
-                reader.readAsDataURL(files[0]); // read the local file
-
-                reader.onloadend = function() { // set image data as background of div
-                    jQuery("#show-img-cn").css("background-image", "url(" + this.result + ")");
-                };
-                console.log(result);
-            }
-        });
-
-
-        jQuery("#file-img-vn").on("change", function() {
-            var files = !!this.files ? this.files : [];
-            if (!files.length || !window.FileReader)
-                return; // no file selected, or no FileReader support
-
-            if (/^image/.test(files[0].type)) { // only image file
-                var reader = new FileReader(); // instance of the FileReader
-                reader.readAsDataURL(files[0]); // read the local file
-
-                reader.onloadend = function() { // set image data as background of div
-                    jQuery("#show-img-vn").css("background-image", "url(" + this.result + ")");
-                };
-                console.log(result);
-            }
-        });
+        if (/^image/.test(files[0].type)) {
+            var target = jQuery(this).data("target"); // 找到要顯示的目標
+            var reader = new FileReader();
+            reader.readAsDataURL(files[0]);
+            reader.onloadend = function() {
+                jQuery(target).css("background-image", "url(" + this.result + ")");
+            };
+        }
     });
+
 </script>
