@@ -51,9 +51,9 @@ class Model_Pop_up extends WP_List_Table
         $arr = array(
             'cb' => '<input type="checkbox" />',
             'title' => __('票提'),
+            'status' => __('狀態'),
             'img' => __('圖片'),
             'link' => __('連接'),
-            'status' => __('狀態'),
             'create_date' => __('Create Date'),
         );
         return $arr;
@@ -187,32 +187,70 @@ class Model_Pop_up extends WP_List_Table
         return $html;
     }
 
+    // public function column_title($item)
+    // {
+
+    //     $page = getParams('page');
+
+    //     if (@$_GET['customvar'] == 'trash') {
+    //         $actions = array(
+    //             'restore' => '<a href=" ?page=' . $page . '&action=restore&id=' . $item['ID'] . ' " >' . __('Restore') . '</a>',
+    //             'delete' => '<a href=" ?page=' . $page . '&action=delete&id=' . $item['ID'] . ' " >' . __('Delete Permanently') . ' </a>',
+    //         );
+    //     } else {
+    //         if ($item['status'] === '0') {
+    //             $actions = array(
+    //                 'active' => '<a href=" ?page=' . $page . '&action=active&id=' . $item['ID'] . ' " >啟用</a>',
+    //                 'edit' => '<a href=" ?page=' . $page . '&action=edit&id=' . $item['ID'] . ' " >' . __('Edit') . '</a>',
+    //                 'trash' => '<a href=" ?page=' . $page . '&action=trash&id=' . $item['ID'] . ' " >' . __('Trash') . '</a>',
+    //             );
+    //         } elseif ($item['status'] === '1') {
+    //             $actions = array(
+    //                 'passive' => '<a href=" ?page=' . $page . '&action=passive&id=' . $item['ID'] . ' " >停止</a>',
+    //                 'edit' => '<a href=" ?page=' . $page . '&action=edit&id=' . $item['ID'] . ' " >' . __('Edit') . '</a>',
+    //                 'trash' => '<a href=" ?page=' . $page . '&action=trash&id=' . $item['ID'] . ' " >' . __('Trash') . '</a>',
+    //             );
+    //         }
+    //     }
+    //     $html = '<strong> <a href="?page=' . $page . '&action=edit&id=' . $item['ID'] . ' ">' . $item['title'] . '</a> </strong>' . $this->row_actions($actions);
+    //     return $html;
+
+
+    // }
+
     public function column_title($item)
     {
-
         $page = getParams('page');
 
         if (@$_GET['customvar'] == 'trash') {
             $actions = array(
-                'restore' => '<a href=" ?page=' . $page . '&action=restore&id=' . $item['ID'] . ' " >' . __('Restore') . '</a>',
-                'delete' => '<a href=" ?page=' . $page . '&action=delete&id=' . $item['ID'] . ' " >' . __('Delete Permanently') . ' </a>',
+                'restore' => '<a href="?page=' . $page . '&action=restore&id=' . $item['ID'] . '">' . __('Restore') . '</a>',
+                'delete' => '<a href="?page=' . $page . '&action=delete&id=' . $item['ID'] . '">' . __('Delete Permanently') . '</a>',
             );
         } else {
-            if ($item['status'] === '0') {
+            echo $item['status'];
+            if ($item['status'] == '0' || $item['status'] == 0) {
                 $actions = array(
-                    'active' => '<a href=" ?page=' . $page . '&action=active&id=' . $item['ID'] . ' " >啟用</a>',
-                    'edit' => '<a href=" ?page=' . $page . '&action=edit&id=' . $item['ID'] . ' " >' . __('Edit') . '</a>',
-                    'trash' => '<a href=" ?page=' . $page . '&action=trash&id=' . $item['ID'] . ' " >' . __('Trash') . '</a>',
+                    'active' => '<a href="?page=' . $page . '&action=active&id=' . $item['ID'] . '">啟用</a>',
+                    'edit' => '<a href="?page=' . $page . '&action=edit&id=' . $item['ID'] . '">' . __('Edit') . '</a>',
+                    'trash' => '<a href="?page=' . $page . '&action=trash&id=' . $item['ID'] . '">' . __('Trash') . '</a>',
                 );
-            } elseif ($item['status'] === '1') {
+            } elseif ($item['status'] == '1' || $item['status'] == 1) {
                 $actions = array(
-                    'passive' => '<a href=" ?page=' . $page . '&action=passive&id=' . $item['ID'] . ' " >停止</a>',
-                    'edit' => '<a href=" ?page=' . $page . '&action=edit&id=' . $item['ID'] . ' " >' . __('Edit') . '</a>',
-                    'trash' => '<a href=" ?page=' . $page . '&action=trash&id=' . $item['ID'] . ' " >' . __('Trash') . '</a>',
+                    'passive' => '<a href="?page=' . $page . '&action=passive&id=' . $item['ID'] . '">停止</a>',
+                    'edit' => '<a href="?page=' . $page . '&action=edit&id=' . $item['ID'] . '">' . __('Edit') . '</a>',
+                    'trash' => '<a href="?page=' . $page . '&action=trash&id=' . $item['ID'] . '">' . __('Trash') . '</a>',
+                );
+            } else {
+                // 添加 else 條件，處理其他 status 值
+                $actions = array(
+                    'edit' => '<a href="?page=' . $page . '&action=edit&id=' . $item['ID'] . '">' . __('Edit') . '</a>',
+                    'trash' => '<a href="?page=' . $page . '&action=trash&id=' . $item['ID'] . '">' . __('Trash') . '</a>',
                 );
             }
         }
-        $html = '<strong> <a href="?page=' . $page . '&action=edit&id=' . $item['ID'] . ' ">' . $item['title'] . '</a> </strong>' . $this->row_actions($actions);
+
+        $html = '<strong><a href="?page=' . $page . '&action=edit&id=' . $item['ID'] . '">' . $item['title'] . '</a></strong>' . $this->row_actions($actions);
         return $html;
     }
 
@@ -230,8 +268,8 @@ class Model_Pop_up extends WP_List_Table
 
     public function column_status($item)
     {
-        if($item['status'] == '1'){
-          echo "<div class='activeStyle'></div>";
+        if ($item['status'] == '1') {
+            echo "<div class='activeStyle'></div>";
         };
     }
 

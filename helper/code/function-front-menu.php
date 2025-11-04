@@ -1,7 +1,7 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+// if (session_status() === PHP_SESSION_NONE) {
+//     session_start();
+// }
 
 
 $lang = isset($_SESSION['languages']) ? $_SESSION['languages'] : 'vn'; // 預設值 en
