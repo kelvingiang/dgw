@@ -3,7 +3,7 @@
 }
 
 .single-space {
-   // margin: 2rem -1rem 2rem -1rem;
+    // margin: 2rem -1rem 2rem -1rem;
     &-title {
         font-size: 1.6rem;
         //letter-spacing: 0.5rem;
@@ -60,5 +60,29 @@
         font-size: 1.1rem;
         color: $color_text_title;
         font-weight: bold;
+    }
+
+    .view_like_area {
+        margin-top: 5px;
+        margin-right: 5px;
+        .view_like_content {
+            text-align: end;
+            color: #bbbbbb;
+            display: flex;
+            flex-direction: row;
+            justify-content: end;
+            & > div {
+                margin: 0.3rem 0.5rem;
+                display: flex;
+                flex-direction: row;
+                div {
+                    margin: 0.2rem;
+                    .like-post {
+                        color: #153f77;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
     }
 }

@@ -18,42 +18,41 @@ function getCustomsPost($postType, $postCount)
                 'value'     =>  $_SESSION['languages'],
                 'compare'   => '=',
             ),
-            /*
-            array(
-                'key'       => '_metabox_home',
-                'value'     =>  true,
-                'compare'   => '=',
-            ),
-            */
         ),
     );
-
     $wp_query = new WP_Query($arr);
+    $stt = 1;
+    if ($wp_query->have_posts()) :
+        while ($wp_query->have_posts()) :
+            $wp_query->the_post();                ?>
+            <div class="item" data-id="<?php echo $stt ?>" data-post="<?php echo get_the_ID(); ?>">
+                <div>
+                    <a href="<?php echo get_the_permalink() ?>">
+                        <?php if (has_post_thumbnail()) { ?>
+                            <img class="item-img" src="<?php the_post_thumbnail_url() ?>" srcset="<?php the_post_thumbnail_url() ?>" />
+                        <?php } else { ?>
+                            <img class="item-img" src="<?php echo PART_IMAGES . 'no-image.jpg' ?>" srcset="<?php echo PART_IMAGES . 'no-image.jpg' ?>" />
+                        <?php } ?>
+                    </a>
+                    <?php
+                    if ($postType != 'joinus') {
+                        get_template_part('templates/template', 'view_comment');
+                    }
+                    ?>
+                </div>
 
-    if ($wp_query->have_posts()) {
-        $stt = 1;
-        while ($wp_query->have_posts()) {
-            $wp_query->the_post();
-            // $tags = wp_get_post_terms(get_the_ID(), 'casestudies_tags');
-?>
-            <div class="item" data-id="<?php echo $stt ?>">
-                <a href="<?php echo get_the_permalink() ?>">
+                <div class="item-title">
+                    <a href="<?php echo get_the_permalink() ?>">
+                        <?php the_title() ?>
+                    </a>
+                </div>
 
-                    <?php if (has_post_thumbnail()) { ?>
-                        <img class="item-img" src="<?php the_post_thumbnail_url() ?>" srcset="<?php the_post_thumbnail_url() ?>" />
-                    <?php } else { ?>
-                        <img class="item-img" src="<?php echo PART_IMAGES . 'no-image.jpg' ?>" srcset="<?php echo PART_IMAGES . 'no-image.jpg' ?>" />
-                    <?php } ?>
-
-                    <div class="item-title">
-                        <?php  the_title() ?>
-                    </div>
-                </a>
             </div>
+
         <?php
             $stt++;
-        }
-    }
+        endwhile;
+    endif;
 }
 
 function getCustomsPostByCate($postType, $cate, $postCount, $taxonomy)
@@ -85,30 +84,37 @@ function getCustomsPostByCate($postType, $cate, $postCount, $taxonomy)
     $wp_query = new WP_Query($arr);
 
     //return $wp_query;
-    if ($wp_query->have_posts()) {
+    if ($wp_query->have_posts()) :
         $stt = 1;
-        while ($wp_query->have_posts()) {
+        while ($wp_query->have_posts()) :
             $wp_query->the_post();
-            // $tags = wp_get_post_terms(get_the_ID(), 'casestudies_tags');
         ?>
-            <div class="item" data-id="<?php echo $stt ?>">
-                <a href="<?php echo get_the_permalink() ?>">
+            <div class="item" data-id="<?php echo $stt ?>" data-post="<?php echo get_the_ID(); ?>">
+                <div>
+                    <a href="<?php echo get_the_permalink() ?>">
+                        <?php if (has_post_thumbnail()) { ?>
+                            <img class="item-img" src="<?php the_post_thumbnail_url() ?>" srcset="<?php the_post_thumbnail_url() ?>" />
+                        <?php } else { ?>
+                            <img class="item-img" src="<?php echo PART_IMAGES . 'no-image.jpg' ?>" srcset="<?php echo PART_IMAGES . 'no-image.jpg' ?>" />
+                        <?php } ?>
+                    </a>
+                    <?php
+                    if ($postType != 'joinus') {
+                        get_template_part('templates/template', 'view_comment');
+                    }
+                    ?>
+                </div>
 
-                    <?php if (has_post_thumbnail()) { ?>
-                        <img class="item-img" src="<?php the_post_thumbnail_url() ?>" srcset="<?php the_post_thumbnail_url() ?>" />
-                    <?php } else { ?>
-                        <img class="item-img" src="<?php echo PART_IMAGES . 'no-image.jpg' ?>" srcset="<?php echo PART_IMAGES . 'no-image.jpg' ?>" />
-                    <?php } ?>
-
-                    <div class="item-title">
+                <div class="item-title">
+                    <a href="<?php echo get_the_permalink() ?>">
                         <?php the_title() ?>
-                    </div>
-                </a>
+                    </a>
+                </div>
             </div>
     <?php
             $stt++;
-        }
-    }
+        endwhile;
+    endif;
 }
 
 function getCustomsPostCate($param)

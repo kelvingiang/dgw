@@ -7,10 +7,10 @@
 
 <div class="menu-sub">
     <?php
-  $menu_category = 'resources_category';
-  $menu_page = 'resource';
-  menuSub($menu_category, $menu_page);
-  ?>
+    $menu_category = 'resources_category';
+    $menu_page = 'resource';
+    menuSub($menu_category, $menu_page);
+    ?>
 </div>
 
 <div class="container-fluid">
@@ -18,31 +18,31 @@
         <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
             <div class="page-title">
                 <h1><?php // _e('Resources') 
-            ?> </h1>
+                    ?> </h1>
             </div>
 
             <div class='data-list'>
                 <?php
-        global $wp;
-        $param = $wp->query_vars;
-        $postCount = get_option('first_load');
+                global $wp;
+                $param = $wp->query_vars;
+                $postCount = get_option('first_load');
 
-        if (empty($param['tag']) && empty($param['cate'])) {
-          getCustomsPost('resources', $postCount);
-        } else {
-          // neu TAG ton tai thi lay value la TAG con khong thi lay CATE
-          if (empty($param['tag'])) {
-            $cate = $param['cate'];
-          } else {
-            $cate = $param['tag'];
-          }
-          $postType = 'resources';
-          $tax = 'resources_category';
-          $wp_query = getCustomsPostByCate($postType, $cate, $postCount, $tax);
-        }
-        wp_reset_postdata();
-        wp_reset_query();
-        ?>
+                if (empty($param['tag']) && empty($param['cate'])) {
+                    getCustomsPost('resources', $postCount);
+                } else {
+                    // neu TAG ton tai thi lay value la TAG con khong thi lay CATE
+                    if (empty($param['tag'])) {
+                        $cate = $param['cate'];
+                    } else {
+                        $cate = $param['tag'];
+                    }
+                    $postType = 'resources';
+                    $tax = 'resources_category';
+                    $wp_query = getCustomsPostByCate($postType, $cate, $postCount, $tax);
+                }
+                wp_reset_postdata();
+                wp_reset_query();
+                ?>
             </div>
 
             <div id="load-more">
@@ -58,45 +58,77 @@
     </div>
 </div>
 <script>
-jQuery(document).ready(function() {
-    jQuery('#load-more').click(function() {
+    jQuery(document).ready(function() {
+        jQuery(document).on('click', '.item', function() {
+            jQuery.ajax({
+                url: '<?php echo admin_url('admin-ajax.php'); ?>', // lay doi tuong chuyen sang dang array
+                type: 'post', //                data: $(this).serialize(),
+                data: {
+                    action: 'plus_one_view', // ✅ 對應後端的 hook 名稱
+                    postID: jQuery(this).attr("data-post"),
+                },
+                dataType: 'json',
+                // khi load dữ liêu show chữ loading.....
+                success: function(data) { // set ket qua tra ve  data tra ve co thanh phan status va message
+                    if (data.status === 'done') {
 
-        var lastID = jQuery(".data-list > div:last-child").attr("data-id");
-        var post = 'resources';
-        var cateID = '<?php echo $cate ?>';
-        var count = '<?php echo get_option('more_load') ?>';
-        var cate = 'resources_category';
-
-        jQuery.ajax({
-            url: '<?php echo get_template_directory_uri() . '/ajax/load-more.php' ?>', // lay doi tuong chuyen sang dang array
-            type: 'post', //                data: $(this).serialize(),
-            data: {
-                lastID: lastID,
-                post: post,
-                cate: cate,
-                cateID: cateID,
-                count: count,
-            },
-            dataType: 'json',
-            success: function(
-                data) { // set ket qua tra ve  data tra ve co thanh phan status va message
-                if (data.status === 'done') {
-                    jQuery(".data-list").append(data.html);
-                    var $target = jQuery('html,body');
-                    $target.animate({
-                        scrollTop: $target.height()
-                    }, 2000);
-                } else if (data.status === 'empty') {
-                    jQuery("#load-more").hide();
+                    } else if (data.status === 'empty') {
+                        // jQuery("#load-more").hide();
+                    }
+                },
+                error: function(xhr) {
+                    console.log(xhr.responseText);
                 }
-            },
-            error: function(xhr) {
-                console.log(xhr.reponseText);
-                //console.log(data.status);
-            }
+            });
+        })
+
+
+        jQuery('#load-more').click(function() {
+
+            var lastID = jQuery(".data-list > div:last-child").attr("data-id");
+            var post = 'resources';
+            var cateID = '<?php echo $cate ?>';
+            var count = '<?php echo get_option('more_load') ?>';
+            var cate = 'resources_category';
+            jQuery.ajax({
+                url: '<?php echo admin_url('admin-ajax.php'); ?>', // lay doi tuong chuyen sang dang array
+                type: 'post', //                data: $(this).serialize(),
+                data: {
+                    action: 'load_more_posts', // ✅ 對應後端的 hook 名稱
+                    lastID: lastID,
+                    post: post,
+                    cate: cate,
+                    cateID: cateID,
+                    count: count,
+                },
+                dataType: 'json',
+                // khi load dữ liêu show chữ loading.....
+                beforeSend: function() {
+                    jQuery('#load-more').prop('disabled', true).text('Loading...');
+                },
+                success: function(
+                    data) { // set ket qua tra ve  data tra ve co thanh phan status va message
+                    if (data.status === 'done') {
+                        jQuery(".data-list").append(data.html);
+
+                        // sau khi load thanh công show lại cái icon
+                        jQuery('#load-more')
+                            .prop('disabled', false)
+                            .html('<i style="font-size:35px; color:#999; height:50px" class="fa fa-angle-double-down" aria-hidden="true"></i>');
+
+                        jQuery('html, body').animate({
+                            scrollTop: jQuery(document).height()
+                        }, 1000);
+                    } else if (data.status === 'empty') {
+                        jQuery("#load-more").hide();
+                    }
+                },
+                error: function(xhr) {
+                    console.log(xhr.responseText);
+                }
+            });
         });
     });
-});
 </script>
 
 <?php get_footer(); ?>

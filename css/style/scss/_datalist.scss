@@ -10,53 +10,69 @@
 }
 
 .data-list {
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    @include Respond(md) {
+        grid-template-columns: 1fr 1fr;
+    }
+    @include Respond(sm) {
+        grid-template-columns: 1fr;
+    }
     .item {
         transition-duration: 0.8s;
         animation-name: example;
         animation-duration: 1s;
         border: rgba(172, 172, 172, 0.196) solid 0.1rem;
         border-radius: 0.4rem;
-        width: 31%;
-        position: relative;
-        margin: 1rem 0.5rem;
-        padding: 0.5rem;
+        padding: 0.2rem;
         text-align: center;
-        @include Respond(lg) {
-            width: 31%;
-        }
-        @include Respond(md) {
-            width: 40%;
-        }
-        @include Respond(sm) {
-            width: 100%;
-        }
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
         &-img {
             width: 100%;
-            margin: 0rem 0rem 3rem;
             border-radius: 0.2rem;
         }
+
         &-title {
-            width: 97%;
-            position: absolute;
-            bottom: 0.5rem;
-            padding-top: 4rem;
-            display: flex;
-            justify-content: center;
-            background-color: transparent;
-            z-index: -1;
+            padding: 0.5rem 0.1rem;
             color: $color_text_title;
+            font-weight: bold;
+            font-size: 0.9rem;
+            // background-color: #fff; // 確保有底色
+            border-radius: 0 0 0.4rem 0.4rem;
         }
         &:hover {
             transform: scale(1.02, 1.02);
             box-shadow: rgba(0, 0, 0, 0.56) 0px 2px 30px 1px;
         }
+
+        .view_comment_area {
+            margin-top: 5px;
+            margin-right: 5px;
+            .view_comment_content {
+                text-align: end;
+                color: #bbbbbb;
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+                & > div {
+                    display: flex;
+                    flex-direction: row;
+                    margin-left: 0.5rem;
+                    div{
+                        margin: 0rem 0.2rem;
+                    }
+                }
+            }
+        }
+
         a {
             font-size: 0.9rem;
             font-weight: bold;
-            color: $color_blue_link;
+            color: $color_text_title;
             display: block;
             @include Respond(lg) {
                 font-size: 0.9rem;

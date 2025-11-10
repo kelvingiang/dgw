@@ -3,15 +3,16 @@
 class Metabox_Main
 {
 
-    private $_controler_name = 'main_controler_options';
-    private $_controler_options = array();
+    private $_controller_name = 'main_controller_options';
+    private $_controller_options = array();
 
     public function __construct()
     {
-        $defaultoption = array(
+        $defaultOption = array(
+            'metabox_view' => TRUE,
             'metabox_web' => TRUE,
             'metabox_download' => TRUE,
-            'metabox_langguage' => TRUE,
+            'metabox_language' => TRUE,
             'metabox_industries' => FALSE,
             'metabox_service' => FALSE,
             'metabox_solution' => FALSE,
@@ -23,10 +24,11 @@ class Metabox_Main
             'metabox_sidebar' => TRUE,
         );
 
-        $this->_controler_options = get_option($this->_controler_name, $defaultoption);
+        $this->_controller_options = get_option($this->_controller_name, $defaultOption);
+        $this->metabox_view();
         $this->metabox_web();
         $this->metabox_download();
-        $this->metabox_langguage();
+        $this->metabox_language();
         $this->metabox_industries();
         $this->metabox_service();
         $this->metabox_solution();
@@ -39,9 +41,19 @@ class Metabox_Main
         add_action('admin_init', array($this, 'do_output_buffer'));
     }
 
+
+    public function metabox_view()
+    {
+        if ($this->_controller_options['metabox_view']) {
+            require_once(DIR_METABOX . 'metabox-view.php');
+            new Metabox_View();
+        }
+    }
+
+
     public function metabox_link()
     {
-        if ($this->_controler_options['metabox_link']) {
+        if ($this->_controller_options['metabox_link']) {
             require_once(DIR_METABOX . 'metabox-link.php');
             new Metabox_Link();
         }
@@ -49,23 +61,23 @@ class Metabox_Main
 
     public function metabox_web()
     {
-        if ($this->_controler_options['metabox_web']) {
+        if ($this->_controller_options['metabox_web']) {
             require_once(DIR_METABOX . 'metabox-web.php');
             new Metabox_Web_FreeBook();
         }
     }
 
-    public function metabox_langguage()
+    public function metabox_language()
     {
-        if ($this->_controler_options['metabox_langguage']) {
-            require_once(DIR_METABOX . 'metabox-langguage.php');
-            new Metabox_Langguage();
+        if ($this->_controller_options['metabox_language']) {
+            require_once(DIR_METABOX . 'metabox-language.php');
+            new metabox_language();
         }
     }
 
     public function metabox_download()
     {
-        if ($this->_controler_options['metabox_download']) {
+        if ($this->_controller_options['metabox_download']) {
             require_once(DIR_METABOX . 'metabox-downloads.php');
             new Metabox_Download();
         }
@@ -73,7 +85,7 @@ class Metabox_Main
 
     public function metabox_industries()
     {
-        if ($this->_controler_options['metabox_industries']) {
+        if ($this->_controller_options['metabox_industries']) {
             require_once(DIR_METABOX . 'metabox-industries.php');
             new Metabox_Industries();
         }
@@ -81,7 +93,7 @@ class Metabox_Main
 
     public function metabox_service()
     {
-        if ($this->_controler_options['metabox_service']) {
+        if ($this->_controller_options['metabox_service']) {
             require_once(DIR_METABOX . 'metabox-service.php');
             new Metabox_Service();
         }
@@ -89,7 +101,7 @@ class Metabox_Main
 
     public function metabox_solution()
     {
-        if ($this->_controler_options['metabox_solution']) {
+        if ($this->_controller_options['metabox_solution']) {
             require_once(DIR_METABOX . 'metabox-solution.php');
             new Metabox_Solution();
         }
@@ -97,7 +109,7 @@ class Metabox_Main
 
     public function metabox_active()
     {
-        if ($this->_controler_options['metabox_active'] == true) {
+        if ($this->_controller_options['metabox_active'] == true) {
             require_once(DIR_METABOX . 'metabox-active.php');
             new Metabox_Active();
         }
@@ -106,7 +118,7 @@ class Metabox_Main
 
     public function metabox_home()
     {
-        if ($this->_controler_options['metabox_home'] == true) {
+        if ($this->_controller_options['metabox_home'] == true) {
             require_once(DIR_METABOX . 'metabox-home.php');
             new Metabox_Home();
         }
@@ -114,7 +126,7 @@ class Metabox_Main
 
     public function metabox_seo()
     {
-        if ($this->_controler_options['metabox_seo'] == true) {
+        if ($this->_controller_options['metabox_seo'] == true) {
             require_once(DIR_METABOX . 'metabox-seo.php');
             new Metabox_Seo();
         }
@@ -122,7 +134,7 @@ class Metabox_Main
 
     public function metabox_order()
     {
-        if ($this->_controler_options['metabox_order'] == true) {
+        if ($this->_controller_options['metabox_order'] == true) {
             require_once(DIR_METABOX . 'metabox-order.php');
             new Metabox_Order();
         }
@@ -131,7 +143,7 @@ class Metabox_Main
 
     public function metabox_sidebar()
     {
-        if ($this->_controler_options['metabox_sidebar'] == true) {
+        if ($this->_controller_options['metabox_sidebar'] == true) {
             require_once(DIR_METABOX . 'metabox-sidebar.php');
             new Metabox_SideBar();
         }

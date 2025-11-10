@@ -18,14 +18,7 @@ $cate_ID = $cate[0]->term_id;
                             <h2 class="single-space-title">
                                 <?php the_title(); ?>
                             </h2>
-
-                            <?php // if (has_post_thumbnail()) : 
-                            ?>
-                            <!-- <img class="single-space-img" src="<?php //the_post_thumbnail_url() 
-                                                                    ?>" srcset="<?php // the_post_thumbnail_url() 
-                                                                                ?>" /> -->
-                            <?php // endif; 
-                            ?>
+                            <?php get_template_part('templates/template', 'view_like'); ?>
                             <div class="single-space-content">
                                 <?php the_content(); ?>
 

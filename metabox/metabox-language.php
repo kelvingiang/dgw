@@ -1,6 +1,6 @@
 <?php
 
-class Metabox_Langguage
+class Metabox_Language
 {
 
     public function __construct()

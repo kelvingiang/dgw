@@ -15,9 +15,8 @@ $cate_ID = $cate[0]->term_id;
                 <?php  } ?>
                 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                 <div class="single-space">
-                    <!-- <h2 class="single-space-title">
-                        <?php //the_title() ?>
-                    </h2> -->
+                    <h2 class="single-space-title"><?php the_title() ?></h2>
+                     <?php get_template_part('templates/template', 'view_like'); ?>
                     <div class="single-space-content">
                         <?php the_content(); ?>
                     </div>
