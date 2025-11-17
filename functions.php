@@ -22,12 +22,9 @@ require_once(DIR_HELPER . 'require.php');
 require_once(DIR_CLASS . 'rewrite.class.php');
 new Rewrite_Url();
 
-
-
 if (!isset($_SESSION['languages'])) {
     $_SESSION['languages'] = 'vn';
 }
-
 
 /* ==============================================================
   THAY DOI FILE DATA NGON NGU THEO SESSION LANGGUAGE
@@ -308,26 +305,26 @@ add_action('wp_footer', 'blankslate_footer_scripts');
 function blankslate_footer_scripts()
 {
 ?>
-<script>
-jQuery(document).ready(function($) {
-    var deviceAgent = navigator.userAgent.toLowerCase();
-    if (deviceAgent.match(/(iphone|ipod|ipad)/)) {
-        $("html").addClass("ios");
-        $("html").addClass("mobile");
-    }
-    if (navigator.userAgent.search("MSIE") >= 0) {
-        $("html").addClass("ie");
-    } else if (navigator.userAgent.search("Chrome") >= 0) {
-        $("html").addClass("chrome");
-    } else if (navigator.userAgent.search("Firefox") >= 0) {
-        $("html").addClass("firefox");
-    } else if (navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0) {
-        $("html").addClass("safari");
-    } else if (navigator.userAgent.search("Opera") >= 0) {
-        $("html").addClass("opera");
-    }
-});
-</script>
+    <script>
+        jQuery(document).ready(function($) {
+            var deviceAgent = navigator.userAgent.toLowerCase();
+            if (deviceAgent.match(/(iphone|ipod|ipad)/)) {
+                $("html").addClass("ios");
+                $("html").addClass("mobile");
+            }
+            if (navigator.userAgent.search("MSIE") >= 0) {
+                $("html").addClass("ie");
+            } else if (navigator.userAgent.search("Chrome") >= 0) {
+                $("html").addClass("chrome");
+            } else if (navigator.userAgent.search("Firefox") >= 0) {
+                $("html").addClass("firefox");
+            } else if (navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0) {
+                $("html").addClass("safari");
+            } else if (navigator.userAgent.search("Opera") >= 0) {
+                $("html").addClass("opera");
+            }
+        });
+    </script>
 <?php
 }
 
@@ -412,7 +409,7 @@ function blankslate_enqueue_comment_reply_script()
 function blankslate_custom_pings($comment)
 {
 ?>
-<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>"><?php echo comment_author_link(); ?></li>
+    <li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>"><?php echo comment_author_link(); ?></li>
 <?php
 }
 

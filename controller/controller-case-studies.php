@@ -44,7 +44,7 @@ class Controller_Case_Studies
             'has_archive' => true,
             'hierarchical' => false,
             'menu_position' => 8,
-            'supports' => array('editor', 'thumbnail', 'title'),
+            'supports' => array('editor', 'thumbnail', 'title', 'comments'),
         );
         register_post_type('casestudies', $args);
     }

@@ -24,6 +24,13 @@
                 endwhile;
             endif;
             ?>
+            <?php //get_template_part('templates/template', 'comment'); 
+            ?>
+            <?php
+               if ( comments_open() || get_comments_number() ) {
+                    comments_template();
+                }
+            ?>
         </div>
         <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 computer-side">
             <?php get_template_part('templates/template', 'side_cases');  ?>

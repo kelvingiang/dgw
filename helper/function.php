@@ -11,7 +11,26 @@ require_once DIR_HELPER . 'code/admin-add-post-taxonomy-fieild.php';
 require_once DIR_HELPER . 'code/admin-add-filter.php';
 
 
+
 require_once DIR_HELPER . 'code/function-ajax.php';
+require_once DIR_HELPER . 'code/function-wp-send-mail.php';
+require_once DIR_HELPER . 'code/function-custom-comment.php';
+
+
+// add_filter('comment_form_defaults', 'my_comment_form_defaults', 20);
+// function my_comment_form_defaults($defaults) {
+//     $defaults['title_reply'] = __('發表您的留言', 'dgw');
+//     $defaults['title_reply_to'] = __('11回覆給44 %s', 'dgw');
+//     return $defaults;
+// }
+// sắp xếp lại trình tự các input trong phần comment ==========
+add_filter('comment_form_fields', function ($fields) {
+    // 把 author 和 email 欄位放前面，comment 欄位放最後
+    $comment_field = $fields['comment'];
+    unset($fields['comment']);
+    $fields['comment'] = $comment_field;
+    return $fields;
+});
 
 /* ==============================================================
   CHECK THE ARRAY IS NULL
@@ -21,21 +40,21 @@ function MenuMain($arr, $class = "menu-main-item", $item_link = 'menu-main-item-
 {
     foreach ($arr as $key => $val) {
 ?>
-<div class="<?php echo $class ?>">
-    <a href="<?php echo home_url($key) ?>"
-        class="<?php echo $item_link ?> <?php echo is_array($val['sub']) ? $hassub : '' ?>">
-        <?php echo $val[$_SESSION['languages']] ?>
-    </a>
-    <div class="<?php echo $item_bg ?>"></div>
+        <div class="<?php echo $class ?>">
+            <a href="<?php echo home_url($key) ?>"
+                class="<?php echo $item_link ?> <?php echo is_array($val['sub']) ? $hassub : '' ?>">
+                <?php echo $val[$_SESSION['languages']] ?>
+            </a>
+            <div class="<?php echo $item_bg ?>"></div>
 
-    <?php if (is_array($val['sub'])) { ?>
-    <div class="<?php echo $val['class'] ?>">
-        <!--/====== AP DUNG DEQUY CHO MENU NHIEU CAPV ================================================-->
-        <?php MenuMain($val['sub'], $val['class'] . '-item', $val['class'] . '-item-link', $val['class'] . '-item-bg', 'has-sub-sub'); ?>
-    </div>
-    <?php } ?>
-</div>
-<?php
+            <?php if (is_array($val['sub'])) { ?>
+                <div class="<?php echo $val['class'] ?>">
+                    <!--/====== AP DUNG DEQUY CHO MENU NHIEU CAPV ================================================-->
+                    <?php MenuMain($val['sub'], $val['class'] . '-item', $val['class'] . '-item-link', $val['class'] . '-item-bg', 'has-sub-sub'); ?>
+                </div>
+            <?php } ?>
+        </div>
+    <?php
     }
 }
 
@@ -44,9 +63,9 @@ function MenuMobile($arr, $item_link = 'menu-mobile-item-link')
     foreach ($arr as $key => $val) {
     ?>
 
-<a href="<?php echo home_url($key) ?>" style="  " class="<?php echo $item_link ?>">
-    <?php echo $val[$_SESSION['languages']] ?>
-</a>
+        <a href="<?php echo home_url($key) ?>" style="  " class="<?php echo $item_link ?>">
+            <?php echo $val[$_SESSION['languages']] ?>
+        </a>
 
 <?php
     }
@@ -276,7 +295,7 @@ function uploadFileDownLoad($File, $name)
         //$trim_type = strtolower($file_trim[1]);
 
         $cus_name = $file_name;
- 
+
         if ($file_size > 10097152) {
             $errors[] = '上傳檔案容量不可大於 10 MB';
         }

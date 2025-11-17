@@ -7,6 +7,7 @@ function style_header_scripts()
         if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
                 //==== PHAN CLIENT================================================================ 
                 //====BOOTSTRAP  ============================================
+                
 
                 wp_register_style('bootstrap-css', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '1.0', 'all');
                 wp_enqueue_style('bootstrap-css');

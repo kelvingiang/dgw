@@ -13,7 +13,7 @@
     <!-- end  slider -->
     <link href="<?php echo get_template_directory_uri(); ?>/images/icons/favicon.ico" rel="shortcut icon">
     <link href="<?php echo get_template_directory_uri(); ?>/images/icons/favicon.ico" rel="apple-touch-icon-precomposed">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- 18/11/2021 Google Tag Manager -->
     <script>
         (function(w, d, s, l, i) {
