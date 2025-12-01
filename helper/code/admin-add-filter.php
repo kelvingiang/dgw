@@ -21,3 +21,6 @@ function remove_default_image_sizes( $sizes) {
   return $sizes;
 }
 add_filter('intermediate_image_sizes_advanced', 'remove_default_image_sizes');
+
+
+

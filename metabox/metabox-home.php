@@ -14,7 +14,17 @@ class Metabox_Home
         $id = 'admin-metabox-home';
         $title = __('Show In Home Page');
         $callback = array($this, 'display');
-        add_meta_box($id, $title, $callback, array('post', 'resources', 'solutions', 'casestudies', 'active', 'services'));
+        $screens =  array('post', 'resources', 'solutions', 'casestudies', 'active', 'services', 'industries');
+        foreach ($screens as $screen) {
+            add_meta_box(
+                $id,
+                $title,
+                $callback,
+                $screen,
+                'side',     // ✅ Sidebar 欄位
+                'default'
+            );
+        }
     }
 
     public function display($post)
@@ -23,13 +33,13 @@ class Metabox_Home
         $name = 'admin-metabox-data-nonce';
         wp_nonce_field($action, $name);
         $checked = get_post_meta($post->ID, '_metabox_home', true);
-     
+
 ?>
         <div class="meta-row-two">
             <div class="col">
                 <div class="title-cell">
-                    <label style="margin-right: 15px"><?php echo __('Show In Home Page'); ?></label>
                     <input type="checkbox" id="ckd-show" name="ckd-show" <?php checked($checked, 1); ?> />
+                    <label style="margin-right: 15px"><?php echo __('Show In Home Page'); ?></label>
                 </div>
             </div>
         </div>

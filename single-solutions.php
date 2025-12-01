@@ -1,58 +1,30 @@
 <?php get_header();
-
 $cate =  wp_get_post_terms($post->ID, 'solutions_category');
 $cate_ID = $cate[0]->term_id;
-
-
-
 ?>
-<div class="container-fluid">
-    <div class="row" style="margin-top: 5rem;">
-        <?php if ($cate_ID == 53) { ?>
-        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
-            <?php } else { ?>
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                <?php  } ?>
-                <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+<div class="menu-sub"></div>
+<div id="single-two-row">
+    <div class="single-content">
+        <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                 <div class="single-space">
                     <h2 class="single-space-title"><?php the_title() ?></h2>
-                     <?php get_template_part('templates/template', 'view_like'); ?>
                     <div class="single-space-content">
                         <?php the_content(); ?>
                     </div>
-                    <?php
-                    endwhile;
-                endif;
-                    ?>
+                    <?php get_template_part('templates/template', 'view_like'); ?>
                 </div>
-            </div>
-
-            <?php if ($cate_ID == 53) { ?>
-            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 computer-side">
-                <div style="margin-top: 3rem;">
-                    <?php get_template_part('templates/template', 'side_active'); ?>
-                    <?php get_template_part('templates/template', 'side_cases');  ?>
-                    <?php get_template_part('templates/template', 'side_articles');  ?>
-                </div>
-            </div>
-            <?php } ?>
-            <div>
-                <?php
-                    // $GroupPostType = "solutions";
-                    // $groupCategory = "solutions_category";
-                    // -1 se khong show phan load more
-                    // $postCount = -1;
-                    // inGroup($GroupPostType, $groupCategory, $postCount); 
-                    ?>
-            </div>
-            <div class="mobile-side">
-                <?php get_template_part('templates/template', 'side_active'); ?>
-                <?php get_template_part('templates/template', 'side_cases');  ?>
-                <?php get_template_part('templates/template', 'side_articles');  ?>
-                <?php //menuSide($menu_category, $menu_page); 
-                    ?>
-            </div>
-            
-        </div>
+        <?php
+            endwhile;
+        endif;
+        if (comments_open() || get_comments_number()) {
+            comments_template();
+        }
+        ?>
     </div>
-    <?php get_footer(); ?>
+    <div class="single-sidebar">
+        <?php get_template_part('templates/template', 'side_active'); ?>
+        <?php get_template_part('templates/template', 'side_cases');  ?>
+        <?php get_template_part('templates/template', 'side_articles');  ?>
+    </div>
+</div>
+<?php get_footer(); ?>

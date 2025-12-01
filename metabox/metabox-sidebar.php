@@ -14,7 +14,17 @@ class Metabox_SideBar
         $id = 'admin-metabox-sidebar';
         $title = __('Show in Sidebar');
         $callback = array($this, 'display');
-        add_meta_box($id, $title, $callback, array('resources', 'solutions', 'casestudies', 'active', 'joinus'));
+        $screens = array('resources', 'solutions', 'casestudies', 'active', 'joinus');
+        foreach ($screens as $screen) {
+            add_meta_box(
+                $id,
+                $title,
+                $callback,
+                $screen,
+                'side',     // ✅ Sidebar 欄位
+                'default'
+            );
+        }
     }
 
     public function display($post)
@@ -27,8 +37,8 @@ class Metabox_SideBar
         <div class="meta-row-two">
             <div class="col">
                 <div class="title-cell">
-                    <label style="margin-right: 15px"><?php echo __('Show in Sidebar'); ?></label>
                     <input type="checkbox" id="ckd-sidebar" name="ckd-sidebar" <?php echo $checkValue ?> />
+                    <label style="margin-right: 15px"><?php echo __('Show in Sidebar'); ?></label>
                 </div>
             </div>
         </div>

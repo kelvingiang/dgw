@@ -14,6 +14,10 @@
     justify-content: center;
     margin-bottom: 1rem;
     margin-top: 3.5rem;
+    border-top: 1px solid #f1f1f1;
+    .no-link {
+        border-bottom: 0.15rem solid $color_gray;
+    }
     &-item {
         cursor: pointer;
         // margin: 0.2rem 0.2rem;
@@ -21,23 +25,26 @@
         height: 50px;
         transition: all 0.1s;
         border-top: 0.15rem solid transparent;
+        label {
+            padding: 0.5rem 1rem;
+            font-weight: bold;
+            display: block;
+            font-size: 1.2rem;
+            color: #00384e;
+              @include Respond(md) {
+                font-size: 1rem;
+            }
+        }
+
         a {
             padding: 0.5rem 1rem;
             font-weight: bold;
             display: block;
             font-size: 1rem;
             color: $Color_main_menu_link;
-            @include Respond(xl) {
-                font-size: 1rem;
-            }
-            @include Respond(lg) {
-                font-size: 0.9rem;
-            }
+            font-size: 1.2rem;
             @include Respond(md) {
-                font-size: 0.8rem;
-            }
-            @include Respond(sm) {
-                font-size: 0.7rem;
+                font-size: 1rem;
             }
             &:hover {
                 color: $Color_main_menu_link_hover;

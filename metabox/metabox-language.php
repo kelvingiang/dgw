@@ -25,9 +25,9 @@ class Metabox_Language
 ?>
         <div class="meta-row-two">
             <div class="col">
-                <div class="cell-title">
-                    <label style="margin-right: 15px"><?php echo __('Choice Language'); ?></label>
-                </div>
+                <!-- <div class="cell-title">
+                    <label style="margin-right: 15px"><?php //echo __('Choice Language'); ?></label>
+                </div> -->
                 <div class="cell-text radio-space">
                     <?php $check = get_post_meta($post->ID, '_metabox_langguage', TRUE) ?>
                     <div>

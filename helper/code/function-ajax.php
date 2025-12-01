@@ -49,9 +49,8 @@ function ajax_load_more_posts()
         $stt = $lastID + 1;
 
         while ($wp_query->have_posts()) : $wp_query->the_post();
-            $html .= "<div class='item' data-id='" . esc_attr($stt) . "' data-post='" . get_the_ID() . "'>";
-            $html .= "<div><a href='" . esc_url(get_the_permalink()) . "'>";
-
+            $html .= "<div class='item'  data-id='" . esc_attr($stt) . "' data-link ='". esc_url(get_the_permalink())."' data-post='" . get_the_ID() . "'>";
+            $html .= "<div>";
             if (has_post_thumbnail()) {
                 $thumb = get_the_post_thumbnail_url(get_the_ID(), 'medium');
                 $html .= "<img class='item-img' src='" . esc_url($thumb) . "' alt='" . esc_attr(get_the_title()) . "' />";
@@ -59,16 +58,14 @@ function ajax_load_more_posts()
                 $html .= "<img class='item-img' src='" . esc_url(PART_IMAGES . 'no-image.jpg') . "' alt='No image' />";
             }
             // 取得 template part 的輸出（用 buffer 捕獲）
-            $html .= "</a>";
             ob_start();
             get_template_part('templates/template', 'view_comment');
             $comment_html = ob_get_clean();
             $html .= $comment_html;
             $html .= "</div>";
 
-            $html .= "<div>";
-            $html .= "<div class='item-title'> <a href='" . esc_url(get_the_permalink()) . "'>" . esc_html(get_the_title()) . "</a></div>";
-            $html .= "</div> </div>";
+            $html .= "<div class='item-title'>" . esc_html(get_the_title()) . "</div>";
+            $html .= "</div>";
 
             $stt++;
         endwhile;
@@ -96,6 +93,8 @@ function plus_one_view()
     $postID = isset($_POST['postID']) ? intval($_POST['postID']) : 0;
     $view = get_post_meta($postID, '_metabox_view', true) ? intval(get_post_meta($postID, '_metabox_view', true)) : 0;
     update_post_meta($postID, '_metabox_view', $view + 1);
+    // die(get_post_meta($postID, '_metabox_view', true));
+
     wp_send_json(array(
         'status' => 'done',
         'html'   => $view + 1,

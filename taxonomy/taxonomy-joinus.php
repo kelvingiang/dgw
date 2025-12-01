@@ -14,6 +14,7 @@ class Taxonomy_Join_Us
 
         add_filter("manage_edit-joinus_category_columns", array($this, 'category_columns'), 10, 3);
         add_filter("manage_joinus_category_custom_column", array($this, 'category_columns_manage'), 10, 3);
+        add_filter('manage_edit-joinus_category_sortable_columns', array($this, 'set_sortable_columns'));
 
         add_action('create_joinus_category', array($this, 'save_option'));
         add_action('edited_joinus_category', array($this, 'save_option'));
@@ -49,6 +50,57 @@ class Taxonomy_Join_Us
         ));
     }
 
+    public function category_columns()
+    {
+        $new_columns = array(
+            'cb' => '<input type="checkbox" />',
+            'name' => __('Name'),
+            'slug' => __('Slug'),
+            'vietnamese' => __('Vietnamese'),
+            'english' => __('English'),
+            'order' => __('Show Order'),
+            'posts' => __('數量')
+        );
+
+        return $new_columns;
+    }
+
+    public function category_columns_manage($out, $column_name, $theme_id)
+    {
+        $theme = get_term($theme_id, 'joinus_category');
+
+        $strOption = get_option($this->prefix_name . $theme->term_id);
+
+
+        switch ($column_name) {
+            case 'order':
+                echo isset($strOption['cate_order']) ? $strOption['cate_order'] : '';
+                break;
+            case 'vietnamese':
+                echo isset($strOption['cate_vn']) ? $strOption['cate_vn'] : '';
+                break;
+            case 'english':
+                echo isset($strOption['cate_en']) ? $strOption['cate_en'] : '';
+                break;
+            default:
+                break;
+        }
+        return $out;
+    }
+
+    public function set_sortable_columns($columns)
+    {
+        // 移除舊的 sortable（如果原本有）
+        unset($columns['slug']);
+
+        // 設定新 sortable 欄位
+        // $columns['order'] = 'order';
+
+        return $columns;
+    }
+
+
+
     public function add_form()
     {
 ?>
@@ -70,11 +122,7 @@ class Taxonomy_Join_Us
                 jQuery('#cate_cn').val(jQuery(this).val());
             });
         </script>
-        <style>
-            .column-name {
-                width: 20%;
-            }
-        </style>
+       
     <?php
     }
 
@@ -123,44 +171,5 @@ class Taxonomy_Join_Us
     {
         $param = getParams();
         delete_option($this->prefix_name . $param['tag_ID']);
-    }
-
-    public function category_columns()
-    {
-        $new_columns = array(
-            'cb' => '<input type="checkbox" />',
-            'name' => __('Name'),
-            //            'description' => __('Description'),
-            'vietnamese' => __('Vietnamese'),
-            'english' => __('English'),
-            'order' => __('Show Order'),
-            'slug' => __('Slug'),
-            'posts' => __('Count')
-        );
-
-        return $new_columns;
-    }
-
-    public function category_columns_manage($out, $column_name, $theme_id)
-    {
-        $theme = get_term($theme_id, 'joinus_category');
-
-        $strOption = get_option($this->prefix_name . $theme->term_id);
-
-
-        switch ($column_name) {
-            case 'order':
-                echo isset($strOption['cate_order']) ? $strOption['cate_order'] : '';
-                break;
-            case 'vietnamese':
-                echo isset($strOption['cate_vn']) ? $strOption['cate_vn'] : '';
-                break;
-            case 'english':
-                echo isset($strOption['cate_en']) ? $strOption['cate_en'] : '';
-                break;
-            default:
-                break;
-        }
-        return $out;
     }
 }

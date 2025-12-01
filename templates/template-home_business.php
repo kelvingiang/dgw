@@ -2,29 +2,30 @@
 <div id="business-home">
     <?php
     $wp_query = getCustomPostAtHome('resources', 4);
-    if ($wp_query->have_posts()) {
-        while ($wp_query->have_posts()) {
+    $stt = 1;
+    if ($wp_query->have_posts()) :
+        while ($wp_query->have_posts()) :
             $wp_query->the_post();
     ?>
-            <div class="business-item">
-                <a class="my-link" href="<?php echo get_the_permalink() ?>">
-                    <div class="business-item-img">
-                        <?php if (has_post_thumbnail()) { ?>
-                            <img src="<?php the_post_thumbnail_url() ?>" srcset="<?php the_post_thumbnail_url() ?>" />
-                        <?php } else { ?>
-                            <img src="<?php echo PART_IMAGES . 'no-image.jpg' ?>" srcset="<?php echo PART_IMAGES . 'no-image.jpg' ?>" />
-                        <?php } ?>
+            <div class="item" data-id="<?php echo $stt ?>"
+                data-link="<?php echo get_the_permalink(); ?>"
+                data-post="<?php echo get_the_ID(); ?>">
+                <div class="item-img">
+                    <?php if (has_post_thumbnail()) { ?>
+                        <img src="<?php the_post_thumbnail_url() ?>" srcset="<?php the_post_thumbnail_url() ?>" />
+                    <?php } else { ?>
+                        <img src="<?php echo PART_IMAGES . 'no-image.jpg' ?>" srcset="<?php echo PART_IMAGES . 'no-image.jpg' ?>" />
+                    <?php } ?>
+                </div>
 
-                    </div>
-
-                    <div class="business-item-content">
-                        <?php the_title(); ?>
-                    </div>
-                </a>
+                <div class="item-content">
+                    <?php the_title(); ?>
+                </div>
             </div>
     <?php
-        }
-    }
+            $stt++;
+        endwhile;
+    endif
     ?>
 
 </div>

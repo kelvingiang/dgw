@@ -23,3 +23,12 @@
     margin-top: 2rem;
 }
 
+.inside{
+    .meta-options{
+        .selectit{
+         &:last-child{
+            display: none;
+         }
+        }
+    }
+}

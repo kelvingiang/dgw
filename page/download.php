@@ -5,14 +5,9 @@
   <?php pageImg($post->ID); ?>
 </div>
 
-
 <div class="container-fluid">
-  <div class="row margin-top">
-    <div class=" col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
-      <div class="page-title">
-        <h1><?php //_e('Download') 
-            ?> </h1>
-      </div>
+  <div class="page-col">
+    <div>
 
       <div class='dowdload-list'>
         <?php
@@ -66,10 +61,8 @@
       </div>
 
     </div>
-    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
-      <div class="sidebar-space">
+    <div>
         <?php get_template_part('templates/template', 'side_active');  ?>
-      </div>
     </div>
   </div>
 </div>

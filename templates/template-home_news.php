@@ -20,121 +20,132 @@
 
     <div class="news-home-content">
         <div class="content-event content-select">
-            <ul class="content-list">
+            <div class="content-list">
                 <?php
                 // LAY CUSTOMPOST
                 $wp_query = getCustomPostAtSide('active', 5);
-                if ($wp_query->have_posts()) {
-                    while ($wp_query->have_posts()) {
+                if ($wp_query->have_posts()) :
+                    while ($wp_query->have_posts()) :
                         $wp_query->the_post();
                 ?>
-                        <li class="row">
-                            <span class="col-9"><a class="my-link" href="<?php echo get_the_permalink() ?>"><?php the_title(); ?></a></span>
-                            <span class="col-3"><label> <?php echo get_the_date('Y-m-d', get_the_ID()) ?></label></span>
-                        </li>
+                        <div class="item" data-id="1"
+                            data-link="<?php echo get_the_permalink(); ?>"
+                            data-post="<?php echo get_the_ID(); ?>">
+                            <div><?php the_title(); ?></div>
+                            <div><?php echo get_the_date('Y-m-d', get_the_ID()) ?></div>
+                        </div>
                 <?php
-                    }
-                }
+                    endwhile;
+                endif;
                 wp_reset_postdata();
                 wp_reset_query();
                 ?>
-            </ul>
-            <a class="content-more my-link" href="<?php echo home_url('activities') ?>"><i class="fas fa-chevron-circle-right"></i> <?php _e('Read More') ?></a>
+            </div>
+            <a class="content-more my-link" href="<?php echo home_url('activities') ?>">
+                <i class="fas fa-chevron-circle-right"></i> <?php _e('Read More') ?></a>
         </div>
 
         <div class="content-news">
-            <ul class="content-list">
+            <div class="content-list">
                 <?php
                 // LAY CATAGORY CUA POST
                 $wp_query = getCustomPostCateAtHome('resources', 'news',  5);
-                if ($wp_query->have_posts()) {
-                    while ($wp_query->have_posts()) {
+                if ($wp_query->have_posts()) :
+                    while ($wp_query->have_posts()) :
                         $wp_query->the_post();
                 ?>
-                        <li class="row">
-                            <span class="col-9"><a class="my-link" href="<?php echo get_the_permalink() ?>"><?php the_title(); ?></a></span>
-                            <span class="col-3"><label> <?php echo get_the_date('Y-m-d', get_the_ID()) ?></label></span>
-                        </li>
+                        <div class="item" data-id="1"
+                            data-link="<?php echo get_the_permalink(); ?>"
+                            data-post="<?php echo get_the_ID(); ?>">
+                            <div><?php the_title(); ?></div>
+                            <div><?php echo get_the_date('Y-m-d', get_the_ID()) ?></div>
+                        </div>
                 <?php
-                    }
-                }
+                    endwhile;
+                endif;
                 wp_reset_postdata();
                 wp_reset_query();
                 ?>
-            </ul>
+            </div>
             <!-- 69 is category ID -->
             <a class="content-more my-link" href="<?php echo home_url('resource/cate/69/tag/') ?>"><i class="fas fa-chevron-circle-right"></i> <?php _e('Read More') ?></a>
         </div>
 
         <div class="content-article">
-            <ul class="content-list">
+            <div class="content-list">
                 <?php
                 // LAY CATEGORY CUA POST
                 $wp_query = getCustomPostCateAtHome('resources', 'article',  5);
-                if ($wp_query->have_posts()) {
-                    while ($wp_query->have_posts()) {
+                if ($wp_query->have_posts()) :
+                    while ($wp_query->have_posts()):
                         $wp_query->the_post();
                 ?>
-                        <li class="row">
-                            <span class="col-9"> <a class="my-link" href="<?php echo get_the_permalink() ?>"><?php the_title(); ?></a></span>
-                            <span class="col-3"> <label> <?php echo get_the_date('Y-m-d', get_the_ID()) ?></label></span>
-                        </li>
+                        <div class="item" data-id="1"
+                            data-link="<?php echo get_the_permalink(); ?>"
+                            data-post="<?php echo get_the_ID(); ?>">
+                            <div><?php the_title(); ?></div>
+                            <div><?php echo get_the_date('Y-m-d', get_the_ID()) ?></div>
+                        </div>
                 <?php
-                    }
-                }
+                    endwhile;
+                endif;
                 wp_reset_postdata();
                 wp_reset_query();
                 ?>
-            </ul>
+            </div>
             <!-- 70 is category ID -->
             <a class="content-more my-link" href="<?php echo home_url('resource/cate/105/tag/') ?>"><i class="fas fa-chevron-circle-right"></i> <?php _e('Read More') ?></a>
 
         </div>
 
         <div class="content-cases">
-            <ul class="content-list">
+            <div class="content-list">
                 <?php
                 // LAY CUSTOMPOST
                 $wp_query = getCustomPostAtSide('casestudies', 5);
-                if ($wp_query->have_posts()) {
-                    while ($wp_query->have_posts()) {
+                if ($wp_query->have_posts()) :
+                    while ($wp_query->have_posts()) :
                         $wp_query->the_post();
                 ?>
-                        <li class="row">
-                            <span class="col-9"><a class="my-link" href="<?php echo get_the_permalink() ?>"><?php the_title(); ?></a></span>
-                            <span class="col-3"><label> <?php echo get_the_date('Y-m-d', get_the_ID()) ?></label></span>
-                        </li>
+                        <div class="item" data-id="1"
+                            data-link="<?php echo get_the_permalink(); ?>"
+                            data-post="<?php echo get_the_ID(); ?>">
+                            <div><?php the_title(); ?></div>
+                            <div><?php echo get_the_date('Y-m-d', get_the_ID()) ?></div>
+                        </div>
                 <?php
-                    }
-                }
+                    endwhile;
+                endif;
                 wp_reset_postdata();
                 wp_reset_query();
                 ?>
-            </ul>
+            </div>
             <a class="content-more my-link" href="<?php echo home_url('cases') ?>"><i class="fas fa-chevron-circle-right"></i> <?php _e('Read More') ?></a>
 
         </div>
 
         <div class="content-download">
-            <ul class="content-list">
+            <div class="content-list">
                 <?php
                 // LAY CUSTOMPOST category
                 $wp_query = getCustomPostCateAtHome('resources', 'download',  5);
-                if ($wp_query->have_posts()) {
-                    while ($wp_query->have_posts()) {
+                if ($wp_query->have_posts()) :
+                    while ($wp_query->have_posts()) :
                         $wp_query->the_post();
                 ?>
-                        <li class="row">
-                            <span class="col-9"> <a class="my-link" href="<?php echo get_the_permalink() ?>"><?php the_title(); ?></a></span>
-                            <span class="col-3"> <label> <?php echo get_the_date('Y-m-d', get_the_ID()) ?></label></span>
-                        </li>
+                        <div class="item" data-id="1"
+                            data-link="<?php echo get_the_permalink(); ?>"
+                            data-post="<?php echo get_the_ID(); ?>">
+                            <div><?php the_title(); ?></div>
+                            <div><?php echo get_the_date('Y-m-d', get_the_ID()) ?></div>
+                        </div>
                 <?php
-                    }
-                }
+                    endwhile;
+                endif;
                 wp_reset_postdata();
                 wp_reset_query();
                 ?>
-            </ul>
+            </div>
             <!-- 104 is category ID -->
             <a class="content-more my-link" href="<?php echo home_url('resource/cate/104/tag/') ?>">
                 <i class="fas fa-chevron-circle-right"></i> <?php _e('Read More') ?>

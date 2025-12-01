@@ -7,22 +7,29 @@
             <i class="fas fa-chevron-up"></i>
         </div>
         <div class="item-hotline">
-            <i class="fas fa-phone-volume"></i>
+            <div class="item-hotline-icon">
+                <i class="fas fa-phone-volume"></i>
+            </div>
             <div class="hotline">
-                <div>028-73070788</div>
+                028-73070788
             </div>
         </div>
         <div class="item-download">
             <i class="fas fa-download"></i>
         </div>
         <div class="item-zalo">
-            <i class="fas fa-qrcode"></i>
+            <div class="item-zalo-icon">
+                <i class="fas fa-qrcode"></i>
+            </div>
             <div class="zalo-code">
                 <img src="<?php echo PART_IMAGES . 'zalo-qrcode.jpg'; ?>" />
             </div>
         </div>
     </div>
 </div>
+
+
+
 <div class="zalo-chat-widget" data-oaid="2873315813915643766" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="300" data-height="500"></div>
 
 
@@ -65,7 +72,7 @@
             }
         });
 
-    
+
 
         jQuery('.item-download').on('click', function() {
             window.location = "https://www.digiwin.com.vn/contact-vn/#infocard";

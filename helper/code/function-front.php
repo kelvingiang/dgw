@@ -2,7 +2,6 @@
 
 function ColorCode($id)
 {
-    $color;
     switch ($id) {
         case "1":
             $color = 'black';
@@ -30,27 +29,6 @@ function ColorCode($id)
 SEARCH  POST  BY METABOX 
 ==================================================================*/
 
-/*
-function custom_search_query($query)
-{
-
-    if (!is_admin() && !empty(getParams('langguage'))) {
-        $arr = array('advertising',); // loai bo cac post khong can search langguage
-        if (!in_array(getParams('post_type'), $arr)) {
-            $query->set('meta_query', array(
-                array(
-                    'key' => '_metabox_langguage',
-                    'value' => getParams('langguage'),
-                    'compare' => 'LIKE'
-                )
-            ));
-            // $query->set('post_type', 'solutions'); // chi ap dung cho post
-        }
-    }
-}
-
-add_filter('pre_get_posts', 'custom_search_query');
-*/
 function get_category_summary($id)
 {
     global $wpdb;

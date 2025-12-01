@@ -26,6 +26,31 @@ if (!isset($_SESSION['languages'])) {
     $_SESSION['languages'] = 'vn';
 }
 
+
+// 21/11/2025 khi thay đổi session language đông thời thay đổi lang trong thẻ HTMl 
+// tiện cho việc thay đổi font-family theo từng loại ngôn ngữ
+add_filter('language_attributes', function ($output) {
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    if (!empty($_SESSION['languages'])) {
+        if ($_SESSION['languages'] === 'cn') {
+            return 'lang="zh-TW"';
+        } elseif ($_SESSION['languages'] === 'vn') {
+            return 'lang="en-US"';
+        }
+    }
+
+    return $output; // 如果沒有 session，使用預設語言
+});
+
+
+//=== khi cài Divi Builder sẽ tự tạo project  post-type câu dưới là bỏ đi cái post-type đó ================== 
+add_action('init', function () {
+    unregister_post_type('project');
+}, 1000);
+
 /* ==============================================================
   THAY DOI FILE DATA NGON NGU THEO SESSION LANGGUAGE
   =============================================================== */
@@ -53,222 +78,6 @@ function change_translate_text($translated)
 }
 
 add_filter('gettext', 'change_translate_text', 20);
-
-
-
-//===== thay doi cac cot mac dinh cua post=================================================================
-add_filter('manage_posts_columns', 'set_custom_edit_columns');
-
-function set_custom_edit_columns($columns)
-{
-    $date_label = _x('創建日期', 'suite');
-    //unset($columns['author']);
-    //            unset($columns['categories']);
-    unset($columns['tags']);
-    unset($columns['comments']);
-    unset($columns['date']);
-    // $columns['content'] = __('內容');
-    $columns['author'] = __('Author');
-    $columns['category'] = __('Category');
-    $columns['home'] = __('首頁');
-    $columns['langguage'] = __('Langguage');
-    $columns['setorder'] = __('Show Order');
-    //$columns['date'] = __('日期');
-    //$columns['publisher'] = __('Publisher', 'your_text_domain');
-
-
-    $columns['date'] = $date_label;
-    return $columns;
-}
-
-add_action('manage_posts_custom_column', 'Custom_Post_RenderCols');
-
-function Custom_post_RenderCols($columns)
-{
-    global $post;
-    switch ($columns) {
-
-        case 'home':
-            if ((get_post_meta($post->ID, '_metabox_home', true))) {
-                echo "<div class='show-home'></div>";
-            }
-            break;
-        case 'category':
-            $terms = wp_get_post_terms($post->ID, 'solutions_category');
-            if (count($terms) > 0) {
-                foreach ($terms as $key => $term) {
-                    echo '<a href=' . custom_redirect($term->slug) . '&' . $term->taxonomy . '=' . $term->slug . '>' . $term->name . '</a></br>';
-                }
-            }
-            break;
-        case 'langguage':
-            _e(get_post_meta($post->ID, '_metabox_langguage', true));
-            break;
-
-        case 'setorder':
-            echo get_post_meta($post->ID, '_metabox_order', true);
-            break;
-        default:
-            break;
-    }
-}
-
-
-
-
-
-//
-//function search_filter($query) {
-//
-//    if (is_admin() && $query->is_search) {
-//        echo '<pre>';
-//        print_r($query);
-//        echo '</pre>';
-//        die();
-//        if ($query->is_search) {
-//            $meta_args = array(
-//                'relation' => 'OR',
-//                array(
-//                    'key' => '_metabox_langguage',
-//                    'value' => getParams('langguage'),
-//                    'compare' => 'LIKE',
-//                ),
-////                array(
-////                    'key' => 'price',
-////                    'value' => $s,
-////                    'compare' => 'LIKE',
-////                ),
-//            );
-//            echo '<pre>';
-//            print_r($meta_args);
-//            echo '</pre>';
-//            die();
-//
-//
-//            $query->set('post_type', 'solutions');
-//            $query->set('meta_query', $meta_args);
-//        }
-//    }
-//}
-//
-//add_action('pre_get_posts', 'search_filter');
-//function save_title($post_id, $title) {
-//    global $wpdb;
-//    $wpdb->update($wpdb->posts, array('post_title' => 'order-#' . $post_id), array('ID' => $post_id));
-//}
-//
-//add_action('save_post', 'save_title');
-//================== CUSTOM COLUMNS ON DEFAULT POST ==========================================
-// THEM COT VAO POST MAC DINH  
-//$ss = get_current_screen();
-//add_filter('manage_pages_columns', 'itsg_add_custom_column');
-//add_filter('manage_posts_columns', 'itsg_add_custom_column');
-//
-//function itsg_add_custom_column($columns) {
-//    $columns['modified'] = __('Prioritize Show');
-//    $columns['postdate'] = __('Create Date');
-//    return $columns;
-//}
-//
-//// THEM NOI DUNG VAO COT MOI THEM
-//add_action('manage_pages_custom_column', 'itsg_add_custom_column_data', 10, 2);
-//add_action('manage_posts_custom_column', 'itsg_add_custom_column_data', 10, 2);
-//
-//function itsg_add_custom_column_data($column, $post_id) {
-//    switch ($column) {
-//        case 'modified' :
-//            $show = get_post_meta($post_id, '_metabox_prioritize', true);
-//            if ($show == 1) {
-//                echo '<div class="active-style"></div>';
-//            }
-//            break;
-//        case 'postdate' :
-//            echo get_the_date();
-//            break;
-//    }
-//}
-// =====================AN DI CAC COT MAC DINH TRONG POST====================================
-//if (!function_exists('wp_remove_wp_columns')):
-//
-//    function wp_remove_wp_columns($columns) {
-//        unset($columns['tags']);
-//        unset($columns['comments']);
-//        unset($columns['author']);
-//        unset($columns['date']);
-//        return $columns;
-//    }
-//
-//    function wp_remove_wp_columns_init() {
-//        add_filter('manage_posts_columns', 'wp_remove_wp_columns');
-//    }
-//
-//    add_action('admin_init', 'wp_remove_wp_columns_init');
-//endif;
-//
-//function add_ourteam_columns($columns) {
-//    unset($columns['title']);
-//    unset($columns['tags']);
-//    unset($columns['date']);
-//    return array_merge($columns, array(
-//        'name' => __('name'),
-//        'designation' => __('Designation'),
-//        'image' => __('Image'),
-//        'date' => __('Date')
-//    ));
-//}
-//
-//add_filter('manage_our-team_posts_columns', 'add_ourteam_columns');
-//================= SORT COT THEM VAO===========================
-//function sortable_id_column($columns) {
-//    $columns['modified'] = 'modified';
-//    return $columns;
-//}
-//
-//add_filter('manage_edit-post_sortable_columns', 'sortable_id_column');
-////========== SORT THEO GIA TRI metapost
-//add_action('pre_get_posts', 'my_modified_orderby');
-//
-//function my_modified_orderby($query) {
-//    if (!is_admin())
-//        return;
-//
-//    $orderby = $query->get('orderby');
-//
-//    if ('modified' == $orderby) {
-//        $query->set('meta_key', '_metabox_prioritize');
-//        $query->set('orderby', 'meta_value_num');
-//        $query->set('order', 'DESC'); // them dong nay sort se ko thay doi ASC hay DESC
-//    }
-//}
-//
-//////====================if (basename($_SERVER["REQUEST_URI"]) == 'checkout' || basename($_SERVER["REQUEST_URI"]) == 'contact') {
-//
-//$objCaptcha = new CaptchaCls(5, true);
-////}
-
-
-
-/* =====  TAO MENU SHOW BEN NGOAI ======================================================== */
-//if (!function_exists('main-menu')) {
-//
-//    function get_menu($slug) {
-//        $menu = array(
-//            'theme_location' => $slug, // chon menu dc thiet lap truoc
-//            'container' => 'nav', // tap html chua menu nay
-//            'container_class' => $slug, // class cua mennu
-//            'items_wrap' => '<ul id="%1$s" class="%2$s sf-menu ">%3$s</ul>'
-////            'items_wrap' => '<ul id="%1$s" class="%2$s sf-menu sf-js-enabled sf-arrows">%3$s</ul>'
-//        );
-//        wp_nav_menu($menu);
-//    }
-//
-//}
-//
-//register_nav_menu('main-menu', __('Main name', 'suite')); // goi menu de show
-//register_nav_menu('cell-menu', __('Mobile name', 'suite')); // goi menu de show
-//
-
-
 
 
 

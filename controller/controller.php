@@ -10,26 +10,19 @@ class Controller_Main
     {
 
         $defaultOption = array(
-            'controller_setting' => true,
-            'controller_advertising' => false,
+
+            'controller_setting' => false,
             'controller_case_study' => true,
-            'controller_downloads' => false,
             'controller_resources' => true,
             'controller_active' => true,
             'controller_industries' => true,
             'controller_solutions' => true,
             'controller_services' => true,
             'controller_information' => true,
-            'controller_member' => false,
             'controller_slider' => true,
             'controller_join_us' => true,
             'controller_logo' => true,
             'controller_popup' => true,
-            // phan bo phieu co dong
-            'controller_vote' => false,
-            'controller_vote_shareholder' => false,
-            'controller_vote_setting' => false,
-
         );
 
         $this->_controller_options = get_option($this->_controller_name, $defaultOption);
@@ -37,10 +30,6 @@ class Controller_Main
         $this->page_popup();
         $this->page_information();
         $this->page_setting();
-        $this->page_member();
-        $this->page_vote();
-        $this->page_vote_shareholder();
-        $this->page_vote_setting();
         $this->page_logo();
 
         $this->post_slider();
@@ -49,13 +38,8 @@ class Controller_Main
         $this->post_industries();
         $this->post_active();
         $this->post_resources();
-        $this->post_downloads();
         $this->post_cases_studues();
-        $this->post_advertising();
         $this->post_join_us();
-
-
-
 
         add_action('admin_init', array($this, 'do_output_buffer'));
     }
@@ -93,39 +77,6 @@ class Controller_Main
         }
     }
 
-    public function page_member()
-    {
-        if ($this->_controller_options['controller_member'] == true) {
-            require_once(DIR_CONTROLLER . 'controller-member.php');
-            new Controller_Member();
-        }
-    }
-
-
-    public function page_vote()
-    {
-        if ($this->_controller_options['controller_vote'] == true) {
-            require_once(DIR_CONTROLLER . 'controller-vote.php');
-            new Controller_Vote();
-        }
-    }
-
-    public function page_vote_setting()
-    {
-        if ($this->_controller_options['controller_vote_setting'] == true) {
-            require_once(DIR_CONTROLLER . 'controller-vote-setting.php');
-            new Controller_vote_setting();
-        }
-    }
-
-
-    public function page_vote_shareholder()
-    {
-        if ($this->_controller_options['controller_vote_shareholder'] == true) {
-            require_once(DIR_CONTROLLER . 'controller-vote-shareholder.php');
-            new Controller_vote_shareholder();
-        }
-    }
 
     public function post_join_us()
     {
@@ -136,13 +87,6 @@ class Controller_Main
     }
 
 
-    public function post_advertising()
-    {
-        if ($this->_controller_options['controller_advertising'] == true) {
-            require_once(DIR_CONTROLLER . 'controller-advertising.php');
-            new Controller_Advertising();
-        }
-    }
 
     public function post_cases_studues()
     {
@@ -152,13 +96,6 @@ class Controller_Main
         }
     }
 
-    public function post_downloads()
-    {
-        if ($this->_controller_options['controller_downloads'] == true) {
-            require_once(DIR_CONTROLLER . 'controller-downloads.php');
-            new Controller_Downloads();
-        }
-    }
 
     public function post_resources()
     {

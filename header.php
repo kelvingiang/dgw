@@ -179,6 +179,7 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <?php
+    // cho phép hiển thi menu chính ====================
     $paged = get_query_var('pagename', 1);
 
     switch ($paged) {
@@ -194,6 +195,7 @@
         case 'contact-cn':
         case 'contact-vn':
         case 'join-digiwin':
+        case 'partner':
             // case 'test':
             get_template_part('templates/template', 'header');
     }

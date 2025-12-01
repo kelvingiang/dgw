@@ -11,8 +11,6 @@ class Controller_Slider
 
         add_filter('manage_edit-slider_sortable_columns', array($this, 'sortable_views_column'));
         add_filter('request', array($this, 'sort_views_column'));
-
-        add_action('admin_print_styles-edit.php', array($this, 'board_styles'));
     }
 
     public function register_custom_post()
@@ -54,17 +52,9 @@ class Controller_Slider
     //==== QUAN LY COT HIEN THI TRON BANG   
     public function manage_columns($columns)
     {
-        $date_label = __('Create Date', 'suite');
-       // unset($columns['date']); // an cot ngay mac dinh
-       // unset($columns['modified']); // an cot ngay mac dinh
         unset($columns['home']); // an cot ngay mac dinh
-        unset($columns['category']); // an cot ngay mac dinh
+        unset($columns['categories']); // an cot ngay mac dinh
         //==== THEM COT VA BAN
-        // $columns['img'] = __('Image');
-        // $columns['author'] = __('Author');
-        // $columns['langguage'] = __('Langguage');
-        // $columns['setorder'] = __('Show Order');
-        // $columns['date'] = $date_label;
         return $columns;
     }
 
@@ -72,20 +62,19 @@ class Controller_Slider
     public function render_columns($columns)
     {
         global $post;
-       
     }
 
     //====== SAP SEP THEO TRINH TU
-    public function sortable_views_column($newcolumn)
+    public function sortable_views_column($col)
     {
-        $newcolumn['setorder'] = 'setorder';
-        $newcolumn['langguage'] = 'langguage';
-        return $newcolumn;
+        $col['order'] = 'order';
+        $col['create-date'] = 'create-date';
+        return $col;
     }
 
     public function sort_views_column($vars)
     {
-        if (isset($vars['orderby']) && 'setorder' == $vars['orderby']) {
+        if (isset($vars['orderby']) && 'order' == $vars['orderby']) {
             $vars = array_merge(
                 $vars,
                 array(
@@ -94,29 +83,6 @@ class Controller_Slider
                 )
             );
         }
-
-
-        if (isset($vars['orderby']) && 'langguage' == $vars['orderby']) {
-            $vars = array_merge(
-                $vars,
-                array(
-                    'meta_key' => '_metabox_langguage', //Custom field key
-                    'orderby' => '_metabox_langguage' //Custom field value (number)
-                )
-            );
-        }
         return $vars;
-    }
-
-    //==== STYLE CHO COLUMNS    
-    public function board_styles()
-    {
-?>
-        <style type="text/css">
-
-
-        </style>
-<?php
-
     }
 }

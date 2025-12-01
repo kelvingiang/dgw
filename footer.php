@@ -78,6 +78,33 @@ wp_footer(); ?>
   //     }
   //   });
 
+//============================================================================================
+// phần click vào item để chuyển đến trang single xem toàn bộ nội dụng bài đăng ==============
+          jQuery(document).on('click', '.item', function() {
+            let permalink = jQuery(this).attr("data-link");
+            jQuery.ajax({
+                url: '<?php echo admin_url('admin-ajax.php'); ?>', // lay doi tuong chuyen sang dang array
+                type: 'post', //                data: $(this).serialize(),
+                data: {
+                    action: 'plus_one_view', // ✅ 對應後端的 hook 名稱
+                    postID: jQuery(this).attr("data-post"),
+                },
+                dataType: 'json',
+                // khi load dữ liêu show chữ loading.....
+                success: function(data) { // set ket qua tra ve  data tra ve co thanh phan status va message
+                    if (data.status === 'done') {
+                        window.location.href = permalink;
+                    } else if (data.status === 'empty') {
+                        // jQuery("#load-more").hide();
+                    }
+                },
+                error: function(xhr) {
+                    console.log(xhr.responseText);
+                }
+            });
+        });
+
+
 
 </script>
 

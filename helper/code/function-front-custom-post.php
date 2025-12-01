@@ -25,26 +25,24 @@ function getCustomsPost($postType, $postCount)
     if ($wp_query->have_posts()) :
         while ($wp_query->have_posts()) :
             $wp_query->the_post();                ?>
-            <div class="item" data-id="<?php echo $stt ?>" data-post="<?php echo get_the_ID(); ?>">
-                <div>
-                    <a href="<?php echo get_the_permalink() ?>">
+            <div class="item" data-id="<?php echo $stt ?>" 
+                              data-link="<?php echo get_the_permalink(); ?>"   
+                              data-post="<?php echo get_the_ID(); ?>">
+                     <div>
                         <?php if (has_post_thumbnail()) { ?>
                             <img class="item-img" src="<?php the_post_thumbnail_url() ?>" srcset="<?php the_post_thumbnail_url() ?>" />
                         <?php } else { ?>
                             <img class="item-img" src="<?php echo PART_IMAGES . 'no-image.jpg' ?>" srcset="<?php echo PART_IMAGES . 'no-image.jpg' ?>" />
                         <?php } ?>
-                    </a>
                     <?php
-                    if ($postType != 'joinus') {
+                    // if ($postType != 'joinus') {
                         get_template_part('templates/template', 'view_comment');
-                    }
+                    // }
                     ?>
                 </div>
 
                 <div class="item-title">
-                    <a href="<?php echo get_the_permalink() ?>">
                         <?php the_title() ?>
-                    </a>
                 </div>
 
             </div>
@@ -89,26 +87,25 @@ function getCustomsPostByCate($postType, $cate, $postCount, $taxonomy)
         while ($wp_query->have_posts()) :
             $wp_query->the_post();
         ?>
-            <div class="item" data-id="<?php echo $stt ?>" data-post="<?php echo get_the_ID(); ?>">
+            <div class="item" data-id="<?php echo $stt ?>" 
+                              data-link="<?php echo get_the_permalink(); ?>"  
+                              data-post="<?php echo get_the_ID(); ?>">
                 <div>
-                    <a href="<?php echo get_the_permalink() ?>">
                         <?php if (has_post_thumbnail()) { ?>
                             <img class="item-img" src="<?php the_post_thumbnail_url() ?>" srcset="<?php the_post_thumbnail_url() ?>" />
                         <?php } else { ?>
                             <img class="item-img" src="<?php echo PART_IMAGES . 'no-image.jpg' ?>" srcset="<?php echo PART_IMAGES . 'no-image.jpg' ?>" />
                         <?php } ?>
-                    </a>
+                   
                     <?php
-                    if ($postType != 'joinus') {
+                    // if ($postType != 'joinus') {
                         get_template_part('templates/template', 'view_comment');
-                    }
+                    // }
                     ?>
                 </div>
 
                 <div class="item-title">
-                    <a href="<?php echo get_the_permalink() ?>">
                         <?php the_title() ?>
-                    </a>
                 </div>
             </div>
     <?php

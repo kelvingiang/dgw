@@ -14,31 +14,26 @@
 </div>
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
-            <div class="page-title">
-                <h1><?php // _e('Resources') 
-                    ?> </h1>
-            </div>
-
+    <div class="page-col">
+        <div>
             <div class='data-list'>
                 <?php
                 global $wp;
                 $param = $wp->query_vars;
                 $postCount = get_option('first_load');
 
-                if (empty($param['tag']) && empty($param['cate'])) {
-                    getCustomsPost('resources', $postCount);
+                $tag  = isset($param['tag']) ? $param['tag'] : '';
+                $cate = isset($param['cate']) ? $param['cate'] : '';
+
+                $postType = 'resources';
+                $tax = 'resources_category';
+
+                if (empty($tag) && empty($cate)) {
+                    getCustomsPost($postType, $postCount);
                 } else {
                     // neu TAG ton tai thi lay value la TAG con khong thi lay CATE
-                    if (empty($param['tag'])) {
-                        $cate = $param['cate'];
-                    } else {
-                        $cate = $param['tag'];
-                    }
-                    $postType = 'resources';
-                    $tax = 'resources_category';
-                    $wp_query = getCustomsPostByCate($postType, $cate, $postCount, $tax);
+                    $term_slug = !empty($tag) ? $tag : $cate;
+                    $wp_query = getCustomsPostByCate($postType, $term_slug, $postCount, $tax);
                 }
                 wp_reset_postdata();
                 wp_reset_query();
@@ -46,43 +41,21 @@
             </div>
 
             <div id="load-more">
-                <i style=" font-size: 35px; color: #999; height: 50px" class="fa fa-angle-double-down"
+                <i class="fa fa-angle-double-down"
                     aria-hidden="true"></i>
             </div>
 
         </div>
-        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+        <div>
             <?php get_template_part('templates/template', 'side_active');  ?>
             <?php get_template_part('templates/template', 'side_articles');  ?>
+            </div=>
         </div>
     </div>
 </div>
+
 <script>
     jQuery(document).ready(function() {
-        jQuery(document).on('click', '.item', function() {
-            jQuery.ajax({
-                url: '<?php echo admin_url('admin-ajax.php'); ?>', // lay doi tuong chuyen sang dang array
-                type: 'post', //                data: $(this).serialize(),
-                data: {
-                    action: 'plus_one_view', // ✅ 對應後端的 hook 名稱
-                    postID: jQuery(this).attr("data-post"),
-                },
-                dataType: 'json',
-                // khi load dữ liêu show chữ loading.....
-                success: function(data) { // set ket qua tra ve  data tra ve co thanh phan status va message
-                    if (data.status === 'done') {
-
-                    } else if (data.status === 'empty') {
-                        // jQuery("#load-more").hide();
-                    }
-                },
-                error: function(xhr) {
-                    console.log(xhr.responseText);
-                }
-            });
-        })
-
-
         jQuery('#load-more').click(function() {
 
             var lastID = jQuery(".data-list > div:last-child").attr("data-id");

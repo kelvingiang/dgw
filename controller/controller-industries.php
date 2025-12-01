@@ -1,5 +1,4 @@
 <?php
-
 class Controller_Industries
 {
 
@@ -52,20 +51,11 @@ class Controller_Industries
     //==== QUAN LY COT HIEN THI TRON BANG   
     public function manage_columns($columns)
     {
-        $date_label = __('Create Date', 'suite');
-        unset($columns['date']); // an cot ngay mac dinh
-        unset($columns['modified']); // an cot ngay mac dinh
-        unset($columns['postdate']); // an cot ngay mac dinh
-        unset($columns['category']); // an cot ngay mac dinh
-        unset($columns['home']); // an cot ngay mac dinh
+        unset($columns['create_date']); // an cot ngay mac dinh
+        unset($columns['categories']); // an cot ngay mac dinh
         //==== THEM COT VA BAN
-        // $columns['content'] = __('Content');
-        // $columns['category'] = __('Category');
-        $columns['author'] = __('Author');
-        $columns['langguage'] = __('Langguage');
-        $columns['setorder'] = __('Show Order');
-
-        $columns['date'] = $date_label;
+        // $columns['author'] = __('Author');
+        // $columns['order'] = __('Show Order');
         return $columns;
     }
 
@@ -75,10 +65,7 @@ class Controller_Industries
         global $post;
 
         switch ($columns) {
-                // case 'content':
-                // echo mySubContent(get_the_content());
-                // break;
-                // case 'category':
+              // case 'category':
                 //     $terms = wp_get_post_terms($post->ID, 'industries_category');
                 //     if (count($terms) > 0) {
                 //         foreach ($terms as $key => $term) {
@@ -86,41 +73,26 @@ class Controller_Industries
                 //         }
                 //     }
                 //     break;
-                // case 'langguage':
-                //     _e(get_post_meta($post->ID, '_metabox_langguage', true));
-                //     break;
-                // case 'setorder':
-                // echo get_post_meta($post->ID, '_metabox_order', true);
-                //  break;
+            
         }
     }
 
     //====== SAP SEP THEO TRINH TU
-    public function sortable_views_column($newcolumn)
+    public function sortable_views_column($col)
     {
-        $newcolumn['setorder'] = 'setorder';
-        $newcolumn['langguage'] = 'langguage';
-        return $newcolumn;
+        $col['order'] = 'order';
+        $col['create-date'] = 'create-date';
+        return $col;
     }
 
     public function sort_views_column($vars)
     {
-        if (isset($vars['orderby']) && 'setorder' == $vars['orderby']) {
+        if (isset($vars['orderby']) && 'order' == $vars['orderby']) {
             $vars = array_merge(
                 $vars,
                 array(
                     'meta_key' => '_metabox_order', //Custom field key
                     'orderby' => 'meta_value_num' //Custom field value (number)
-                )
-            );
-        }
-
-        if (isset($vars['orderby']) && 'langguage' == $vars['orderby']) {
-            $vars = array_merge(
-                $vars,
-                array(
-                    'meta_key' => '_metabox_langguage', //Custom field key
-                    'orderby' => 'meta_value' //Custom field value (number)
                 )
             );
         }

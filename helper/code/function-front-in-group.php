@@ -18,12 +18,12 @@ function inGroup($postName, $tax, $postMun)
         $postType = $postName;
         $postCount = $postMun;
         $tax = $tax;
-        $wp_query = getCustomsPostByCate($postType, $cat, $postCount, $tax);
+        $data = getCustomsPostByCate($postType, $cat, $postCount, $tax);
 
-        if ($wp_query->have_posts()) {
+        if ($data->have_posts()) {
             $stt = 1;
-            while ($wp_query->have_posts()) {
-                $wp_query->the_post();
+            while ($data->have_posts()) {
+                $data->the_post();
 
                 // kiem tra slug trung voi slug url khong hien thi
                 if ($post->post_name == $param['name']) {
@@ -65,7 +65,7 @@ function inGroup($postName, $tax, $postMun)
 
     <?php if ($postCount != -1) { ?>
         <div id="load-more">
-            <i style=" font-size: 35px; color: #999; height: 50px" class="fa fa-angle-double-down" aria-hidden="true"></i>
+            <i class="fa fa-angle-double-down" aria-hidden="true"></i>
         </div>
     <?php  } ?>
 

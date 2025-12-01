@@ -13,68 +13,37 @@
 </div>
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-            <div class="page-title">
-                <h1></h1>
-            </div>
+    <div class='data-list'>
+        <?php
+        global $wp;
+        $param = $wp->query_vars;
+        $postCount = get_option('first_load');
 
-            <div class='data-list'>
-                <?php
-                global $wp;
-                $param = $wp->query_vars;
-                $postCount = get_option('first_load');
+        $tag  = isset($param['tag']) ? $param['tag'] : '';
+        $cate = isset($param['cate']) ? $param['cate'] : '';
 
-                $tag  = isset($param['tag']) ? $param['tag'] : '';
-                $cate = isset($param['cate']) ? $param['cate'] : '';
+        $postType = 'casestudies';
+        $tax = 'casestudies_category';
 
-                $postType = 'casestudies';
-                $tax = 'casestudies_category';
+        if (empty($tag) && empty($cate)) {
+            $wp_query = getCustomsPost($postType, $postCount);
+        } else {
+            // neu TAG ton tai thi lay value la TAG con khong thi lay CATE
+            $term_slug = !empty($tag) ? $tag : $cate;
+            $wp_query = getCustomsPostByCate($postType, $term_slug, $postCount, $tax);
+        }
+        wp_reset_query();
+        ?>
+    </div>
 
-                if (empty($tag) && empty($cate)) {
-                    $wp_query = getCustomsPost($postType, $postCount);
-                } else {
-                    // neu TAG ton tai thi lay value la TAG con khong thi lay CATE
-                    $term_slug = !empty($tag) ? $tag : $cate;
-                    $wp_query = getCustomsPostByCate($postType, $cate, $postCount, $tax);
-                }
-                wp_reset_query();
-                ?>
-            </div>
-            <div id="load-more">
-                <i style=" font-size: 35px; color: #999; height: 50px" class="fa fa-angle-double-down"
-                    aria-hidden="true"></i>
-            </div>
-        </div>
+    <div id="load-more">
+        <i class="fa fa-angle-double-down"
+            aria-hidden="true"></i>
     </div>
 </div>
 
 <script>
     jQuery(document).ready(function() {
-
-        jQuery(document).on('click', '.item', function() {
-
-            jQuery.ajax({
-                url: '<?php echo admin_url('admin-ajax.php'); ?>', // lay doi tuong chuyen sang dang array
-                type: 'post', //                data: $(this).serialize(),
-                data: {
-                    action: 'plus_one_view', // ✅ 對應後端的 hook 名稱
-                    postID: jQuery(this).attr("data-post"),
-                },
-                dataType: 'json',
-                // khi load dữ liêu show chữ loading.....
-                success: function(data) { // set ket qua tra ve  data tra ve co thanh phan status va message
-                    if (data.status === 'done') {
-            
-                    } else if (data.status === 'empty') {
-                        // jQuery("#load-more").hide();
-                    }
-                },
-                error: function(xhr) {
-                    console.log(xhr.responseText);
-                }
-            });
-        })
 
         //=========================================================================================================
         jQuery('#load-more').click(function() {

@@ -54,7 +54,7 @@ class Model_Pop_up extends WP_List_Table
             'status' => __('狀態'),
             'img' => __('圖片'),
             'link' => __('連接'),
-            'create_date' => __('Create Date'),
+            'date' => __('Create Date'),
         );
         return $arr;
     }
@@ -70,7 +70,7 @@ class Model_Pop_up extends WP_List_Table
     {
         return array(
             'status' => array('status', true),
-            // 'create_date' => array('create_date', true),
+            'date' => array('create_date', true),
         );
     }
 
@@ -187,36 +187,7 @@ class Model_Pop_up extends WP_List_Table
         return $html;
     }
 
-    // public function column_title($item)
-    // {
 
-    //     $page = getParams('page');
-
-    //     if (@$_GET['customvar'] == 'trash') {
-    //         $actions = array(
-    //             'restore' => '<a href=" ?page=' . $page . '&action=restore&id=' . $item['ID'] . ' " >' . __('Restore') . '</a>',
-    //             'delete' => '<a href=" ?page=' . $page . '&action=delete&id=' . $item['ID'] . ' " >' . __('Delete Permanently') . ' </a>',
-    //         );
-    //     } else {
-    //         if ($item['status'] === '0') {
-    //             $actions = array(
-    //                 'active' => '<a href=" ?page=' . $page . '&action=active&id=' . $item['ID'] . ' " >啟用</a>',
-    //                 'edit' => '<a href=" ?page=' . $page . '&action=edit&id=' . $item['ID'] . ' " >' . __('Edit') . '</a>',
-    //                 'trash' => '<a href=" ?page=' . $page . '&action=trash&id=' . $item['ID'] . ' " >' . __('Trash') . '</a>',
-    //             );
-    //         } elseif ($item['status'] === '1') {
-    //             $actions = array(
-    //                 'passive' => '<a href=" ?page=' . $page . '&action=passive&id=' . $item['ID'] . ' " >停止</a>',
-    //                 'edit' => '<a href=" ?page=' . $page . '&action=edit&id=' . $item['ID'] . ' " >' . __('Edit') . '</a>',
-    //                 'trash' => '<a href=" ?page=' . $page . '&action=trash&id=' . $item['ID'] . ' " >' . __('Trash') . '</a>',
-    //             );
-    //         }
-    //     }
-    //     $html = '<strong> <a href="?page=' . $page . '&action=edit&id=' . $item['ID'] . ' ">' . $item['title'] . '</a> </strong>' . $this->row_actions($actions);
-    //     return $html;
-
-
-    // }
 
     public function column_title($item)
     {
@@ -228,7 +199,7 @@ class Model_Pop_up extends WP_List_Table
                 'delete' => '<a href="?page=' . $page . '&action=delete&id=' . $item['ID'] . '">' . __('Delete Permanently') . '</a>',
             );
         } else {
-            echo $item['status'];
+            // echo $item['status'];
             if ($item['status'] == '0' || $item['status'] == 0) {
                 $actions = array(
                     'active' => '<a href="?page=' . $page . '&action=active&id=' . $item['ID'] . '">啟用</a>',
@@ -269,11 +240,11 @@ class Model_Pop_up extends WP_List_Table
     public function column_status($item)
     {
         if ($item['status'] == '1') {
-            echo "<div class='activeStyle'></div>";
+            echo "<div class='show-home'></div>";
         };
     }
 
-    public function column_create_date($item)
+    public function column_date($item)
     {
         echo $item['create_date'];
     }

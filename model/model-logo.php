@@ -53,7 +53,7 @@ class Model_Logo extends WP_List_Table
             'company' => __('公司名稱'),
             'img' => __('商標'),
             'link' => __('連接'),
-            'create_date' => __('Create Date'),
+            'date' => __('Create Date'),
         );
         return $arr;
     }
@@ -69,7 +69,7 @@ class Model_Logo extends WP_List_Table
     {
         return array(
             'company' => array('company', true),
-            'create_date' => array('create_date', true),
+            'date' => array('create_date', true),
         );
     }
 
@@ -215,7 +215,7 @@ class Model_Logo extends WP_List_Table
         echo $item['link'];
     }
 
-    public function column_create_date($item)
+    public function column_date($item)
     {
         echo $item['create_date'];
     }

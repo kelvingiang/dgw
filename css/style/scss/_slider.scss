@@ -147,14 +147,15 @@
 
 // ========================================================
 #casestudies-slider {
-    position: relative;
     background-color: #fff;
+    padding: 1rem;
+   
     .owl-theme {
         //padding-top: 2.5rem;
         .owl-nav {
             display: block;
             position: absolute;
-            top: 40%;
+            top: 45%;
             width: 100%;
             // text-align: right;
             padding-right: 1rem;
@@ -164,10 +165,10 @@
                 position: absolute;
                 right: 1px;
                 .sli-right {
-                    font-size: 1.5rem;
+                    font-size: 3rem;
                 }
-                 :hover {
-                    color: rgba(148, 146, 146, 1);
+                :hover {
+                    color: rgba(105, 105, 105);
                 }
             }
             .owl-prev {
@@ -176,33 +177,32 @@
                 position: absolute;
                 left: 1px;
                 .sli-left {
-                    font-size: 1.5rem;
+                    font-size: 3rem;
                 }
-                 :hover {
-                    color: rgba(148, 146, 146, 1);
+                :hover {
+                    color: rgb(105, 105, 105);
                 }
             }
         }
     }
-    .multi-item {
-        margin: 0.5rem 1rem 1rem 1rem;
-        opacity: 1;
+    .item {
         transition-duration: 0.8s;
         border-radius: 0.5rem;
-        // @include Respond(lg) {
-        //   margin: 2.5rem 1rem 3rem 1rem;
-        // }
-        // @include Respond(md) {
-        //   margin: 2.5rem 1rem 3rem 1rem;
-        // }
+        border: 1px solid #f3f3f3;
+        cursor: pointer;
+        overflow: hidden;
+        margin: 1rem 0.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
         @include Respond(sm) {
-            margin: 0rem 0rem 0rem 0rem;
         }
-        .slider-multi-title {
-            padding-bottom: 1rem;
+     
+        .item-title {
             text-align: center;
+            padding: 0.5rem;
             h2 {
-                padding-top: 1rem;
                 font-size: 1.2rem;
                 font-weight: bold;
                 color: $color_blue_link;
@@ -217,32 +217,13 @@
                 }
             }
         }
-        .slider-multi-img {
-            padding: 0.3rem 1rem 0.5rem;
-            .llimg {
-                border-radius: 0.2rem;
-            }
-        }
-        .slider-multi-content {
-            padding: 1rem 2rem;
-            color: rgb(109, 108, 108);
-            @include Respond(lg) {
-                padding: 1.2rem;
-            }
-            @include Respond(md) {
-                padding: 1rem;
-            }
-            @include Respond(ms) {
-                padding: 0rem;
-            }
-        }
+
         &:hover {
-            opacity: 1;
-            background-color: #eeecec;
+            background-color: #f7f7f7;
             margin-top: 0.6rem;
-            transform: scale(1.03, 1.03);
-            box-shadow: rgba(0, 0, 0, 0.56) 0px 4px 5px 3px;
-            .slider-multi-title {
+            transform: scale(1.001, 1.001);
+            box-shadow: rgba(0, 0, 0, 0.56) 0px 2px 8px 1px;
+            .item-title {
                 h2 {
                     color: $color_blue_link_hover;
                 }

@@ -1,35 +1,74 @@
+$table_header_bg: #d6d6d6;
+$table_header_text: #555555;
+
+.wp-list-table > thead > tr {
+    background-color: $table_header_bg;
+
+    > .manage-column {
+        text-align: center;
+        font-weight: bold;
+        border-bottom: 0px solid transparent;
+        color: $table_header_text;
+    }
+}
+
+.wp-list-table > tfoot > tr {
+    background-color: $table_header_bg;
+
+    > .manage-column {
+        text-align: center;
+        font-weight: bold;
+        border-top: 0px solid transparent;
+        color: $table_header_text;
+    }
+}
+
+.wp-list-table > thead > tr > .column-order,
+.wp-list-table > tfoot > tr > .column-order {
+    text-align: center;
+    a {
+        margin-left: 30%;
+    }
+}
+
 .column-cb {
     width: 2% !important;
 }
 
-.column-title {
-    width: 30%;
+.column-title,
+.column-primary {
+    width: 40%;
 }
 
-//.column-content {
-// width: 60%;
-//}
-.column-setorder {
-    width: 8%;
+.column-author {
+    width: 150px !important;
+    text-align: center;
 }
 
-.column-langguage {
-    width: 8%;
-}
-
-.column-category {
-    width: 8%;
-}
-
+.column-language,
 .column-home {
-    width: 8%;
+    width: 50px;
+    text-align: center;
+}
+.column-order {
+    width: 100px !important;
+    a {
+        margin: auto;
+    }
+}
+
+.column-category,
+.column-categories {
+    width: 150px !important;
+    text-align: center;
 }
 
 .column-img {
-    width: 300px;
+    width: 100px;
+    text-align: center;
     img {
         width: 50px !important;
-        margin: 2px;
+        margin: auto;
     }
 }
 
@@ -40,8 +79,26 @@
 .column-status {
     width: 70px;
 }
-.column-create_date {
-    width: 80px;
+.column-create-date,
+.column-date {
+    width: 100px !important;
+    float: right;
+    text-align: center;
+}
+
+// cac column trong taxonomy=============================
+
+.column-slug {
+    width: 100px !important;
+}
+
+.column-order,
+.column-posts {
+    width: 60px;
+    text-align: center;
+}
+.column-name {
+    width: 23%;
 }
 
 ///===========================================================================
@@ -65,6 +122,7 @@
     width: 1rem;
     height: 1rem;
     border-radius: 1rem;
+    margin: auto;
 }
 
 .un-show-home {

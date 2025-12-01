@@ -11,11 +11,20 @@ class Metabox_Order
 
     public function create()
     {
-        $id = 'tw-metabox-email';
-        $title = translate('Show Order');
+        $id = 'admin-metabox-order';
+        $title = __('Show Order');
         $callback = array($this, 'display');
-        $screen = array('post', 'slider', 'joinus', 'solutions', 'services', 'industries', 'active', 'resources', 'downloads', 'casestudies', 'advertising'); // CAC POST VA CUSTOMER POST CHO PHEP METABOX NAY HIEN THI
-        add_meta_box($id, $title, $callback, $screen);
+        $screens  = array('post', 'slider', 'joinus', 'solutions', 'services', 'industries', 'active', 'resources', 'downloads', 'casestudies', 'advertising'); // CAC POST VA CUSTOMER POST CHO PHEP METABOX NAY HIEN THI
+        foreach ($screens as $screen) {
+            add_meta_box(
+                $id,
+                $title,
+                $callback,
+                $screen,
+                'side',     // ✅ Sidebar 欄位
+                'default'
+            );
+        }
         // FUNCTION NAY DE O DAY, DE KHI NAO DUNG DE METABOX THI TA MOI GOI FILE CSS NAY VO 
         //  add_action('admin_enqueue_scripts', array($this, 'add_css_file'));
     }
@@ -27,11 +36,8 @@ class Metabox_Order
         $name = 'dn-metabox-data-nonce';
         wp_nonce_field($action, $name);
 ?>
-        <div class="row-three-column">
+        <div class="row-four-column">
             <div class="col">
-                <div class="cell-title">
-                    <label for="metabox-order"> <?php _e('Show Order'); ?> </label>
-                </div>
                 <div class="cell-text">
                     <input type="text" id="metabox-order" name="metabox-order" class='type-number my-input' maxlength='5' placeholder=' <?php _e('The larger the number will show in front') ?>' value="<?php echo get_post_meta($post->ID, '_metabox_order', true); ?>" />
                 </div>

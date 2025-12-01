@@ -1,18 +1,28 @@
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-<header>
-<?php if ( is_singular() ) {
-echo '<h1 class="entry-title">';
-} else {
-echo '<h2 class="entry-title">';
-} ?>
-<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" rel="bookmark"><?php the_title(); ?></a>
-<?php if ( is_singular() ) {
-echo '</h1>';
-} else {
-echo '</h2>';
-} ?> <?php edit_post_link(); ?>
-<?php if ( ! is_search() ) { get_template_part( 'entry', 'meta' ); } ?>
-</header>
-<?php get_template_part( 'entry', ( is_front_page() || is_home() || is_front_page() && is_home() || is_archive() || is_search() ? 'summary' : 'content' ) ); ?>
-<?php if ( is_singular() ) { get_template_part( 'entry-footer' ); } ?>
-</article>
+
+        <?php if (is_singular()) : ?>
+            <h1 class="entry-title">
+                <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" rel="bookmark"><?php the_title(); ?>s</a>
+            </h1>
+        <?php else : ?>
+            <?php $stt = $args['stt'] ?? ''; ?>
+                        <div class="item" data-id="<?php echo $stt ?>"
+                            data-link="<?php echo get_the_permalink(); ?>"
+                            data-post="<?php echo get_the_ID(); ?>">
+                            <div>
+                                <?php if (has_post_thumbnail()) { ?>
+                                    <img class="item-img" src="<?php the_post_thumbnail_url() ?>" srcset="<?php the_post_thumbnail_url() ?>" />
+                                <?php } else { ?>
+                                    <img class="item-img" src="<?php echo PART_IMAGES . 'no-image.jpg' ?>" srcset="<?php echo PART_IMAGES . 'no-image.jpg' ?>" />
+                                <?php } ?>
+                                <?php
+                                get_template_part('templates/template', 'view_comment');
+                                ?>
+                            </div>
+                            <div class="item-title">
+                                <?php the_title() ?>
+                            </div>
+                        </div>
+        <?php endif ?>
+
+
+

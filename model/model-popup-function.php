@@ -47,6 +47,8 @@ class Model_Popup_Function
             'title' => $arrData['txt-title'],
             'link_cn' => $arrData['txt-link-cn'],
             'link_vn' => $arrData['txt-link-vn'],
+            'id_cn' => $arrData['txt-id-cn'],
+            'id_vn' => $arrData['txt-id-vn'],
         );
 
         if (!empty($arrData['file-img-cn'])) {

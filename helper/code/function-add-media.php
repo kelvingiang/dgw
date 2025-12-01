@@ -29,10 +29,6 @@ function add_wp_media($item)
         }
         ?>
     </div>
-    <!-- <div class="row">
-    <?php // wp_editor('', 'txt_img', array('wpautop' => TRUE, )); 
-    ?>
-          </div>-->
     <div class="clear"></div>
     <hr>
     <style>

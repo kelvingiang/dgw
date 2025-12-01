@@ -1,9 +1,4 @@
 <?php
-// if (session_status() === PHP_SESSION_NONE) {
-//     session_start();
-// }
-
-
 $lang = isset($_SESSION['languages']) ? $_SESSION['languages'] : 'vn'; // 預設值 en
 $contact = 'contact-' . $lang;
 $about   =  'about-' . $lang;
@@ -23,16 +18,14 @@ function menu_home_list()
 function menu_mobile_list()
 {
     $arr = array(
-        $GLOBALS['about'] => "About",
-        "cases" => "Cases Tudies",
-        // "industry" => "Industries",
-        "solution" => "Solutions",
-        // "service" => "Service",
-        "resource" => "Resources",
-        "activities" => "Active",
-        "join-digiwin/cate/97/tag/" => "Join Digiwin",
-        "join-digiwin/cate/98/tag/" => "Distribution",
-        $GLOBALS['contact'] => "Contact Digiwin"
+        $GLOBALS['about'] => "about",
+        "cases" => "cases",
+        "solution" => "solution",
+        "resource" => "resource",
+        "activities" => "active",
+        "join-digiwin" => "join",
+        "partner" => "distribution",
+        $GLOBALS['contact'] => "contact"
     );
     return $arr;
 }
@@ -42,15 +35,17 @@ function menu_main_list()
     // THIS ARRAY KEY APPLY LINK OF WEB 
     $arr = array(
         $GLOBALS['about'] => array(
-            'name' => "About",
+            'name' => "about",
             'class' => 'menu-main-item', // neu co sub menu phai them sub Class
+            'data'=> 'about-'.$_SESSION['languages'],
             // 'subClass' => 'menu-main-sub-1',
             // 'sub' => array(),
             //'sub' => $homeArr,
         ),
         'cases' => array(
-            'name' => "Cases Tudies",
-            'class' => 'menu-main-item ',
+            'name' => "cases",
+            'class' => 'menu-main-item',
+            'data'=> "cases",
             //'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
             // 'sub' => array(),
             //'sub' => getCategories('casestudies_category'),
@@ -63,8 +58,9 @@ function menu_main_list()
         //     'sub' => array(),
         // ),
         'solution' => array(
-            'name' => "Solutions",
-            'class' => 'menu-main-item ',
+            'name' => "solution",
+            'class' => 'menu-main-item',
+            'data' => "solution",
             'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
             'sub' => getCategories('solutions_category'),
         ),
@@ -75,14 +71,16 @@ function menu_main_list()
         //     'sub' => getCategories('services_category'),
         // ),
         'resource' => array(
-            'name' => "Resources",
+            'name' => "resource",
             'class' => 'menu-main-item',
+            'data' => "resource",
             'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
             'sub' => getCategories('resources_category'),
         ),
         'activities' => array(
-            'name' => "Active",
+            'name' => "active",
             'class' => 'menu-main-item',
+            'data'=> 'activities', 
             'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
             'sub' => getCategories('active_category'),
         ),
@@ -92,24 +90,28 @@ function menu_main_list()
         //     'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
         //     'sub' => getCategories('joinus_category'),
         // ),
-        'join-digiwin/cate/97/tag/' => array(
-            'name' => "Join Digiwin",
-            'class' => 'menu-main-item ',
+        'join' => array(
+            'name' => "join",
+            'class' => 'menu-main-item',
+            'data'=> "join-digiwin",
             //'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
             // 'sub' => array(),
             //'sub' => getCategories('casestudies_category'),
         ),
-        'join-digiwin/cate/98/tag/' => array(
-            'name' => "Distribution",
-            'class' => 'menu-main-item ',
+        // 'join-digiwin/cate/98/tag/' => array(
+        'partner' => array(
+            'name' => "distribution",
+            'class' => 'menu-main-item',
+            'data'=> "partner",
             //'subClass' => 'menu-main-sub-1', // neu co sub menu phai them sub Class
             // 'sub' => array(),
             //'sub' => getCategories('casestudies_category'),
         ),
 
         $GLOBALS['contact'] => array(
-            'name' => "Contact Digiwin",
+            'name' => "contact",
             'class' => 'menu-main-item',
+            'data'=> 'contact-'.$_SESSION['languages'],
             // 'sub' => array()
         ),
     );

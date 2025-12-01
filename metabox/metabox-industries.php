@@ -25,9 +25,6 @@ class Metabox_Industries
 ?>
 
         <div class="clear"></div>
-
-
-
         <div class="row-one-column">
             <div class="cell-title">
                 <label><?php _e('管理挑戰') ?></label>

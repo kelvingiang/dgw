@@ -1,4 +1,4 @@
-<?php /*  Template Name: Services Page */ ?>
+<?php /*  Template Name: Partner Page */ ?>
 <?php get_header(); ?>
 
 <div>
@@ -7,56 +7,38 @@
 
 <div class="menu-sub">
     <?php
-    $menu_category = 'services_category';
-    $menu_page = 'services';
-    menuSub($menu_category, $menu_page);
+    // $menu_category = 'joinus_category';
+    // $menu_page = 'join-digiwin';
+    // menuSub($menu_category, $menu_page);
     ?>
 </div>
+
 <div class="container-fluid">
     <div class='data-list'>
         <?php
         global $wp;
-        $param = $wp->query_vars;
         $postCount = get_option('first_load');
-
-        $tag  = isset($param['tag']) ? $param['tag'] : '';
-        $cate = isset($param['cate']) ? $param['cate'] : '';
-
-        $postType = 'services';
-        $tax = 'services_category';
-        if (empty($param['tag']) && empty($param['cate'])) {
-            getCustomsPost('services', $postCount);
-        } else {
-            // neu TAG ton tai thi lay value la TAG con khong thi lay CATE
-            if (empty($param['tag'])) {
-                $cate = $param['cate'];
-            } else {
-                $cate = $param['tag'];
-            }
-            $postType = 'services';
-            $tax = 'services_category';
-            $wp_query = getCustomsPostByCate($postType, $cate, $postCount, $tax);
-        }
+        $cate = '98';
+        $postType = 'joinus';
+        $tax = 'joinus_category';
+        $wp_query = getCustomsPostByCate($postType, $cate, $postCount, $tax);
         wp_reset_postdata();
         wp_reset_query();
         ?>
     </div>
-
     <div id="load-more">
         <i class="fa fa-angle-double-down" aria-hidden="true"></i>
     </div>
 </div>
 <script>
     jQuery(document).ready(function() {
-
-        //=========================================================================================================
         jQuery('#load-more').click(function() {
 
             var lastID = jQuery(".data-list > div:last-child").attr("data-id");
-            var post = 'services';
+            var post = 'joinus';
             var cateID = '<?php echo $cate ?>';
             var count = '<?php echo get_option('more_load') ?>';
-            var cate = 'services_category';
+            var cate = 'joinus_category';
 
             jQuery.ajax({
                 url: '<?php echo admin_url('admin-ajax.php'); ?>', // lay doi tuong chuyen sang dang array
@@ -70,7 +52,6 @@
                     count: count,
                 },
                 dataType: 'json',
-                // khi load dữ liêu show chữ loading.....
                 beforeSend: function() {
                     jQuery('#load-more').prop('disabled', true).text('Loading...');
                 },
@@ -78,7 +59,6 @@
                     data) { // set ket qua tra ve  data tra ve co thanh phan status va message
                     if (data.status === 'done') {
                         jQuery(".data-list").append(data.html);
-
                         // sau khi load thanh công show lại cái icon
                         jQuery('#load-more')
                             .prop('disabled', false)
@@ -92,11 +72,11 @@
                     }
                 },
                 error: function(xhr) {
-                    console.log(xhr.responseText);
+                    console.log(xhr.reponseText);
+                    //console.log(data.status);
                 }
             });
         });
     });
 </script>
-
 <?php get_footer(); ?>

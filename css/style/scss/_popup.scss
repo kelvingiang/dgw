@@ -7,8 +7,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
     &-space {
         position: relative;
+        max-width: 80%;
         @include Respond(dm) {
             width: 70%;
         }
@@ -25,6 +27,8 @@
             .img-computer {
                 border-radius: 2px;
                 max-width: 100%;
+                width: 100%;
+                
                 @include Respond(md) {
                     display: none;
                 }

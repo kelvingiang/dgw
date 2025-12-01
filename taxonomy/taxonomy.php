@@ -9,13 +9,14 @@ class Taxonomy_Main
     public function __construct()
     {
         $defaultoption = array(
-            'tags_casestudies' => true,
             'tags_advertising' => false,
+            'taxonomy_industries' => false,
             'tags_solution' => false,
-
+            
+            'tags_casestudies' => true,
+            
             'taxonomy_casestudies' => true,
             'taxonomy_advertising' => true,
-            'taxonomy_industries' => false,
             'taxonomy_solution' => true,
             'taxonomy_resource' => true,
             'taxonomy_active' => true,

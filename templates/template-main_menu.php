@@ -4,15 +4,19 @@
     </a>
     <nav class="menu-main">
         <!-- MAIN MENU  -->
-        <?php foreach (menu_main_list() as $key_main => $val_main) : ?>
-            <div class=' <?php echo $val_main['class'] ?>'>
-                <?php if (isset($val_main['sub'])) : ?>
+        <?php foreach (menu_main_list() as $key_main => $val_main) :
+            $classData = $val_main['data'];
+            $className = $val_main['name'];
+        ?>
+            <div class='<?php echo $val_main['class'] ?>' data-name='<?php echo $classData ?>'>
+                <?php if (isset($val_main['sub'])) :
+                ?>
                     <label class='menu-main-item-link has-sub'>
-                        <?php _e($val_main['name']);  ?>
+                        <?php _e($className); ?>
                     </label>
                 <?php else : ?>
-                    <a href='<?php echo home_url($key_main); ?>' class='menu-main-item-link '>
-                        <?php _e($val_main['name']);  ?>
+                    <a href='<?php echo home_url($key_main); ?>' class='menu-main-item-link'>
+                        <?php _e($className, 'dgw'); ?>
                     </a>
                 <?php endif ?>
                 <div class='menu-main-item-bg'></div>
@@ -30,28 +34,32 @@
                     </div>
                 <?php endif ?>
             </div>
-        <?php endforeach ?> 
+        <?php endforeach ?>
     </nav>
     <div>
         <?php get_template_part('templates/template', 'languages') ?>
     </div>
 </div>
-
+<!-- //======================================================================= -->
 <div id="header-scroll">
     <a href="<?php echo home_url(); ?>">
         <img class="company-logo" src="<?php echo PART_IMAGES . 'logo.png' ?>" />
     </a>
+    
     <nav class="menu-main">
         <!-- MAIN MENU  -->
-        <?php foreach (menu_main_list() as $key_main => $val_main) {  ?>
-            <div class=' <?php echo $val_main['class'] ?>'>
+        <?php foreach (menu_main_list() as $key_main => $val_main) {
+            $classData = $val_main['data'];
+            $className = $val_main['name'];
+        ?>
+            <div class='<?php echo $val_main['class'] ?>' data-name='<?php echo $classData ?>'>
                 <?php if (isset($val_main['sub'])) : ?>
                     <label class='menu-main-item-link has-sub'>
-                        <?php _e($val_main['name']);  ?>
+                        <?php _e($className);  ?>
                     </label>
                 <?php else : ?>
                     <a href='<?php echo home_url($key_main); ?>' class='menu-main-item-link'>
-                        <?php _e($val_main['name']);  ?>
+                        <?php _e($className);  ?>
                     </a>
                 <?php endif ?>
 

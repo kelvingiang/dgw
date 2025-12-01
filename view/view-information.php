@@ -1,6 +1,6 @@
 <?php ?>
 <form name="f-info" id="f-info" method="post">
-    <div class=" row-three-column">
+    <div class="row-three-column" style="margin: 1rem 0rem;">
         <div class="col">
             <div class="cell-title">
                 <label><?php _e('Phone') ?></label>
@@ -25,7 +25,6 @@
                 <input type="text" id="txt-email" name="txt-email" class="my-input" value="<?php echo get_post_meta('1', '_info_email', true) ?>" />
             </div>
         </div>
-
     </div>
 
     <div id="tabs">
@@ -44,39 +43,46 @@
                         <input type="text" id="txt-name-cn" name="txt-name-cn" class="my-input" value="<?php echo get_post_meta('1', '_info_name_cn', true) ?>" />
                     </div>
                 </div>
-            </div>
-            <div class="row-one-column">
-                <div class="cell-title">
-                    <label><?php _e('Address') ?> (<?php _e('Chinese') ?>)</label>
-                </div>
-                <div class="cell-text">
-                    <input type="text" id="txt-address-cn" name="txt-address-cn" class="my-input" value="<?php echo get_post_meta('1', '_info_address_cn', true) ?>" />
-                </div>
-            </div>
-            <div class="row-one-column">
-                <div class="cell-title">
-                    <?php _e('Company Summary') ?> (<?php _e('Chinese') ?>)
-                </div>
-                <div class="cell-text">
-                    <?php wp_editor(get_post_meta('1', '_info_summary_cn', true), 'txt-summary-cn', array('wpautop' => false, 'editor_height' => '300px')); ?>
+                <div class="col">
+                    <div class="cell-title">
+                        <label><?php _e('Address') ?> (<?php _e('Chinese') ?>)</label>
+                    </div>
+                    <div class="cell-text">
+                        <input type="text" id="txt-address-cn" name="txt-address-cn" class="my-input" value="<?php echo get_post_meta('1', '_info_address_cn', true) ?>" />
+                    </div>
                 </div>
             </div>
 
             <div class="row-one-column">
-                <div class="cell-title">
-                    <?php _e('Company Operating') ?> (<?php _e('Chinese') ?>)
-                </div>
-                <div class="cell-text">
-                    <?php wp_editor(get_post_meta('1', '_info_operating_cn', true), 'txt-operating-cn', array('wpautop' => false, 'editor_height' => '300px')); ?>
+                <div class="col">
+                    <div class="cell-title">
+                        <?php _e('Company Summary') ?> (<?php _e('Chinese') ?>)
+                    </div>
+                    <div class="cell-text">
+                        <?php wp_editor(get_post_meta('1', '_info_summary_cn', true), 'txt-summary-cn', array('wpautop' => false, 'editor_height' => '400')); ?>
+                    </div>
                 </div>
             </div>
 
             <div class="row-one-column">
-                <div class="cell-title">
-                    <?php _e('Company Location') ?> (<?php _e('Chinese') ?>)
+                <div class="col">
+                    <div class="cell-title">
+                        <?php _e('Company Operating') ?> (<?php _e('Chinese') ?>)
+                    </div>
+                    <div class="cell-text">
+                        <?php wp_editor(get_post_meta('1', '_info_operating_cn', true), 'txt-operating-cn', array('wpautop' => false, 'editor_height' => '400')); ?>
+                    </div>
                 </div>
-                <div class="cell-text">
-                    <?php wp_editor(get_post_meta('1', '_info_location_cn', true), 'txt-location-cn', array('wpautop' => false, 'editor_height' => '300px')); ?>
+            </div>
+
+            <div class="row-one-column">
+                <div class="col">
+                    <div class="cell-title">
+                        <?php _e('Company Location') ?> (<?php _e('Chinese') ?>)
+                    </div>
+                    <div class="cell-text">
+                        <?php wp_editor(get_post_meta('1', '_info_location_cn', true), 'txt-location-cn', array('wpautop' => false, 'editor_height' => '400')); ?>
+                    </div>
                 </div>
             </div>
         </div>
@@ -91,39 +97,46 @@
                         <input type="text" id="txt-name-vn" name="txt-name-vn" class="my-input" value="<?php echo get_post_meta('1', '_info_name_vn', true) ?>" />
                     </div>
                 </div>
-            </div>
-            <div class="row-one-column">
-                <div class="cell-title">
-                    <label><?php _e('Address') ?>(<?php _e('Vietnamese') ?>)</label>
-                </div>
-                <div class="cell-text">
-                    <input type="text" id="txt-address-vn" name="txt-address-vn" class="my-input" value="<?php echo get_post_meta('1', '_info_address_vn', true) ?>" />
-                </div>
-            </div>
-            <div class="row-one-column">
-                <div class="cell-title">
-                    <?php _e('Company Summary') ?> (<?php _e('Vietnamese') ?>)
-                </div>
-                <div class="cell-text">
-                    <?php wp_editor(get_post_meta('1', '_info_summary_vn', true), 'txt-summary-vn', array('wpautop' => false, 'editor_height' => '300px')); ?>
+                <div class="col">
+                    <div class="cell-title">
+                        <label><?php _e('Address') ?>(<?php _e('Vietnamese') ?>)</label>
+                    </div>
+                    <div class="cell-text">
+                        <input type="text" id="txt-address-vn" name="txt-address-vn" class="my-input" value="<?php echo get_post_meta('1', '_info_address_vn', true) ?>" />
+                    </div>
                 </div>
             </div>
 
             <div class="row-one-column">
-                <div class="cell-title">
-                    <?php _e('Company Operating') ?> (<?php _e('Vietnamese') ?>)
-                </div>
-                <div class="cell-text">
-                    <?php wp_editor(get_post_meta('1', '_info_operating_vn', true), 'txt-operating-vn', array('wpautop' => false, 'editor_height' => '300px')); ?>
+                <div class="col">
+                    <div class="cell-title">
+                        <?php _e('Company Summary') ?> (<?php _e('Vietnamese') ?>)
+                    </div>
+                    <div class="cell-text">
+                        <?php wp_editor(get_post_meta('1', '_info_summary_vn', true), 'txt-summary-vn', array('wpautop' => false, 'editor_height' => '400')); ?>
+                    </div>
                 </div>
             </div>
 
             <div class="row-one-column">
-                <div class="cell-title">
-                    <?php _e('Company Location') ?> (<?php _e('Vietnamese') ?>)
+                <div class="col">
+                    <div class="cell-title">
+                        <?php _e('Company Operating') ?> (<?php _e('Vietnamese') ?>)
+                    </div>
+                    <div class="cell-text">
+                        <?php wp_editor(get_post_meta('1', '_info_operating_vn', true), 'txt-operating-vn', array('wpautop' => false, 'editor_height' => '400')); ?>
+                    </div>
                 </div>
-                <div class="cell-text">
-                    <?php wp_editor(get_post_meta('1', '_info_location_vn', true), 'txt-location-vn', array('wpautop' => false, 'editor_height' => '300px')); ?>
+            </div>
+
+            <div class="row-one-column">
+                <div class="col">
+                    <div class="cell-title">
+                        <?php _e('Company Location') ?> (<?php _e('Vietnamese') ?>)
+                    </div>
+                    <div class="cell-text">
+                        <?php wp_editor(get_post_meta('1', '_info_location_vn', true), 'txt-location-vn', array('wpautop' => false, 'editor_height' => '400')); ?>
+                    </div>
                 </div>
             </div>
         </div>
@@ -138,39 +151,46 @@
                         <input type="text" id="txt-name-en" name="txt-name-en" class="my-input" value="<?php echo get_post_meta('1', '_info_name_en', true) ?>" />
                     </div>
                 </div>
-            </div>
-            <div class="row-one-column">
-                <div class="cell-title">
-                    <?php _e('Address') ?>(<?php _e('English') ?>)
-                </div>
-                <div class="cell-text">
-                    <input type="text" id="txt-address-en" name="txt-address-en" class="my-input" value="<?php echo get_post_meta('1', '_info_address_en', true) ?>" />
-                </div>
-            </div>
-            <div class="row-one-column">
-                <div class="cell-title">
-                    <?php _e('Company Summary') ?>(<?php _e('English') ?>)
-                </div>
-                <div class="cell-text">
-                    <?php wp_editor(get_post_meta('1', '_info_summary_en', true), 'txt-summary-en', array('wpautop' => false, 'editor_height' => '300px')); ?>
+                <div class="col">
+                    <div class="cell-title">
+                        <?php _e('Address') ?>(<?php _e('English') ?>)
+                    </div>
+                    <div class="cell-text">
+                        <input type="text" id="txt-address-en" name="txt-address-en" class="my-input" value="<?php echo get_post_meta('1', '_info_address_en', true) ?>" />
+                    </div>
                 </div>
             </div>
 
             <div class="row-one-column">
-                <div class="cell-title">
-                    <?php _e('Company Operating') ?> (<?php _e('English') ?>)
-                </div>
-                <div class="cell-text">
-                    <?php wp_editor(get_post_meta('1', '_info_operating_en', true), 'txt-operating-en', array('wpautop' => false, 'editor_height' => '300px')); ?>
+                <div class="col">
+                    <div class="cell-title">
+                        <?php _e('Company Summary') ?>(<?php _e('English') ?>)
+                    </div>
+                    <div class="cell-text">
+                        <?php wp_editor(get_post_meta('1', '_info_summary_en', true), 'txt-summary-en', array('wpautop' => false, 'editor_height' => '400')); ?>
+                    </div>
                 </div>
             </div>
 
             <div class="row-one-column">
-                <div class="cell-title">
-                    <?php _e('Company Location') ?> (<?php _e('English') ?>)
+                <div class="col">
+                    <div class="cell-title">
+                        <?php _e('Company Operating') ?> (<?php _e('English') ?>)
+                    </div>
+                    <div class="cell-text">
+                        <?php wp_editor(get_post_meta('1', '_info_operating_en', true), 'txt-operating-en', array('wpautop' => false, 'editor_height' => '400')); ?>
+                    </div>
                 </div>
-                <div class="cell-text">
-                    <?php wp_editor(get_post_meta('1', '_info_location_en', true), 'txt-location-en', array('wpautop' => false, 'editor_height' => '300px')); ?>
+            </div>
+
+            <div class="row-one-column">
+                <div class="col">
+                    <div class="cell-title">
+                        <?php _e('Company Location') ?> (<?php _e('English') ?>)
+                    </div>
+                    <div class="cell-text">
+                        <?php wp_editor(get_post_meta('1', '_info_location_en', true), 'txt-location-en', array('wpautop' => false, 'editor_height' => '400')); ?>
+                    </div>
                 </div>
             </div>
 

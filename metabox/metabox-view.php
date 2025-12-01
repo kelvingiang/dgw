@@ -12,7 +12,7 @@ class Metabox_View
     public function create()
     {
         $id = 'admin-metabox-web';
-        $title = __('View - Like - Comment');
+        $title =  __('View') .' - '.  __('Like');
         $callback = array($this, 'display');
         add_meta_box($id, $title, $callback, array('post','solutions','services','industries','active','resources','casestudies','joinus'));
     }
@@ -23,7 +23,7 @@ class Metabox_View
         $name = 'admin-metabox-data-nonce';
         wp_nonce_field($action, $name);
 ?>
-        <div class="row-three-column">
+        <div class="row-two-column">
             <div class="col">
                 <div class="cell-title">
                     <label><?php _e('View') ?></label>
@@ -42,15 +42,15 @@ class Metabox_View
                         value="<?php echo get_post_meta($post->ID, '_metabox_like', true) ?>" />
                 </div>
             </div>
-            <div class="col">
+            <!-- <div class="col">
                 <div class="cell-title">
-                    <label><?php _e('Comment') ?></label>
+                    <label><?php //_e('Comment') ?></label>
                 </div>
                 <div class="cell-text">
                     <input type="text" name="txt-comment" id="txt-comment" class="my-input type-number"
-                        value="<?php echo get_post_meta($post->ID, '_metabox_comment', true) ?>" />
+                        value="<?php //echo get_post_meta($post->ID, '_metabox_comment', true) ?>" />
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <div class="clear"></div>
@@ -67,8 +67,8 @@ class Metabox_View
             update_post_meta($post_id, '_metabox_like', $_POST['txt-like']);
         }
 
-        if (!empty($_POST['txt-comment'])) {
-            update_post_meta($post_id, '_metabox_comment', $_POST['txt-comment']);
-        }
+        // if (!empty($_POST['txt-comment'])) {
+        //     update_post_meta($post_id, '_metabox_comment', $_POST['txt-comment']);
+        // }
     }
 }

@@ -46,7 +46,7 @@
         ?>
     </div>
     <div id="load-more">
-        <i style=" font-size: 35px; color: #999; height: 50px" class="fa fa-angle-double-down" aria-hidden="true"></i>
+        <i class="fa fa-angle-double-down" aria-hidden="true"></i>
     </div>
 
     <script>

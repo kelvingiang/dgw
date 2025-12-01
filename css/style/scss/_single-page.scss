@@ -1,10 +1,25 @@
-.industries {
-    // margin: 2rem 0rem 2rem 0rem !important;
+#single-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    // margin: 0rem 1rem;
+}
+
+#single-two-row {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 20px;
+    padding: 0 1rem;
+    @include Respond(md) {
+        grid-template-columns: 1fr;
+        gap: 2px;
+        margin: 0rem 0rem;
+    }
 }
 
 .single-space {
-    // margin: 2rem -1rem 2rem -1rem;
     &-title {
+        display: none;
         font-size: 1.6rem;
         //letter-spacing: 0.5rem;
         font-weight: bold;
@@ -19,9 +34,14 @@
     }
 
     &-content {
-        margin: 0rem;
-        background-color: white;
+        font-size: 1.2rem;
+        >div{
+            p{
+                padding: 1rem;
 
+            }
+
+        }
         img {
             border-radius: 0.5rem;
             border: 1px solid #666;
@@ -48,7 +68,6 @@
         }
         p {
             clear: both;
-            margin: 0.5rem 2rem;
         }
         iframe {
             width: 100%;
@@ -63,8 +82,11 @@
     }
 
     .view_like_area {
-        margin-top: 5px;
-        margin-right: 5px;
+        background-color: transparent;
+        margin-top: 0rem;
+        margin-bottom: 1rem;
+        padding-right: 2rem;
+        z-index: 10;
         .view_like_content {
             text-align: end;
             color: #bbbbbb;
@@ -72,7 +94,7 @@
             flex-direction: row;
             justify-content: end;
             & > div {
-                margin: 0.3rem 0.5rem;
+                margin: 0rem 0.5rem;
                 display: flex;
                 flex-direction: row;
                 div {

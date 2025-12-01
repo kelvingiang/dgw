@@ -1,28 +1,21 @@
 <?php
-require_once DIR_HELPER . 'code/function-front-in-group.php';
+// require_once DIR_HELPER . 'code/function-front-in-group.php';
 require_once DIR_HELPER . 'code/function-front-custom-post.php';
 require_once DIR_HELPER . 'code/function-front-menu-side.php';
 require_once DIR_HELPER . 'code/function-front-menu-sub.php';
 require_once DIR_HELPER . 'code/function-front.php';
 require_once DIR_HELPER . 'code/function-front-category.php';
 require_once DIR_HELPER . 'code/function-front-menu.php';
+
 require_once DIR_HELPER . 'code/admin-add-post-tag-field.php';
-require_once DIR_HELPER . 'code/admin-add-post-taxonomy-fieild.php';
+require_once DIR_HELPER . 'code/admin-add-post-taxonomy-field.php';
 require_once DIR_HELPER . 'code/admin-add-filter.php';
-
-
+require_once DIR_HELPER . 'code/admin-custom-columns.php';
 
 require_once DIR_HELPER . 'code/function-ajax.php';
 require_once DIR_HELPER . 'code/function-wp-send-mail.php';
 require_once DIR_HELPER . 'code/function-custom-comment.php';
 
-
-// add_filter('comment_form_defaults', 'my_comment_form_defaults', 20);
-// function my_comment_form_defaults($defaults) {
-//     $defaults['title_reply'] = __('發表您的留言', 'dgw');
-//     $defaults['title_reply_to'] = __('11回覆給44 %s', 'dgw');
-//     return $defaults;
-// }
 // sắp xếp lại trình tự các input trong phần comment ==========
 add_filter('comment_form_fields', function ($fields) {
     // 把 author 和 email 欄位放前面，comment 欄位放最後
@@ -32,13 +25,36 @@ add_filter('comment_form_fields', function ($fields) {
     return $fields;
 });
 
+
+// 01/12/2025  sắp xếp lại mục chọn cho phép lick hiện thị comment vô side bar bên phải
+add_action('add_meta_boxes', function () {
+
+    $post_types = array('post', 'resources', 'solutions', 'casestudies', 'active', 'services', 'industries');
+
+    foreach ($post_types as $pt) {
+
+        // 移除原本在主欄的 Discussion
+        remove_meta_box('commentstatusdiv', $pt, 'normal');
+
+        // 加到右側欄
+        add_meta_box(
+            'commentstatusdiv',
+            __('討論'),
+            'post_comment_status_meta_box',
+            $pt,
+            'side',
+            'default'
+        );
+    }
+});
+
 /* ==============================================================
   CHECK THE ARRAY IS NULL
   =============================================================== */
 
 function MenuMain($arr, $class = "menu-main-item", $item_link = 'menu-main-item-link', $item_bg = 'menu-main-item-bg', $hassub = 'has-sub')
 {
-    foreach ($arr as $key => $val) {
+    foreach ($arr as $key => $val) :
 ?>
         <div class="<?php echo $class ?>">
             <a href="<?php echo home_url($key) ?>"
@@ -47,63 +63,32 @@ function MenuMain($arr, $class = "menu-main-item", $item_link = 'menu-main-item-
             </a>
             <div class="<?php echo $item_bg ?>"></div>
 
-            <?php if (is_array($val['sub'])) { ?>
+            <?php if (is_array($val['sub'])) : ?>
                 <div class="<?php echo $val['class'] ?>">
                     <!--/====== AP DUNG DEQUY CHO MENU NHIEU CAPV ================================================-->
                     <?php MenuMain($val['sub'], $val['class'] . '-item', $val['class'] . '-item-link', $val['class'] . '-item-bg', 'has-sub-sub'); ?>
                 </div>
-            <?php } ?>
+            <?php endif ?>
         </div>
     <?php
-    }
+    endforeach;
 }
 
 function MenuMobile($arr, $item_link = 'menu-mobile-item-link')
 {
-    foreach ($arr as $key => $val) {
+    foreach ($arr as $key => $val) :
     ?>
-
         <a href="<?php echo home_url($key) ?>" style="  " class="<?php echo $item_link ?>">
             <?php echo $val[$_SESSION['languages']] ?>
         </a>
-
 <?php
-    }
+    endforeach;
 }
 
 //====== SAP LAI ARRAY THEO THU TU GIAM DAN AP DUNG CATEGORY =================
 function cmp($a, $b)
 {
     return strcmp($b['order'], $a['order']);
-}
-
-function getIndustryImage($id)
-{
-    $img = "";
-    switch ($id) {
-
-        case ('4043'):
-        case ('135'):
-            // case ('369'):
-            $img = PART_IMAGES . 'industry/nhua.jpg';
-            break;
-        case ('3204'):
-        case ('206'):
-            //case ('368'):
-            $img = PART_IMAGES . 'industry/xe.jpg';
-            break;
-        case ('3201'):
-        case ('299'):
-            // case ('205'):
-            $img = PART_IMAGES . 'industry/kim.jpg';
-            break;
-        case ('26'):
-            $img = PART_IMAGES . 'industry/chetao.png';
-            break;
-        default:
-            $img = PART_IMAGES . 'industry/no-image.png';
-    };
-    return $img;
 }
 
 //==== GET PARAM TREN URL============================================
@@ -161,9 +146,11 @@ function createRandom($length)
 
 function toBack($num)
 {
-    $paged = max(1, $arrParams['paged']);
-    $url = 'admin.php?page=' . $_REQUEST['page'] . '&paged=' . $paged . '&msg=' . $num;
+    $paged = isset($_GET['paged']) ? max(1, intval($_GET['paged'])) : 1;
+    $page = isset($_REQUEST['page']) ? sanitize_key($_REQUEST['page']) : '';
+    $url = admin_url('admin.php?page=' . $page . '&paged=' . $paged . '&msg=' . intval($num));
     wp_redirect($url);
+    exit;;
 }
 
 //======= THAY DOI LOGO DANG NHAP O ADMIN =====================================================

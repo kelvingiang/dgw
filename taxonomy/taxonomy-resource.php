@@ -14,6 +14,7 @@ class Taxonomy_Resources
 
         add_filter("manage_edit-resources_category_columns", array($this, 'category_columns'), 10, 3);
         add_filter("manage_resources_category_custom_column", array($this, 'category_columns_manage'), 10, 3);
+        add_filter('manage_edit-resources_category_sortable_columns', array($this, 'set_sortable_columns'));
 
         add_action('create_resources_category', array($this, 'save_option'));
         add_action('edited_resources_category', array($this, 'save_option'));
@@ -49,6 +50,51 @@ class Taxonomy_Resources
         ));
     }
 
+    public function category_columns()
+    {
+        $new_columns = array(
+            'cb' => '<input type="checkbox" />',
+            'name' => __('Name'),
+            'slug' => __('Slug'),
+            'vietnamese' => __('Vietnamese'),
+            'english' => __('English'),
+            'order' => __('Show Order'),
+            'posts' => __('數量')
+        );
+
+        return $new_columns;
+    }
+
+    public function category_columns_manage($out, $column_name, $theme_id)
+    {
+        $theme = get_term($theme_id, 'resources_category');
+        $strOption = get_option($this->prefix_name . $theme->term_id);
+        switch ($column_name) {
+            case 'order':
+
+                echo isset($strOption['cate_order']) ? $strOption['cate_order'] : '0';
+                break;
+            case 'vietnamese':
+
+                echo isset($strOption['cate_vn']) ? $strOption['cate_vn'] : '';
+                break;
+            case 'english':
+                echo isset($strOption['cate_en']) ? $strOption['cate_en'] : '';
+                break;
+            default:
+                break;
+        }
+        return $out;
+    }
+
+    public function set_sortable_columns($columns)
+    {
+        // 移除舊的 sortable（如果原本有）
+        unset($columns['slug']);
+        return $columns;
+    }
+
+
     public function add_form()
     {
 ?>
@@ -70,11 +116,7 @@ class Taxonomy_Resources
                 jQuery('#cate_cn').val(jQuery(this).val());
             });
         </script>
-        <style>
-            .column-name {
-                width: 20%;
-            }
-        </style>
+    
     <?php
     }
 
@@ -123,43 +165,5 @@ class Taxonomy_Resources
     {
         $param = getParams();
         delete_option($this->prefix_name . $param['tag_ID']);
-    }
-
-    public function category_columns()
-    {
-        $new_columns = array(
-            'cb' => '<input type="checkbox" />',
-            'name' => __('Name'),
-            //            'description' => __('Description'),
-            'vietnamese' => __('Vietnamese'),
-            'english' => __('English'),
-            'order' => __('Show Order'),
-            'slug' => __('Slug'),
-            'posts' => __('Count')
-        );
-
-        return $new_columns;
-    }
-
-    public function category_columns_manage($out, $column_name, $theme_id)
-    {
-        $theme = get_term($theme_id, 'resources_category');
-        $strOption = get_option($this->prefix_name . $theme->term_id);
-        switch ($column_name) {
-            case 'order':
-
-                echo isset($strOption['cate_order']) ? $strOption['cate_order'] : '0';
-                break;
-            case 'vietnamese':
-
-                echo isset($strOption['cate_vn']) ? $strOption['cate_vn'] : '';
-                break;
-            case 'english':
-                echo isset($strOption['cate_en']) ? $strOption['cate_en'] : '';
-                break;
-            default:
-                break;
-        }
-        return $out;
     }
 }

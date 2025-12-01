@@ -8,11 +8,11 @@
             <div><?php echo get_post_meta($post->ID, '_metabox_like', true) ?></div>
             <div><i class="far fa-thumbs-up"></i></div>
         </div>
-        <div>
-            <div><?php echo get_comments_number($post->ID) ?></div>
-            <div><i class="far fa-comment-dots"></i></div>
-        </div>    
-    
+        <?php if (comments_open() || get_comments_number()) : ?>
+            <div>
+                <div><?php echo get_comments_number($post->ID) ?></div>
+                <div><i class="far fa-comment-dots"></i></div>
+            </div>
+        <?php endif ?>
     </div>
 </div>
-

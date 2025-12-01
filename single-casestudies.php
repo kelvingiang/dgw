@@ -7,40 +7,28 @@
         menuSub($menu_category, $menu_page);
         ?>
     </div>
-    <div class="row">
-        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+    <div id="single-two-row">
+        <div class="single-content">
             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-
                     <div class="single-space">
                         <h2 class="single-space-title">
                             <?php the_title() ?>
                         </h2>
-                        <?php get_template_part('templates/template', 'view_like'); ?>
                         <div class="single-space-content">
                             <?php the_content(); ?>
                         </div>
+                        <?php get_template_part('templates/template', 'view_like'); ?>
                     </div>
             <?php
                 endwhile;
             endif;
-            ?>
-            <?php //get_template_part('templates/template', 'comment'); 
-            ?>
-            <?php
-               if ( comments_open() || get_comments_number() ) {
-                    comments_template();
-                }
-            ?>
-        </div>
-        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 computer-side">
-            <?php get_template_part('templates/template', 'side_cases');  ?>
-            <?php get_template_part('templates/template', 'side_active'); ?>
-            <?php get_template_part('templates/template', 'side_articles'); ?>
-        </div>
-    </div>
 
-    <div class="mobile-side">
-        <div style="margin-top: 2rem;">
+            if (comments_open() || get_comments_number()) {
+                comments_template();
+            }
+            ?>
+        </div>
+        <div class="single-sidebar">
             <?php get_template_part('templates/template', 'side_cases');  ?>
             <?php get_template_part('templates/template', 'side_active'); ?>
             <?php get_template_part('templates/template', 'side_articles'); ?>

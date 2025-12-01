@@ -46,7 +46,7 @@ class Controller_Active
             'has_archive' => true,
             'hierarchical' => false,
             'menu_position' => 6,
-            'supports' => array('thumbnail', 'editor', 'title'),
+            'supports' => array('thumbnail', 'editor', 'title', 'comments'),
         );
         register_post_type('active', $args);
     }
@@ -54,18 +54,18 @@ class Controller_Active
     //==== QUAN LY COT HIEN THI TRON BANG
     public function manage_columns($columns)
     {
-        $date_label = __('Create Date', 'suite');
-       // unset($columns['date']); // an cot ngay mac dinh
-        unset($columns['modified']); // an cot ngay mac dinh
-        unset($columns['postdate']); // an cot ngay mac dinh
+        unset($columns['create-date']); // an cot ngay mac dinh
+        unset($columns['categories']);
+        unset($columns['home']);
+        unset($columns['language']);
+        unset($columns['order']);
         //==== THEM COT VA BAN
-       // $columns['content'] = __('Content');
-        // $columns['category'] = __('Category');
-        // $columns['author'] = __('Author');
-        // $columns['home'] = __('Top Page');
-        // $columns['langguage'] = __('Langguage');
-        // $columns['setorder'] = __('Show Order');
-        // $columns['date'] = $date_label;
+        $columns['category'] = __('Category');
+        $columns['home'] = __('首頁');
+        $columns['language'] = __('Language');
+        $columns['order'] = __('Show Order');
+        $columns['create-date'] = __('Create Date');
+
         return $columns;
     }
 
@@ -74,9 +74,6 @@ class Controller_Active
     {
         global $post;
         switch ($columns) {
-            // case 'content':
-                // echo mySubContent(get_the_content());
-                // break;
             case 'category':
                 $terms = wp_get_post_terms($post->ID, 'active_category');
 
@@ -86,36 +83,25 @@ class Controller_Active
                     }
                 }
                 break;
-      
         }
     }
 
     //====== SAP SEP THEO TRINH TU
-    public function sortable_views_column($newcolumn)
+    public function sortable_views_column($columns)
     {
-        $newcolumn['setorder'] = 'setorder';
-        $newcolumn['langguage'] = 'langguage';
-        return $newcolumn;
+        $columns['order'] = 'order';
+        $columns['create-date'] = 'create-date';
+        return $columns;
     }
 
     public function sort_views_column($vars)
     {
-        if (isset($vars['orderby']) && 'setorder' == $vars['orderby']) {
+        if (isset($vars['orderby']) && 'order' == $vars['orderby']) {
             $vars = array_merge(
                 $vars,
                 array(
                     'meta_key' => '_metabox_order', //Custom field key
                     'orderby' => '_metabox_order' //Custom field value (number)
-                )
-            );
-        }
-
-        if (isset($vars['orderby']) && 'langguage' == $vars['orderby']) {
-            $vars = array_merge(
-                $vars,
-                array(
-                    'meta_key' => '_metabox_langguage', //Custom field key
-                    'orderby' => '_metabox_langguage' //Custom field value (number)
                 )
             );
         }

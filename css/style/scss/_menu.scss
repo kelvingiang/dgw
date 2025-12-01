@@ -63,11 +63,11 @@ $bgHoverColor: rgba(231, 231, 231, 0.9);
     /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#d0e4f7+0,73b1e7+24,0a77d5+50,539fe1+79,87bcea+100;Blue+Pipe+%231 */
     background: rgb(208, 228, 247);
     /* Old browsers */
-    background: -moz-linear-gradient( top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
     /* FF3.6-15 */
-    background: -webkit-linear-gradient( top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
     /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient( to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
     /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#d0e4f7', endColorstr='#87bcea', GradientType=0)";
     // filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#d0e4f7', endColorstr='#87bcea', GradientType=0);
@@ -78,11 +78,11 @@ $bgHoverColor: rgba(231, 231, 231, 0.9);
     /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#d0e4f7+0,c3d6e5+24,ffffff+50,c3d3e0+79,c9dae8+100 */
     background: rgb(208, 228, 247);
     /* Old browsers */
-    background: -moz-linear-gradient( top, $bgHoverColor 0%, $bgHoverColor 100%);
+    background: -moz-linear-gradient(top, $bgHoverColor 0%, $bgHoverColor 100%);
     /* FF3.6-15 */
-    background: -webkit-linear-gradient( top, $bgHoverColor 0%, $bgHoverColor 100%);
+    background: -webkit-linear-gradient(top, $bgHoverColor 0%, $bgHoverColor 100%);
     /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient( to bottom, $bgHoverColor 0%, $bgHoverColor 100%);
+    background: linear-gradient(to bottom, $bgHoverColor 0%, $bgHoverColor 100%);
     /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#d0e4f7', endColorstr='#87bcea', GradientType=0)";
     // filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#d0e4f7', endColorstr='#c9dae8', GradientType=0);
@@ -113,23 +113,21 @@ $bgHoverColor: rgba(231, 231, 231, 0.9);
             padding: 0.5rem 0.6rem;
         }
         &-link {
-            @include Respond(xl) {
-                @include MenuLink(relative, 1rem, 1rem, 0.5rem);
-                font-size: 1rem;
-            }
-            @include Respond(lg) {
-                @include MenuLink(relative, 0.7rem, 0rem, 0rem);
-                font-size: 0.7rem;
-            }
+            @include MenuLink(relative, 1rem, 1rem, 0.5rem);
+            font-size: 1.3rem;
+            // @include Respond(lg) {
+            //     @include MenuLink(relative, 0.7rem, 0rem, 0rem);
+            //     font-size: 0.7rem;
+            // }
         }
         &-bg {
             @include MenuBG;
         }
-        .has-sub {
-            &:after {
-                @include HasSub(90deg, 15px);
-            }
-        }
+        // .has-sub {
+        //     &:after {
+        //             @include HasSub(90deg, -2px);
+        //     }
+        // }
         &:last-child {
             border-radius: 0 0.4rem 0.4rem 0;
             overflow: hidden;
@@ -152,6 +150,14 @@ $bgHoverColor: rgba(231, 231, 231, 0.9);
             }
         }
     }
+    .active{
+        > a{
+            color: #00384e !important;
+        }
+        >label{
+            color: #00384e !important;
+        }
+    }
     //===== SUB =======================================================
     .menu-main-sub-1 {
         pointer-events: none;
@@ -171,12 +177,7 @@ $bgHoverColor: rgba(231, 231, 231, 0.9);
             border-bottom: 1px solid #fff;
             cursor: pointer;
             &-link {
-                @include Respond(xl) {
-                    @include MenuLink(relative, 1rem, 0rem, 1.5rem);
-                }
-                @include Respond(lg) {
-                    @include MenuLink(relative, 1rem, 0rem, 2.5rem);
-                }
+                @include MenuLink(relative, 1.3rem, 0rem, 1.5rem);
             }
             &-bg {
                 @include MenuBGSub;
@@ -264,4 +265,12 @@ $bgHoverColor: rgba(231, 231, 231, 0.9);
             }
         }
     }
+}
+
+html[lang="zh-TW"] .has-sub::after {
+    @include HasSub(90deg, -3px);
+}
+
+html[lang="en-US"] .has-sub::after {
+    @include HasSub(90deg, 1px);
 }

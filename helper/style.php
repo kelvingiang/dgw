@@ -6,9 +6,6 @@ function style_header_scripts()
 {
         if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
                 //==== PHAN CLIENT================================================================ 
-                //====BOOTSTRAP  ============================================
-                
-
                 wp_register_style('bootstrap-css', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '1.0', 'all');
                 wp_enqueue_style('bootstrap-css');
 
@@ -114,3 +111,17 @@ function style_header_scripts()
 }
 
 add_action('init', 'style_header_scripts');
+
+
+// them cac file js và css vao phan footer
+
+function style_footer_scripts() {
+    wp_enqueue_script(
+        'my-footer-js',
+        get_template_directory_uri() . '/js/footer.js',
+        array('jquery'),
+        time(),
+        true   // <--- Footer
+    );
+}
+add_action('wp_enqueue_scripts', 'style_footer_scripts');

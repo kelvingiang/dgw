@@ -5,8 +5,8 @@
 </div>
 <div style="height: 3rem;"></div>
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
+    <div class="page-col">
+        <div>
             <div class="page-title">
                 <h1><?php // _e('News') 
                     ?> </h1>
@@ -44,11 +44,11 @@
                 ?>
             </div>
             <div id="load-more">
-                <i style=" font-size: 35px; color: #999; height: 50px" class="fa fa-angle-double-down" aria-hidden="true"></i>
+                <i class="fa fa-angle-double-down" aria-hidden="true"></i>
             </div>
         </div>
 
-        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+        <div>
             <?php get_template_part('templates/template', 'side_active');  ?>
         </div>
     </div>

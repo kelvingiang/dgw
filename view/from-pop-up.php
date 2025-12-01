@@ -7,6 +7,8 @@ if (!empty(getParams('id'))) {
     $title =  $data['title'] ?? null;
     $link_vn =  $data['link_vn'] ?? null;
     $link_cn =  $data['link_cn'] ?? null;
+    $id_cn =  $data['id_cn'] ?? null;
+    $id_vn =  $data['id_vn'] ?? null;
     $img_vn =  $data['img_vn'] ?? null;
     $img_cn =  $data['img_cn'] ?? null;
     $img_mobile_cn =  $data['img_mobile_cn'] ?? null;
@@ -45,7 +47,7 @@ endif
             </div>
         </div>
 
-        <div class="row-two-column">
+        <div class="row-four-column">
             <div class="col">
                 <div class="cell-title">
                     <label>中文連接(CN)</label>
@@ -57,10 +59,28 @@ endif
 
             <div class="col">
                 <div class="cell-title">
+                    <label>中文文章-ID(CN)</label>
+                </div>
+                <div class="cell-text">
+                    <input type="text" name="txt-id-cn" id="txt-id-cn" class="my-input" value="<?php echo $id_cn ?>" required />
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="cell-title">
                     <label>越文連接(VN)</label>
                 </div>
                 <div class="cell-text">
                     <input type="text" name="txt-link-vn" id="txt-link-vn" class="my-input" value="<?php echo $link_vn ?>" />
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="cell-title">
+                    <label>越文文章-ID(CN)</label>
+                </div>
+                <div class="cell-text">
+                    <input type="text" name="txt-id-vn" id="txt-id-vn" class="my-input" value="<?php echo $id_vn ?>" required />
                 </div>
             </div>
         </div>
@@ -191,5 +211,4 @@ endif
             };
         }
     });
-
 </script>

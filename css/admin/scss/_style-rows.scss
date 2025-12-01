@@ -1,43 +1,37 @@
-
 .row-one-column {
-    margin: 1rem 1rem 0.8rem;
+   display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    .col{
+    margin: 1rem 0rem;
+}
 }
 
 .row-two-column {
-    height: 2rem;
-    margin: 1rem 1rem 2rem;
-    .col {
-        float: left;
-        width: 47.5%;
-    }
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
 }
 
 .row-three-column {
-    height: 2rem;
-    margin: 1rem 1rem 2rem;
-    .col {
-        float: left;
-        width: 31.1%;
-    }
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
 }
 
 .row-four-column {
-    height: 2rem;
-    margin: 1rem 1rem 2rem;
-    .col {
-        float: left;
-        width: 23.1%;
-    }
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
 }
 
 .row-five-column {
-    height: 2rem;
-    margin: 1rem 1rem 2rem;
-    .col {
-        float: left;
-        width: 18%;
-    }
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 10px;
 }
+
+
 
 .cell-title {
     width: 100%;

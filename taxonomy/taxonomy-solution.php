@@ -18,7 +18,78 @@ class Taxonomy_Solution
         add_action('create_solutions_category', array($this, 'save_option'));
         add_action('edited_solutions_category', array($this, 'save_option'));
         add_action('delete_solutions_category', array($this, 'delete_option'));
+
+        add_filter('manage_edit-solutions_category_sortable_columns', array($this, 'set_sortable_columns'));
+        // add_action('pre_get_terms', array($this, 'taxonomy_sort_logic'));
     }
+
+    public function category_columns()
+    {
+        $new_columns = array(
+            'cb' => '<input type="checkbox" />',
+            'name' => __('Name'),
+            'slug' => __('Slug'),
+            'vietnamese' => __('Vietnamese'),
+            'english' => __('English'),
+            'order' => __('Show Order'),
+            'posts' => __('數量')
+        );
+        return $new_columns;
+    }
+
+    public function category_columns_manage($out, $column_name, $theme_id)
+    {
+        $theme = get_term($theme_id, 'solutions_category');
+        $strOption = get_option($this->prefix_name . $theme->term_id);
+        switch ($column_name) {
+            case 'order':
+                echo isset($strOption['cate_order']) ? $strOption['cate_order'] : '';
+                break;
+            case 'vietnamese':
+                echo isset($strOption['cate_vn']) ? $strOption['cate_vn'] : '';
+                break;
+            case 'english':
+                echo isset($strOption['cate_en']) ? $strOption['cate_en'] : '';
+                break;
+            default:
+                break;
+        }
+        return $out;
+    }
+
+    public function set_sortable_columns($columns)
+    {
+        // 移除舊的 sortable（如果原本有）
+        unset($columns['slug']);
+
+        // 設定新 sortable 欄位
+        // $columns['order'] = 'order';
+
+        return $columns;
+    }
+
+
+    // public function taxonomy_sort_logic($query)
+    // {
+    //     if (!is_admin()) return;
+
+    //     if (!isset($query->query_vars['taxonomy']) || $query->query_vars['taxonomy'] !== 'solutions_category') {
+    //         return;
+    //     }
+
+    //     if (isset($_GET['orderby']) && $_GET['orderby'] === 'order') {
+
+    //         $query->meta_query = [
+    //             [
+    //                 'key' => 'order',
+    //                 'compare' => 'EXISTS'
+    //             ]
+    //         ];
+
+    //         $query->query_vars['orderby'] = 'meta_value_num';
+    //     }
+    // }
+
 
     public function create_taxonomy()
     {
@@ -70,11 +141,7 @@ class Taxonomy_Solution
                 jQuery('#cate_cn').val(jQuery(this).val());
             });
         </script>
-        <style>
-            .column-name {
-                width: 20%;
-            }
-        </style>
+
     <?php
     }
 
@@ -123,44 +190,5 @@ class Taxonomy_Solution
     {
         $param = getParams();
         delete_option($this->prefix_name . $param['tag_ID']);
-    }
-
-    public function category_columns()
-    {
-        $new_columns = array(
-            'cb' => '<input type="checkbox" />',
-            'name' => __('Name'),
-            //            'description' => __('Description'),
-            'vietnamese' => __('Vietnamese'),
-            'english' => __('English'),
-            'order' => __('Show Order'),
-            'slug' => __('Slug'),
-            'posts' => __('Count')
-        );
-
-        return $new_columns;
-    }
-
-    public function category_columns_manage($out, $column_name, $theme_id)
-    {
-        $theme = get_term($theme_id, 'solutions_category');
-
-        $strOption = get_option($this->prefix_name . $theme->term_id);
-
-
-        switch ($column_name) {
-            case 'order':
-                echo isset($strOption['cate_order']) ? $strOption['cate_order'] : '';
-                break;
-            case 'vietnamese':
-                echo isset($strOption['cate_vn']) ? $strOption['cate_vn'] : '';
-                break;
-            case 'english':
-                echo isset($strOption['cate_en']) ? $strOption['cate_en'] : '';
-                break;
-            default:
-                break;
-        }
-        return $out;
     }
 }
