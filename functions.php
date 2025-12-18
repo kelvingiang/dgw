@@ -1,9 +1,9 @@
 <?php
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+// if (session_status() === PHP_SESSION_NONE) {
+//     session_start();
+// }
 
 // @ini_set( 'upload_max_size' , '64M' );
 // @ini_set( 'post_max_size', '64M');
@@ -22,28 +22,62 @@ require_once(DIR_HELPER . 'require.php');
 require_once(DIR_CLASS . 'rewrite.class.php');
 new Rewrite_Url();
 
-if (!isset($_SESSION['languages'])) {
-    $_SESSION['languages'] = 'vn';
-}
+// if (!isset($_SESSION['languages'])) {
+//     $_SESSION['languages'] = 'vn';
+// }
+/**
+ * 設定網站語言（使用 Cookie，WordPress 標準）
+ * 用法：?lang=vn 或 ?lang=cn
+ */
+add_action('init', function () {
+
+    if (isset($_GET['lang'])) {
+        $lang = ($_GET['lang'] === 'cn') ? 'cn' : 'vn';
+
+        setcookie(
+            'site_lang',
+            $lang,
+            time() + YEAR_IN_SECONDS,
+            COOKIEPATH,
+            COOKIE_DOMAIN
+        );
+
+        $_COOKIE['site_lang'] = $lang;
+    }
+
+}, 1);
 
 
 // 21/11/2025 khi thay đổi session language đông thời thay đổi lang trong thẻ HTMl 
 // tiện cho việc thay đổi font-family theo từng loại ngôn ngữ
+// add_filter('language_attributes', function ($output) {
+//     if (session_status() === PHP_SESSION_NONE) {
+//         session_start();
+//     }
+
+//     if (!empty($_SESSION['languages'])) {
+//         if ($_SESSION['languages'] === 'cn') {
+//             return 'lang="zh-TW"';
+//         } elseif ($_SESSION['languages'] === 'vn') {
+//             return 'lang="en-US"';
+//         }
+//     }
+
+//     return $output; // 如果沒有 session，使用預設語言
+// });
+
 add_filter('language_attributes', function ($output) {
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
+
+    $lang = dgw_get_lang();
+
+    if ($lang === 'cn') {
+        return 'lang="zh-TW"';
     }
 
-    if (!empty($_SESSION['languages'])) {
-        if ($_SESSION['languages'] === 'cn') {
-            return 'lang="zh-TW"';
-        } elseif ($_SESSION['languages'] === 'vn') {
-            return 'lang="en-US"';
-        }
-    }
+    return 'lang="vi-VN"';
 
-    return $output; // 如果沒有 session，使用預設語言
 });
+
 
 
 //=== khi cài Divi Builder sẽ tự tạo project  post-type câu dưới là bỏ đi cái post-type đó ================== 
@@ -54,32 +88,59 @@ add_action('init', function () {
 /* ==============================================================
   THAY DOI FILE DATA NGON NGU THEO SESSION LANGGUAGE
   =============================================================== */
+// function change_translate_text($translated)
+// {
+//     if ($_SESSION['languages'] == 'cn') {
+//         $languages = 'zh_TW';
+//     } else {
+//         $languages = 'vi_VN';
+//     }
+
+//     if (is_admin()) {
+//         $file = dirname(dirname(dirname(__FILE__))) . "/languages/admin_languages/data.php";
+//         // $file = DIR_LANGUAGES . 'admin_language/data.php';
+//     } else {
+//         $file = dirname(dirname(dirname(__FILE__))) . "/languages/{$languages}/data.php";
+//     }
+//     include_once $file;
+
+//     $data = getTranslate();
+//     if (isset($data[$translated])) {
+//         return $data[$translated];
+//     }
+//     return $translated;
+// }
+
+// add_filter('gettext', 'change_translate_text', 20);
+
 function change_translate_text($translated)
 {
-    if ($_SESSION['languages'] == 'cn') {
-        $languages = 'zh_TW';
-    } else {
-        $languages = 'vi_VN';
-    }
+    $lang = dgw_get_lang();
+
+    $languages = ($lang === 'cn') ? 'zh_TW' : 'vi_VN';
 
     if (is_admin()) {
         $file = dirname(dirname(dirname(__FILE__))) . "/languages/admin_languages/data.php";
-        // $file = DIR_LANGUAGES . 'admin_language/data.php';
     } else {
         $file = dirname(dirname(dirname(__FILE__))) . "/languages/{$languages}/data.php";
     }
-    include_once $file;
 
-    $data = getTranslate();
-    if (isset($data[$translated])) {
-        return $data[$translated];
+    if (file_exists($file)) {
+        include_once $file;
+
+        if (function_exists('getTranslate')) {
+            $data = getTranslate();
+
+            if (isset($data[$translated])) {
+                return $data[$translated];
+            }
+        }
     }
+
     return $translated;
 }
 
 add_filter('gettext', 'change_translate_text', 20);
-
-
 
 /* =======================================  
   FUNCTION OF THIS TEMPLATE

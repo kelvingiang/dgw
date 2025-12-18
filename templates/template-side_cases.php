@@ -1,6 +1,6 @@
 <div class="side-list">
     <div class="side-list-title">
-        <h2><?php _e('Cases Tudies') ?></h2>
+        <h2><?php _e('cases') ?></h2>
     </div>
     <?php
     $wp_query = getCustomPostAtSide('casestudies', 5);

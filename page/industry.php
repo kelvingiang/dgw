@@ -54,10 +54,13 @@ $param = $wp->query_vars;
                     data) { // set ket qua tra ve  data tra ve co thanh phan status va message
                     if (data.status === 'done') {
                         jQuery(".data-list").append(data.html);
-                        var $target = jQuery('html,body');
-                        $target.animate({
-                            scrollTop: $target.height()
-                        }, 2000);
+                        jQuery('#load-more')
+                            .prop('disabled', false)
+                            .html('<i class="fa fa-angle-double-down" aria-hidden="true"></i>');
+                        var currentScroll = jQuery(window).scrollTop();
+                        jQuery('html, body').animate({
+                            scrollTop: currentScroll + 200
+                        }, 1000);
                     } else if (data.status === 'empty') {
                         jQuery("#load-more").hide();
                     }

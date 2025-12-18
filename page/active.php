@@ -84,9 +84,9 @@
                         jQuery('#load-more')
                             .prop('disabled', false)
                             .html('<i style="font-size:35px; color:#999; height:50px" class="fa fa-angle-double-down" aria-hidden="true"></i>');
-
+                        var currentScroll = jQuery(window).scrollTop();
                         jQuery('html, body').animate({
-                            scrollTop: jQuery(document).height()
+                            scrollTop: currentScroll + 200
                         }, 1000);
                     } else if (data.status === 'empty') {
                         jQuery("#load-more").hide();

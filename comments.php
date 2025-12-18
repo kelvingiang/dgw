@@ -14,8 +14,7 @@
                 <?php endif; ?>
                 <ul>
                     <?php wp_list_comments(array('type' => 'comment', 'callback' => 'my_custom_comment')); ?>
-                    <?php //wp_list_comments(array('type' => 'comment')); 
-                    ?>
+                    <?php //wp_list_comments(array('type' => 'comment')); ?>
                 </ul>
                 <?php if (get_comment_pages_count() > 1) : ?>
                     <nav id="comments-nav-below" class="comments-navigation" role="navigation">

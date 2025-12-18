@@ -44,9 +44,7 @@ function getCustomsPost($postType, $postCount)
                 <div class="item-title">
                         <?php the_title() ?>
                 </div>
-
             </div>
-
         <?php
             $stt++;
         endwhile;

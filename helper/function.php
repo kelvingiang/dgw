@@ -16,6 +16,11 @@ require_once DIR_HELPER . 'code/function-ajax.php';
 require_once DIR_HELPER . 'code/function-wp-send-mail.php';
 require_once DIR_HELPER . 'code/function-custom-comment.php';
 
+
+function dgw_get_lang() {
+    return $_COOKIE['site_lang'] ?? 'vn';
+}
+
 // sắp xếp lại trình tự các input trong phần comment ==========
 add_filter('comment_form_fields', function ($fields) {
     // 把 author 和 email 欄位放前面，comment 欄位放最後

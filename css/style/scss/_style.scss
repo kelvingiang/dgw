@@ -16,7 +16,11 @@ a {
 // }
 
 html[lang="zh-TW"] body {
-    font-family: "DFKai", Microsoft YaHei, Arial, sans-serif;
+    font-family:
+        "DFKai",
+        Microsoft YaHei,
+        Arial,
+        sans-serif;
 }
 
 html[lang="en-US"] body {
@@ -32,6 +36,10 @@ body {
 
 body:focus-within {
     scroll-behavior: smooth;
+}
+
+.my-content {
+    min-height: 450px;
 }
 
 .page-col {
@@ -207,33 +215,40 @@ hr.style-two {
 #footer {
     margin-top: 2rem;
     background-color: rgb(37, 59, 80);
-    display: flex;
-    h3 {
-        font-size: 1rem;
-        font-weight: bold;
-        text-align: center;
-        margin-top: 1rem;
-        color: rgb(250, 250, 250);
-    }
-    ul.footer-list {
-        list-style: none;
-        margin-top: 2rem;
-        color: rgb(196, 196, 196);
-        li {
-            margin-top: 1rem;
+    padding-top: 1rem;
+    .footer-space {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 20px;
+        color: #ffffff86;
+        @include Respond(md) {
+            grid-template-columns: 1fr;
+        }
+        h3 {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #fff;
+        }
+        ul li {
+            list-style: none;
+            margin: 0.5rem 0;
+            font-size: 1.1rem;
             a {
+                color: #5892dd;
                 font-weight: bold;
-                padding-left: 0.5rem;
-                padding-right: 0.5rem;
+                &:hover {
+                    color: #fff;
+                }
             }
         }
     }
     .copy-right {
         display: flex;
-        justify-content: flex-start;
+        justify-content: flex-end;
+        padding-right: 2rem;
         p {
-            align-self: flex-end;
-            color: rgb(196, 196, 196);
+            color: rgba(196, 196, 196, 0.836);
         }
     }
 }

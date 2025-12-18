@@ -46,7 +46,7 @@ class SendMailClass {
                 break;
         }
 
-        $mailContent .= "<div style='font-size: 1rem; padding:  0.5rem'> <strong> " . __('Order Serial') . " : </strong><i>" . $info['code'] . "</i></div>";
+        $mailContent = "<div style='font-size: 1rem; padding:  0.5rem'> <strong> " . __('Order Serial') . " : </strong><i>" . $info['code'] . "</i></div>";
         $mailContent .= "<div style='font-size: 1rem; padding:  0.5rem'><strong> " . __('Company Name') . ": </strong><i>" . $info['company'] . "</i></div>";
         $mailContent .= "<div style='font-size: 1rem; padding:  0.5rem'><strong> " . __('Full Name') . " : </strong><i>" . $info['name'] . "</i></div>";
         $mailContent .= "<div style='font-size: 1rem; padding:  0.5rem'><strong> " . __('Address') . " : </strong><i>" . $info['address'] . "</i></div>";

@@ -14,6 +14,7 @@
     <link href="<?php echo get_template_directory_uri(); ?>/images/icons/favicon.ico" rel="shortcut icon">
     <link href="<?php echo get_template_directory_uri(); ?>/images/icons/favicon.ico" rel="apple-touch-icon-precomposed">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <!-- 18/11/2021 Google Tag Manager -->
     <script>
         (function(w, d, s, l, i) {
@@ -54,10 +55,8 @@
     </script>
 
 
+    <!-- Meta Pixel Code 18/11/2025 -->
 
-
-
-    <!-- Meta Pixel Code -->
     <script>
         ! function(f, b, e, v, n, t, s) {
             if (f.fbq) return;
@@ -65,6 +64,7 @@
                 n.callMethod ?
                     n.callMethod.apply(n, arguments) : n.queue.push(arguments)
             };
+
             if (!f._fbq) f._fbq = n;
             n.push = n;
             n.loaded = !0;
@@ -80,7 +80,9 @@
         fbq('init', '349602963704589');
         fbq('track', 'PageView');
     </script>
+
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=349602963704589&ev=PageView&noscript=1" /></noscript>
+
     <!-- End Meta Pixel Code -->
 
 
@@ -103,70 +105,10 @@
     </script>
     <!--/JB Tracker-->
 
-    <!-- Facebook Pixel Code -->
-    <script>
-        ! function(f, b, e, v, n, t, s) {
-            if (f.fbq) return;
-            n = f.fbq = function() {
-                n.callMethod ?
-                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-            };
-            if (!f._fbq) f._fbq = n;
-            n.push = n;
-            n.loaded = !0;
-            n.version = '2.0';
-            n.queue = [];
-            t = b.createElement(e);
-            t.async = !0;
-            t.src = v;
-            s = b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t, s)
-        }(window,
-            document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1196022574446817');
-        fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1196022574446817&ev=PageView&noscript=1" /></noscript>
-    <!-- DO NOT MODIFY -->
-    <!-- End Facebook Pixel Code -->
-
-
     <?php wp_head(); ?>
     <!-- phan theo doi va quang cao cua zalo  -->
     <script async="" src="https://s.zzcdn.me/ztr/ztracker.js?id=7056180858377605120"></script>
 </head>
-<style>
-    #navbar {
-        background-color: #fff;
-        position: fixed;
-        top: 0;
-        width: 100%;
-        display: block;
-        transition: top 0.3s;
-        z-index: 100;
-    }
-
-    /* AN TITLE MAC DINH CUA PAGE TITLE PAGE CHI TAO LINK */
-
-
-    h1.entry-title {
-        display: none;
-    }
-</style>
-<!-- an hien main menu -->
-<script>
-    // var prevScrollpos = window.pageYOffset;
-    // window.onscroll = function() {
-    //     var currentScrollPos = window.pageYOffset;
-    //     if (prevScrollpos > currentScrollPos) {
-    //         document.getElementById("navbar").style.top = "0";
-    //     } else {
-    //         document.getElementById("navbar").style.top = "-130px";
-    //     }
-    //     prevScrollpos = currentScrollPos;
-    // }
-</script>
-
 
 <body <?php body_class(); ?> <?php if (is_page('about') || is_home()) {
                                     echo "onload='initialize()'";
@@ -199,7 +141,4 @@
             // case 'test':
             get_template_part('templates/template', 'header');
     }
-
-
-    // get_template_part('templates/template', 'home_zalo');
-    ?>
+      ?>
