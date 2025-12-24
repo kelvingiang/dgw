@@ -1,6 +1,8 @@
 <?php /*  Template Name: About Page */ ?>
 <?php get_header();
-get_template_part('templates/template', 'header'); ?>
+get_template_part('templates/template', 'header'); 
+$lang = dgw_get_lang();
+?>
 <div>
     <?php pageImg($post->ID); ?>
 </div>
@@ -12,17 +14,17 @@ get_template_part('templates/template', 'header'); ?>
             ?> </h1>
             </div>
             <div>
-                <?php echo get_post_meta(1, "_info_summary_" . $_SESSION['languages'], true) ?>
+                <?php echo get_post_meta(1, "_info_summary_" . $lang, true) ?>
             </div>
             <hr>
             <div id='operating'>
                 <h3 class="article-title"><?php _e('Operating') ?></h3>
-                <?php echo get_post_meta(1, "_info_operating_" . $_SESSION['languages'], true) ?>
+                <?php echo get_post_meta(1, "_info_operating_" . $lang, true) ?>
             </div>
             <hr>
             <div id='location'>
                 <h3 class="article-title"><?php _e('Location') ?></h3>
-                <?php echo get_post_meta(1, "_info_location_" . $_SESSION['languages'], true) ?>
+                <?php echo get_post_meta(1, "_info_location_" . $lang, true) ?>
             </div>
 
             <div id='contact' style="color: #fff; background-color: #253B50;  ">
@@ -30,11 +32,11 @@ get_template_part('templates/template', 'header'); ?>
                                                                     ?></h2> -->
                 <div style="padding-left: 1rem; ">
                     <div style="font-size: 1rem;">
-                        <?php echo get_post_meta(1, '_info_name_' . $_SESSION['languages'], true) ?></div>
+                        <?php echo get_post_meta(1, '_info_name_' . $lang, true) ?></div>
                     <div><label><?php _e('Phone'); ?> :</label><?php echo get_post_meta(1, '_info_phone', true) ?></div>
                     <div><label>E-mail :</label><?php echo get_post_meta(1, '_info_email', true) ?></div>
                     <div><label><?php _e('Address') ?> :
-                        </label><?php echo get_post_meta(1, '_info_address_' . $_SESSION['languages'], true) ?></div>
+                        </label><?php echo get_post_meta(1, '_info_address_' . $lang, true) ?></div>
                 </div>
                 <div style="padding: 0.1rem; ">
                     <?php get_template_part('templates/template', 'googlemap')

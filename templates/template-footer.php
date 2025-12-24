@@ -1,14 +1,14 @@
 </div>
 
 <?php if (!is_page('about')) {
-    $lang = $_SESSION['languages'] ?? 'vn';
+    $lang = dgw_get_lang();
 ?>
     <footer id="footer">
         <div class="footer-space">
             <div>
                 <h3><?php _e('Office') ?> </h3>
                 <ul class='footer-list'>
-                    <li><label><?php echo get_post_meta(1, '_info_address_' . $_SESSION['languages'], true) ?></label>
+                    <li><label><?php echo get_post_meta(1, '_info_address_' . $lang, true) ?></label>
                     </li>
                 </ul>
             </div>
@@ -21,7 +21,7 @@
                 </ul>
             </div>
             <div>
-                <h3><?php _e('link') ?> </h3>$_SESSION['languages'] == 'vn'
+                <h3><?php _e('link') ?> </h3>
                 <ul class='footer-list'>
                     <li>
                         <a href="<?php echo $lang === 'vn'

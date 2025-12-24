@@ -15,7 +15,7 @@ function getCustomsPost($postType, $postCount)
         'meta_query'    => array(
             array(
                 'key'       => '_metabox_langguage',
-                'value'     =>  $_SESSION['languages'],
+                'value'     =>  dgw_get_lang(),
                 'compare'   => '=',
             ),
         ),
@@ -71,7 +71,7 @@ function getCustomsPostByCate($postType, $cate, $postCount, $taxonomy)
         'meta_query'    => array(
             array(
                 'key'       => '_metabox_langguage',
-                'value'     =>  $_SESSION['languages'],
+                'value'     =>  dgw_get_lang(),
                 'compare'   => '=',
             ),
         ),
@@ -129,7 +129,7 @@ function getCustomsPostCate($param)
             $option = get_option("option_casestudies_category_$value->term_id");
             $arr[$value->term_id] = array(
                 'ID' => $value->term_id,
-                'name' => $option['cate_' . $_SESSION['languages']],
+                'name' => $option['cate_' . dgw_get_lang()],
                 'class' => 'menu-main-sub-1-item',
                 'order' => $option['cate_order'],
                 'sub' => '',
@@ -166,7 +166,7 @@ function getCustomPostAtHome($postType, $postCount)
         'meta_query'    => array(
             array(
                 'key'       => '_metabox_langguage',
-                'value'     =>  $_SESSION['languages'],
+                'value'     =>  dgw_get_lang(),
                 'compare'   => '=',
             ),
 
@@ -197,16 +197,9 @@ function getCustomPostCateAtHome($postType, $cateSlug, $postCount)
         'meta_query'    => array(
             array(
                 'key'       => '_metabox_langguage',
-                'value'     =>  $_SESSION['languages'],
+                'value'     =>  dgw_get_lang(),
                 'compare'   => '=',
             ),
-
-            // array(
-            //     'key'       => '_metabox_home',
-            //     'value'     =>  true,
-            //     'compare'   => '=',
-            // ),
-
         ),
     );
 
@@ -236,7 +229,7 @@ function getCustomPostAtSideCate($postType, $postCount, $taxonomy, $cate)
         'meta_query'    => array(
             array(
                 'key'       => '_metabox_langguage',
-                'value'     =>  $_SESSION['languages'],
+                'value'     => dgw_get_lang(),
                 'compare'   => '=',
             ),
         ),
@@ -258,7 +251,7 @@ function getCustomPostAtSide($postType, $postCount)
         'meta_query'    => array(
             array(
                 'key'       => '_metabox_langguage',
-                'value'     =>  $_SESSION['languages'],
+                'value'     =>  dgw_get_lang(),
                 'compare'   => '=',
             ),
         ),
@@ -280,7 +273,7 @@ function getCustomPostShowSidebar($postType)
         'meta_query'    => array(
             array(
                 'key'       => '_metabox_langguage',
-                'value'     =>  $_SESSION['languages'],
+                'value'     =>  dgw_get_lang(),
                 'compare'   => '=',
             ),
 
@@ -296,9 +289,6 @@ function getCustomPostShowSidebar($postType)
     return $wp_query;
 }
 
-
-
-
 function getPostCategory($cate, $postCount)
 {
     $arr = array(
@@ -313,7 +303,7 @@ function getPostCategory($cate, $postCount)
         'meta_query'    => array(
             array(
                 'key'       => '_metabox_langguage',
-                'value'     =>  $_SESSION['languages'],
+                'value'     =>  dgw_get_lang(),
                 'compare'   => '=',
             ),
         ),
@@ -337,7 +327,7 @@ function getPostCategoryAtHome($cate, $postCount)
         'meta_query'    => array(
             array(
                 'key'       => '_metabox_langguage',
-                'value'     =>  $_SESSION['languages'],
+                'value'     =>  dgw_get_lang(),
                 'compare'   => '=',
             ),
 

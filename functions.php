@@ -1,9 +1,9 @@
 <?php
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 
-// if (session_status() === PHP_SESSION_NONE) {
-//     session_start();
-// }
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 // @ini_set( 'upload_max_size' , '64M' );
 // @ini_set( 'post_max_size', '64M');
@@ -21,6 +21,21 @@ require_once(DIR_HELPER . 'require.php');
 
 require_once(DIR_CLASS . 'rewrite.class.php');
 new Rewrite_Url();
+
+
+
+add_action('init', function () {
+    if (isset($_GET['mail_test'])) {
+        $ok = wp_mail(
+            'giaminh0265@gmail.com',
+            'Test Mail',
+            'This is a test email'
+        );
+
+        echo $ok ? '✅ mail() sent' : '❌ mail() failed';
+        exit;
+    }
+});
 
 // if (!isset($_SESSION['languages'])) {
 //     $_SESSION['languages'] = 'vn';
@@ -296,3 +311,44 @@ function blankslate_comment_count($count)
         return $count;
     }
 }
+
+
+add_action('phpmailer_init', function ($phpmailer) {
+
+    $phpmailer->isSMTP();
+
+    $phpmailer->Host       = SMTP_HOST;
+    $phpmailer->Port       = SMTP_PORT;
+    $phpmailer->SMTPAuth   = true;
+    $phpmailer->Username   = SMTP_USERNAME;
+    $phpmailer->Password   = SMTP_PASSWORD;
+    $phpmailer->SMTPSecure = SMTP_SECURE;
+
+    // 🔥 開啟完整 SMTP Debug
+    $phpmailer->SMTPDebug  = 3;
+    $phpmailer->Debugoutput = function ($str, $level) {
+        error_log("SMTP DEBUG [$level]: $str");
+    };
+});
+
+add_action('init', function () {
+
+    if (!isset($_GET['testmail'])) {
+        return;
+    }
+
+    error_log('>>> TESTMAIL INIT TRIGGERED <<<');
+
+    $sent = wp_mail(
+        get_option('admin_email'),
+        'WP Mail Test',
+        'This is a test email'
+    );
+
+    if ($sent) {
+        wp_die('✅ Mail sent');
+    } else {
+        wp_die('❌ Mail failed');
+    }
+});
+

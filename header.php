@@ -9,11 +9,11 @@
     <!-- supppot slider  -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
     <!-- end  slider -->
     <link href="<?php echo get_template_directory_uri(); ?>/images/icons/favicon.ico" rel="shortcut icon">
     <link href="<?php echo get_template_directory_uri(); ?>/images/icons/favicon.ico" rel="apple-touch-icon-precomposed">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> -->
 
     <!-- 18/11/2021 Google Tag Manager -->
     <script>
@@ -110,9 +110,7 @@
     <script async="" src="https://s.zzcdn.me/ztr/ztracker.js?id=7056180858377605120"></script>
 </head>
 
-<body <?php body_class(); ?> <?php if (is_page('about') || is_home()) {
-                                    echo "onload='initialize()'";
-                                } ?>>
+<body <?php body_class(); ?>>
 
     <!-- 18/11/2021 Google Tag Manager (noscript) -->
     <noscript>

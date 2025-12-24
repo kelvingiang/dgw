@@ -22,7 +22,7 @@ function ajax_load_more_posts()
         'meta_query'     => array(
             array(
                 'key'     => '_metabox_langguage',
-                'value'   => isset($_SESSION['languages']) ? $_SESSION['languages'] : '',
+                'value'   => dgw_get_lang(),
                 'compare' => '=',
             ),
         ),
@@ -93,8 +93,6 @@ function plus_one_view()
     $postID = isset($_POST['postID']) ? intval($_POST['postID']) : 0;
     $view = get_post_meta($postID, '_metabox_view', true) ? intval(get_post_meta($postID, '_metabox_view', true)) : 0;
     update_post_meta($postID, '_metabox_view', $view + 1);
-    // die(get_post_meta($postID, '_metabox_view', true));
-
     wp_send_json(array(
         'status' => 'done',
         'html'   => $view + 1,

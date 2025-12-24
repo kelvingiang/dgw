@@ -64,7 +64,7 @@ function MenuMain($arr, $class = "menu-main-item", $item_link = 'menu-main-item-
         <div class="<?php echo $class ?>">
             <a href="<?php echo home_url($key) ?>"
                 class="<?php echo $item_link ?> <?php echo is_array($val['sub']) ? $hassub : '' ?>">
-                <?php echo $val[$_SESSION['languages']] ?>
+                <?php echo $val[dgw_get_lang()] ?>
             </a>
             <div class="<?php echo $item_bg ?>"></div>
 
@@ -84,7 +84,7 @@ function MenuMobile($arr, $item_link = 'menu-mobile-item-link')
     foreach ($arr as $key => $val) :
     ?>
         <a href="<?php echo home_url($key) ?>" style="  " class="<?php echo $item_link ?>">
-            <?php echo $val[$_SESSION['languages']] ?>
+            <?php echo $val[dgw_get_lang()] ?>
         </a>
 <?php
     endforeach;

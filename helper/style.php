@@ -6,30 +6,30 @@ function style_header_scripts()
 {
         if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
                 //==== PHAN CLIENT================================================================ 
-                wp_register_style('bootstrap-css', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '1.0', 'all');
-                wp_enqueue_style('bootstrap-css');
+                // wp_register_style('bootstrap-css', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '1.0', 'all');
+                // wp_enqueue_style('bootstrap-css');
 
-                wp_register_style('bootstrap-grid-css', get_template_directory_uri() . '/css/bootstrap-grid.min.css', array(), '1.0', 'all');
-                wp_enqueue_style('bootstrap-grid-css');
+                // wp_register_style('bootstrap-grid-css', get_template_directory_uri() . '/css/bootstrap-grid.min.css', array(), '1.0', 'all');
+                // wp_enqueue_style('bootstrap-grid-css');
 
-                wp_register_style('bootstrap-reboot-css', get_template_directory_uri() . '/css/bootstrap-reboot.min.css', array(), '1.0', 'all');
-                wp_enqueue_style('bootstrap-reboot-css');
+                // wp_register_style('bootstrap-reboot-css', get_template_directory_uri() . '/css/bootstrap-reboot.min.css', array(), '1.0', 'all');
+                // wp_enqueue_style('bootstrap-reboot-css');
 
-                wp_register_style('bootstrap-utilities-css', get_template_directory_uri() . '/css/bootstrap-utilities.min.css', array(), '1.0', 'all');
-                wp_enqueue_style('bootstrap-utilities-css');
+                // wp_register_style('bootstrap-utilities-css', get_template_directory_uri() . '/css/bootstrap-utilities.min.css', array(), '1.0', 'all');
+                // wp_enqueue_style('bootstrap-utilities-css');
 
-                wp_register_script('bootstrap-script', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'));
-                wp_enqueue_script('bootstrap-script');
+                // wp_register_script('bootstrap-script', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'));
+                // wp_enqueue_script('bootstrap-script');
 
-                wp_register_script('bootstrap-bundle-script', get_template_directory_uri() . '/js/bootstrap.bundle.min.js', array('jquery'));
-                wp_enqueue_script('bootstrap-bundle-script');
+                // wp_register_script('bootstrap-bundle-script', get_template_directory_uri() . '/js/bootstrap.bundle.min.js', array('jquery'));
+                // wp_enqueue_script('bootstrap-bundle-script');
 
                 //===== AWEONE==================================================================
-                wp_register_style('font-awesome-css', get_template_directory_uri() . '/css/aweone-all.min.css', array(), '1.0', 'all');
-                wp_enqueue_style('font-awesome-css');
+                // wp_register_style('font-awesome-css', get_template_directory_uri() . '/css/aweone-all.min.css', array(), '1.0', 'all');
+                // wp_enqueue_style('font-awesome-css');
 
-                wp_register_script('font-awesome-script', get_template_directory_uri() . '/js/aweone-all.min.js', array('jquery'));
-                wp_enqueue_script('font-awesome-script');
+                // wp_register_script('font-awesome-script', get_template_directory_uri() . '/js/aweone-all.min.js', array('jquery'));
+                // wp_enqueue_script('font-awesome-script');
 
                 // ===== TU DONG  AN HIEN THANH   MAIN ME NU ===========================================
                 wp_register_script('autohidingnavbar', get_template_directory_uri() . '/js/jquery.bootstrap-autohidingnavbar.js', array('jquery'));
@@ -81,8 +81,8 @@ function style_header_scripts()
 
 
                 //=====  ZOOM    =\================================
-                wp_register_script('prefixfree-js', get_template_directory_uri() . '/js/zoom/prefixfree.js', array('jquery'));
-                wp_enqueue_script('prefixfree-js');
+                // wp_register_script('prefixfree-js', get_template_directory_uri() . '/js/zoom/prefixfree.js', array('jquery'));
+                // wp_enqueue_script('prefixfree-js');
 
                 //====== MY STYLE ==================================================================
                 wp_register_style('my-main-css', get_template_directory_uri() . '/css/style/main.css', array(), '1.0', 'all');
@@ -96,15 +96,18 @@ function style_header_scripts()
                         wp_register_style('admin-denied', get_template_directory_uri() . '/css/admin/admin-denied.css', array(), '1.0', 'all');
                         wp_enqueue_style('admin-denied');
                 }
+
+                wp_register_script('jquery-ui-js', get_template_directory_uri() . '/js/jquery-ui.min.js', array('jquery'), '1.0.0'); // Custom scripts
+                wp_enqueue_script('jquery-ui-js');
+
+                wp_register_style('jquery-ui-css', get_template_directory_uri() . '/css/jquery-ui.min.css', array(), '1.0', 'all');
+                wp_enqueue_style('jquery-ui-css');
+
+                wp_register_script('custom-admin-js', get_template_directory_uri() . '/js/custom-admin.js', array('jquery'), '1.0.0'); // Custom scripts
+                wp_enqueue_script('custom-admin-js');
         }
 
         // ==ADD CHO CA ADMIN VA CLIENT=========================================================
-
-        wp_register_script('jquery-ui-js', get_template_directory_uri() . '/js/jquery-ui.min.js', array('jquery'), '1.0.0'); // Custom scripts
-        wp_enqueue_script('jquery-ui-js');
-
-        wp_register_style('jquery-ui-css', get_template_directory_uri() . '/css/jquery-ui.min.css', array(), '1.0', 'all');
-        wp_enqueue_style('jquery-ui-css');
 
         wp_register_script('jquery-custom-js', get_template_directory_uri() . '/js/custom.js', array('jquery'), '1.0.0'); // Custom scripts
         wp_enqueue_script('jquery-custom-js');
@@ -115,13 +118,14 @@ add_action('init', 'style_header_scripts');
 
 // them cac file js và css vao phan footer
 
-function style_footer_scripts() {
-    wp_enqueue_script(
-        'my-footer-js',
-        get_template_directory_uri() . '/js/footer.js',
-        array('jquery'),
-        time(),
-        true   // <--- Footer
-    );
+function style_footer_scripts()
+{
+        wp_enqueue_script(
+                'my-footer-js',
+                get_template_directory_uri() . '/js/footer.js',
+                array('jquery'),
+                time(),
+                true   // <--- Footer
+        );
 }
 add_action('wp_enqueue_scripts', 'style_footer_scripts');

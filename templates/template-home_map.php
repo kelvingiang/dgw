@@ -17,7 +17,7 @@
          // Biến text chứa nội dung sẽ được hiển thị
          var text;
          text = "<b style='color:red;font-weight: bold'" +
-             "style='text-align:center;'><?php _e(get_post_meta(1, '_info_name_' . $_SESSION['languages'], true)) ?></b>";
+             "style='text-align:center;'><?php _e(get_post_meta(1, '_info_name_' . dgw_get_lang(), true)) ?></b>";
          var infowindow = new google.maps.InfoWindow({
              content: text,
              size: new google.maps.Size(100, 50),

@@ -20,7 +20,7 @@ $args = array(
     'meta_query'    => array(
         array(
             'key'       => '_metabox_langguage',
-            'value'     =>  $_SESSION['languages'],
+            'value'     =>  dgw_get_lang(),
             'compare'   => '=',
         ),
     ),

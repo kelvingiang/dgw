@@ -8,36 +8,35 @@ $args = array(
     'meta_query' => array(
         array(
             'key' => '_metabox_langguage',
-            'value' => $_SESSION['languages'],
+            'value' => dgw_get_lang(),
             'compare' => '='
         )
     )
 );
 $wp_query = new WP_Query($args);
-
 ?>
 <div id="slider">
     <div class="owl-carousel owl-theme">
 
         <?php if ($wp_query->have_posts()) :
             while ($wp_query->have_posts()) : $wp_query->the_post();
+                $link = get_post_meta($post->ID, '_metabox_link', true);
                 $url = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full');
         ?>
-
-                <div class="item">
-                    <a href="<?php echo get_post_meta($post->ID, '_metabox_link', true); ?>">
-                        <img src="<?php echo $url[0] ?>" alt="<?php echo the_title(); ?>">
-                        <!-- <div class="owl-slider-title">  <h2>tittle</h2> </div> -->
-                        <div class="owl-slider-content">
-                            <?php the_content(); ?>
-                        </div>
-                    </a>
+                <div class="item"
+                    <?php if (!empty($link)) : ?>
+                    data-link="<?php echo esc_url($link); ?>"
+                    <?php endif; ?>>
+                    <img src="<?php echo esc_url($url[0]); ?>" alt="<?php the_title_attribute(); ?>">
+                    <div class="owl-slider-content">
+                        <?php the_content(); ?>
+                    </div>
                 </div>
         <?php
             endwhile;
         endif;
         wp_reset_postdata();
-        wp_reset_query();
+        // wp_reset_query();
         ?>
     </div>
 </div>
@@ -54,12 +53,20 @@ $wp_query = new WP_Query($args);
             margin: 10,
             nav: false,
             autoplay: true,
-            autoplayTimeout: 3000,  // 3秒间隔切换幻灯片
-            autoplaySpeed: 500,  
+            autoplayTimeout: 3000, // 3秒间隔切换幻灯片
+            autoplaySpeed: 500,
             dots: true,
             autoplayHoverPause: true,
             items: 1,
 
-        })
+        });
+
+        // ⭐ 正確的 click 寫法
+        jQuery('#slider').on('click', '.item', function() {
+            const link = $(this).data('link');
+            if (link) {
+                window.location.href = link;
+            }
+        });
     });
 </script>

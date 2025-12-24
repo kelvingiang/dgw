@@ -32,8 +32,25 @@ function formatNumber(val) {
 jQuery(document).ready(function() {
     jQuery("h1.entry-title").css("display", "none");
 
-    //  jQuery(".selectmenu").selectmenu({});
+    //    // SAN PHAM CHAY O DUOI TRANG INDEX
+    // tab
+    jQuery(function() {
+        jQuery("#tabs").tabs();
+    });
 
+    jQuery(".selectmenu").selectmenu({});
+
+    jQuery(".MyDate").datepicker({
+        dateFormat: "dd-mm-yy",
+        changeMonth: true,
+        changeYear: true,
+    });
+
+    jQuery(".MyDateNoYear").datepicker({
+        dateFormat: "dd-mm",
+        changeMonth: true,
+        changeYear: false,
+    });
 
     jQuery(".email").focusout(function(e) {
         var email = document.getElementById("txt_email");

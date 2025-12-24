@@ -136,6 +136,11 @@ $bgHoverColor: rgba(231, 231, 231, 0.9);
             border-radius: 0.4rem 0 0 0.4rem;
             overflow: hidden;
         }
+        .has-sub {
+            &:after {
+                @include HasSub(90deg, 3px);
+            }
+        }
         &:hover {
             .menu-main-item-bg {
                 @include BGMouseOn();
@@ -150,11 +155,11 @@ $bgHoverColor: rgba(231, 231, 231, 0.9);
             }
         }
     }
-    .active{
-        > a{
+    .active {
+        > a {
             color: #00384e !important;
         }
-        >label{
+        > label {
             color: #00384e !important;
         }
     }
@@ -183,9 +188,18 @@ $bgHoverColor: rgba(231, 231, 231, 0.9);
                 @include MenuBGSub;
             }
             .has-sub {
-                &:after {
-                    @include HasSub(0deg, 20px);
+                display: inline-flex;
+                color: red !important;
+                font-size: 3rem !important;
+                svg {
+                    width: 14px; /* 設定 SVG 的寬度 */
+                    height: auto; /* 保持比例 */
+                    fill: #333; /* 設定顏色 */
+                    transition: fill 0.3s; /* (選填) 增加顏色變換的過渡動畫 */
                 }
+                // &:after {
+                //     @include HasSub(0deg, 20px);
+                // }
             }
             &:hover {
                 .menu-main-sub-1-item-bg {

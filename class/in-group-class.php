@@ -171,7 +171,7 @@ class In_Group_Class
             if ($wp_query->have_posts()) :
                 while ($wp_query->have_posts()) :
                     $wp_query->the_post();
-                    $title = get_post_meta(get_the_ID(), '_dp_title_' . $_SESSION['languages'], TRUE);
+                    $title = get_post_meta(get_the_ID(), '_dp_title_' . dgw_get_lang(), TRUE);
                     if ($post_id == get_the_ID())
                         continue;
             ?>

@@ -1,5 +1,5 @@
 <?php
-$lang = isset($_SESSION['languages']) ? $_SESSION['languages'] : 'vn'; // 預設值 en
+$lang = dgw_get_lang(); // 預設值 en
 $contact = 'contact-' . $lang;
 $about   =  'about-' . $lang;
 
@@ -37,7 +37,7 @@ function menu_main_list()
         $GLOBALS['about'] => array(
             'name' => "about",
             'class' => 'menu-main-item', // neu co sub menu phai them sub Class
-            'data'=> 'about-'.$_SESSION['languages'],
+            'data'=> 'about-'.dgw_get_lang(),
             // 'subClass' => 'menu-main-sub-1',
             // 'sub' => array(),
             //'sub' => $homeArr,
@@ -111,7 +111,7 @@ function menu_main_list()
         $GLOBALS['contact'] => array(
             'name' => "contact",
             'class' => 'menu-main-item',
-            'data'=> 'contact-'.$_SESSION['languages'],
+            'data'=> 'contact-'.dgw_get_lang(),
             // 'sub' => array()
         ),
     );
