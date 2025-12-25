@@ -291,6 +291,15 @@ hr.style-two {
   margin-bottom: 2rem;
 }
 
+.multi-slider-icon {
+  width: 40px;
+  fill: #5892dd;
+  opacity: 0.6;
+}
+.multi-slider-icon:hover {
+  opacity: 1;
+}
+
 #single-row {
   display: grid;
   grid-template-columns: 1fr;
@@ -1880,34 +1889,24 @@ html[lang=en-US] .has-sub::after {
 }
 #casestudies-slider .owl-theme .owl-nav {
   display: block;
+}
+#casestudies-slider .owl-theme .owl-nav .owl-next,
+#casestudies-slider .owl-theme .owl-nav .owl-prev {
   position: absolute;
-  top: 45%;
-  width: 100%;
-  padding-right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent !important;
+}
+#casestudies-slider .owl-theme .owl-nav .owl-next:hover,
+#casestudies-slider .owl-theme .owl-nav .owl-prev:hover {
+  background: none !important;
+  color: rgb(105, 105, 105);
 }
 #casestudies-slider .owl-theme .owl-nav .owl-next {
-  background-color: transparent !important;
-  color: rgba(148, 146, 146, 0.8);
-  position: absolute;
-  right: 1px;
-}
-#casestudies-slider .owl-theme .owl-nav .owl-next .sli-right {
-  font-size: 3rem;
-}
-#casestudies-slider .owl-theme .owl-nav .owl-next :hover {
-  color: rgb(105, 105, 105);
+  right: -33px;
 }
 #casestudies-slider .owl-theme .owl-nav .owl-prev {
-  background-color: transparent !important;
-  color: rgba(148, 146, 146, 0.8);
-  position: absolute;
-  left: 1px;
-}
-#casestudies-slider .owl-theme .owl-nav .owl-prev .sli-left {
-  font-size: 3rem;
-}
-#casestudies-slider .owl-theme .owl-nav .owl-prev :hover {
-  color: rgb(105, 105, 105);
+  left: -25px;
 }
 #casestudies-slider .item {
   transition-duration: 0.8s;
@@ -2359,7 +2358,7 @@ html[lang=en-US] .has-sub::after {
   z-index: -10;
   right: -150px;
   width: 130px;
-  height: 30px;
+  height: 45px;
   border-radius: 0;
   background-color: rgb(241, 241, 241);
   border-bottom: 1px solid #ccc;

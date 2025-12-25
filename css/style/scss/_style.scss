@@ -303,3 +303,12 @@ hr.style-two {
         margin-bottom: 2rem;
     }
 }
+
+.multi-slider-icon{
+    width: 40px;
+    fill: #5892dd;
+    opacity: 0.6;
+    &:hover{
+        opacity: 1;
+    }
+}

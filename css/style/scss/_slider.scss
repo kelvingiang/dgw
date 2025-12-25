@@ -150,39 +150,29 @@
 #casestudies-slider {
     background-color: #fff;
     padding: 1rem;
-   
+
     .owl-theme {
         //padding-top: 2.5rem;
         .owl-nav {
             display: block;
-            position: absolute;
-            top: 45%;
-            width: 100%;
-            // text-align: right;
-            padding-right: 1rem;
-            .owl-next {
-                background-color: transparent !important;
-                color: rgba(148, 146, 146, 0.8);
+            .owl-next,
+            .owl-prev {
                 position: absolute;
-                right: 1px;
-                .sli-right {
-                    font-size: 3rem;
-                }
-                :hover {
+                top: 50%;
+                transform: translateY(-50%); // 垂直置中更好的寫法
+                background-color: transparent !important;
+
+                &:hover {
+                    background: none !important; // 避免套件預設背景色
                     color: rgba(105, 105, 105);
                 }
             }
+            .owl-next {
+                right: -33px; // 稍微拉開距離，確保不在溢出邊緣
+            }
+
             .owl-prev {
-                background-color: transparent !important;
-                color: rgba(148, 146, 146, 0.8);
-                position: absolute;
-                left: 1px;
-                .sli-left {
-                    font-size: 3rem;
-                }
-                :hover {
-                    color: rgb(105, 105, 105);
-                }
+                left: -25px;
             }
         }
     }
@@ -199,7 +189,7 @@
 
         @include Respond(sm) {
         }
-     
+
         .item-title {
             text-align: center;
             padding: 0.5rem;
